@@ -104,4 +104,24 @@ git push origin master
 
 ```
 
+### 将原有的项目目录 初始化为本地仓库
+1.进入项目目录 打开命令窗口输入
+```
+git init // 初始化为本地仓库
+```
+
+2.在自己github上创建一个远程仓库 2017vuex
+3. 在初始化的本地仓库里 建立远程联系
+```
+git remote add origin https://github.com/liwenli111/2017vuex.git
+
+```
+4. 上传（add commit pull push）
+
+### 创建git忽略文件(将忽略的文件名/目录名写入)
+```
+.gitignore
+
+```
+
 
