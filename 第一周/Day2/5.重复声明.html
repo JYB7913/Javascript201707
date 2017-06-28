@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    // 1.函数预解释 不重复声明 重复定义
+    //    function fn() {
+    //        console.log(111);
+    //    }
+    //    fn(); // 222
+    //
+    //    var fn = function () { // 代码执行到这 进行赋值操作
+    //        console.log('fn');
+    //    };
+    //
+    //    fn(); // 'fn'
+    //
+    //    function fn() { // 预解释的时候 赋值定义
+    //        console.log(222);
+    //    }
+    //
+    //    fn(); // 'fn'
+
+
+    // 2.带 var不重复声明
+    //    function foo(n) {
+    //       console.log(n); // 100
+    //       var n = 300; // 代表的是同一个n
+    //       return function () {
+    //           console.log(n); // 300
+    //       }
+    //    }
+    //    var f = foo(100);
+    //    f();
+
+
+</script>
+</body>
+</html>

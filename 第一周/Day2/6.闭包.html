@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//      var bar = 20;
+//      function fn() {
+//          bar += 20;
+//      }
+//      fn();
+//      console.log(bar);
+
+//        var foo = 10;
+//        function fn() {
+//            foo += 10;
+//            console.log(foo); // NaN
+//            var foo = 5;
+//            console.log(foo); // 5
+//        }
+//        fn();
+//        console.log(foo);
+
+// 一 函数执行都会形成一个私有作用域 保护里面私有变量不受外界干扰 这种保护机制叫闭包
+       var num = 10;
+       function fe() {
+           var num; // 私有
+           num = 200;
+           console.log(num);
+       }
+       num = 30; // 全局
+       fe();
+       console.log(num);
+// 二
+       function foo() {
+           var num = 100;
+           return function () { // 内部函数（称为闭包）
+               num += 100;
+               console.log(num);
+           }
+       }
+      var f = foo(); // 通过从内部返回一个子函数 在外部接受 从而达到 访问和 修改内部私有变量目的
+
+      f(); // 在外界利用foo的子函数 修改foo内部中的私有变量
+      f();
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

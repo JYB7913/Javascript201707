@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 1.不管if条件是否成立 都会进行预解释（只声明）
+    //    console.log(num);
+    //    console.log(fe);
+    //    if (true) { // 定义部分取决于条件是否成立 成立 就会重新赋值
+    //        var num = 1000;
+    //        function fe() {
+    //            console.log('fe');
+    //        }
+    //    }
+    //    console.log(num);
+    //    console.log(fe);
+
+    // 2.等号右边只是一个值 所以不进行预解释
+    //      console.log(fn);
+    //      var fn = function () {
+    //          console.log('fn');
+    //      };
+    //      console.log(fn);
+
+    // 3. return 返回值不会进行预解释 后面的代码虽然不执行 依然进行预解释
+    //    function foo() {
+    //        console.log(fe);
+    //        console.log(num);
+    //        return function fe() {
+    //              console.log(num);
+    //        };
+    //        var num = 100; // 虽然不执行但依然预解释 只是赋值操作不进行
+    //    }
+    //
+    //    var f1 = foo();
+    //    f1();
+
+
+</script>
+</body>
+</html>
