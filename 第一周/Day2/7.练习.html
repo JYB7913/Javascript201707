@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    function fn(n) { // n = 10 12
+    //        return function (a) { // a = 1 a = 2
+    //            a++; // a = 2 a = 3
+    //            console.log(n += a);
+    //        }
+    //    }
+    //    var f = fn(10);
+    //    f(1); // 12
+    //    f(2); // 15
+
+    //function fn(n) { // n = 10
+    //    n = n; // n = n n = 10
+    //    return function (a) { // a = 1
+    //        a = a; // a = a  a = 1
+    //        a++;
+    //        console.log(n += a); // 10 + 2
+    //    }
+    //}
+    //var f = fn(10);
+    //f(1); // 12
+
+    console.log(123);
+    //(function () { // 自己内部进行形参赋值和预解释
+    //    var num = 100;
+    //    console.log(num);
+    //})();
+    //
+    //(function () { // 自己内部进行形参赋值和预解释
+    //    var num = 100;
+    //    console.log(num);
+    //}());
+    //
+    //console.log(456);
+
+    //var ff = (function () { // 自己内部进行形参赋值和预解释
+    //     var num = 100;
+    //     function fe() {
+    //         num += 10;
+    //        console.log(num);
+    //    }
+    //    return fe;
+    //}());
+
+    //console.log(ff);
+    //ff();
+
+    //    var ff = ~function () {
+    //        var num = 100;
+    //
+    //        function fe() {
+    //            num += 10;
+    //            console.log(num);
+    //        }
+    //        return fe;
+    //    }();
+    //    console.log(ff);
+
+    //    var num = 20;
+    //    var obj = {
+    //        num: 30,
+    //        fn: (function (num) { // 接收自执行的返回值 作为fn这个属性的属性值
+    //             num += 5;
+    //            return function () {
+    //                console.log(num);
+    //            }
+    //        })(num)
+    //    };
+    //
+    //    obj.fn(num);
+
+
+    //    var num = 20;
+    //    var obj = {
+    //        num: 30,
+    //        fn: (function (num) { // 接收自执行的返回值 作为fn这个属性的属性值
+    //            num += 5;
+    //            return function () {
+    //                console.log(num);
+    //            }
+    //        })(obj.num) // *obj这个对象还未创建完成 所以无法访问 里面属性
+    //    };
+    //
+    //    obj.fn(num);
+
+
+    //    obj.fn = (function () {
+    //        console.log('nihao');
+    //    })();
+
+    //    console.log(obj.fn);
+    //    obj.fn();
+
+
+</script>
+</body>
+</html>
