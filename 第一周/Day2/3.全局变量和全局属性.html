@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    console.log(name);
+
+    //   var num = 100;
+    //   console.log(window.num);
+   
+    // 添加一个全局变量也是给window添加一个全局属性
+    //    window.num = 20;
+    //    console.log(num);
+
+    //    function fe() {
+    //        console.log('fe');
+    //    }
+    //    fe();
+    //    window.fe();
+
+    function foo() {
+      num = 1000; // 赋值操作 也是给window添加全局属性
+    }
+    foo();
+
+    console.log(num);
+    console.log(window.num);
+</script>
+</body>
+</html>
