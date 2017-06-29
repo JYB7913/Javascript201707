@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点赞</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    //    一
+    //    btn.onclick = function () {
+    //        this.innerHTML = ++this.innerHTML; // 先获取当前值 自身加1后重新输出
+    //    };
+
+    // 二 利用全局不销毁 保存累加后的count值
+    //    var count = 0;
+    //    btn.onclick = function () {
+    //        this.innerHTML = ++count;
+    //    }
+
+
+    // 三 手工创建不销毁作用域累加（这样会形成不销毁的堆栈内存）
+    //   btn.onclick = (function () {
+    //        var count = 0; // 保存不销毁的count
+    //        return function () { // 返回内部函数 1.造成不销毁条件 2.可以通过这个内部函数对 私有变量count 做修改
+    //            btn.innerHTML = ++count;
+    //        }
+    //    })();
+
+    //    (function () {
+    //        var count = 0;
+    //        btn.onclick = function () {
+    //            btn.innerHTML = ++count;
+    //        }
+    //    })();
+
+    //    (function (count) {
+    //        btn.onclick = function () {
+    //            btn.innerHTML = ++count;
+    //        }
+    //    })(0);
+
+    // 四 自定义属性(推荐)
+//    btn.count = 0;
+//    btn.onclick = function () {
+//        this.innerHTML = ++this.count;
+//    }
+
+//    for(var i = 0; i < 3; i++) {
+//        (function (n) {
+//           console.log(n);
+//        })(i)
+//    }
+</script>
+</body>
+</html>

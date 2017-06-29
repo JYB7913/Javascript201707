@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>111</button>
+<button>222</button>
+<button>333</button>
+<script type="text/javascript">
+    var oBtns = document.getElementsByTagName('button');
+
+    //    for(var i = 0; i < oBtns.length; i++){
+    //        oBtns[i].n = i; // 保存每一轮i的值 作为索引值来用
+    //        oBtns[i].onclick = function () {
+    //            console.log(this.n);
+    //        }
+    //    }
+    //    console.log(i);
+
+    //  弊端形成多个不销毁堆栈内存（存储当前值）
+    //    for(var i = 0; i < oBtns.length; i++) {
+    //        oBtns[i].onclick = (function (n) {
+    //            console.log(n);
+    //            return function () {
+    //                console.log(n);
+    //            }
+    //        })(i);
+    //    }
+
+    //    for(var i = 0; i < oBtns.length; i++) {
+    //       (function (n) {
+    //            console.log(n);
+    //           oBtns[i].onclick =  function () {
+    //                console.log(n);
+    //            }
+    //        })(i);
+    //    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">btn1</button>
+
+<!--<script type="text/javascript">-->
+<!--num2 = 200;-->
+<!--console.log(num2);-->
+<!--</script>-->
+<script type="text/javascript">
+    'use strict';
+
+    // 非严格模式下
+    // 函数执行时前面没有 '.' this 是undefined
+    // 自执行函数中this 是 undefined
+
+    //    num = 100;
+    //    console.log(num);
+
+    //    function ff() {
+    //        console.log(this);
+    //    }
+    //   ff()
+
+//    (function () {
+//        console.log(this);
+//    })();
+
+
+
+    // 严格模式 让js在严格的条件运行js(消除不合理 一些怪异行为 优化编译器运行速度)
+
+
+    // this 行为主体
+    // 1.全局中this window
+    // 2.函数中this就看函数执行的时候 前面有没有'.'点前面是谁 函数中this就是谁 如果没有点就是window
+    // *函数中this 在哪定义和在哪执行没有关系
+    // 3.自执行函数中this 非严格模式下永远是window
+    // 4.事件中this 绑定事件的元素
+
+
+    //     (function (that) {
+    //         console.log(that);
+    //         console.log(this); // window
+    //         btn1.onclick = function () {
+    //             console.log(this); // btn1
+    //         }
+    //     })(this);
+    //     var num = 100;
+    //     var obj = {
+    //         num: 110,
+    //         fn: function (that) {
+    //             console.log(that);
+    //         }
+    //     };
+    //     
+    //     obj.fn(this.num)
+    //     
+    //    function fe() {
+    //        console.log(this);
+    //    }
+    //    btn1.onclick = fe;
+    //    btn1.onclick = function () {
+    //        fe();
+    //    }
+
+
+    //    btn1.onclick = function () {
+    //        console.log(this);
+    //    }
+
+    //    (function () {
+    //       console.log(this);
+    //    })();
+    //
+    //    var obj = {
+    //        fn: function () {
+    //            (function () {
+    //                console.log(this);
+    //            })();
+    //        }
+    //    };
+    //
+    //   obj.fn();
+    //    var obj ={};
+    //    obj.fn = (function () { // obj.fn 用来接收 外层自执行函数的返回值
+    //       console.log(this); // window
+    //       return function () {
+    //           console.log(this); // obj
+    //       }
+    //    })();
+    //
+    //    obj.fn();
+
+    //    function fe() {
+    //        console.log(this);
+    //        return function () {
+    //            console.log(this);
+    //        }
+    //    }
+    //    var ff = fe(); // window
+    //    ff(); // window
+    //
+    //
+    //    var obj = {};
+    //    obj.foo = fe(); // window
+    //    obj.foo(); // obj
+
+
+    //    var bar = {
+    //        fn: function () {
+    //            console.log(this);
+    //            var obj = {
+    //                that: this
+    //            };
+    //            console.log(obj.that);
+    //        }
+    //    };
+    //
+    //    bar.fn();
+
+
+    //    var obj = {
+    //        that: this
+    //    };
+    //
+    //    console.log(obj.that);
+
+    //    var obj = {id: 24};
+    //    function fn() {
+    //        console.log(this);
+    //        console.log(this.id);
+    //    }
+    ////    fn();
+    ////    window.fn()
+    //    obj.fe = fn;
+    //    obj.fe();
+
+    //    var obj = {
+    //        age: 18,
+    //        name1: 'zhuefng',
+    //        say: 'hello world',
+    //        fn: function () {
+    //            console.log(this);
+    //            console.log('my name is '+ this.name1 + ' age is ' + this.age + ' say: ' + this.say);
+    //        }
+    //    };
+    //
+    //    var fe = obj.fn;
+    //    obj.fn(); // obj
+    //
+    //    var name1 = 'react'; // window.name1 = 'react'
+    //    var age = 10; // window.age = 10
+    //    var say = 'hello react'; // window.say = 'hello react'
+    //    fe(); // fe中this window
+
+    //    function ff() {
+    //        console.log(this); // window
+    //    }
+    //
+    //    function fn() {
+    //        console.log(this); // obj
+    //        ff();
+    //    }
+    //    var obj = {};
+    //    obj.fe = fn;
+    //    obj.fe(); //
+
+    //    var obj = {
+    //        fn: function () {
+    //            console.log(this); // window
+    //        }
+    //    };
+    //
+    //    function ff(foo) {
+    //        foo();
+    //    }
+    //
+    //    ff(obj.fn)
+</script>
+</body>
+</html>

@@ -7,82 +7,119 @@
 <body>
 <script type="text/javascript">
 
-//    function foo(n) {
-//        return function (c) {
-//            n += c;
-//            console.log(n);
-//        }
-//    }
-//    var ff = foo(2); // foo 形成第一个不销毁栈内存 返回一个内部堆内存地址
-//    ff(3); // 5
-//    ff(5); // 10  第一个foo里的 n = 10
-//
-//    foo(1)(9); // 10 foo形成第二个不立即销毁的栈内存  第二个foo里的 n = 10
-//
-//    ff(3); // 13 第一个foo里的 n = 13
-//
-//    ff = foo(3); // foo 形成第三个不销毁的炸内存 第三个foo的 n = 3
-//    ff(6); // 9   3 + 6
-//
-//    function fn(n){
-//        function foo(){
-//            n += n;
-//            console.log(n);
-//        }
-//        return foo;
-//    }
-//    var f = fn(5); // n = 5 xxxfff111
-//    f(); // 10
-//
-//    var f1 = fn(10); // n = 10 xxxfff222
-//    f1(); // 20
-//
-//    var f2 = fn(5); // n = 5
-//    f2(); // n+n n = 10
-//
-//    f(); // n + n 20 这是属于第一个fn的内部函数 累加的是第一个fn里 n
-//
-//    f = fn(5); // n = 5 f = xxxfff444
-//    f(); // n + n 10
-//
-//    f = f1; // f = xxxfff222
-//    f(); // n + n 40
+    //    function foo(n) {
+    //        return function (c) {
+    //            n += c;
+    //            console.log(n);
+    //        }
+    //    }
+    //    var ff = foo(2); // foo 形成第一个不销毁栈内存 返回一个内部堆内存地址
+    //    ff(3); // 5
+    //    ff(5); // 10  第一个foo里的 n = 10
+    //
+    //    foo(1)(9); // 10 foo形成第二个不立即销毁的栈内存  第二个foo里的 n = 10
+    //
+    //    ff(3); // 13 第一个foo里的 n = 13
+    //
+    //    ff = foo(3); // foo 形成第三个不销毁的炸内存 第三个foo的 n = 3
+    //    ff(6); // 9   3 + 6
+    //
+    //    function fn(n){
+    //        function foo(){
+    //            n += n;
+    //            console.log(n);
+    //        }
+    //        return foo;
+    //    }
+    //    var f = fn(5); // n = 5 xxxfff111
+    //    f(); // 10
+    //
+    //    var f1 = fn(10); // n = 10 xxxfff222
+    //    f1(); // 20
+    //
+    //    var f2 = fn(5); // n = 5
+    //    f2(); // n+n n = 10
+    //
+    //    f(); // n + n 20 这是属于第一个fn的内部函数 累加的是第一个fn里 n
+    //
+    //    f = fn(5); // n = 5 f = xxxfff444
+    //    f(); // n + n 10
+    //
+    //    f = f1; // f = xxxfff222
+    //    f(); // n + n 40
 
     ///////////////////////////////////////////////////////////////////////
 
 
-//    function sum(){
-//        var num = 10; // 15 20
-//        return function (){
-//            num += 5;
-//            console.log(num);
-//        }
-//    }
-//    var fx = sum();
-//    fx(); // 15
-//    var fy = fx;
-//    fy(); // 20
-//
-//    sum()(); // 15
+    //    function sum(){
+    //        var num = 10; // 15 20
+    //        return function (){
+    //            num += 5;
+    //            console.log(num);
+    //        }
+    //    }
+    //    var fx = sum();
+    //    fx(); // 15
+    //    var fy = fx;
+    //    fy(); // 20
+    //
+    //    sum()(); // 15
 
     ///////////////////////////////////////////////////////////////////////
 
-//    var obj = {
-//        num : 6,
-//        fn : (function (){
-//            var n = 5;
-//            return function (){
-//                n += 1;
-//                console.log(n);
-//            }
-//        })()
-//    };
-//    obj.fn();
-//    obj.fn();
-//    var f = obj.fn;
-//    f();
-//    var f1 = f;
-//    f1();
+//        var obj = {
+//            num : 6,
+//            fn : (function (){
+//                var n = 5;
+//                return function (){
+//                    n += 1;
+//                    console.log(n);
+//                }
+//            })()
+//        };
+//        obj.fn(); // 6
+//        obj.fn(); // 7
+//        var f = obj.fn;
+//        f(); // 8
+//        var f1 = f;
+//        f1(); // 9
+
+    //    var num = 20;
+    //    var obj = {
+    //        num: 30,
+    //        fn: (function (num) {
+    //            this.num *= 3;
+    //            num += 15;
+    //            var num = 45;
+    //            return function () {
+    //                this.num *= 4;
+    //                num += 20;
+    //                console.log(num);
+    //            }
+    //        })(num)
+    //    };
+    //    var fn = obj.fn;
+    //    fn();
+    //    obj.fn();
+    //    console.log(window.num, obj.num);
+
+
+//    var num = 1;
+//    var obj = {num: 2};
+//    obj.fn = (function (num) {
+//
+//        this.num += 2;
+//        num--;
+//        return function (n) {
+//            this.num += 2;
+//            num--;
+//            console.log(n + ++num);
+//        }
+//    })(this.num);
+//    var fn = obj.fn;
+//    fn(1);
+//    obj.fn(2);
+//    console.log(num, obj.num);
 
 </script>
 </body>
