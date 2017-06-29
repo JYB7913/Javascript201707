@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function fn(n){
+        function foo(){
+            n += n;
+            console.log(n);
+        }
+        return foo;
+    }
+    var f = fn(5);
+    f();
+    var f1 = fn(10);
+    f1();
+    var f2 = fn(5);
+    f2();
+    f();
+    f = fn(5);
+    f();
+    f = f1;
+    f();
+    ///////////////////////////////////////////////////////////////////////
+    function sum(){
+        var num = 10;
+        return function (){
+            num += 5;
+            console.log(num);
+        }
+    }
+    var fx = sum();
+    fx();
+    var fy = fx;
+    fy();
+    ///////////////////////////////////////////////////////////////////////
+
+    var obj = {
+        num : 6,
+        fn : (function (){
+            var n = 5;
+            return function (){
+                n += 1;
+                console.log(n);
+            }
+        })()
+    };
+    obj.fn();
+    obj.fn();
+    var f = obj.fn;
+    f();
+    var f1 = f;
+    f1();
+
+</script>
+</body>
+</html>

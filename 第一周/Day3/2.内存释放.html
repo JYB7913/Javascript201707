@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 堆内存释放
+    // 浏览器默认机制 每间隔一段时间 就将没有被占用的内存 回收释放
+    var obj = {id: 1, name: 'zhufeng'};
+    var obj2 = obj;
+    obj = null; //空对象指针 手工释放
+
+    //栈内存 销毁与不销毁
+    // window 形成的栈内存 只有关闭浏览器的时候 才会销毁
+    // 函数执行形成的栈内存 通常 执行完 代码 立即销毁
+
+    // 栈内存不销毁的条件
+    // 1.在栈内存中返回的一个引用数据类型 被外部某个变量接收 那么这个栈内存就不能被销毁
+    //    function fn() {
+    //        return {say: 'nihao', id: 2}
+    //    }
+
+    //    function fn() {
+    //        return [11, 22]
+    //    }
+    //    var ff = fn();
+
+    //    console.log(ff.say);
+    //    console.log(ff.say);
+    //    console.log(ff.say);
+    //    fn();
+
+    //    function fn() {
+    //        var count = 0;
+    //        return function () {
+    //            count++;
+    //            console.log(count);
+    //        }
+    //    }
+    //    var fe = fn();
+    //    fe(); // 1
+    //    fe(); // 2
+    //    var f1 = fn();
+    //    f1(); // 1
+    //    f1(); // 2
+    //    fe = f1;
+    //    fe(); // 3
+
+    // 利用全局作用域不销毁的机制
+    //    var count = 0;
+    //    function fn() {
+    //        count++;
+    //        console.log(count);
+    //    }
+    //    fn();
+    //    fn();
+    //    fn();
+
+    //    function fn() {
+    //        var count = 0;
+    //        return function () {
+    //            count ++;
+    //            console.log(count);
+    //        }
+    //    }
+    //    var ff = fn();
+    //    ff(); // 1
+    //    ff(); // 2
+    //    ff(); // 3
+
+    //2.不立即销毁 在一个栈内存 返回一个函数数据类型 在外面直接执行的时候 需要等返回的函数执行完后 才能销毁
+
+     function fe() {
+         return function () {
+             console.log(123);
+         }
+     }
+     fe()();
+
+</script>
+</body>
+</html>

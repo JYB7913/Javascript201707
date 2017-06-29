@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 堆内存：存储引用数据类型的值
+    // 栈内存：供js代码执行的环境、保存基本数据类型值
+
+    console.log(123);
+    var obj = {name: 'zhufeng'};
+//    obj.name
+//    obj.name
+//    obj.name
+//    obj.name
+
+    function fn() {
+        console.log('fn');
+    }
+    fn();
+    fn();
+    fn();
+    fn();
+
+</script>
+</body>
+</html>
