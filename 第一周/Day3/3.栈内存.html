@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var ff;
+    function fn() {
+        var count = 0;
+        function fe() {
+            count++;
+            console.log(count);
+        }
+        ff = fe;
+    }
+
+    fn();
+    ff(); // 1
+    ff(); // 2
+    ff(); // 3
+//
+//    fn();
+//    ff(); // 1
+//    ff(); // 2
+
+
+//var obj = {};
+//
+//function foo() {
+//    var count = 0;
+//    function bar() {
+//        count ++;
+//        console.log(count);
+//    }
+//    obj.fn = bar;
+//}
+//foo();
+//obj.fn();
+//obj.fn();
+//obj.fn();
+//obj.fn();
+
+//
+//var obj = {};
+//
+//function foo() {
+//    var count = 0;
+//    obj.fn = function() {
+//        count ++;
+//        console.log(count);
+//    }
+//}
+//foo();
+//obj.fn(); // 1
+//obj.fn(); // 2
+//
+//foo();
+//obj.fn();
+//obj.fn();
+//obj.fn();
+
+
+//function fn() {
+//    var count = 0;
+//    foor = function() {
+//        count ++;
+//        console.log(count);
+//    }
+//}
+//fn();
+//foor(); // 1
+//foor(); // 2
+//foor(); // 3
+//
+//fn(); // fn执行形成一个新的不销毁栈内存 一个新的私有的count = 0
+//foor(); // 1
+//foor(); // 2
+
+//
+//function fn() {
+//    var count = 0;
+//    window.foor = function() {
+//        count ++;
+//        console.log(count);
+//    }
+//}
+//fn();
+//foor();
+//foor();
+//foor();
+
+//var foor;
+//(function () {
+//    var count = 0;
+//    foor = function() {
+//        count ++;
+//        console.log(count);
+//    }
+//})();
+//
+//foor();
+//foor();
+//foor();
+
+//
+//    var ff;
+//    function fn() {
+//        return function () {
+//            console.log('fe');
+//        }
+//    }
+//    ff = fn();
+
+</script>
+</body>
+</html>
