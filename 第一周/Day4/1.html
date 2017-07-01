@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 在js代码运行之前，进行预解释(变量提升)
+    // 把所有带var和function关键字的 声明或者定义
+    // 带var 和 function 区别
+    // 带var只声明并赋予默认值（undefined）
+    // 带function 声明加定义
+
+    // 作用域供js代码执行的环境
+    // 全局作用域 和 私有作用域（函数执行形成）
+    // 全局作用域：供全局js代码执行的环境
+    //        console.log(aa);
+    //        var aa = 100;
+    //        console.log(aa);
+    //
+    //        console.log(fn);
+    //        function fn() {
+    //
+    //        }
+
+    // 函数执行形成一个私有作用域 目的是 供函数体里js执行
+    // 1.形参赋值
+    // 2.预解释
+    // 3.从上到下执行
+    // 作用域 供js代码执行
+    // 堆内存 存储引用数据类型的值 （数组存储每一项  对象存储属性值和属性名 函数存储的是 函数体里代码）
+
+    // 预解释只发生在当前作用域中 最开始 全局作用域预解释 函数是函数执行的时候 在私有作用域中预解释
+
+    //    fn(123);
+    //    function fn(aa) { // 形参变量优先于 var变量 不重复声明
+    //        console.log(aa);
+    //        var aa;
+    //        var cc;
+    //        fe();
+    //        function fe() { // 代码执行到函数定义部分 就跳过
+    //            console.log('fe');
+    //        }
+    //    }
+    //
+    //    console.log(cc);
+
+    // 全局变量：全局中预解释的
+    // 私有变量：私有作用域中预解释的和形参
+
+
+    // 作用域链: 在私有作用域中 遇到一个变量；先看是不是私有的 如果是私有的 找到的是私有的 如果是 就去上级找 一直找到window 如果window没有就报错 not is defined
+    // 上级（就是看在哪里定义的）
+
+    ////    var num = 666;
+    //    var aa = 1000;
+    //    fe();
+    //    function fe(nn) {
+    //       var aa = 123;
+    ////       var num = 200;
+    //        console.log(num); // 666
+    //    }
+    //    console.log(aa); //
+
+    //    var aa = 132;
+    //    function ff() {
+    ////        var aa = 'ff';
+    //        function fe() {
+    //            console.log(aa);
+    //        }
+    //       return fe;
+    //    }
+    //    var f1 = ff();
+    //   f1();
+
+    //    function foo(num) {
+    //
+    //        return function (i) {
+    //            console.log(num + (++i));
+    //        }
+    //    }
+    //    var bar = foo(10);
+    //    bar(5); // 16
+    //    bar(6); // 17
+
+    //    console.log(num);
+    function fe() {
+        num = 132; // 不会参加预解释 给全局添加属性
+    }
+    fe();
+    console.log(num);
+    console.log(window.num);
+
+
+    var aa = 100; // 全局变量也相当于给全局添加一个属性
+    console.log(aa);
+    console.log(window.aa);
+</script>
+</body>
+</html>
