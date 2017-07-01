@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 面向对象OO  以 ‘对象’为中心 编程思想
+
+    //  万物皆对象 自然界
+    //  类 对对象的具体细分 人类 Array
+    //  实例 就是类中具体 事物  一个人 []
+
+    // 类 继承 封装 多态
+    // 继承 子类 可继承 父类
+    // 封装 封装类上的一些属性方法
+    // 多态 重载和重写 （js重写）
+    // 重写 子类可以父类属性和方法
+
+    var obj = {};
+    var obj2 = new Object();
+
+    // 内置类 Array Object String Date Number Boolean RegExp...
+    // []  [1,2] [2] Array
+    // {}  {id: 1}  Object
+    // '' '123' 'zhufeng' String
+
+    function fn() {
+        console.log('string');
+    }
+
+    function fn() {
+        console.log('number');
+    }
+
+    function fn(n) {
+        if(typeof n === 'string') {
+            console.log('string');
+        } else if(typeof n === 'number') {
+            console.log('number');
+        }
+    }
+
+    fn(1)
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+      var user1 = {
+          name: 'zhufeng1',
+          age: 18
+      };
+
+      var user2 = {
+          name: 'zhufeng2',
+          age: 20
+      };
+
+
+      // 工厂模式 将相同功能代码 以函数的形式封装起来 减少冗余代码
+     function createObj(name, age) {
+         var obj = new Object();
+         obj.name = name;
+         obj.age = age;
+         obj.say = function () {
+             alert('my name is' + this.name + ' 今年 ' + this.age);
+         };
+         return obj;
+     }
+     
+     var zhufeng1 = createObj('zhufeng1', 18);
+     console.log(zhufeng1);
+     zhufeng1.say();
+
+     var zhufeng2 = createObj('zhufeng2', 20);
+     console.log(zhufeng2);
+     zhufeng2.say();
+
+
+</script>
+</body>
+</html>

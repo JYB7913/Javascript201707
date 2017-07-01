@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 单例模式 分组对象 解决变量冲突
+    // '命名空间' newsRender and musicRender 多人协作是将多个模块 同时开发 以单例分组形式 开发 最终将代码整合到一起
+
+    // common module
+    var commonRender = {
+        getDate: function () {
+            return new Date();
+        }
+    };
+
+
+    // news module
+    //    var newsRender = {
+    //        mess: 'hello news',
+    //        say: function () {
+    //            console.log(this.mess);
+    //            alert(commonRender.getDate());
+    //        },
+    //        init: function () {
+    //            this.say();
+    //        }
+    //    };
+    //
+    //    newsRender.init();
+    //
+    //    // music module
+    //    var musicRender = {
+    //        mess: 'hello zhufeng',
+    //        say: function () {
+    //            console.log(this.mess);
+    //            alert(commonRender.getDate());
+    //        },
+    //        bindEvent: function () {
+    //
+    //        },
+    //        init: function () {
+    //            this.say(); // 弹出欢迎语
+    //            this.bindEvent(); // 进行事件绑定
+    //        }
+    //    };
+    //
+    //    musicRender.init();
+
+
+    // music module
+    var musicRender = (function () {
+        var mess = 'hello music';
+
+        function say() {
+            console.log(mess);
+            alert(commonRender.getDate());
+        }
+
+        return {
+            mess: mess,
+            say: say
+        }
+    })();
+    musicRender.say();
+
+    var mess = '全局的吗mess';
+
+    // news module
+    var newsRender = (function () {
+        var mess = 'hello zhufeng';
+
+        function say() {
+            console.log(mess);
+            alert(commonRender.getDate());
+        }
+
+        return {
+            mess: mess,
+            say: say
+        }
+    })();
+
+    newsRender.say();
+</script>
+</body>
+</html>

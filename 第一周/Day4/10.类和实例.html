@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //  构造原型模式 插件封装
+
+    //    function Per() { // 类中this就是当前实例对象
+    //        this.id = 1;
+    //        this.say = 'nihao';
+    //    }
+    //    var per1 = new Per();
+    //    console.log(per1);
+    //    var per2 = new Per();
+    //    console.log(per2 === per1);
+
+    function User(name, age) { // 类中this.xxx就是给当前实例对象添加私有属性
+        var num = 100; // 私有变量和实例对象没有关系
+        this.name = name;
+        this.age = age;
+        this.fn = function () {
+
+        }
+    }
+    var user1 = new User('zhufeng1', 18);
+    var user2 = new User('zhufeng2', 20);
+    console.log(user1);
+    console.log(user2);
+
+
+    // 实例间属性 共享问题 原型对象（存储当前类所属实例的公用的属性和方法）
+    // 每一个类都有一个天生自带的属性 原型（prototype）是一个对象数据类型的值
+
+    User.prototype.say = function () {
+        alert('my name is' + this.name + ' 今年 ' + this.age);
+    };
+
+//    user1.say();
+//    user2.say();
+
+    console.log(user1.say === user2.say); // 公有方法
+    console.log(user1.fn === user2.fn); // 私有方法
+    console.log(User.prototype.say === user1.say);
+
+    // hasOwnProperty 检测属性是否是私有的
+//    console.log(user1.hasOwnProperty('fn'));
+//    console.log(user2.hasOwnProperty('fn'));
+//    console.log(user2.hasOwnProperty('say'));
+//
+//    console.log(Array.prototype);
+//    console.log(String.prototype);
+//
+//    var arr1 = [1];
+//    var arr2 = [2];
+//    console.log(arr1.slice === arr2.slice);
+//    console.log(Array.prototype.slice === arr1.slice);
+//    //    new Tab()
+//    user1.say();
+//    user2.say();
+
+    // 工厂模式 和构造函数模式区别
+    // 构造函数 通过new 关键字 作为一个类执行 默认创建一个实例对象 ->形参赋值/预解释 -> 代码从上到下执行 默认将 实例对象 返回
+    // 类中this是当前实例对象 this.xxx就是给当前实例对象添加私有属性
+
+
+
+</script>
+</body>
+</html>

@@ -67,59 +67,58 @@
 
     ///////////////////////////////////////////////////////////////////////
 
-//        var obj = {
-//            num : 6,
-//            fn : (function (){
-//                var n = 5;
-//                return function (){
-//                    n += 1;
-//                    console.log(n);
-//                }
-//            })()
-//        };
-//        obj.fn(); // 6
-//        obj.fn(); // 7
-//        var f = obj.fn;
-//        f(); // 8
-//        var f1 = f;
-//        f1(); // 9
+    //        var obj = {
+    //            num : 6,
+    //            fn : (function (){
+    //                var n = 5;
+    //                return function (){
+    //                    n += 1;
+    //                    console.log(n);
+    //                }
+    //            })()
+    //        };
+    //        obj.fn(); // 6
+    //        obj.fn(); // 7
+    //        var f = obj.fn;
+    //        f(); // 8
+    //        var f1 = f;
+    //        f1(); // 9
 
-        var num = 20;
-        var obj = {
-            num: 30,
-            fn: (function (num) {
-                this.num *= 3;
-                num += 15;
-                var num = 45;
-                return function () {
-                    this.num *= 4;
-                    num += 20;
-                    console.log(num);
-                }
-            })(num)
-        };
-        var fn = obj.fn;
-        fn();
-        obj.fn();
-        console.log(window.num, obj.num);
+    //        var num = 20; // 60 => 240
+    //        var obj = {
+    //            num: 30, // 120
+    //            fn: (function (num) { // num = 20 => 45
+    //                this.num *= 3;
+    //                num += 15; // 35
+    //                var num = 45; // 45 => 65 => 85
+    //                return function () {
+    //                    this.num *= 4;
+    //                    num += 20;
+    //                    console.log(num);
+    //                }
+    //            })(num)
+    //        };
+    //        var fn = obj.fn;
+    //        fn(); // 65
+    //        obj.fn(); // 85
+    //        console.log(window.num, obj.num); // 240 120
 
 
-//    var num = 1;
-//    var obj = {num: 2};
-//    obj.fn = (function (num) {
-//
-//        this.num += 2;
-//        num--;
-//        return function (n) {
-//            this.num += 2;
-//            num--;
-//            console.log(n + ++num);
-//        }
-//    })(this.num);
-//    var fn = obj.fn;
-//    fn(1);
-//    obj.fn(2);
-//    console.log(num, obj.num);
+    //    var num = 1; // 3 5
+    //    var obj = {num: 2}; // 4
+    //    obj.fn = (function (num) { // num = 1 0
+    //        this.num += 2; //
+    //        num--; // num = 0
+    //        return function (n) { // n = 2
+    //            this.num += 2;
+    //            num--; // -1
+    //            console.log(n + ++num); // 2 + 0
+    //        }
+    //    })(this.num);
+    //    var fn = obj.fn;
+    //    fn(1); // 1
+    //    obj.fn(2); // 2
+    //    console.log(num, obj.num); // 5 4
 
 </script>
 </body>
