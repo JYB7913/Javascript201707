@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">btn</button>
+<script type="text/javascript">
+    'use strict';
+    // 严格模式下
+    // 自执行函数this严格模式是undefined
+    // 函数执行的时候看 前面有没有','点前面是谁this就是谁 否则就是undefined
+    
+    // 非严格模式下
+    // this 是一个行为主体
+    // 全局this是window
+    // 函数执行的时候看 前面有没有','点前面是谁this就是谁 否则就是window
+    // 事件中this是当前绑定元素
+    // 自执行函数this非严格模式是window
+
+
+//    num = 123;
+//   console.log(num);
+
+//    var obj = {};
+//    function fe() {
+//        console.log(this); // window
+//        return function () {
+//            console.log(this); // obj
+//            (function () {
+//                console.log(this); // window
+//            })()
+//        }
+//    }
+//    obj.fe = fe();
+//    obj.fe();
+//
+//    fe()(); // window window
+
+//    (function () {
+//       console.log(this);
+//    })()
+//
+//    function fe() {
+//        console.log(this);
+//    }
+//    fe();
+//    window.fe();
+    
+    
+//   btn.ind = 10;
+//  btn.onclick = function () {
+//      console.log(this === btn); // this就是当前绑定事件的元素
+//      console.log(this.ind);
+//  };
+//
+//    var obj = {
+//        id:1,
+//        fn: fe
+//    };
+//    var obj2 = {
+//            id:24,
+//        fn: fe
+//    };
+//
+//    function fe() {
+//        console.log(this);
+//        console.log(this.id);
+//    }
+////    function foo() {
+////        obj.fn();
+////    }
+////    foo();
+////    fe();
+////    window.fe();
+//
+//    var id = 0; // window.id
+//    obj.fn();
+//    obj2.fn();
+//    fe();
+</script>
+</body>
+</html>

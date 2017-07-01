@@ -104,22 +104,22 @@
         console.log(window.num, obj.num);
 
 
-    var num = 1;
-    var obj = {num: 2};
-    obj.fn = (function (num) {
-
-        this.num += 2;
-        num--;
-        return function (n) {
-            this.num += 2;
-            num--;
-            console.log(n + ++num);
-        }
-    })(this.num);
-    var fn = obj.fn;
-    fn(1);
-    obj.fn(2);
-    console.log(num, obj.num);
+//    var num = 1;
+//    var obj = {num: 2};
+//    obj.fn = (function (num) {
+//
+//        this.num += 2;
+//        num--;
+//        return function (n) {
+//            this.num += 2;
+//            num--;
+//            console.log(n + ++num);
+//        }
+//    })(this.num);
+//    var fn = obj.fn;
+//    fn(1);
+//    obj.fn(2);
+//    console.log(num, obj.num);
 
 </script>
 </body>

@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+        }
+        .clearfix:after{
+            display: block;
+            content: "";
+            clear: both;
+        }
+        body{
+            font: 12px/1.5 "Microsoft Himalaya";
+            background-color: green;
+        }
+        div{
+            overflow: hidden;
+            width: 300px;
+            margin:20px auto;
+        }
+        ul{
+            width: 302px;
+        }
+        li{
+            float: left;
+            border-bottom: 1px solid #ebebeb;
+            width: 74px;
+            background-color: white;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+        p{
+            display: none;
+            width: 300px;
+            line-height: 60px;
+            text-align: center;
+            background-color: yellow;
+        }
+        p.cur{
+            display: block;
+        }
+        li.cur{
+            margin-left: -1px;
+            padding-right: 2px;
+            width: 150px;
+            border-bottom:1px solid white;
+            border-left: 1px solid #ebebeb;
+            border-right: 1px solid #ebebeb;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul class="clearfix">
+        <li class="cur">第一小组</li>
+        <li>第二小组</li>
+        <li>第三小组</li>
+    </ul>
+    <p class="cur">第一小组</p>
+    <p>第二小组</p>
+    <p>第三小组</p>
+</div>
+</body>
+<script>
+    var oLi=document.getElementsByTagName('li');
+    var oP=document.getElementsByTagName('p');
+
+    // 弊端形成多个不销毁的栈内存 和堆内存
+//    for (var i=0;i<oLi.length;i++){
+//        oLi[i].onclick = (function (n) {
+//           return function () {
+//               for(var i=0 ;i<oLi.length;i++){
+//                   oLi[i].className='';
+//                   oP[i].className='';
+//               }
+//               this.className='cur';
+//               oP[n].className='cur'
+//
+//           }
+//        })(i);
+//    }
+
+    for (var i=0;i<oLi.length;i++){
+       (function (n) {
+        oLi[i].onclick = function () {
+                for(var i=0 ;i<oLi.length;i++){
+                    oLi[i].className='';
+                    oP[i].className='';
+                }
+                this.className='cur';
+                oP[n].className='cur'
+            }
+        })(i);
+    }
+
+</script>
+</html>
