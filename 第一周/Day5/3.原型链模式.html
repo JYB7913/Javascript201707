@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 1.原型设置
+
+    //    function Tab() {
+    //        return { // 如果return 的是一个引用数据类型 就会将实例对象覆盖掉
+    //            id: 24
+    //        }
+    ////        return 123
+    //    }
+    //    var tab1 = new Tab();
+    //    console.log(tab1 instanceof Tab);
+    //    console.dir(Tab);
+
+
+    function Tab() {
+//        this.id = 10;
+    }
+
+    //    Tab.prototype.say = function () {
+    //        console.log(123);
+    //    };
+    //    Tab.prototype.say = function () {
+    //        console.log(123);
+    //    };
+    //    Tab.prototype.say = function () {
+    //        console.log(123);
+    //    };
+    //    Tab.prototype.say = function () {
+    //        console.log(123);
+    //    };
+
+
+    // 重构原型对象(批量设置) 需要手动添加constructor
+    Tab.prototype = {
+        constructor: Tab,
+        say: function () {
+            console.log(this.mess);
+        },
+        mess: 'nihao',
+        id: 20,
+        slice: function () {
+
+        }
+    };
+    //
+    var tab = new Tab();
+    var tab2 = new Tab();
+    var tab3 = new Tab();
+    console.log(tab);
+    console.log(tab.constructor);
+
+    //    tab.say(); // __proto__  一直找到Object.prototype
+
+    //    console.log(tab.id);
+    ////    tab.id = 100; // 添加私有属性
+    //    tab.__proto__.id = 1000; // 通过实例修改原型属性  被IE屏蔽
+    //
+    //    console.log(tab.__proto__.id);  // 直接从原型上开始查找
+    //    console.log(tab2.id);
+    //    console.log(tab3.id);
+
+
+    var arr = [];
+    console.log([].__proto__); // Array.prototype
+    //    [].__proto__.slice = function () {
+    //        console.log('被我修改掉了');
+    //    };
+
+    //    console.log([1,24].slice());
+
+    Array.prototype = { // 被屏蔽掉了 如果过重构了内置类的原型对象 会导致 原有的所有内置方法 都 被干掉了 所以 浏览器把这种做法屏蔽掉了
+
+    };
+
+
+    // 但是我们可以在内置类上 一个一个增加 原型属性(命名时候最好加个前缀 预防将原有的属性方法 修改掉)
+    //    Array.prototype.liSay = function () {
+    //        console.log('say');
+    //    };
+
+    // 一个一个修改内置类上原有的方法
+    Array.prototype.mySlice = function () {
+        console.log('hi nihao');
+    };
+
+    //    [].__proto__.say = function () { // 不兼容IE
+    //        console.log('liwenli');
+    //    }
+
+
+    //    [].mySlice();
+    //    console.log([].slice());
+
+    //[].slice
+    //
+    //''.slice
+    //
+    //tab.slice
+
+
+    function Fn(n) {
+        this.id = 100;
+        this.mess = 'hello vue';
+        if (n) {
+            this.say = function () {
+                console.log(this.mess);
+            }
+        }
+    }
+
+    var fn1 = new Fn;
+    //    fn1.__proto__ = Fn.prototype;
+
+    Fn.prototype = {
+        id: 123,
+        mess: 'hello react',
+        say: function () {
+            console.log(this.mess);
+        },
+        mess2: 'hello'
+    };
+
+    //    console.log(fn1.mess2); // 'hello'
+    //    console.log(fn1.constructor); // Fn
+
+    var fn2 = new Fn;
+    console.log(fn1.__proto__);
+    console.log(fn2.__proto__);
+    console.log(fn1.__proto__ === fn2.__proto__);
+    //
+    //    console.log(fn2.mess2); // 'hello'
+    //    console.log(fn2.constructor); // Fn
+
+
+    //    var fn1 = new Fn(1);
+    //    var fn2 = new Fn;
+    //    fn1.say();
+    //    Fn.prototype.say();
+    //    fn2.__proto__.say();
+    //    console.log(fn1.constructor);
+    //    fn2.say(); // fn2.mess
+
+
+
+</script>
+</body>
+</html>

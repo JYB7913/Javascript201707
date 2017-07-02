@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    var arr = [1, 5, 9, 7, 6];
+//    arr.slice(); // arr 查找到Array.prototype上的slice方法 让它执行
+//    console.log(arr.__proto__ === Array.prototype);
+//    console.log(arr instanceof Array); // 因为arr是 Array实例 所以可以使用Array内置类原型上的方法
+//    console.log(arr.slice(2) instanceof Array);
+
+//    console.log(arr.slice(2));
+//    console.log(arr.slice(2).sort());
+//    console.log(arr.slice(2).sort().concat(100));
+//    console.log(arr.slice(2).sort().concat(100).splice(2, 1));
+//    console.log(arr.slice(2).sort().concat(100).splice(2, 1).push(100, 300, 60));
+
+
+    function Fn() {
+
+    }
+
+
+    Fn.prototype = {
+        constructor: Fn,
+        add: function () {
+            console.log('add');
+            return this; // 当前实例 fe
+        },
+        say: function () {
+            console.log('nihao');
+            return this; // 当前实例 fe
+        },
+        mess: function () {
+            console.log('mess');
+            return this; // 当前实例 fe
+        },
+        id: 'nihao'
+    };
+    var fe = new Fn();
+console.log(fe.add().say().mess().add().say().mess()); // 只要保证当前方法返回的是当前类的实例 就可以继续连缀调用Fn原型上的方法
+</script>
+</body>
+</html>
