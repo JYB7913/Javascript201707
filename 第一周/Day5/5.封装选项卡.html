@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .Tab {
+            width: 304px;
+            margin: 20px auto;
+        }
+
+        .Tab ul {
+            overflow: hidden;
+            border-left: 1px solid black;
+        }
+
+        .Tab ul li {
+            cursor: pointer;
+            float: left;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid black;
+            border-left: none;
+        }
+
+        .Tab ul li.active {
+            background-color: #ff9b08;
+        }
+
+        .Tab div {
+            width: 302px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid black;
+            border-top: none;
+            display: none;
+        }
+
+        .Tab div.active {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div id="Tab1" class="Tab">
+    <ul>
+        <li class="active">综艺</li>
+        <li>娱乐</li>
+        <li>新闻</li>
+    </ul>
+    <div class="active">综艺内容</div>
+    <div>娱乐内容</div>
+    <div>新闻内容</div>
+</div>
+
+<div id="Tab2" class="Tab">
+    <ul>
+        <li class="active">综艺</li>
+        <li>娱乐</li>
+        <li>新闻</li>
+    </ul>
+    <div class="active">综艺内容</div>
+    <div>娱乐内容</div>
+    <div>新闻内容</div>
+</div>
+<script type="text/javascript">
+
+    function Tab(options) { // 类中this就是当前实例
+//      console.log(options);
+        this.el = options.el; // 将传递进来的id名保存到当前实例私有属性el中
+        this.select = options.select || 0; // 是否传递了select参数
+        this.init(); // 触发器
+    }
+
+    // 获取操作元素
+    Tab.prototype.getEle = function () { // getEle this 是当前实例
+        var container = document.getElementById(this.el); // 根据保存id名获取到最外层容器
+        this.oLis = container.getElementsByTagName('li'); // 将li元素集合保存到实例属性中
+        this.oPanel = container.getElementsByTagName('div'); // 将div元素集合保存到实例属性中
+        this.l = this.oLis.length; // 保存 length
+        return this;
+    };
+
+    // 绑定事件
+    Tab.prototype.bindEvent = function () { // bindEvent this 是当前实例
+        var that = this; // 将当前实例 缓存给 that这个私有变量 为了 在事件中使用
+        for (var i = 0; i < this.l; i++) {
+            this.oLis[i].n = i;
+            this.oLis[i].onmouseover = function () { // 事件中this 是当前元素
+//                   that.removeClass(); // 清空原有的选中样式
+//                   that.changeTab(this.n); // 选中切换
+                that.removeClass().changeTab(this.n);
+            }
+        }
+        return this;
+    };
+
+    // 清空原有的选中样式
+    Tab.prototype.removeClass = function () { // removeClass this 是当前实例
+        for (var i = 0; i < this.l; i++) {
+            this.oLis[i].className = this.oPanel[i].className = '';
+        }
+        return this;
+    };
+
+    // 切换选中
+    Tab.prototype.changeTab = function (n) { // changeTab this 是当前实例
+        this.oLis[n].className = this.oPanel[n].className = 'active';
+        return this;
+    };
+
+    Tab.prototype.init = function () { // init this 是当前实例
+//        // 获取操作元素
+//        this.getEle();
+//        // 绑定事件
+//        this.bindEvent();
+
+        this.getEle().bindEvent();
+
+        if (this.select > this.l - 1) { // 是否大于最后一个索引
+            this.select = 0;
+        }
+        // 默认切换控制
+        this.removeClass().changeTab(this.select);
+    };
+
+    new Tab({
+        el: 'Tab1', // 容器id
+        select: 1  // 默认选中设置
+    });
+    new Tab({
+        el: 'Tab2', // 容器id
+        select: 4
+    })
+
+
+    // 获取操作元素
+    //    var oBox = document.getElementById('Tab1');
+    //    var oList = oBox.getElementsByTagName('li');
+    //    var oDiv = oBox.getElementsByTagName('div');
+
+    // 循环绑定事件
+    //    for (var i = 0; i < oList.length; i++) {
+    //        oList[i].index = i;
+    //        oList[i].onmouseover = function () {
+    //            for (var j = 0; j < oList.length; j++) {
+    //                oList[j].className = '';
+    //                oDiv[j].className = '';
+    //            }
+    //            this.className = 'active';
+    //            oDiv[this.index].className = 'active';
+    //        }
+    //    }
+
+    //    new Tab({
+    //        el: 'Tab1'
+    //    });
+    //
+    //    new Tab({
+    //        el: 'Tab2'
+    //    })
+</script>
+</body>
+</html>
