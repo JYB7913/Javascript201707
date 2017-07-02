@@ -120,6 +120,62 @@
     //    obj.fn(2); // 2
     //    console.log(num, obj.num); // 5 4
 
+
+    //////////////////////////////////////////////////////////////////////////
+    //        function C1(name) {
+    //            if (name) {
+    //                this.name = name;
+    //            }
+    //        }
+    //        function C2(name) {
+    //            this.name = name;
+    //        }
+    //        function C3(name) {
+    //            this.name = name || 'join';
+    //        }
+    //        C1.prototype.name = 'Tom';
+    //        C2.prototype.name = 'Tom';
+    //        C3.prototype.name = 'Tom';
+    //        console.log(new C1().name + new C2().name + new C3().name);
+
+    //    function Fn(name) {
+    //        var age = 30;
+    //        this.name = name;
+    //        this.age = age;
+    //        this.say = function () {
+    //            console.log('my name is ' + this.name + '，i can say!');
+    //        }
+    //    }
+    //    Fn.prototype.age = 40;
+    //    Fn.prototype = {
+    //        /*constructor: Fn,*/
+    //        say: function () {
+    //            console.log('my name is ' + this.name + '，i can say!');
+    //        },
+    //        eat: function () {
+    //            console.log('my age is ' + this.age + '，i can eat!');
+    //        }
+    //    };
+    //    Fn.say = function () {
+    //        console.log('my name is ' + this.name + '，i can say!');
+    //    };
+
+    //    var f1 = new Fn('wang');
+    //    var f2 = new Fn('li');
+    //    console.log(f1.say === f2.say); // false
+    //    console.log(Fn.prototype.say === f2.say); // false
+    //    console.log(Fn.prototype.say === f2.__proto__.say); // true
+    //    console.log(f1.eat === f2.eat); // true
+    //    console.log(Fn.prototype.eat === f2.eat); // true
+
+    //    f1.say();//->this是f1
+    //    f2.__proto__.say();//->this是f2.__proto__(Fn.prototype)
+    //    Fn.say();//->this是Fn
+    //    f1.eat();//->this是f1
+    //    f1.__proto__.eat();//->this是Fn.prototype
+    //    Fn.prototype.eat();
+    //    Fn.eat();
+
 </script>
 </body>
 </html>

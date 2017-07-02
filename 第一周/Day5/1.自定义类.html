@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 构造函数模式：创建一个自定义类 并且创建这个类的实例
+
+
+    function Tab(id, name) { // 类中this指向当前实例
+        this.id = id;  // this.xxx 给当前实例对象添加私有属性
+        this.name = name;
+//        this.say = function () {
+//            console.log('私有属性');
+//        }
+    }
+    // Tab(); // 普通函数执行
+    var tab1 = new Tab(1, 'hello'); // 构造函数模式执行
+    // 实例都是对象数据类型
+    // console.log(typeof tab1);
+    var tab2 = new Tab(2, 'world');
+
+
+    console.log(tab1 === tab2); // 每一个实例都是一个单独的个体
+
+    //    console.log([] === [1, 2, 3]);
+
+    console.dir(Tab);
+
+    // 每一个函数数据类型（普通函数 类（内置类 自定义类））都有一个天生自带属性prototype（原型）对象数据类型的值 存储当前类所属实例的公用的属性和方法
+
+    // prototype(原型) 解决实例间属性共享
+
+    // 每一个prototype（原型） 天生自带的属性 指向 当前类本身
+
+    // 每一个对象数据类型（普通对象 实例 函数 原型） 都有一个天生自带属性 __proto__ 指向所属类的原型
+
+    // 所有对象数据类型 都是Object这个基类的实例
+
+    console.log(Tab.prototype.constructor === Tab);
+
+    //    Tab.prototype.say = function () { // this要看方法执行时候
+    //        console.log('公有的');
+    //    };
+
+    console.log(tab1 instanceof Object);
+    console.log(tab2);
+
+    //  [].__proto__ => Array.prototype => Array.prototype.__proto__ => Object.prototype
+
+
+    //    console.log(tab1.__proto__ === Tab.prototype); // true
+    //    console.log(tab2.__proto__ === Tab.prototype); // true
+    //    console.log(tab1.__proto__ === tab2.__proto__); // true
+
+    //    console.log(tab1.__proto__.say === tab2.__proto__.say); // true
+    //    console.log(tab1.__proto__.say === Tab.prototype.say); // true
+    //    console.log(tab2.__proto__.say === Tab.prototype.say); // true
+
+    // tab1.say => tab1 __proto__ Tab.prototype __proto__ Object.prototype
+    //    console.log(tab1.say === Tab.prototype.say);
+    //    console.log(tab2.say === Tab.prototype.say);
+
+    Object.prototype.say = 'hello Object';
+    //    Tab.prototype.say = 'hello Tab';
+    //    tab1.say = 'hello tab1';
+
+    console.log(tab1.say === Object.prototype.say); // true
+    console.log(tab2.say === Object.prototype.say); // true
+    console.log(tab1.say === tab2.say); // true
+
+    console.log(tab1 instanceof Tab); // true
+    console.log(tab1 instanceof Object); // true
+
+    // 普通数组的原型链
+    //    [1].__proto__ Array.prototype.__proto__ Object.prototype
+
+    // 因为 数组实例的原型链上 出现了 Array Object 所以说 这个数组是它们实例
+    console.log([] instanceof Array); // true
+    console.log([] instanceof Object); // true
+
+    // Array 这个内置类的原型链 出现了Object Array是Object基类的实例
+    console.log(Array instanceof Object); // true
+
+    // 原型对象__proto__ 指向 Object.prototype
+    //    Object原型上没有 __proto__ 属性
+
+    // 原型链查找
+    // 对象名.属性名 先看自己私有属性中是否存在 如果存在找到的是私有的 如果不存在 就根据 __proto__ 找到所属类原型上公用的属性和方法 如果原型上没有 就根据原型的__proto__ 继续查找 一直找到 Object.prototype
+
+
+    //    var ff = Tab.prototype.say;
+    //    ff();
+
+
+    //    function Per() {
+    //       console.log('per');
+    //    }
+    //    console.log(Per.prototype.constructor === Per);
+    //    Per.prototype.constructor();
+</script>
+</body>
+</html>
