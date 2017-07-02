@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="oDiv"><span></span></div>
+
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    console.dir(oDiv);
+    var divs = document.getElementsByTagName('div');
+    console.dir(divs);
+    // 元素对象的原型链
+    //   div => HTMLDivElement => HTMLElement => Element => Node => EventTarget => Object.prototype
+
+    // 元素集合原型链
+    // divs => HTMLCollection => Object.prototype  
+
+    console.log(oDiv.childNodes);
+
+    //  节点集合原型链
+    //   oDiv.childNodes => NodeList => Object.prototype
+
+    // 每一个函数数据类型（普通函数 类（自定义类 内置类））都有一个天生自带的属性prototype（原型）它是一个对象数据类型 存储 所属类的实例的公用的属性和方法
+
+    // 每一个原型对象（prototype） 都有一个constructor(构造函数) 指向当前函数本身（类本身）
+
+    // 每一个对象数据类型 都有一个天生自带的属性__proto__, 指向所属类的原型
+    //    function Tab() { // 类中this 当前实例 this.属性名 = 值 是给 当前实例对象添加私有属性
+    //        this.id = 1;
+    ////        this.say = '私有'
+    //    }
+    //    //    Tab.prototype.say = 'Tab Say';
+    //    var tab1 = new Tab; // 构造函数模式 执行 作为一个类 并且返回这个类的实例
+    //    var tab2 = new Tab;
+    //
+    //    //    Tab.prototype.say = '公有';
+    //    Object.prototype.say = 'hello Object';
+    //    Object.prototype.ni = 'ni hao';
+
+    //    console.log(Tab.prototype);
+    //    console.log(tab1 instanceof  Tab);
+    //    console.log(tab2 instanceof  Tab);
+
+    // 每一个实例都是对象数据类型的
+    //    console.log(typeof tab1);
+    //    console.log(tab1.__proto__ === Tab.prototype); // true
+    //    console.log(typeof Tab.prototype);
+
+    //    console.log(tab1);
+    //    console.log(tab2);
+    //
+    //    console.log(tab1.say);
+    //    console.log(tab1.say === tab2.say);
+    //    console.log(tab1.__proto__ === Tab.prototype);
+    //    console.log(tab2.__proto__ === Tab.prototype);
+
+    // 原型链
+    // 对象.属性 先找自己私有的属性中是否存在 如果私有中存在获取的是私有的属性，否则根据自身__proto__ 去 所属的原型上的公用属性进行查找 如果原型对象上也没有就根据原型的__proto__ 一直找到Object.prototype 为止
+
+    //    var obj = {id:1};
+    //    console.log(obj.say);
+
+    //    console.log(tab1.__proto__.__proto__ === Object.prototype);
+    //    console.log(obj.__proto__ === Object.prototype);
+    //    console.log([].__proto__.__proto__ === Object.prototype);
+
+    // 检测一个属性是否是这个对象的私有属性
+    //    Tab.prototype.say = 'Tab say';
+    //    console.log(tab1.hasOwnProperty('id'));
+    //    console.log(tab1.hasOwnProperty('say'));
+
+    //in 检测一个属性是否属于这个对象
+    // 不管是 公有和私有 都是它一个属性
+    //    console.log('say' in tab1);
+
+    //    function hasPublicProperty(obj, attr) {
+    ////        if(attr in obj) { // 先确定是不是属性
+    ////            return !obj.hasOwnProperty(attr); // 然后确定是不是私有 然后取反
+    ////        }
+    //        return (attr in obj) && !obj.hasOwnProperty(attr);
+    //    }
+    //    console.log(hasPublicProperty(tab1, 'id'));
+    //    console.log(tab1.say);
+
+    //    console.log(tab1.hasOwnProperty('say'));
+    //    console.log(tab1.say);
+
+    // 可枚举 列举出来（可以通过for in 遍历出来）
+    //    for(var k in tab1) {
+    ////        if(tab1.hasOwnProperty(k)) { // 避免遍历出来的是公有
+    ////            console.log(k);
+    ////        }
+    //        console.log(k);
+    //    }
+
+    //    var arr = [1,24,54];
+    //    for(var key in arr) {
+    //        console.log(key);
+    //    }
+    //    console.log(tab1.propertyIsEnumerable('hasOwnProperty'));
+    //    console.log(tab1.hasOwnProperty);
+
+    //    for(var k in tab1) {
+    //        if(tab1.propertyIsEnumerable(k)) {
+    //            console.log(k);
+    //        }
+    //    }
+    //    console.log(tab1.propertyIsEnumerable('say')); // 检测这个属性是不是可以枚举 但是不包含原型属性（检测自身属性中可以枚举的属性）
+
+    //    var arr = [1,2,3];
+    //    console.log(arr.propertyIsEnumerable(0));
+    //    console.log(arr.propertyIsEnumerable(1));
+    //    console.log(arr.propertyIsEnumerable(2));
+    //    console.log(arr.propertyIsEnumerable('length'));
+
+
+    //    console.log(tab1.__proto__ === Tab.prototype);
+    //    console.log(tab1.__proto__.__proto__ === Object.prototype);
+
+    // 检测一个原型对象是否 出现在指定对象 的原型链中
+    //    console.log(Tab.prototype.isPrototypeOf(tab1)); // true
+    //    console.log(Object.prototype.isPrototypeOf(tab1)); // true
+    //    console.log(Array.prototype.isPrototypeOf(tab1)); // false
+
+    //    tab1 => Tab.prototype => Object.prototype
+
+    //    // 基本数据类型特殊性(实例化之后 才能查看原型链)
+    ////  var n = 1;
+    //    var n = new Number(1);
+    //    console.log(n);
+    //    console.log(typeof n); // 实例化 object
+    //
+    ////  var ary = [];
+    //    var ary = new Array
+    //    console.log(ary instanceof Array);
+    //
+    //    var str= new String('hello world');
+    //    console.log(str);
+    //
+    ////    str => String.prototype => Object.prototype
+    //    var num = 111.0123;
+    //    console.log(num.toFixed(2));
+    //
+    //    var num2 = new Number(111.0123);
+    //    console.log(num2.toFixed(3));
+</script>
+</body>
+</html>
