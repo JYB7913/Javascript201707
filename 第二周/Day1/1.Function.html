@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 每一个函数数据类型（普通函数，类（内置类、自定义类）），都有一个天生自带的属性prototype（原型），对象数据类型 存储 所属实例的 公有属性和方法
+
+    // 每一个原型，都有一个天生自带属性 constructor(构造函数)，指向当前函数本身（类本身）
+
+    // 每一个对象数据类型（普通对象 实例 原型 函数）都有一个天生自带属性__proto__, 指向所属类的原型
+
+    //    function Fn() { // this当前实例
+    //       this.id = 10;
+    //       this.say = 'world';
+    //    }
+    //    var fn = new Fn(); // 作为一个类并且返回这个类的实例
+    //    Fn.prototype.say = 'hello';
+    //    Fn.prototype = {
+    //        constructor: Fn
+    //    };
+
+    //    console.dir(fn);
+    //    fn.say
+
+
+//    Number Array String Object RegExp Boolean Function Date
+
+    // Math 不是一个类 它是一个数学工具对象
+
+//    [] [1,234] => Array.prototype => Object.prototype
+
+    // 所有的函数数据类型（普通函数 类） 都是Function这个类的实例
+    // 实例都是对象数据类型
+    // 函数数据类型也是一个对象数据类型（每个对象数据类型都有一个 __proto__指向Function.prototype）
+
+    function fn() {
+
+    }
+    console.dir(fn);
+    console.log(fn.__proto__ === Function.prototype);
+    console.log(fn instanceof Function);
+
+    console.log(typeof Number);
+
+    console.log(Function instanceof Function); // 也是自己的一个实例
+
+//    Function.__proto__ => Object.prototype;
+//    Object.__proto__ => Function.prototype
+    console.log(Function instanceof Object); // true
+    console.log(Object instanceof Function); // true
+    console.log(Array instanceof Function); // true
+
+    // 所有的类都是函数数据类型 所有的函数数据类型 都是 Function 这个内置类的实例
+    // 所有的函数的__proto__ Function.prototype
+
+
+    // 所有对象数据类型（普通对象 实例 原型 函数） 都是 Object基类的一个实例
+
+    // 所有的函数数据类型（普通函数 类（内置类 自定义类）） 都是Function 实例 甚至是它自己也是自己的一个实例 基类也是它的一个实例
+
+
+    // Function.prototype 是一个函数数据类型
+    console.log(typeof Function.prototype); // 'function'
+
+    // 通常原型都是一个对象数据类型
+    console.log(typeof Array.prototype); // 'object'
+    console.log(typeof fn.prototype); // 'object'
+</script>
+</body>
+</html>
