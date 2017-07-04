@@ -72,7 +72,7 @@
 
     var a = 10;
     var b = 20;
-    console.log(eval('a+b')); // js 表达式 10 + 20 30
+    console.log(eval('a + b')); // js 表达式 10 + 20 30
 
 
     // 将字符串函数体转换为js表达式
@@ -104,8 +104,8 @@
 
     // mySlice 实现
     Array.prototype.mySlice = function () {
-        console.log(this);
-        this
+        console.log(this); // this 要处理数组[13, 123, 34]
+
     };
     [13, 123, 34].slice();
 
