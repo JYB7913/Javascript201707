@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // 函数多种角色
+//    function fn(n) {
+//        var num = 123;
+//        return num
+//    }
+//    fn(1); // 作为一个普通函数
+
+    // 1.作为一个普通函数
+    //     形成私有作用域 => 形参赋值/预解释 => 代码从上到下执行
+    // 2.作为一个类 new fn
+    //     原型模式 和 原型链模式
+    //    console.dir(fn);
+    //3.作为一个普通对象 （函数都是Function 实例（对象数据类型））
+    //    fn.say = 'hello';
+    //    console.dir(fn);
+
+    function Fn() { // 作为一个类的话 里面this是当前实例 作为一个普通函数里面的this要看函数执行的时候
+        var num = 100;
+//        this.say = 'world'
+    }
+    Fn(); // 作为普通函数执行
+    Fn.say = 'hello'; // 作为一个对象Fn添加私有属性
+    Fn.prototype.say = 'nihao'; // 作为类给实例添加公有属性
+    var fe = new Fn(); // 返回这个类实例对象
+    console.log(fe.say); // 先找实例的私有属性（不是类的私有属性）再找所属类的原型
+
+</script>
+</body>
+</html>
