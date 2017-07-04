@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    'use strict';
+    // Function原型上的属性方法 apply bind call
+
+    // caller（每个函数都有这个属性） callee(arguments上的属性)
+    //    function fn() {
+    //        console.log(fn.caller); // 当前谁叫fn执行的 fe
+    //        console.log(arguments.callee); // 当前函数本身 在哪个函数里就代表哪个函数本身
+    //    }
+    //
+    //    fn();
+
+    //    function fe() {
+    //        console.log(fe.caller);
+    //        console.log(arguments.callee.caller); // fn.caller
+    ////      arguments.callee();
+    //    }
+    //    fe();
+
+    //    console.log(fn instanceof Function);
+    //    fn.caller
+
+    //
+    //    function fe() { // fe 执行 叫 fn()
+    //        fn();
+    //    }
+    //    fe();
+
+    //    (function () {
+    //        fn();
+    //    })();
+
+
+    //  Function.prototype call apply bind(任何一个函数实例都能调用)
+    //    function fe() {
+    //
+    //    }
+
+    //    console.dir(fe);
+    //    console.log(fe.call === Function.prototype.call);
+    //    console.log(fe instanceof Function);
+
+    // 修改this关键字 
+    //    var obj = {id: 24};
+    //    function fe(n, m, c) {
+    //        console.log(n, m, c);
+    //        console.log(this);
+    //        console.log(arguments);
+    //    }
+    //    fe();
+    //    console.log(typeof fe.call);
+    //    fe.call(obj);  // 通过fe这个函数的原型链 找到Function.prototype 的 call 方法 让它执行
+    //    fe.call(obj, 10, 20, 30); // 将fe中this修改为call方法中第一个实参 并且让fe执行
+    // 第一个参数要修改的指定this关键字，
+    // call方法中 从第二个参数开始 就是给我们的fe 传参
+
+    //    fe.call(obj, 10, 20, 30); // call方法用来修改fe(call的this)中的this为call的第一个实参 并且让call方法的this执行
+    // call 修改fe方法中的this 也就是修改call自己的this(fe)中的this 并让它（fe）执行
+    //    function call(that, n, m ,c) {
+    //        fe(n, m ,c)
+    //    }
+
+    //    function fn(n, m) {
+    //        console.log(n, m);
+    //        console.log(this);
+    //    }
+    ////    fn.call(obj);
+    //    obj.ff = fn;
+    ////    obj.ff();
+    //
+    //    var num;
+    //    obj.ff.call(this, 10, 30); // 修改obj.ff中的this 并且让obj.ff执行
+
+    //    function fe() {
+    //        console.log(this);
+    //    }
+
+    // 1.call
+    // 非严格模式  call的第一个实参 不传 或者传的是null或undefined 里面的this都是window
+    //    fe.call(); // window
+    //    fe.call(null); // window
+    //    fe.call(undefined); // window
+    //    fe.call(12); // 实例化后的12
+    //    fe.call(obj);
+
+    // 严格模式下 call第一个实参 不传就是undefined 其余 传什么就是什么
+    //    fe.call(); // undefined
+    //    fe.call(null); // null
+    //    fe.call(undefined); // undefined
+    //    fe.call(123); // 123
+
+    // 2.apply
+    //    var obj = {id: 30};
+    //    function fn(n, m) {
+    ////       console.log(n, m);
+    //        console.log(this);
+    //    }
+    //  console.log(fn.apply); // 根据原型链找到Function的原型上的apply属性方法
+
+    //    fn.apply(obj, [10, 20]); // 将fn中的this修改为apply中第一个实参，并让fn执行
+    // call apply 区别 传参的时候
+    // call方法从第二实参开始一个一个传递进去
+    // apply 把要传的实参放到一个数组集合中 由apply第二个实参位置传递进去
+
+    //    fn.apply()
+    //    fn.apply(null)
+    //    fn.apply(undefined)
+
+    //    var arr = [11,22,44,66];
+    //    function sum(a, b, c, d) { // 形参赋值的时候依然是一一对应的赋值
+    //        console.log(a, b, c, d);
+    //    }
+
+    //    sum.apply(null,arr); // apply传参的特性
+    //    sum(arr[0], arr[1], arr[2], arr[3]);
+
+    // 3. bind 不兼容
+    var obj = {id: 30};
+    var obj2 = {id: 40};
+    function fn(n, m) {
+        console.log(n, m);
+        console.log(this);
+    }
+
+    //    var foo = fn.bind(obj, 120, 130); // 将fn函数中this修改掉返回一个新函数
+    var foo = fn.bind(obj);
+    //    console.log(foo === fn);
+    //    foo(); // obj this被包装后的函数
+    //    fn();
+    foo(200, 300);
+    foo(100, 500);
+    //    obj2.fe = foo;
+    //    obj2.fe(); //
+    //console.log(obj2.fe === foo);
+
+    // 通过call apply bind 修改后的this 为主
+
+    //    bind 将this修改后 会将改造后的新函数返回 何时执行 就何时调用 需通过你手工调用执行
+</script>
+</body>
+</html>
