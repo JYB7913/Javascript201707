@@ -29,53 +29,53 @@ console.log(n);
 console.log(num);
     </pre>
 <script type="text/javascript">
-//        var num = 0; // 2
-//        function Fn(num) { // num = 0
-//            arguments[0] = 1; // num = 1
-//            this.num = 2; // window.num = 2
-//            console.log(num); //  1
-//            console.log(this.num); // 2
-//            return num;
-//        }
-//        Fn.num = 400;
-//        Fn.prototype.num = 300;
-//        Fn.prototype.getNum = function () {
-//            console.log(this.num);
-//        };
-//
-//        var f = new Fn(num); // 1 2 作为一个类生成 实例 {num: 2}
-//        console.log(f.num); // 2 {num: 2}
-//        f.getNum(); // this => f 2
-//        Fn.prototype.getNum(); // this => Fn.prototype 300
-//        console.log(num); // 0
-//        var n = Fn(num);// 1 2 作为一个普通函数 执行
-//        console.log(n); // 1
-//        console.log(num); //全局中num 2
+    //        var num = 0; // 2
+    //        function Fn(num) { // num = 0
+    //            arguments[0] = 1; // num = 1
+    //            this.num = 2; // window.num = 2
+    //            console.log(num); //  1
+    //            console.log(this.num); // 2
+    //            return num;
+    //        }
+    //        Fn.num = 400;
+    //        Fn.prototype.num = 300;
+    //        Fn.prototype.getNum = function () {
+    //            console.log(this.num);
+    //        };
+    //
+    //        var f = new Fn(num); // 1 2 作为一个类生成 实例 {num: 2}
+    //        console.log(f.num); // 2 {num: 2}
+    //        f.getNum(); // this => f 2
+    //        Fn.prototype.getNum(); // this => Fn.prototype 300
+    //        console.log(num); // 0
+    //        var n = Fn(num);// 1 2 作为一个普通函数 执行
+    //        console.log(n); // 1
+    //        console.log(num); //全局中num 2
 
     ///////////////////////////////////////////////////////////////////
 
-        function Fe() {
-            this.num = 300;
-        }
-        Fe.prototype.num = 600;
-        Fe.prototype.getNum = function () {
-            this.name = 'foo';
-            console.log(this.num);
-        };
-        Function.prototype.num = 1000;
-        Fe.prototype.getNum.prototype.num = 5000;
-        Fe.getNum = function () { // 类中this 当前实例 this.xxx= 123
-            console.log(this.num); // 110 根据 实例 查找 num这个 110
-        };
-        Fe.getNum.prototype.num = 110;
-        Fe.num = 2000;
-        var fe = new Fe;
-        Fe.getNum();
-        console.log(new Fe.getNum);
-        
-        // 生成 Fe.getNum 的实例  Fe.getNum 是 这个Fe自身属性方法
-        var f1 = new Fe.getNum; // new Fe.getNum 当做一个类执行 如果不需要传参 执行括号可以省略
-        console.log(f1.num); // 110
+    function Fe() {
+        this.num = 300;
+    }
+    Fe.prototype.num = 600;
+    Fe.prototype.getNum = function () {
+        this.name = 'foo';
+        console.log(this.num);
+    };
+    Function.prototype.num = 1000;
+    Fe.prototype.getNum.prototype.num = 5000;
+    Fe.getNum = function () { // 类中this 当前实例 this.xxx= 123
+        console.log(this.num); // 110 根据 实例 查找 num这个 110
+    };
+    Fe.getNum.prototype.num = 110;
+    Fe.num = 2000;
+    var fe = new Fe;
+    Fe.getNum();
+    console.log(new Fe.getNum);
+
+    // 生成 Fe.getNum 的实例  Fe.getNum 是 这个Fe自身属性方法
+    var f1 = new Fe.getNum; // new Fe.getNum 当做一个类执行 如果不需要传参 执行括号可以省略
+    console.log(f1.num); // 110
     console.log(f1 instanceof Fe.getNum);
     console.log(new Fe);
     var f2 = new Fe;
