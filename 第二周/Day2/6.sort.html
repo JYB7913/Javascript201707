@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<button id="max">从大到小</button><button id="min">从小到大</button>-->
+<button id="btn">升降序</button>
+<ul id="oList">
+    <!--<li>44</li>-->
+    <!--<li>55</li>-->
+    <!--<li>11</li>-->
+    <!--<li>33</li>-->
+    <!--<li>22</li>-->
+    <li>dd</li>
+    <li>cc</li>
+    <li>aa</li>
+    <li>ee</li>
+    <li>ff</li>
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    
+    var oLis = document.getElementsByTagName('li');
+
+    // 1. 类数组转化为数组
+    var arrList = utils.likeToArray(oLis);
+    btn.flag=-1; // 升降序标识
+    btn.onclick = function () {
+        btn.flag*=-1;
+       arrList.sort(function (a,b) {
+           return (a.innerHTML-b.innerHTML)*btn.flag;
+       });
+
+        var frg = document.createDocumentFragment();
+        for(var i=0;i<arrList.length;i++){
+            frg.appendChild(arrList[i]);
+        }
+        oList.appendChild(frg);
+    }
+    
+//    max.onclick = function () {
+//        arrList.sort(function (a, b) {
+//            return b.innerHTML - a.innerHTML
+//        });
+//        var frg = document.createDocumentFragment();
+//        for(var i = 0; i < arrList.length; i++){
+//            frg.appendChild(arrList[i])
+//        }
+//        oList.appendChild(frg);
+//    };
+
+//    min.onclick = function () {
+//        arrList.sort(function (a, b) {
+//            return a.innerHTML - b.innerHTML
+//        });
+//        var frg = document.createDocumentFragment();
+//        for(var i = 0; i < arrList.length; i++){
+//            frg.appendChild(arrList[i])
+//        }
+//        oList.appendChild(frg);
+//    }
+//    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // 根据元素内容实现 在集合中从小到大排序
+//    arrList.sort(function (a, b) {
+//        return a.innerHTML - b.innerHTML; // 把元素内容的差 作为 前一项和后一项交换位置 依据
+////        return b.innerHTML - a.innerHTML; //
+//    });
+//    console.log(arrList);
+//
+//    // 按照排好序的集合中位置 移动页面中节点
+//
+//    setTimeout(function () {
+//        for(var i = 0; i < arrList.length; i++) {
+//            arrList[i].style.backgroundColor = 'red';
+//            oList.appendChild(arrList[i]);
+//        }
+//    }, 3000);
+
+
+    
+    
+    
+//    var arr = ['aa','bb','cc','dd','ee'];
+//    arr.sort(function (a, b) { // 每比较一次都会执行一次这个函数
+//        // a 当前项
+//        // b 当前项后一项
+////        console.log(a, b);
+////        return a - b // 看的是 a-b 的差 大于0 说明a 大于b
+//        //  a-b 的差 小于0  小于b
+//
+//        return 1; // 只关心 每一次返回的是 大于0 还是小于等于0
+//        // 如果返回的是大于0的数 才会交换位置
+//    });
+//    console.log(arr);
+
+
+</script>
+</body>
+</html>

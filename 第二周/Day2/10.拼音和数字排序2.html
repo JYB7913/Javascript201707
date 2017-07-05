@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">字母</button>
+<button id="btn2">人气</button>
+<h3>排行榜</h3>
+<ul id="oUl">
+    <li pin="zhoujielun" pop="30400">
+        <div><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=28737416,3249768666&fm=58" alt=""></div>
+        <span>周杰伦</span>
+        <span>人气：30400</span>
+    </li>
+    <li pin="chenyixun" pop="40100">
+        <div><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=28737416,3249768666&fm=58" alt=""></div>
+        <span>陈奕迅</span>
+        <span>人气：40100</span>
+    </li>
+    <li pin="xuezhiqian" pop="39400">
+        <div><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=28737416,3249768666&fm=58" alt=""></div>
+        <span>薛之谦</span>
+        <span>人气：39400</span>
+    </li>
+    <li pin="liudehua" pop="20400">
+        <div><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=28737416,3249768666&fm=58" alt=""></div>
+        <span>刘德华</span>
+        <span>人气：20400</span>
+    </li>
+    <li pin="xusong" pop="10400">
+        <div><img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=28737416,3249768666&fm=58" alt=""></div>
+        <span>许嵩</span>
+        <span>人气：10400</span>
+    </li>
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oUl = document.getElementById('oUl');
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var oLis = oUl.getElementsByTagName('li');
+
+    // 1.将要排序的li元素集合 转化为 数组
+    var arrList = utils.likeToArray(oLis);
+    oUl.flag = -1;
+
+    // 拼音
+    //    btn1 => 'pin'  btn2 => 'pop'
+    btn1.cn = 'pin';
+    btn2.cn = 'pop';
+    btn1.onclick = btn2.onclick = arrSort;
+
+    function arrSort() {
+        var that = this;
+        oUl.flag *= -1;
+        arrList.sort(function (a, b) { // a 和 b 就是每一次要比较的li元素
+            var p1 = a.getAttribute(that.cn); // 得到保存在li元素自身拼音字母
+            var p2 = b.getAttribute(that.cn);
+            if (isNaN(p1)) { // 按照字符串方法比较
+                return p1.localeCompare(p2) * oUl.flag;
+            }
+            return (p1 - p2) * oUl.flag; // 按照数字比较
+        });
+
+        // 将排好序的添加到页面中
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < arrList.length; i++) {
+            frg.appendChild(arrList[i]);
+        }
+        oUl.appendChild(frg);
+    };
+
+
+</script>
+</body>
+</html>

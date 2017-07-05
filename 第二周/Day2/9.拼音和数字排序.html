@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">字母</button>
+<button id="btn2">人气</button>
+<h3>排行榜</h3>
+<ul id="oUl">
+    <li pin="zhoujielun" pop="30400">
+        <span>周杰伦</span>
+        <span>人气：30400</span>
+    </li>
+    <li pin="chenyixun" pop="40100">
+        <span>陈奕迅</span>
+        <span>人气：40100</span>
+    </li>
+    <li pin="xuezhiqian" pop="39400">
+        <span>薛之谦</span>
+        <span>人气：39400</span>
+    </li>
+    <li pin="liudehua" pop="20400">
+        <span>刘德华</span>
+        <span>人气：20400</span>
+    </li>
+    <li pin="xusong" pop="10400">
+        <span>许嵩</span>
+        <span>人气：10400</span>
+    </li>
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oUl = document.getElementById('oUl');
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var oLis = oUl.getElementsByTagName('li');
+
+    // 1.将要排序的li元素集合 转化为 数组
+    var arrList = utils.likeToArray(oLis);
+    oUl.flag = -1;
+
+    // 拼音
+    btn1.onclick = function () {
+        oUl.flag *= -1;
+        arrList.sort(function (a, b) {
+            var p1 = a.getAttribute('pin'); // 得到保存在li元素自身拼音字母
+            var p2 = b.getAttribute('pin');
+            return p1.localeCompare(p2) * oUl.flag;
+        });
+
+        // 将排好序的添加到页面中
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < arrList.length; i++) {
+            frg.appendChild(arrList[i]);
+        }
+        oUl.appendChild(frg);
+    };
+
+
+    // 人气
+    btn2.onclick = function () {
+        oUl.flag *= -1;
+        arrList.sort(function (a, b) {
+            var p1 = a.getAttribute('pop');
+            var p2 = b.getAttribute('pop');
+            return (p1 - p2) * oUl.flag;
+        });
+
+        // 将排好序的添加到页面中
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < arrList.length; i++) {
+            frg.appendChild(arrList[i]);
+        }
+        oUl.appendChild(frg);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">升降序</button>
+<ul id="oList">
+    <!--<li>44</li>-->
+    <!--<li>55</li>-->
+    <!--<li>11</li>-->
+    <!--<li>33</li>-->
+    <!--<li>22</li>-->
+    <li>dd</li>
+    <li>cc</li>
+    <li>aa</li>
+    <li>ee</li>
+    <li>ff</li>
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+// 字符串字母排序 localeCompare
+//    'a'.localeCompare('b') -1 a在b的前面 认为a比b小
+//    'c'.localeCompare('b') 1  c在b的后面 认为c比b大
+//    'b'.localeCompare('b') 0  相等
+
+    var arr = ['c', 'd', 'a', 'b', 'e'];
+    console.log(arr);
+    arr.sort(function (a, b) {
+        return a.localeCompare(b);
+    });
+    
+    console.log(arr);
+    
+    var oLis = document.getElementsByTagName('li');
+//
+//    // 1. 类数组转化为数组
+    var arrList = utils.likeToArray(oLis);
+    btn.flag=-1; // 升降序标识
+    btn.onclick = function () {
+        btn.flag*=-1;
+       arrList.sort(function (a,b) {
+           return (a.innerHTML.localeCompare(b.innerHTML))*btn.flag;
+       });
+
+        var frg = document.createDocumentFragment();
+        for(var i=0;i<arrList.length;i++){
+            frg.appendChild(arrList[i]);
+        }
+        oList.appendChild(frg);
+    }
+//  
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+
+
+
+</script>
+</body>
+</html>

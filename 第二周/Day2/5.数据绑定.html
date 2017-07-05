@@ -5,29 +5,81 @@
     <title>Title</title>
 </head>
 <body>
-<!--<li>134214</li>-->
+<ul id="oList">
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
 <script type="text/javascript">
+    var oList = document.getElementById('oList');
+    var oLis = oList.getElementsByTagName('li');
+    for(var i = 0; i < oLis.length; i++) {
+        oLis[i].onclick = function () {
+            alert(123)
+        }
+    }
+
+    var str = '';
+    for (var i = 4; i < 7; i++) {
+        str += '<li>' + ('' + i).repeat(2) + '</li>'
+    }
+    console.log(oLis);
+    setTimeout(function () {
+//        oList.innerHTML += oList.innerHTML;
+        oList.innerHTML = '<li>11</li><li>22</li><li>33</li><li>11</li><li>22</li><li>33</li>';
+//        oList.innerHTML += str; // 想获取到原有的字符串 重新拼接成新的字符串 然后重新 渲染页面中 并将原有覆盖掉了
+
+        for(var i = 0; i < oLis.length; i++) {
+            oLis[i].onclick = function () {
+                alert(123)
+            }
+        }
+    }, 3000);
+
+
+//  oList.innerHTML = oList.innerHTML + str; //
+
     // 字符串拼接
     // 将拼接好html字符串 一次输出到页面 只会引发一次回流
-//    var name = 'hello world';
-//    var str = '<li>123</li><li>123</li><li>123</li><li>123</li>';
-//    document.body.innerHTML = str;
-//    document.body.innerHTML = '<li>最后输出</li>';
+    // 弊端会影响原有 因为每一次innerHTML输出都是新字符串被渲染成新的元素 之前的被覆盖掉
+
+    //    var name = 'hello world';
+    //    var str = '<li>123</li><li>123</li><li>123</li><li>123</li>';
+    //    document.body.innerHTML = str;
+    //    document.body.innerHTML = '<li>最后输出</li>';
+
+
+
+
+//    setTimeout(function () {
+//        var frg = document.createDocumentFragment();
+//
+//        for(var i = 4; i < 7; i++) {
+//            var li = document.createElement('li');
+//            li.innerHTML = i + '' + i;
+//            frg.appendChild(li);
+//        }
+//        oList.appendChild(frg);
+//    }, 3000);
+
 
     // 动态创建
     // 引发多次回流 每appendChild一次 就会引发一次回流
+    // 可以实现追加 不影响原有元素
 
     // 文档碎片 临时dom元素容器 避免动态创建时引发多次回流
-    var frg = document.createDocumentFragment();
-    for(var i = 0; i < 4; i++) {
-        var li = document.createElement('li');
-        li.innerHTML = 132123;
-        frg.appendChild(li);
-    }
-    document.body.appendChild(frg); // 只引发一次回流
+    //    var frg = document.createDocumentFragment();
+    //    for(var i = 0; i < 4; i++) {
+    //        var li = document.createElement('li');
+    //        li.innerHTML = 132123;
+    //        frg.appendChild(li);
+    //    }
+    //    document.body.appendChild(frg); // 只引发一次回流
 
 
-//    DOM回流 当页面中元素发生改变时候（删除 增加 移动） html页面都会重新计算一下结构 进行相应变化 比较耗费性能
+    // DOM回流 当页面中元素发生改变时候（删除 增加 移动） html页面都会重新计算一下结构 进行相应变化 比较耗费性能
+
+    // 重绘 当html页面中部分局部样式 发生改变的时候（背景颜色 字体颜色）只会重新渲染改变的部分 针对于视图
 
 </script>
 </body>
