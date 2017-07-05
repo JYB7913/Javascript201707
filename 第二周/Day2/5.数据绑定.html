@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<li>134214</li>-->
+<script type="text/javascript">
+    // 字符串拼接
+    // 将拼接好html字符串 一次输出到页面 只会引发一次回流
+//    var name = 'hello world';
+//    var str = '<li>123</li><li>123</li><li>123</li><li>123</li>';
+//    document.body.innerHTML = str;
+//    document.body.innerHTML = '<li>最后输出</li>';
+
+    // 动态创建
+    // 引发多次回流 每appendChild一次 就会引发一次回流
+
+    // 文档碎片 临时dom元素容器 避免动态创建时引发多次回流
+    var frg = document.createDocumentFragment();
+    for(var i = 0; i < 4; i++) {
+        var li = document.createElement('li');
+        li.innerHTML = 132123;
+        frg.appendChild(li);
+    }
+    document.body.appendChild(frg); // 只引发一次回流
+
+
+//    DOM回流 当页面中元素发生改变时候（删除 增加 移动） html页面都会重新计算一下结构 进行相应变化 比较耗费性能
+
+</script>
+</body>
+</html>

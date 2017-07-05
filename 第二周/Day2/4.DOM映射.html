@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 id="text">hello wrold</h3>
+<div id="oDiv">123123</div>
+<ul id="oUl">
+    <li id="first">11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
+<script type="text/javascript">
+    // DOM 映射：html页面中元素和 通过js 的DOM方法获取到的元素对象 一种一一对应的映射关系 一个改变了另一个也改变了
+    //    var oDiv = document.getElementById('oDiv');
+
+//    console.log(oDiv);
+//    oDiv.innerHTML = 'nihao';
+//    oDiv.style.background = 'pink';
+
+//    var lists = oUl.getElementsByTagName('li'); // 元素集合
+//
+//    console.log(lists instanceof  HTMLCollection); //
+//     // HTMLCollection 即时更新 同步 当内部结构发生改变 会自动同步更新
+//    // 元素集合获取一次 就可以了 以后页面内部结构发生改变 就会自动同步更新
+//    var first = document.getElementById('first');
+//    var newArr = [].slice.call(lists);
+//
+////    oUl.removeChild(first);
+//    var li = document.createElement('li');
+//    li.innerHTML = '我是添加的';
+//    console.log(lists);
+//    setTimeout(function () {
+//        oUl.appendChild(li);
+//        console.log(lists);
+//        console.log(newArr);
+//    }, 3000);
+
+
+        setTimeout(function () {
+            var text = document.getElementById('text');
+            oUl.appendChild(text)
+        }, 1000)
+
+</script>
+</body> 
+</html>

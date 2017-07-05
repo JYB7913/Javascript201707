@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="oUl">
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    
+    console.log(utils); // 工具对象
+    var oUl = document.getElementById('oUl');
+    var oList = oUl.getElementsByTagName('li');
+//    console.log(oList);
+
+    // 当前代码报错了如果不进行处理的话 不会执行后面的代码
+//    var arr = [];
+//    try {
+//       arr = [].slice.call(oList, 0); // 第一种方案
+//    }catch (e){ // 第二种方案 只有当try里面代码报错了才会执行 catch里面代码
+//        for(var i = 0; i < oList.length; i++) {
+//            arr[arr.length] = oList[i];
+//        }
+//    }
+//    console.log(arr);
+//
+//    console.log('后面代码');
+
+
+    // 类数组转化为数组
+//    function likeToArray(likeAry) {
+//        try{
+//            return [].slice.call(likeAry, 0); // IE 6-8不兼容 会报错
+//        }catch (e){
+//            var arr = [];
+//            for(var i = 0; i < likeAry.length; i++) {
+//                arr.push(likeAry[i]);
+//            }
+//            return arr;
+//        }
+//    }
+
+        console.log(utils.likeToArray(oList));
+        function sum() {
+            console.log(utils.likeToArray(arguments));
+        }
+        sum(1,23,4,9,3,45,8);
+
+
+
+    //
+//   var newArr = [].slice.call(oList, 0); // 将元素集合 转化为数组 IE 6-8 不兼容
+//    console.log(newArr);
+
+//    function sum() {
+//        console.log(arguments);
+//        var arr = [].slice.call(arguments, 0);
+//        console.log(arr);
+//    }
+//    sum(1,23,4,9,3,45,8);
+</script>
+</body>
+</html>
