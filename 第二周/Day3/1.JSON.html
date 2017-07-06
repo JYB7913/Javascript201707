@@ -14,17 +14,17 @@
     // JSON格式两种类型
     // JSON 对象 类似于js普通对象 但是 属性名和属性值如果是字符串必须用'""' 包起来
     //    var obj = {name: 'zhufeng'};
-//    var obj = {"name": "zhufeng", "id": 123};
-//    for (var k in obj) {
-//        console.log(obj[k]);
-//    }
-//    var arr = [ // 二维数组
-//        {"name": "zhufeng1 ", "id": 123},
-//        {"name": "zhufeng2 ", "id": 123},
-//        {"name": "zhufeng3 ", "id": 123},
-//        {"name": "zhufeng4 ", "id": 123},
-//        {"name": "zhufeng5 ", "id": 123}
-//    ];
+    //    var obj = {"name": "zhufeng", "id": 123};
+    //    for (var k in obj) {
+    //        console.log(obj[k]);
+    //    }
+    //    var arr = [ // 二维数组
+    //        {"name": "zhufeng1 ", "id": 123},
+    //        {"name": "zhufeng2 ", "id": 123},
+    //        {"name": "zhufeng3 ", "id": 123},
+    //        {"name": "zhufeng4 ", "id": 123},
+    //        {"name": "zhufeng5 ", "id": 123}
+    //    ];
 
     //    var str = '';
     //    for (var i = 0; i < arr.length; i++) {
@@ -38,22 +38,22 @@
     //    oUl.innerHTML = str;
 
     // JSON字符串 
-        var jsonStr = '{"name": "zhufeng1 ", "id": 123}';
-//        IE 6-7 LOW 全局中 是没有 JSON对象
-//         console.log(JSON.parse(jsonStr));
+    var jsonStr = '{"name": "zhufeng1 ", "id": 123}';
+    //        IE 6-7 LOW 全局中 是没有 JSON对象
+    //         console.log(JSON.parse(jsonStr));
 
     // 拼接（）预防语法错误
-//    console.log(eval('({"name": "zhufeng1 ", "id": 123})'));
-//    console.log(eval('(' + jsonStr + ')'));
+    //    console.log(eval('({"name": "zhufeng1 ", "id": 123})'));
+    //    console.log(eval('(' + jsonStr + ')'));
 
     function jsonParse(jsonStr) {
-        return "JSON" in window? JSON.parse(jsonStr) : eval('('+jsonStr+')');
+        return "JSON" in window ? JSON.parse(jsonStr) : eval('(' + jsonStr + ')');
     }
 
     console.log(jsonParse(jsonStr));
 
 
-    //    eval('(function(){console.log(123)})')();
+    // eval('(function(){console.log(123)})')();
 
     // JSON格式转换 全局提供了一个JSON对象 它里面parse stringify 用来进行数据格式转换的
 
@@ -66,10 +66,10 @@
 
     // 2.JSON.stringify 将JSON对象或普通js对象 转换为 JSON字符串
     //   var obj = {"name": "zhoujielun", "id": 123};
-//    var obj = {name: "zhoujielun", id: 123};
-//    var str = JSON.stringify(obj);
-//    console.log(str);
-//    console.log(JSON.parse(str));
+    //    var obj = {name: "zhoujielun", id: 123};
+    //    var str = JSON.stringify(obj);
+    //    console.log(str);
+    //    console.log(JSON.parse(str));
 
     //  console.log(window.JSON);
 </script>

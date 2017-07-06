@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // ajax  Async Javascript And XML(可扩展标记语言 传输信息)
+    // ajax 前后端交互的网页技术 实现异步更新 在保证不重载整个页面情况 下实现局部更新
+
+    // 1.ajax对象 XMLHttpRequest
+    var xhr = new XMLHttpRequest();
+    //    console.log(xhr);
+    // 2.打开一个接口链接 建立链接
+    //请求方式 get post delete head pull
+    // 请求接口url地址 文件在服务器中存放地址
+    // 是否异步 true异步 false 同步
+    // 我们通过webstorm 浏览器访问到的页面以及文件时候 其实 webstorm会为我们默认搭建一个本地server让我们通过服务器地址来访问这些文件
+    xhr.open('get', './data.json', false);
+
+    // 将听ajax状态
+    xhr.onreadystatechange = function () {
+        // readystate ajax 状态 0 1 2 3 4(done)
+        // http status http状态码 200 ok  302 重定向 404 not Found 500 服务器错误
+        // this => xhr(ajax对象)
+        // ajax请求成功 并且 得到响应
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText); // 接收到响应回来数据 文档形式
+            console.log(JSON.parse(this.responseText));
+        }
+    };
+
+    xhr.send(); // 开始发送请求
+
+
+    console.log('后面代码');
+
+
+    //    // js单线程 从上到下执行 同步 上面执行完才能执行后面的
+    //console.log(123); // 123
+    //
+    //setTimeout(function () { // 异步代码（异步队列） 它不会阻塞后面代码
+    //    console.log(666);
+    //}, 3000);
+    //
+    ////oDiv.onclick = function () {
+    ////    console.log(123123);
+    ////}
+    //function set() {
+    //    setTimeout(function () { // 异步代码（异步队列） 它不会阻塞后面代码
+    //        console.log(777);
+    //    }, 3000);
+    //}
+    //set();
+    //
+    //console.log('后面的代码');
+
+
+</script>
+</body>
+</html>

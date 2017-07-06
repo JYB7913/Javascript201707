@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">查询</button>
+<button id="pin">拼音</button> <button id="pop">人气</button>
+<h3>排行榜</h3>
+<ul id="oUl">
+
+</ul>
+<script type="text/javascript">
+    var pin = document.getElementById('pin');
+    var pop = document.getElementById('pop');
+
+    btn.onclick = function () {
+        getData();
+    };
+
+    // 获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', './data.json', true);
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var data = this.responseText;// 接收到字符串格式数据
+                // 转化为JSON对象
+                data = "JSON" in window ? JSON.parse(data) : eval('(' + data + ')');
+                bindData(data); // 将获取到的数据 传给bindData进行数据绑定
+            }
+        };
+        xhr.send();
+    }
+
+
+    // 数据绑定
+    function bindData(res) {
+        var str = '';
+        for (var i = 0; i < res.length; i++) {
+            var cur = res[i]; // 遍历出来的每一条歌手信息
+            str += '<li pin='+cur.pin+' pop= '+cur.pop+'>';
+            str += '<span>歌手：' + cur.name + '</span>';
+            str += ' <span>人气：' + cur.pop + '</span>';
+            str += '</li>';
+        }
+        oUl.innerHTML = str;
+    }
+
+
+    // 排序
+    pin.onclick = pop.onclick = function () {
+
+    }
+</script>
+</body>
+</html>

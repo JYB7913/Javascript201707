@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 1.创建一个ajax对象
+    var xhr = new XMLHttpRequest();
+
+    // 2.打开一个接口链接 true 异步（不会阻塞后面的代码） false 同步
+    xhr.open('get', './data.txt', true);
+//  xhr.open('get', './data.json', true);
+
+    // 3.监听ajax状态
+    xhr.onreadystatechange = function () {
+        if(this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText); // 接收成功请求回来的数据
+//            console.log(this.response);
+        }
+    };
+
+    // 4.开始发送请求
+    xhr.send();
+
+    console.log('后面代码');
+</script>
+</body>
+</html>
