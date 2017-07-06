@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tables {
+            margin: 20px auto;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        #tables tr th{
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+
+        #tables tr th, #tables tr td {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #tables thead {
+            background-color: #7ffffa;
+        }
+
+
+    </style>
+</head>
+<body>
+<table id="tables" border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>pop</th>
+        <th>hot</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var tables = document.getElementById('tables');
+    var tBody = tables.tBodies[0]; // 获取到表格里第一个tbody
+    var tBodyRows = tBody.rows; // 获取到tbody里面所有tr
+
+    var tHead = tables.tHead; // 获取到的 thead
+    var tHeadRows = tHead.rows[0]; // 获取到thead第一个tr
+    var tHeadThs = tHeadRows.cells; // 获取到第一个tr的 th
+
+
+    // 1.获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', './table.json');
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var data = utils.jsonParse(this.responseText);
+                bindData(data);
+            }
+        };
+        xhr.send();
+    }
+    getData();
+
+    // 2.绑定数据
+    function bindData(data) {
+        var str = '';
+        for (var i = 0; i < data.length; i++) {
+            var cur = data[i];
+            str += '<tr pin=' + cur.pin + '>';
+            str += '<td>' + cur.name + '</td>';
+            str += '<td>' + cur.pop + '</td>';
+            str += '<td>' + cur.hot + '</td>';
+            str += '</tr>';
+        }
+        tBody.innerHTML = str;
+        bindEvent();
+    }
+
+    // 3.绑定事件
+    function bindEvent() {
+        var bodyRows = utils.likeToArray(tBodyRows);
+        for(var i = 0; i < tHeadThs.length; i++) {
+            var btn = tHeadThs[i];
+            btn.n = i;
+            btn.flag = -1;
+            btn.onclick = function () {
+                var that = this;
+                for(var k = 0; k < tHeadThs.length; k++){
+                    if(that !== tHeadThs[k]) {
+                        tHeadThs[k].flag = -1;
+                    }
+                }
+
+                that.flag *= -1;
+                bodyRows.sort(function (a, b) {
+                    var p1 =  a.cells[that.n].innerHTML;
+                    var p2 =  b.cells[that.n].innerHTML;
+
+                    if(that.n) {
+                        return (p1 - p2) * that.flag;
+                    }
+
+                    return a.getAttribute('pin').localeCompare(b.getAttribute('pin')) * that.flag;
+                });
+
+                var frg = document.createDocumentFragment();
+                for(var l = 0; l < bodyRows.length; l++) {
+                    frg.appendChild(bodyRows[l]);
+                }
+                tBody.appendChild(frg);
+            }
+        }
+    }
+
+    
+
+</script>
+</body>
+</html>

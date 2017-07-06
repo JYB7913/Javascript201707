@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tables {
+            margin: 20px auto;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        #tables tr th {
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+
+        #tables tr th, #tables tr td {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        #tables thead {
+            background-color: #7ffffa;
+        }
+
+        .bg0 {
+            background-color: #ff3321;
+        }
+
+        .bg1 {
+            background-color: #ffb6ca;
+        }
+        #tables tbody tr:hover {
+            cursor: pointer;
+            background-color: #80ff45;
+            color: #fff;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<table id="tables" border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>pop</th>
+        <th>hot</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var tables = document.getElementById('tables');
+    var tBody = tables.tBodies[0]; // 获取到表格里第一个tbody
+    var tBodyRows = tBody.rows; // 获取到tbody里面所有tr
+    //    console.log(tBodyRows[0]); // 此时页面中还没有渲染tr
+
+    var tHead = tables.tHead; // 获取到的 thead
+    var tHeadRows = tHead.rows[0]; // 获取到thead第一个tr
+    var tHeadThs = tHeadRows.cells; // 获取到第一个tr的 th
+
+
+    // 1.获取数据
+    function getData() {
+        // 1.创建一个ajax对象
+        var xhr = new XMLHttpRequest();
+        // 2.打开一个接口链接
+        xhr.open('get', './table.json');
+        // 3.监听ajax状态并接收响应内容
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var data = utils.jsonParse(this.responseText);
+                bindData(data); // 执行数据绑定
+            }
+        };
+        // 4.发生ajax请求
+        xhr.send();
+    }
+    getData();
+
+    // 2.绑定数据
+    function bindData(data) {
+        var str = '';
+        for (var i = 0; i < data.length; i++) { // 循环多少次就拼接多少个tr 并且在tr里面 拼接三个td
+            var cur = data[i];
+            str += '<tr pin=' + cur.pin + '>';
+            str += '<td>' + cur.name + '</td>';
+            str += '<td>' + cur.pop + '</td>';
+            str += '<td>' + cur.hot + '</td>';
+            str += '</tr>';
+        }
+        tBody.innerHTML = str; // 将拼接好tbody内容 输出到页面
+        changeBg(); // 执行隔行变色
+        bindEvent(); // 执行绑定事件
+    }
+
+    // 3.绑定事件
+    function bindEvent() {
+        // 将tr元素集合转化为 数组
+        var bodyRows = utils.likeToArray(tBodyRows);
+        // 给th循环绑定事件
+        for (var i = 0; i < tHeadThs.length; i++) {
+            var btn = tHeadThs[i];
+            btn.n = i;
+            btn.flag = -1;
+            btn.onclick = function () {
+                var that = this; // 当前点击的这个th
+                for (var k = 0; k < tHeadThs.length; k++) { // 如果不是当前我点击的这个th 就让 flag -1
+                    if (that !== tHeadThs[k]) {
+                        tHeadThs[k].flag = -1; // 如果不是点击的th 就让 它升降序标识 初始值为 -1
+                    }
+                }
+
+                that.flag *= -1; // 给每一个th定义一个升降序标识
+                bodyRows.sort(function (a, b) { // a, b代表的是当前tr 和后一项tr
+                    // cells 得到的是 每一个 tr里所有td集合
+//                    console.log(a.cells[that.n]); //根据th索引得到对应td
+                    var p1 = a.cells[that.n].innerHTML;
+                    var p2 = b.cells[that.n].innerHTML;
+
+                    if (that.n) { // 如果为true 根据 数字排序
+                        return (p1 - p2) * that.flag;
+                    }
+                    // 如果that.n是0说明是 第一列name 根据拼音排序
+                    return a.getAttribute('pin').localeCompare(b.getAttribute('pin')) * that.flag;
+                });
+
+                // 按照bodyRows中排好序的位置 移动页面中tr位置
+                var frg = document.createDocumentFragment();
+                for (var l = 0; l < bodyRows.length; l++) {
+                    frg.appendChild(bodyRows[l]);
+                }
+                tBody.appendChild(frg);
+                changeBg(); // 排序后重新计算奇偶行变色
+            }
+        }
+    }
+
+    // 4.奇偶行变色
+    function changeBg() {
+        for (var i = 0; i < tBodyRows.length; i++) {
+            tBodyRows[i].className = 'bg' + i % 2;
+        }
+    }
+
+</script>
+</body>
+</html>
