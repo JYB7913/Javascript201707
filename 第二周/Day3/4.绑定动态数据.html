@@ -41,8 +41,11 @@
         for (var i = 0; i < res.length; i++) {
             var cur = res[i]; // 遍历出来的每一条歌手信息
             str += '<li pin='+cur.pin+' pop= '+cur.pop+'>';
+            str += '<img src='+cur.img+'>';
+            str += '<p>';
             str += '<span>歌手：' + cur.name + '</span>';
             str += ' <span>人气：' + cur.pop + '</span>';
+            str += '</p>';
             str += '</li>';
         }
         oUl.innerHTML = str;

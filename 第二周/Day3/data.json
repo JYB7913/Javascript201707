@@ -1,7 +1,7 @@
 [
-  {"name": "周杰伦", "pop": 30060, "pin": "zhoujielun"},
-  {"name": "陈奕迅", "pop": 39045, "pin": "chenyixun"},
-  {"name": "刘德华", "pop": 29000, "pin": "zhangxueyou"},
-  {"name": "薛之谦", "pop": 22000, "pin": "xuezhiqian"},
-  {"name": "冯提莫", "pop": 10060, "pin": "fengtimo"}
+  {"name": "周杰伦", "pop": 30060, "pin": "zhoujielun", "img": "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=28737416,3249768666&fm=58"},
+  {"name": "陈奕迅", "pop": 39045, "pin": "chenyixun", "img": "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=4059163007,2938721049&fm=58"},
+  {"name": "刘德华", "pop": 29000, "pin": "zhangxueyou", "img": "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1661087386,824500456&fm=58"},
+  {"name": "薛之谦", "pop": 22000, "pin": "xuezhiqian", "img": "https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=1322650578,1715469636&fm=58"},
+  {"name": "冯提莫", "pop": 10060, "pin": "fengtimo", "img": "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2364928174,2514989976&fm=58"}
 ]
