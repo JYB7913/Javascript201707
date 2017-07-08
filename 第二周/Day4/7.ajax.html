@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // ajax async javascript and xml
+    // 用于前后端交互 网页技术  异步更新 局部刷新（在不重载整个页面的前提下 只更新网页部分内容）
+    
+    // 1.创建一个ajax对象
+    var xhr = new XMLHttpRequest();
+    console.log(xhr);
+
+    // 2.打开一个接口链接
+    // @param1 请求方式 get post delete put head
+    // @param2 请求地址 文件在服务器中存放地址
+    // @param3 true 异步或 false同步
+    // 异步不会阻塞后面代码(后面代码不会等ajax执行完后才执行)
+    // 同步（后面代码要等ajax执行完后才能执行）
+    xhr.open('get', './data.json', true);
+    xhr.responseType = 'json'; // 设置响应回来的数据按照json格式处理
+
+    // 3.监听和接收响应
+    xhr.onreadystatechange = function () {
+        //1. readyState ajax状态码 0 1 2 3 4（Done）
+        // status http 请求状态码 200 301 302 404 403 500
+        if(this.readyState === 4 && this.status === 200){
+//            console.log(this.responseText); // 接收响应后的文档格式数据
+//            console.log(jsonParse(this.responseText));
+            console.log(this.response); // 默认接收到json对象格式数据
+        }
+    };
+
+    //4.发送请求
+    xhr.send();
+
+
+
+    // JSON是一种前后端传输数据格式
+    // JSON对象 类似于js对象 属性名和属性值如果是字符串 就必须'""'包起来
+//    var  obj = {name: 'zhufeng', id:123};
+//    var  obj2 = {"name": "zhufeng", "id": 666};
+//    // JSON字符串
+//    var str = '{"name": "zhufeng", "id":123}';
+
+   //  JSON字符串转换为JSON对象
+//    console.log(JSON.parse(str));
+//    console.log(eval('(' + str + ')')); // 它会把拼接的字符串对象 解析为js对象
+    //  JSON对象/普通对象转换为 JSON字符串
+//    console.log(JSON.stringify(obj));
+//    console.log(JSON.stringify(obj2));
+
+//    console.log(jsonParse(str));
+    function jsonParse(data) { // 将json字符串转化为json对象兼容写法
+       return "JSON" in window? JSON.parse(data) : eval('('+data+')')
+    }
+
+
+
+
+    
+
+</script>
+</body>
+</html>

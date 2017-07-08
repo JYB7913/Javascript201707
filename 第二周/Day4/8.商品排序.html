@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        ul {
+            overflow: hidden;
+        }
+
+        ul li{
+            float: left;
+            list-style: none;
+            width: calc(100%/3);
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        ul li img {
+            height: 200px;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<button id="pin">拼音</button> <button id="price">价格</button> <button id="count">销量</button>
+<ul id="oUl">
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oUl = document.getElementById('oUl');
+    var pin = document.getElementById('pin');
+    var price = document.getElementById('price');
+    var count = document.getElementById('count');
+    var oList = oUl.getElementsByTagName('li');
+
+    //1.获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', './product.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if(this.readyState === 4 && this.status === 200) {
+//                console.log(this.response);
+                bindData(this.response);
+            }
+        };
+
+        xhr.send();
+    }
+
+    getData();
+    
+    // 2.数据绑定
+    function bindData(data) {
+        var str = '';
+        for(var i = 0; i < data.length; i++){
+            var cur = data[i];
+            str += '<li pin='+cur.pin+' price='+cur.price+' count= '+cur.hot+'>';
+            str += '<a href='+cur.link+'>';
+            str += '<img src= '+cur.img+'>';
+            str += '<h3>￥'+cur.price+'</h3>';
+            str += '<p>评论数：'+cur.hot+'_ '+cur.title+'</p>';
+            str += '</a>';
+            str += '</li>';
+        }
+        oUl.innerHTML = str;
+        bindEvent(); // 事件绑定
+    }
+
+    function bindEvent() {
+        // 将类数组转化为数组
+        var arrList = utils.listToArray(oList);
+
+        pin.flag = -1;
+        pin.onclick = function () {
+            this.flag *= -1;
+            var that = this;
+            arrList.sort(function (a, b) {
+                var p1 = a.getAttribute('pin');
+                var p2 = b.getAttribute('pin');
+                return p1.localeCompare(p2) * that.flag;
+            });
+
+            var frg = document.createDocumentFragment();
+            for(var i = 0; i < arrList.length; i++){
+                frg.appendChild(arrList[i]);
+            }
+            oUl.appendChild(frg);
+
+        };
+
+        price.flag = -1;
+        price.onclick = function () {
+            this.flag *= -1;
+            var that = this;
+            arrList.sort(function (a, b) {
+                  var p1 = a.getAttribute('price');
+                  var p2 = b.getAttribute('price');
+                  return (p1 - p2) * that.flag
+            });
+
+            var frg = document.createDocumentFragment();
+            for(var i = 0; i < arrList.length; i++){
+                frg.appendChild(arrList[i]);
+            }
+            oUl.appendChild(frg);
+        };
+
+        count.flag = -1;
+        count.onclick = function () {
+            this.flag *= -1;
+            var that = this;
+            arrList.sort(function (a, b) {
+                var p1 = a.getAttribute('count');
+                var p2 = b.getAttribute('count');
+                return (p1 - p2) * that.flag;
+            });
+
+            var frg = document.createDocumentFragment();
+            for(var i = 0; i < arrList.length; i++){
+                frg.appendChild(arrList[i]);
+            }
+            oUl.appendChild(frg);
+        }
+    }
+</script>
+</body>
+</html>
