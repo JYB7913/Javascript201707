@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <!--<li>333</li>-->
+    <!--<li>222</li>-->
+    <!--<li>555</li>-->
+    <!--<li>444</li>-->
+    <!--<li>1111</li>-->
+    <li>e</li>
+    <li>c</li>
+    <li>a</li>
+    <li>d</li>
+    <li>b</li>
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var lis = document.getElementsByTagName('li');
+    var lisArr = utils.listToArray(lis);
+    // 字符串排序
+    'd'.localeCompare('e'); // -1 说明d 在 e 位置前面 d < e
+    'd'.localeCompare('a'); // 1 说明d 在 a 位置后面 d > a
+    'd'.localeCompare('d'); // 0 说明这两个字符同一个位置 d === d
+
+    console.log(lisArr);
+    lisArr.sort(function (a, b) {
+//            return a.innerHTML - b.innerHTML // 如果把a b 两个元素内容的差大于 0 会让 此时的a 和b 按照从小到大 在lisArr集合交换位置 <= 0不交换位置（把a和b的内容的差 作为排序的依据）
+//        console.log(b.innerHTML - a.innerHTML);
+//        return b.innerHTML - a.innerHTML // 只能根据数字排序
+//        return a.innerHTML.localeCompare(b.innerHTML); // 根据字符串字母排序
+        return b.innerHTML.localeCompare(a.innerHTML); // 根据字符串字母排序
+    });
+    console.log(lisArr);
+    
+    //    function sort() {
+    //        
+    //    }
+
+    //    Array.prototype.sort();
+//    var arr = [19, 20, 2, 1, 3, 30];
+    //    console.log(arr instanceof Array);
+
+    //  arr.sort(function (a, b) { //  a 和 b比较多次 这个函数就执行多少次
+    //            // a 当前项
+    //            // b 后一项
+    //            return a - b; // 差大于 0 说明 a > b  如果返回的是 大于 0 的数 ab就 交换位置 (只关心 ni return 的是 > 0 才交换位置 <= 0)
+    //                          // 差小于 0  说明 a < b// 差等于 0 说明 a === b
+    //    });
+    //    console.log(arr);
+
+    //    arr.sort(function (a, b) { // 因为每一次返回的都是 1 （大于0） 每一次函数执行的时候 都会让 a b 进行位置交换 导致整个倒着排列过来
+    //        return 1; // 如果始终返回一个大于0的数 就会将数组 倒着排列过来 每一次比较都会交换位置 
+    //    });
+    //    console.log(arr);
+
+
+</script>
+</body>
+</html>

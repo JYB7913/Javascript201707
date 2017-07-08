@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 不做任何错误处理的情况下  报错代码 会阻塞后面代码执行
+//    undefined();
+    // 手工throw抛出错误
+//     throw new Error('这是个错误信息')
+//     throw new TypeError('num is not function')
+//    console.log(aa);
+//     throw new ReferenceError('num is not defined')
+//     throw new RangeError('范围错误')
+
+    //    console.log(1243);
+    //    try { //第一种方案 将有兼容性的代码 放到这里面
+    //        undefined();
+    //        console.log('try');
+    //    }catch (e) { // 只有当try里面报错的时候 才会执行catch里面代码  第二种方案 e 捕获到的错误信息
+    //        undefined();
+    //    } finally { // 不管try catch 里面 报不报错都会执行这里面代码
+    //        console.log('finally');
+    //    }
+    //
+    //   console.log('后面代码'); // catch 里面也报错的话就会阻塞 后面代码
+        function fn() {
+            console.log('fn');
+        }
+
+
+//    try{
+//         undefined()
+//    }catch (e){
+//        console.log(e); // 完整错误信息
+//         console.log(e.message); // 错误信息原因
+//         throw new TypeError('这是我制造的'); // 将catch(e)捕获到错误信息抛出
+//    }
+
+    try{
+//        undefined()
+        console.log(111);
+    }catch (e) {
+        fn();
+    }
+//    fn(); //不管try里面报不报错 都会执行
+</script>
+</body>
+</html>
