@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function likeToAray(likeArray) {
+        try {
+            return [].slice.call(likeArray, 0)
+        } catch (e) {
+            var arr = [];
+            for (var i = 0; i < likeArray.length; i++) {
+                arr.push(likeArray[i])
+            }
+            return arr
+        }
+    }
+    likeToAray()
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //     'use strict';
+
+    //    console.log(Function);
+    //    function fn() {
+    //
+    //    }
+    //    console.log(fn instanceof Function);
+    //    // 所函数数据类型（普通函数 类（内置类 自定义类）） 都是Function 实例
+    //    // 所有对象数据类型(普通对象 实例 原型 函数) 都有一个__proto__ 指向所属类的原型
+    //    console.dir(Function);
+    //    console.dir(fn);
+    //    console.log(fn.call); // 先看自己私有有没 如果没有根据__proto__找到所属类的原型 根据原型对象__proto__ 一直找到 Object.prototype
+    //
+    //    fn.say = 100; // fn作为普通对象添加私有属性
+    //    Function.prototype.say = 'hello'; // 原型属性
+    //    Object.prototype.say = 'nihao'; // 原型属性
+    //    console.log(fn.say);
+
+    //    console.log(fn instanceof Function);
+    //    console.log(fn instanceof Object);
+    //    console.log(Function instanceof Function); // Function 作为一个类（函数）也是自己的一个实例
+    //    console.log(Object instanceof  Function);
+    //
+    //    console.log(typeof Function.prototype); // 'function'
+    //    console.log(typeof Array.prototype); // 'object'
+    //    console.log(typeof fn.prototype);
+
+    //    function Fn() {
+    //        this.xxx = 123;
+    //    }
+    //    // 手工指定
+    //    Fn.prototype = { // 默认只有浏览器分配的原型对象 自带constructor
+    //        constructor: Fn
+    //    };
+    //
+    //    var fn = new Fn();
+    //    console.dir(fn);
+    //    console.log(fn.constructor);
+
+    //    console.dir(Function.prototype);
+    //   // call bind apply (改变this关键字) Function.prototype
+    //
+    //    var obj = {id:24};
+    //    function fn(a, b) {
+    ////        console.log(a, b);
+    //       console.log(this);
+    //    }
+    // 根据原型链找到  Function.prototype上的call
+    //    fn.call(obj, 100, 200); //将fn(call的this)里面this修改为obj(call方法中第一个参数作为this关键字) 并让fn执行
+    //    console.dir(fn);
+    ////     严格模式 不传 this就是undefined  其余传什么就是什么
+    //     fn.call();
+    //     fn.call(null);
+    //     fn.call(undefined);
+
+    //   非严格模式 不传 或者穿 null undefined 里面this都是window
+    //     fn.call();
+    //     fn.call(null);
+    //     fn.call(undefined);
+
+    // apply
+    //
+    //    var obj = {id:24};
+    //    function fn(a, b) {
+    //        console.log(a, b);
+    //        console.log(this);
+    //    }
+
+    //    fn.call(obj, 100, 200);
+    //    fn.apply(obj, [100, 200]); // 将fn里面this修改为obj 并让它执行 传参时需要以数组集合方式
+    // bind 修改this关键字 将this改造后的函数 作为新函数返回 兼容性
+
+    var obj = {id: 24};
+    function fn(a, b) {
+        console.log(a, b);
+        console.log(this);
+    }
+    var fe = fn.bind(obj, 11, 22); // fe 就是this改造后的新函数
+    console.log(fe === fn);
+    fe(100, 200);
+fe(10, 20);
+fe(110, 220);
+</script>
+</body>
+</html>
