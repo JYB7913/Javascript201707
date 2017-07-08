@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">切换</button>
+<ul id="oUl">
+    <li>333</li>
+    <li>222</li>
+    <li>555</li>
+    <li>444</li>
+    <li>111</li>
+    <!--<li id="oa">e</li>-->
+    <!--<li>c</li>-->
+    <!--<li>a</li>-->
+    <!--<li>d</li>-->
+    <!--<li>b</li>-->
+</ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oLis = document.getElementsByTagName('li');
+    // 1.将类数组转化为数组
+    var oliArr = utils.listToArray(oLis);
+
+    btn.flag = -1; // 升降序标识
+    btn.onclick = function () {
+        this.flag *= -1;
+        var that = this; // 缓存事件中的this btn
+        // 将元素根据内容在集合中排序
+        oliArr.sort(function (a, b) {
+            var p1 = a.innerHTML;
+            var p2 = b.innerHTML;
+            if (isNaN(p1)) { // 进行相应排序处理
+                return (p1.localeCompare(p2)) * that.flag;
+            }
+            return (p1 - p2) * that.flag;
+
+            // =>  (p1 - p2) * 1 => p1 - p2  从小到大
+            // =>  (p1 - p2) * -1 => p2 - p1 从大到小
+            // =>  (p1 - p2) * 1 => p1 - p2  从小到大
+            // =>  (p1 - p2) * -1 => p2 - p1 从大到小
+        });
+//        (a-b)* -1 = -a + b = b-a
+        // 按照排好序的集合移动节点
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < oliArr.length; i++) {
+            frg.appendChild(oliArr[i]); //引发多次回流 每移动一次节点就会改变html结构
+        }
+        oUl.appendChild(frg); // 只引发一次回流
+    }
+
+    // DOM回流 html结构每改变一次（增加 移除 移动） html页面重新计算一次整个结构 （操作DOM比较耗费性能）
+
+    // DOM重绘 页面局部样式发生改变（背景颜色 字体颜色）只会重新渲染改变的部分 针对于视图
+
+
+    //    // 在这个集合中 根据数字内容 从小到大排序
+    //    oliArr.sort(function (a, b) {
+    ////        return a.innerHTML - b.innerHTML; // 从小到大
+    ////        return b.innerHTML - a.innerHTML; // 从大到小
+    ////        return a.innerHTML.localeCompare(b.innerHTML);
+    //
+    //         var p1 = a.innerHTML;
+    //         var p2 = b.innerHTML;
+    //         return p1 - p2
+    //        // =>  (p1 - p2) * 1 => p1 - p2  从小到大
+    //        // =>  (p1 - p2) * -1 => p2 - p1 从大到小
+    //        // =>  (p1 - p2) * 1 => p1 - p2  从小到大
+    //        // =>  (p1 - p2) * -1 => p2 - p1 从大到小
+    //    });
+    //    console.log(oliArr);
+    //
+    ////    oUl.appendChild(oa) // 操作页面以有的节点 是 移动
+    //
+    //    setTimeout(function () {
+    //        //oliArr 从小到大排好序 集合
+    //        for(var i = 0; i < oliArr.length; i++ ) { // 依次得到每个li 移动端最低端
+    ////            oliArr[i].style.backgroundColor = 'red';
+    ////            debugger;
+    //            oUl.appendChild(oliArr[i]) // 按照集合排好序 依次挪动节点到最低端
+    //        }
+    //    }, 2000);
+
+</script>
+</body>
+</html>

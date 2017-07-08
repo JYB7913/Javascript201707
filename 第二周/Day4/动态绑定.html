@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="oUl">
+
+</ul>
+<script>
+    // 文档碎片
+//    var frg = document.createDocumentFragment();
+   for(var i = 0; i < 6; i++){
+//       frg.appendChild(document.createElement('li'));
+//       // 将每一次创建的li 直接添加到 页面中 引发多次回流
+//       oUl.appendChild(document.createElement('li'));
+   }
+//   console.log(frg); // 暂存 动态创建完 li
+//    oUl.appendChild(frg); // 只引发一次回流 然后再将里面的li一次性添加到页面中
+
+    // 字符串拼接 都是 一次性将拼接好 输出到页面
+//    var str = '';
+//    for(var i = 0; i < 6; i++){
+//        str += '<li></li>'; // html 字符串
+//    }
+//    oUl.innerHTML = str; // 只引发一次回流
+
+
+
+    var str = '';
+    for(var i = 0; i < 6; i++){
+        oUl.innerHTML +=  '<li>'+i+'</li>'; // innerHTML每次都是新的输出会将原有的覆盖掉
+    }
+
+</script>
+</body>
+</html>
