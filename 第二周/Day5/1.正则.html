@@ -12,7 +12,7 @@
     // RegExp
     // 元字符：/\dasc/ 两个斜杠之间的就是元字符 特殊元字符 量词元字符 普通元字符
     // 修饰符 /sdfds/igm
-    
+
     // 1.特殊元字符
     // \ 转义符 转换为本来意义
     // . 任意字符 除了\n（换行符） /./ /\./ 
@@ -36,7 +36,7 @@
     // ?: 只匹配不捕获
     // ?= 正向预查
     // ?! 负向预查
-    
+
     // 2.量词元字符
     // ? 出现0到1次（可有可无） /a?/ '1a23'
     // * 出现0到多次  /a*/ '12aaaaaaaa312'
@@ -44,23 +44,22 @@
     // {n} 限定出现n次 匹配只能出现n次  /a{2}/ '1aa1'
     // {n,} 限定出现n到多次 至少出现n次 /a{2,}/ '1aaaaaa1'
     // {n,m} 限定出现n到m次 /a{2, 5}/ '113aaa5' 出现2-5次 2 3 4 5
-    
+
     // 3.普通元字符
     /abcd/
-    
+
     // 修饰符
     // i ignoreCase 忽略大小写  /[a-z]/i  'a' 'A' 
     // g global 全局 /[a-z]/g  's'
     // m multiline 逐行匹配  /^\d/ '123123'
-    
-//    var str = 'li1li2li3';
-//    str = str.replace(/\d/g, function () {
-//        return 'AA'
-//    })
-//    console.log(str);
 
-    
-    
+    //    var str = 'li1li2li3';
+    //    str = str.replace(/\d/g, function () {
+    //        return 'AA'
+    //    })
+    //    console.log(str);
+
+
 </script>
 </body>
 </html>

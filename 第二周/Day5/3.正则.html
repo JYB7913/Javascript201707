@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    var reg = /\d/;
+    //    var reg = /\d\d/; // 只要包含0-9这个数字就可以
+    //    var reg1 = /^\d\d$/; //^$ 同时出现 限定了要验证的字符只能是0-9的数字 限定位数
+    //    var str = 'n1';
+    // test 验证字符串是否符合正则规则 返回Boolean
+    //    console.log(reg.test('n1aaa'));
+    //    console.log(reg.test('2naaa'));
+    //    console.log(reg.test('naaa1'));
+    //    console.log(reg.test('a2bc1'));
+    //    console.log(reg1.test('24'));
+
+    //    var reg = /[a-z]/;
+    //    var reg2 = /^[a-z]$/;  // 开头结尾都要是一个字母 => 验证的只能是一个字母
+    //console.log(reg.test('123a'));
+    //var reg2 = /^[a-z]+$/; // 验证的字符串 只能是a-z中一到多个连续的字母
+    //var reg2 = /^[a-z]{2}$/;
+    //console.log(reg2.test('ac'));// true
+    //console.log(reg2.test('ac1322ad')); // false
+
+    //    var reg = /^\d/; // 验证的字符串 要以数字作为开头
+    //    console.log(reg.test('1'));
+    //    console.log(reg.test('12abc'));
+    //    console.log(reg.test('a12abc'));
+    //    console.log(reg.test('va12abc'));
+    //    var reg = /\d$/; // 验证的字符串 要以数字作为结尾
+    //  console.log(reg.test('ab1c'));
+    //  console.log(reg.test('ab1c2'));
+
+    //    var reg = /a|z/; // 验证的字符串 只要包含a或者z就true
+    //    console.log(reg.test('1cd2')); // false
+    //    console.log(reg.test('1ad2')); // true
+    //    console.log(reg.test('1az2')); // true
+    //    console.log(reg.test('1cccz2')); // true
+
+    //    var reg = /^a|z$/; // 验证的字符串 要以a作为开头或者以z作为结尾
+    //    console.log(reg.test('a'));
+    //    console.log(reg.test('a13'));
+    //    console.log(reg.test('13z'));
+    //    console.log(reg.test('z13'));
+    //    console.log(reg.test('a13z'));
+    //    console.log(reg.test('2a13z2'));
+
+    //    var reg = /^(a|z)/; // ()改变了优先级 可以是以a或者z作为开头的字符
+    //    console.log(reg.test('a'));
+    //    console.log(reg.test('a123'));
+    //    console.log(reg.test('z12z3z'));
+
+
+    //    var reg = /^(a|z)$/; // ()改变了优先级 只能是a或者z
+    //    console.log(reg.test('a'));
+    //    console.log(reg.test('z'));
+    //    console.log(reg.test('a13'));
+    //    console.log(reg.test('13z'));
+
+    // 1.匹配有效数字
+    // 正数负数 12 +13 -1 -12 +-123   0123 正数部分多少位数的时候不能以0开头
+    // 0
+    // 小数
+    //    (\d|[1-9]\d+)
+    // \d 0-9 一位数
+    // [1-9]\d+ 以1到9中的一位数后面跟着多个连续的数字 多位数
+
+    //    var reg =/[+-]?(\d|[1-9]\d+)/
+
+    // 123.123
+    //   小数部分 (\.\d+)? 限定了小数部分 有可能出现一次 也有可能不出现（可有可无）
+    // (\.\d+)? 利用括号改变优先级 先把括号看作是一个整体 然后?在限定这个整体出现次数
+    //    var reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?$/; // ^$只能是有效数字不能有其他字符串
+    //    var reg1 = /[+-]?(\d|[1-9]\d+)(\.\d+)?/; // 只要包含有效数字 就能匹配
+    //   console.log(reg.test('abc123.67')); // 验证的字符只能是有效数字才为true
+    //   console.log(reg1.test('abc123.67')); // reg1只要包含就是true
+
+
+    // 2. 手机号 188 176 138 11位数 开头只能是1
+    //    var reg = /^1(88|76|38)\d{8}$/; // ^$只能是11位数 不能有其他字符
+    //    var reg = /^1(88|76|38)\d{5}9{3}$/; // ^$只能是11位数 不能有其他字符
+    //    reg.test('17645678999')
+    //    reg.test('18845678999')
+    //    reg.test('13845678999')
+
+    // 3.匹配是不是汉字 u4e00 Unicode编码
+    //    var reg = /^[\u4e00-\u9fa5]{2,6}$/
+
+    // 4. 18-65 匹配18到65的两位数
+    // /[81]/ 不能识别多位数 看作是8或者1
+    // [13-56] 1 或者2到3 或者6
+
+    // 18 19 /^1[89]$/ (18|19)
+    // 20-59 /^[2-5]\d$/
+    // 60-65 /^6[0-5]$/
+
+    //    var reg = /^(1[89]|[2-5]\d|6[0-5])$/; // 限定了只能是18-65的两位数
+
+//    var reg = /^1[89]|[2-5]\d|6[0-5]$/; // 开头可以是18或者19 也可以包含20-59之间的两位数 或者 是60-65结尾的字符串
+
+    // 28-56    28-29 2[89] 30-49 [34]\d 50-56 5[0-6]
+    var reg = /^(2[89]|[34]\d|5[0-6])$/;
+
+</script>
+</body>
+</html>
