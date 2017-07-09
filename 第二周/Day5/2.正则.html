@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 正则创建
+    // 字面量
+    //    var reg = /a\d+/ig;
+    //    console.log(reg);
+    // 实例创建方式
+    //    var reg2 = new RegExp('a\\d+','ig');
+    // 实例创建中特殊元字符 \d => \\d
+    // 实例创建方式可以拼接变量
+    //    console.log(reg2);
+
+    var cn = 'nihao';
+    //    var reg = /cn/
+    //    var reg = /''+cn+''/
+    //    console.log(reg);
+    var reg = new RegExp('' + cn + '', 'ig'); // /nihao/gi
+    console.log(reg);
+
+
+</script>
+</body>
+</html>
