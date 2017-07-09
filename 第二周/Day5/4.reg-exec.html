@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // exec 正则捕获 就把符合正则规则的部分 捕获到
+    //    var reg = /\d/;
+    //    console.log(reg.exec('a3')); // ["3", index: 1, input: "a3"]
+    //    var arr = reg.exec('a3');
+    //    console.log(arr[0]);
+    /**
+     * ["3", index: 1, input: "a3"]
+     *  第一项正则捕获到的内容
+     *  index 开始捕获到的索引位置
+     *  input 捕获的原始字符串
+     */
+
+        //    var reg = /\d/; // 懒惰性
+        //    var str = 'hello123';
+        //    console.log(reg.exec(str)); // ["1", index: 5, input: "hello123"]
+        //    console.log(reg.exec(str)); // ["1", index: 5, input: "hello123"]
+        //    console.log(reg.exec(str)); // ["1", index: 5, input: "hello123"]
+
+        //    var reg = /\d+/g; // 懒惰性 修饰符g取消懒惰性 会接着上次捕获后的位置继续捕获
+        //    var str = 'hello123hello222abc666';
+        //        console.log(reg.exec(str));
+        //        console.log(reg.lastIndex); // 下一次捕获的起始索引位置 8
+        //        console.log(reg.exec(str));
+        //        console.log(reg.lastIndex); // 下一次捕获的索引起始位置 16
+        //        console.log(reg.exec(str));
+        //        console.log(reg.lastIndex);
+        //        console.log(reg.exec(str)); // null 到头了
+        //        console.log(reg.lastIndex); // 都头之后 下一次 捕获从 0 开始
+        //        console.log(reg.exec(str)); //
+        //        console.log(reg.exec(str)); //
+        //        console.log(reg.exec(str)); //
+
+        //    var reg = /\d+/g;
+        //    var str = 'hello123hello222abc666';
+        //    console.log(reg.exec(str));
+        //    reg.lastIndex = 16; // 可以手工指定下一次起始位置 前提 需要加修饰符g 才有效
+        //    console.log(reg.lastIndex);
+        //    console.log(reg.exec(str));
+        ////  console.log(reg.lastIndex);
+
+        //    var reg = /\d+/g;
+        //    var str = 'h123h222h666';
+        //    console.log(reg.exec(str));
+        //    console.log(reg.lastIndex); // 4
+        //    console.log(reg.test(str)); // 加了g test匹配的时候 也会改变 lastIndex
+        //    console.log(reg.lastIndex); // 8
+        //    console.log(reg.test(str));
+        //    console.log(reg.lastIndex);
+
+        // 全局匹配捕获的时候  test 和exec 都会导致 lastIndex 索引自动改变
+        //    var reg = /\d+/g;
+        //    var str = 'h123h222h666';
+        //    console.log(reg.test(str));
+        //    console.log(reg.lastIndex); // 4
+        //    console.log(reg.test(str));
+        //    console.log(reg.lastIndex); // 8
+        //    console.log(reg.exec(str));
+
+
+//    var reg = /\d+/g; // 取消了懒惰性
+    var reg = /\d+/igm;
+
+
+    var str = 'h123h222h666a777'; // exec 就算取消了懒惰性 也需要捕获多次才能捕获完
+    console.log(reg.exec(str)); // ["123", index: 1, input: "h123h222h666"]
+    console.log(reg.exec(str)); // ["222", index: 5, input: "h123h222h666"]
+    console.log(reg.exec(str)); // ["666", index: 9, input: "h123h222h666"]
+    console.log(reg.exec(str));
+
+    // match 支持正则 字符串捕获的方法 如果取消了懒惰性 可以一次性将匹配的内容都捕获到 放在一个数组里
+    console.log(str.match(reg)); // ["123", "222", "666"]
+//    console.log(str.match(reg)); // ["123", "222", "666"]
+
+    // exec match
+    // 1.exec是正则捕获方法 match是字符串捕获方法
+    // 2.正则没有取消懒惰性时候 exec 和match 捕获到的内容 是一模一样的
+    // 3.如果取消了懒惰性 exec需要捕获多次才能捕获完，match可以一次性捕获完 将捕获到的内容放在一个数组里
+
+    // match 里面也是 调用了exec
+    String.prototype.myMatch = function (reg) {
+        var res = reg.exec(this);
+        if(reg.global) { // 是否取消懒惰性
+            var arr = [];
+            while (res) {
+                arr.push(res[0]); // 将捕获到的添加到数组里 最后一次性返回
+                res = reg.exec(this);
+            }
+            return arr.length? arr : null; // 如果全局匹配 没有捕获到应该返回null
+        }
+        return res;
+
+    };
+    console.log(str.myMatch(reg));
+
+    /**
+     * 正则实例属性
+     * flags: 当前正则的修饰符
+     * global: 是否有g修饰符（是否全局匹配）true 有 false 无
+     * ignoreCase: 是否有i修饰符 （是否忽略大小写） true 有 false 无
+     * multiline: 是否有m修饰符 （是否逐行匹配） true 有 false 无
+     * source： 正则的元字符内容
+     */
+
+</script>
+</body>
+</html>
