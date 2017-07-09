@@ -119,6 +119,26 @@
             oUl.appendChild(frg);
         }
     }
+
+//    var num = 5; // 6 7
+//    var obj = {
+//        num : 4, // 5
+//        fn : (function (num){ // num = undefined = 2 3 4
+//
+//            num++; // NaN
+//            this.num++;
+//            var num = 2;
+//            return function (){
+//                num++;
+//                this.num++;
+//                console.log(num);
+//            }
+//        })()
+//    };
+//    var fn = obj.fn;
+//    fn(); // 3
+//    obj.fn(); // 4
+//    console.log(this.num,obj.num); // 7 5
 </script>
 </body>
 </html>

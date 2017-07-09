@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * ?
+     * 1.量词元字符出现0到1次
+     * 2.?: 取消分组捕获 只匹配不捕获
+     * 3.?放在量词元字符后面取消贪婪性 取消贪婪性 就按最短匹配
+     * 4.?= 正向预查 一个条件 把条件写在分组(?=1) 不会对它进行分组捕获
+     * 5.?! 反向预查 一个条件 把条件写在分组(?!1) 不会对它进行分组捕获
+     */
+
+        // 贪婪性 按照最长匹配 能多匹配就多匹配
+    var str = 'h12345243';
+    //    var reg = /\d+/; // + 等价于 {1,} 最短匹配1 最长不限
+    //    console.log(reg.exec(str));
+
+    //    var reg = /\d{2,4}/; 按最长匹配
+    //    console.log(reg.exec(str)); // '1234'
+
+    //    var reg = /\d{2,4}?/; //   取消贪婪性 就按最短匹配
+    //    console.log(reg.exec(str)); // '12'
+
+    // 正向预查 限定条件
+    //    var reg = /[a-z](?=3|4)/; // 捕获的是字母后面跟着3的那个字母
+    //    console.log(reg.exec('a3'));
+    //    console.log(reg.exec('b4'));
+    //    console.log(reg.exec('c3'));
+    //    console.log(reg.exec('d6'));
+
+
+    // 反向预查 排除条件
+
+    //    var reg = /[a-z](?!3|4)/; // 捕获的是字母后面跟着3的那个字母
+    //    console.log(reg.exec('a3'));
+    //    console.log(reg.exec('b4'));
+    //    console.log(reg.exec('c3'));
+    //    console.log(reg.exec('d6'));
+
+    //    var reg1 = /[a-z](?!3|4)/g;
+    //    var str = 'a3b4c6h7';
+    //    console.log(str.match(reg1));
+
+
+    //    var reg = /^(?=3)\d$/; // 匹配的一位数只能是3
+    //    console.log(reg.test('3'));
+    //    console.log(reg.test('4'));
+    //    console.log(reg.test('5'));
+
+    //    var reg = /^((?=3)\d)+$/; // 出现的纯数字 必须都是3
+    //    console.log(reg.test('3'));
+    //    console.log(reg.test('333333'));
+    //    console.log(reg.test('34567'));
+    //    console.log(reg.test('33345'));
+
+
+    //        var reg = /^(?!3)\d$/; // 匹配的一位数不能是3
+    //        console.log(reg.test('3')); // false
+    //        console.log(reg.test('4')); // true
+    //        console.log(reg.test('5')); // true
+
+    //    var reg = /^((?!3)\d)+$/; // 出现的纯数字 不能有3
+    //    console.log(reg.test('3'));
+    //    console.log(reg.test('4568'));
+    //    console.log(reg.test('4567'));
+    //    console.log(reg.test('33345'));
+
+    //    var reg = /^(?!a)[a-z]$/; // 限定后面的范围a-z 出现的一个字母不能是a
+    //    console.log(reg.test('a'));
+    //    console.log(reg.test('b'));
+    //    console.log(reg.test('v'));
+</script>
+</body>
+</html>

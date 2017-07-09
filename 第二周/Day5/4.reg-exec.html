@@ -66,39 +66,41 @@
 
 
 //    var reg = /\d+/g; // 取消了懒惰性
-    var reg = /\d+/igm;
-
-
-    var str = 'h123h222h666a777'; // exec 就算取消了懒惰性 也需要捕获多次才能捕获完
-    console.log(reg.exec(str)); // ["123", index: 1, input: "h123h222h666"]
-    console.log(reg.exec(str)); // ["222", index: 5, input: "h123h222h666"]
-    console.log(reg.exec(str)); // ["666", index: 9, input: "h123h222h666"]
-    console.log(reg.exec(str));
+//    var reg = /\d+/igm;
+//
+//
+//    var str = 'h123h222h666a777'; // exec 就算取消了懒惰性 也需要捕获多次才能捕获完
+//    console.log(reg.exec(str)); // ["123", index: 1, input: "h123h222h666"]
+//    console.log(reg.exec(str)); // ["222", index: 5, input: "h123h222h666"]
+//    console.log(reg.exec(str)); // ["666", index: 9, input: "h123h222h666"]
+//    console.log(reg.exec(str));
 
     // match 支持正则 字符串捕获的方法 如果取消了懒惰性 可以一次性将匹配的内容都捕获到 放在一个数组里
-    console.log(str.match(reg)); // ["123", "222", "666"]
 //    console.log(str.match(reg)); // ["123", "222", "666"]
+    //    console.log(str.match(reg)); // ["123", "222", "666"]
 
     // exec match
     // 1.exec是正则捕获方法 match是字符串捕获方法
     // 2.正则没有取消懒惰性时候 exec 和match 捕获到的内容 是一模一样的
     // 3.如果取消了懒惰性 exec需要捕获多次才能捕获完，match可以一次性捕获完 将捕获到的内容放在一个数组里
+    // 4.分组捕获区别
+    // (1) 如果是全局匹配加了g Match是无法捕获到分组
+    // (2) 如果没有加g Match和exec 捕获到的内容 一样 也能把分组捕获到
 
     // match 里面也是 调用了exec
-    String.prototype.myMatch = function (reg) {
-        var res = reg.exec(this);
-        if(reg.global) { // 是否取消懒惰性
-            var arr = [];
-            while (res) {
-                arr.push(res[0]); // 将捕获到的添加到数组里 最后一次性返回
-                res = reg.exec(this);
-            }
-            return arr.length? arr : null; // 如果全局匹配 没有捕获到应该返回null
-        }
-        return res;
-
-    };
-    console.log(str.myMatch(reg));
+//    String.prototype.myMatch = function (reg) {
+//        var res = reg.exec(this);
+//        if (reg.global) { // 是否取消懒惰性
+//            var arr = [];
+//            while (res) {
+//                arr.push(res[0]); // 将捕获到的添加到数组里 最后一次性返回
+//                res = reg.exec(this);
+//            }
+//            return arr.length ? arr : null; // 如果全局匹配 没有捕获到应该返回null
+//        }
+//        return res;
+//    };
+//    console.log(str.myMatch(reg));
 
     /**
      * 正则实例属性
@@ -108,6 +110,31 @@
      * multiline: 是否有m修饰符 （是否逐行匹配） true 有 false 无
      * source： 正则的元字符内容
      */
+
+
+    // 分组捕获 将大正则{(\d+)\} 进行分组(大正则划分成小正则) 当大正则捕获到内容后 小正则会再捕获到的内容中 再进行捕获
+//    var str = '{10}11';
+//    var reg = /\{(\d+)\}(\d+)/g; // {10} => (\d+)子表达式 进一步 进行捕获 => 10
+//    console.log(reg.exec(str));
+    // ["{10}", "10", index: 0, input: "{10}11"]
+    /**
+     * ["{10}11", "10", "11", index: 0, input: "{10}11"]
+     * 第一项 是大正则捕获到的内容
+     * 第二项时 第一个分组捕获到的内容 通常从第二项开始 是分组捕获到的内容
+     * 第三项 第二个分组捕获到的内容
+     */
+
+
+    // 是第几个分组 就看括号左半部分
+    var str = '{10}11';
+    var reg = /(\{(\d+)\})(\d+)/;
+    console.log(reg.exec(str));  // {10}11 {10} 10 11
+//    console.log(str.match(reg));
+
+    // 默认情况只要你进行分组 捕获的时候 都会进行分组捕获
+    // ?: 取消分组捕获 写在分组的最前面 只匹配该分组 不会进行分组捕获
+    var reg1 = /^[+-]?(?:\d|[1-9]\d+)(?:\.\d+)?$/g;
+    console.log(reg1.exec('-123.666'));
 
 </script>
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // 1.分组捕获 将大正则划分为小正则 对大正则捕获到的内容进一步进行捕获 放到数组里
+    //     var str = '{10}11';
+    //     var reg = /\{(\d+)\}/;
+    //     console.log(reg.exec(str)); // ["{10}", "10", index: 0, input: "{10}11"]
+    // 2.改变优先级
+    //     var reg = /^10|20$/;
+    //     console.log(reg.test('10adf'));
+    //     console.log(reg.test('adf20'));
+    //     console.log(reg.test('10adf20'));
+
+    //     var reg = /^(10|20)$/; // 限定了 只能是10或者20中的一个
+    //     console.log(reg.test('10'));
+    //     console.log(reg.test('20'));
+
+    //    // 3.分组引用 (确保分组已经存在 在获取分组引用 否则分组引用操作被忽略)
+    ////    var reg = /([a-z])([a-z])\1\2/; // 'abab'
+    ////    var reg = /([a-z])([a-z])\2\1/; // 'abba'
+    ////    var reg = /([a-z])\1([a-z])\2/; // 'aabb'
+    ////    var reg = /([a-z])\1([a-z])\2/; // 'aabb'
+    //      var reg = /\1(\d)/; // \1要是再第一个分组前面使用 会被忽略掉
+    //     console.log(reg.exec('1'));
+//    var reg = /([a-z])\1([a-z])\2/; // 'aabb'
+//    console.log(reg.test('aacc'));
+//    console.log(reg.test('ddff'));
+</script>
+</body>
+</html>
