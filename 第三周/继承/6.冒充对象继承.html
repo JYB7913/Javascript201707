@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 冒充对象继承：在子类构造函数中 生成一个父类的实例 然后把父类的实例当做一个普通对象 进行遍历 将遍历出来的私有和公有 复制一份 作为 子类的私有属性
+    // 把父类的公有和私有 继承过来作为子类的私有属性
+    function A() {
+        this.a = 123;
+        this.say = function () {
+            console.log('say');
+        }
+    }
+
+    A.prototype.mess = 'mess';
+
+    function B() {
+        var temp = new A;
+        for(var k in temp){
+           this[k] = temp[k];
+        }
+    }
+
+    var b = new B;
+    console.log(b);
+
+</script>
+</body>
+</html>

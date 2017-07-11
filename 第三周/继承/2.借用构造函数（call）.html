@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 借用构造函数
+    // 把父类构造函数当做普通函数执行 将里面this修改为B类中实例
+    // 这样的话父类中this.xxx 就相当于给我子类实例添加私有属性
+    // 只能继承父类中私有属性
+    function A() {
+        this.a = 123;
+        this.say = function () {
+            console.log('say');
+        }
+    }
+
+    A.prototype.mess = 'mess';
+
+    function B() { // 子类中this 当前实例（子类的实例）
+        A.call(this); // 把父类构造函数当做普通函数执行 将里面this修改为B类中实例
+    }
+    var b = new B;
+    console.log(b);
+    console.log(b.a);
+
+</script>
+</body>
+</html>

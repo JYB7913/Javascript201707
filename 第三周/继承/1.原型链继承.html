@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //继承：父类中有些属性方法 子类想把父类中的属性方法 继承过来 给子类的实例来使用
+    // 原型链继承：把子类的原型作为父类的实例
+    // 子类把父类中的私有和公有 都继承过来作为子类的原型属性（公有的）
+    function A() {
+        this.a = 123;
+        this.say = function () {
+            console.log('say');
+        }
+    }
+
+    A.prototype.mess = 'mess';
+
+    B.prototype = new A; // 将子类 的原型对象 重构为 父类A的实例
+    B.prototype.constructor = B;
+
+    console.log(B.prototype instanceof A);
+    console.log(B.prototype.__proto__ === A.prototype);
+    function B() {
+
+    }
+
+    var b1 = new B;
+    var b2 = new B;
+    console.log(b1);
+    console.log(b1.a);
+    console.log(b1.say === b2.say); //这个原型属性 是从父类的私有属性中继承过来的
+    console.log(B.prototype.__proto__ === A.prototype);
+
+    // 多态 子类重写父类 导致父类中所有实例都会受到影响
+    B.prototype.__proto__.mess = '已经被子类修改了';
+    
+    var a1 = new A;
+    console.log(a1.mess);
+</script>
+</body>
+</html>

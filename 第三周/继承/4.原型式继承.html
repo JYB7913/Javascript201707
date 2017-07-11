@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 原型式继承
+//    Object.create();  创建一个新对象 然后 让这个新对象的__proto__指向这个传递进来的参数对象
+    var obj1 = {name: 2, id: 1};
+
+    var obj2 = Object.create(obj1); // obj2.__proto__ = obj1;
+//    console.log(obj2.name);
+
+    Object.myCreate = function (o) {
+        // 创建一个临时构造函数
+        function Fn() {
+
+        }
+        // 让这个临时构造函数 原型等于传递进来的对象
+        Fn.prototype = o; // A.prototype
+        return new Fn; // 返回这临时构造函数的实例 Fn的实例__proto__ = o
+    };
+
+    function A() {
+        this.a = 123;
+        this.say = function () {
+            console.log('say');
+        }
+    }
+
+    A.prototype.mess = 'mess';
+//    B.prototype = Object.create(A.prototype); // 创建一个新对象(并不是直接返回的A类的实例)作为子类的原型对象 并且这个对象__proto__ = A.prototype;
+    // 继承父类公有的属性 作为 子类的公有属性
+    // 将子类的 原型对象重构为 这个Fn的实例对象 并且这个实例__proto__ = A.prototype
+    B.prototype = Object.myCreate(A.prototype);
+    B.prototype.constructor = B;
+    
+    function B() {
+        
+    }
+    var b = new B;
+    console.log(b);
+
+
+</script>
+</body>
+</html>
