@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 id="oText">{{mess}} {{say}}</h3>
+
+</body>
+<script type="text/javascript">
+    //    console.log(document.body.innerHTML);
+    //    console.log(oText.innerHTML);
+    //    var mess = 'hello world!';
+    //    var say = ' beijinghuanyingni';
+    //    oText.innerHTML = oText.innerHTML.replace(/\{\{(.+?)\}\}/g, function (a, b) {
+    //         console.log(arguments);
+    //         return eval(b)
+    //    });
+
+
+    // replace 支持正则
+    //    var str = 'hh7h8';
+    //    str = str.replace(/1/g, '2');
+    //    str = str.replace(/\d/g, function (a) {
+    //        console.log(arguments);
+    //        // 第一个参数 匹配到的内容
+    //        // 第二个参数 捕获到的索引位置
+    //        // 第三个原始字符串
+    ////        return 2 * arguments[0]
+    //        console.log(a);
+    //        return 2 * a
+    //    });
+    //    console.log(str);
+
+    //    var str = '{01} -- {02} -- {03} -- {04}';
+
+    //    var reg = /\{(\d)(\d)\}/g;
+    //    str = str.replace(reg, function (a, b, c) { // 先把根据规则捕获 然后再替换
+    ////        console.log(arguments);
+    ////        console.log(b);
+    ////        通过形参来得到捕获到的内容
+    //
+    //        // 第一项是大正则捕获到内容
+    //        // 从第二项开始是分组捕获到的内容
+    //        // 捕获到的索引位置
+    //        // 最后一个原始字符串
+    //        return c + '' + b // 返回值 替换大正则捕获到的内容
+    //    });
+    //    console.log(str);
+
+    //    str = str.replace(reg, '$2$1');  // $1第一个分组里捕获的内容$1-9
+    //    console.log(str);
+
+    //    var str = 'zhufeng123zhufeng666';
+    //    var reg = /(\d+)/g;
+    //
+    //    console.log(reg.exec(str)); // ["123", "123", index: 7, input: "zhufeng123zhufeng666"]
+    //    console.log(reg.exec(str)); // ["666", "666", index: 17, input: "zhufeng123zhufeng666"]
+    //    console.log(RegExp.$1); // 获取到最近一次正则捕获到的分组内容 $1-$9
+
+
+    // 2017-01-01 18:00:40 => 2017年01月01日 18时00分40秒
+    // 1.方式一
+    //    var str = '2018-05-12 18:00:40';
+    //    var reg = /(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/;
+    //   str = str.replace(reg, function (a, n1, n2, n3, n4, n5, n6) {
+    //        console.log(arguments);
+    //        return n1 + '年' + n2 + '月' + n3 + '日 ' + n4 + '时' + n5 + '分' + n6 + '秒'
+    //    })
+    //    console.log(str);
+    //    str = str.replace(reg, '$1年$2月$3日 $4时$5分$6秒');
+    //    console.log(str);
+    //
+
+    // 2. 方式二
+    //    var time = ['年', '月', '日', '时', '分', '秒'];
+    //    var n = 0; // 记录索引
+    //    var reg = /(\d+)[:-]?/g;
+    //    var str = '2018-05-12 18:00:40';
+    //    str = str.replace(reg, function (a, b) {
+    //         // 2018- 2018
+    ////        console.log(b + time[n++]); // 2018 + time[0] 2018年
+    //        return b + time[n++];
+    //    });
+    //    console.log(str);
+
+    // 3.方式三
+    //    var time = ['年', '月', '日', '时', '分', '秒'];
+    //    var n = 0; // 记录索引
+    //    var str = '2018-05-12 18:00:40';
+    ////    str.split(/[- :]/) // split 支持正则
+    ////    console.log(str.split(/ /));
+    ////    console.log(str.split(/\s/));
+    //
+    //// console.log(str.split(/[- :]/)); // ["2018", "05", "12", "18", "00", "40"]
+    //   var arr = str.split(/[- :]/);
+    //   str = str.replace(/\d+[-:]?/g, function () {
+    ////       2018- => arr[0]+''+time[0]   05- => arr[1]+ '' +time[1]
+    //       var str2 = arr[n] + '' + time[n];
+    //       n++;
+    //       return str2;
+    //   });
+    //   console.log(str);
+
+    // 4.模板引擎
+    //    2017-01-01 18:00:40 => 2017年01月01日 18时00分40秒
+    //    var str = '2018-05-12 18:00:40';
+    //    var tempStr = '{0}年{1}月{2}日 {3}时{4}分{5}秒'; // 模板字符串
+    //    var arr = str.split(/[: -]/); //  ["2018", "05", "12", "18", "00", "40"]
+    //    //    console.log(arr);
+    //    str = tempStr.replace(/\{(\d+)\}/g, function (a, b) {
+    //        // arr[0] => {0} arr[1] => {1} arr[2] => {2}
+    //        return arr[b];
+    //    });
+    //    console.log(str);
+
+
+    //
+    //    var htmlStr = 'https://www.baidu.com/s?wd=123&id=28&name1=zhufeng';
+    //
+    //    var htmlStr2 = 'https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6&rsv_spt=1&rsv_iqid=0xb67cb0840000f3bc&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=0&oq=vue&rsv_t=6babjh9kMd3aQtUraNwWM0bfzC5lnPlVkwqWVpOc2Ma898jqbZz9%2Byn76adAkylJ47pg&rsv_pq=ca645c620000ffb4';
+    // {wd: 123, id: 38, name: zhufeng}
+
+    //    var reg = /([\w-]+)=([\w-]+)/g;
+    //    var obj = {};
+    //    htmlStr.replace(reg, function (a, b, c) {
+    ////        console.log(arguments);
+    //        obj[b] = c;
+    //    });
+    //    console.log(obj);
+
+    //    var reg = /([^?&=]+)=([^?&=]+)/g;
+    //    var obj = {};
+    //    htmlStr.replace(reg, function () {
+    //        obj[arguments[1]] = arguments[2];
+    //    });
+    //    console.log(obj);
+
+    //?wd=123&id=28&name1=zhufeng';
+    //var str3 = '?wd=123&id=28&name1=zhufeng';
+    //    var reg = /[^?&]+/g;
+    //console.log(reg.exec(str3)); // "wd=123",
+    //console.log(reg.exec(str3)); // id=28
+    //console.log(reg.exec(str3)); // name1=zhufeng
+
+
+    //// 处理查询字符串
+    //    function getUrlParam(url) {
+    //        var obj = {};
+    //        var reg = /([^?&=]+)=([^?&=]+)/g;
+    //        url.replace(reg, function () {
+    //            obj[arguments[1]] = arguments[2]
+    //        });
+    //        return obj;
+    //    }
+    //console.log(getUrlParam(htmlStr));
+    //console.log(getUrlParam(htmlStr2));
+
+    // 去除首尾空格
+    //    var str = ' class1  class2    ';
+    //    var reg = /^\s+|\s+$/g;
+    //    var reg = /^ +| +$/g;
+    //    str = str.replace(reg,'');
+    //    console.log(str);
+    //console.log(str.trim());
+    //    var str2 = str.trim(); // 自带的去除首尾空格
+    //    console.log(str2);
+    //
+    //    String.prototype.myTrim = function () {
+    //        var reg = /^\s+|\s+$/g;
+    //        return this.replace(reg, '');
+    //    };
+    //
+    //    var str3 = str.myTrim();
+
+
+    // 千分符  2121345465 => 2,121,345,465
+
+    // 1
+    //    var str = '2121345465';
+    ////    console.log(str.split('').reverse().join('')); // 5645431212
+    //    var str2 = str.split('').reverse().join(''); // 5645431212
+    //
+    //    var reg = /(\d{3})/g;
+    ////    str2 = str2.replace(reg, function () {
+    ////        console.log(arguments);
+    ////        return arguments[0] + ','
+    ////    });
+    //    str2 = str2.replace(reg, '$1,');
+    //    console.log(str2.split('').reverse().join('')); // 2,121,345,465
+
+    // 2正向预查
+    var str = '2121345465.12'; // 2,121,345,465.12
+    var reg = /(\d)(?=(\d{3})+(\.\d+|$))/g;
+    //   str = str.replace(reg, function () { // 三个数字为一组
+    ////       console.log(arguments); // 2 121 345 465 三组
+    ////       console.log(arguments); // 1 345 465 两组
+    ////       console.log(arguments); // 5 465 一组
+    //        return arguments[0] + ',';
+    //   });
+    //    console.log(str);
+
+    str = str.replace(reg, '$1,');
+    console.log(str);
+
+</script>
+</html>
