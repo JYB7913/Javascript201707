@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 1200px;
+            height: 1100px;
+            border: 2px solid black;
+            border-right-width: 10px;
+            /*margin: 20px auto;*/
+            padding: 10px;
+        }
+
+        #back {
+            position: fixed;
+            right: 10px;
+            bottom: 100px;
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+<div id="outer"></div>
+<button id="back">回到顶部</button>
+<script type="text/javascript">
+    // 盒模型：js中提供获取元素的样式属性（盒模型）
+    var outer = document.getElementById('outer');
+
+    // 1.clientWidth 内容宽度 + 左右padding 只读
+    // 2.clientHeight 内容高度 + 上下padding 只读
+    //    console.log(outer.clientWidth);
+    //    console.log(outer.clientHeight);
+
+    // 3.clientLeft 左边框的宽度
+    // 4.clientTop 上边框的高度
+    //    console.log(outer.clientLeft);
+    //    console.log(outer.clientTop);
+
+
+    // 5.offsetWidth  clientWidth + 左右边框
+    // 6.offsetHeight  clientHeight + 上下边框
+    //    console.log(outer.offsetWidth);
+    //    console.log(outer.offsetHeight);
+
+
+    // 7.scrollLeft 横向滚动条 滚出去的距离 可写可读
+    // 8.scrollTop 纵向滚动条 滚出去的距离  可写可读
+    //    document.body.scrollTop = 0
+    //    document.body.scrollLeft = 0
+
+
+    // 9.scrollWidth
+    // 10.scrollHeight
+
+    // 文档没有溢出的情况  scrollLeft = 0
+    //scrollWidth === clientWidth + 0
+    //    console.log(document.body.scrollWidth);
+    //    console.log(document.documentElement.clientWidth);可视窗口一屏 宽度度
+
+    //    console.log(document.body.scrollHeight);
+    //    console.log(document.documentElement.clientHeight); //可视窗口一屏 高度
+
+    // 有溢出的情况下（有滚动条）
+    // scrollWidth 可视窗口宽度 + 溢出的总距离（scrollLeft 最大值）
+    // scrollWith = winW + scrollLeft(最大值 总共溢出的距离)
+    // scrollHeight = winH + scrollTop(最大值 总共溢出的距离)
+    //    console.log(document.body.scrollWidth);
+    //    console.log(document.documentElement.clientWidth); //可视窗口一屏 宽度度
+    //    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    //    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+    //    console.log(document.body.scrollWidth === winW + document.body.scrollLeft);
+    //    console.log(document.body.scrollHeight === winH + document.body.scrollTop);
+
+
+    // 通常 都是 用来获取 文档 盒模型属性
+    function win(attr, val) {
+        if (typeof val === 'undefined') { // 获取
+            return document.documentElement[attr] || document.body[attr]
+        }
+        // 设置
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    //    console.log(win('clientWidth'));
+    //    console.log(win('clientHeight'));
+
+    //    setTimeout(function () {
+    //        console.log(win('scrollLeft', 100));
+    //        console.log(win('scrollTop', 300));
+    //    }, 1000)
+
+    //    back.onclick = function () {
+    //        console.log(123);
+    //        win('scrollTop', 0)
+    //    }
+
+    //    back.onclick = function () {
+    //        var that = this;
+    //        that.timer = setInterval(function () {
+    //            var cur = win('scrollTop');
+    //            if(cur <= 0) {
+    //                win('scrollTop', 0);
+    //                clearInterval(that.timer);
+    //                return;
+    //            }
+    //            cur -= 100;
+    //            win('scrollTop', cur);
+    //        }, 30)
+    //    }
+
+
+</script>
+</body>
+</html>
