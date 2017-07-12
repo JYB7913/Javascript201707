@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            background-color: red;
+            width: 500px;
+            height: 100px;
+            color: #34ff66;
+        }
+        #oDiv:after{
+            content: 'nihao';
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+
+    // ele.style 只能获取行内样式
+    //    console.log(oDiv.style.width);
+
+    //    window.getComputedStyle() 获取经过浏览器计算过的样式（渲染到页面的样式）
+    //    window.getComputedStyle(curEle, 伪类(不用要写成null))  返回值 是CSSStyleDeclaration 的一个实例对象  里面包含着 所有经过浏览器计算过的样式属性
+    //    console.log(window.getComputedStyle(oDiv, null));
+//    console.log(window.getComputedStyle(oDiv, null)['width']);
+
+    // 获取伪类样式
+//    console.log(window.getComputedStyle(oDiv, ':after')['content']);
+//    console.log(window.getComputedStyle(oDiv, ':after')[':after']);
+
+
+    //    window.getComputedStyle() IE LOW 9以下 不支持这个属性方法
+    // IE 9 以下 需要使用 ele.currentStyle[attr]
+    //    console.log(oDiv.currentStyle.width);
+    //    console.log(oDiv.currentStyle['width']);
+
+    console.log(getCss(oDiv, 'width'));
+    /**
+     *
+     * @param curEle 当前元素
+     * @param attr 样式属性
+     */
+    function getCss(curEle, attr) {
+        var val;
+        if("getComputedStyle" in window) {
+            val = window.getComputedStyle(curEle, null)[attr]
+        } else { // IE9 以下 currentStyle
+           val = curEle.currentStyle[attr];
+        }
+        return val;
+    }
+//    typeOf window.getComputedStyle === "undefined"
+//    if(window.getComputedStyle)
+//    if("getComputedStyle" in window)
+//    if(navigator.userAgent.indexOf('MSIE 8.0'))
+//    try catch
+
+//    function F(callBack) {
+//        if(typeof callBack === 'function') {
+//            callBack();
+//        }
+//
+//    }
+//    F(123)
+//    F(function () {
+//        console.log(666);
+//    })
+
+//    setTimeout(function () {
+//
+//    }, 1000)
+//    sort(function () {
+//
+//    })
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // js 盒模型属性
+    // clientWidth 内容宽度+左右padding
+    // clientHeight 内容宽度+上下padding
+
+    // clientLeft 左边框
+    // clientTop 上边框
+
+    // offsetWidth clientWidth + 左右边框
+    // offsetHeight clientHeight + 上下边框
+
+    // scrollLeft 横向滚动条 滚出去的距离
+    // scrollTop 纵向滚动条 滚出去的距离
+
+    // scrollWidth = clientWidth + scrollLeft(最大值)
+    // scrollHeight = clientHeight + scrollTop(最大值)
+
+
+    // 获取可视窗口的一屏宽高
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+
+    // 获取文档 盒模型属性
+    function win(attr, val) {
+        if (typeof val === 'undefined') {
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+
+    //    var obj = {id: 'ni'};
+    //    var attr = 'id';
+    //    console.log(obj.attr); // 把attr 当做一个属性名
+    //    console.log(obj['attr']); // 把attr 当做一个属性名
+    //    console.log(obj[attr]); // 把attr当做变量 解析 obj.id
+
+    // 偏移值
+    // offsetLeft 左边框外边距离 父级参照物的左边偏移距离
+    // offsetTop 上边框外边距离 父级参照物的上边偏移距离
+    // offsetParent 父级参照物 平常浏览器默认是BODY ie7下 是 parentNode(父级节点)
+
+    // offsetParent 可以通过 position absolute/relative/fixed 可以改变
+
+    // 通常需要获取 元素 距离body偏移值 (但是有可能 元素的父级参照物不是body)
+
+    function offset(ele) {
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+
+        while (p.nodeName !== "BODY") {
+            if (navigator.userAgent.indexOf("MSIE 8.0") === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {
+            left: l,
+            top: t
+        }
+    }
+
+</script>
+</body>
+</html>
