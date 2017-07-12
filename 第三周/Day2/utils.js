@@ -98,7 +98,7 @@ var utils = (function () {
         }
 
         // 如果是以下属性 需要 自动添加单位
-        var reg = /^width|height|left|top|right|bottom|((margin|padding)(Left|Right|Top|Bottom)?)$/;
+        var reg = /^width|height|left|top|right|bottom|fontSize|((margin|padding)(Left|Right|Top|Bottom)?)$/;
         if (reg.test(attr)) {
             if (!isNaN(val)) {
                 val += 'px';
