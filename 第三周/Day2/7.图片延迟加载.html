@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            margin: 900px auto;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            background: url("./load.gif") no-repeat center;
+            background-size: 50%;
+
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <img id="oImg" real="./1.jpg" alt="">
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oImg = document.getElementById('oImg');
+    // img 距离body上偏移
+    var oImgT = utils.offset(oImg).top;
+    // img 自身高度
+    var oImgH = oImg.offsetHeight;
+    // img 最低端 距离body偏移
+    var imgH = oImgT + oImgH;
+
+    // 当scrollTop + winH >= 图片底端距离body的上偏移 才加载真实图片
+    // 获取一屏的高度
+    var winH = utils.win('clientHeight');
+    window.onscroll = function () {
+        if(oImg.flag) return; // 防止重复加载
+        var scrollT = utils.win('scrollTop');
+        if(scrollT+winH >= imgH){ // 加载图片
+
+            var imgSrc = oImg.getAttribute('real');
+            // 检测要加载图片的有效性(避免出现缩裂图)
+            var temp = new Image; // 创建一个img
+            temp.src = imgSrc;
+            // 当temp加载成功 才会触发自身onload事件 这个图片地址 是有效的
+            temp.onload = function () {
+                console.log('加载成功');
+                oImg.src = imgSrc; // temp加载成功后 在把图片地址给页面中img
+                oImg.flag = true; // 防止重复加载
+            };
+
+        }
+    }
+</script>
+</body>
+</html>

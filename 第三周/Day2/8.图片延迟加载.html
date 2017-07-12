@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            margin: 900px auto;
+        }
+        #oDiv img {
+            width: 100%;
+            height: 100%;
+            background: url("./load.gif") no-repeat center;
+            background-size: 80%;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <img id="oImg" real= './1.jpg' alt="">
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oImg = document.getElementById('oImg');
+
+//    图片底端距离body的上偏移
+    var imgT = utils.offset(oImg).top; // 获取图片上边框距离body的偏移
+    var imgH = oImg.offsetHeight; // 获取图片自身高度
+    var winH = utils.win('clientHeight'); // 获取一屏高度
+
+    window.onscroll = function () {
+        if(oImg.flag) return; // 防止重复加载
+        var scrollT = utils.win('scrollTop'); // 实时获取滚动条高度
+        // 判断图片是否已经出现在 窗口中
+        if(winH + scrollT >= imgT+imgH){
+           var imgSrc = oImg.getAttribute('real');
+//            检测图片有效性
+            var temp = new Image;
+            temp.src = imgSrc; // 先检测下图片是否可以加载
+            temp.onload = function () { // 加载成功 会触发 自身onload事件
+                console.log(234);
+                oImg.src = imgSrc; // 让页面中img加载真实的图片
+                oImg.flag = true; // 加载标识
+            }
+        }
+    }
+</script>
+</body>
+</html>
