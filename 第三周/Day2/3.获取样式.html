@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            background-color: red;
+            width: 500px;
+            height: 100px;
+            color: #34ff66;
+            opacity: .1;
+            filter: alpha(opacity=10); /* IE 9 以下*/
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    console.log(utils.getCss(oDiv, 'width'));
+    console.log(utils.getCss(oDiv, 'opacity'));
+</script>
+</body>
+</html>

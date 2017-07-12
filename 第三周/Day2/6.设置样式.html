@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: red;
+            width: 60px;
+            height: 100px;
+            color: #34ff66;
+            opacity:0;
+            filter: alpha(opacity=0); /* IE 9 以下*/
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+//   console.log(utils.getCss(oDiv, 'top'));
+//   console.log(utils.css(oDiv,{
+//       top: 200,
+//       left: 100
+//   }));
+
+
+    var op, l, t;
+   oDiv.timer = setInterval(function () {
+       op = utils.getCss(oDiv, 'opacity');
+        l = utils.getCss(oDiv, 'left');
+        t = utils.getCss(oDiv, 'top');
+        if(op >=1){
+            utils.setCss(oDiv, 'opacity', 1);
+            clearInterval(oDiv.timer);
+            return;
+        }
+        op += 0.05;
+        l += 50;
+        t += 50;
+
+       utils.css(oDiv, {
+           opacity: op,
+           left: l,
+           top: t
+       })
+    },300);
+
+
+
+
+</script>
+</body>
+</html>

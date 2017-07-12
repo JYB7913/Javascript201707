@@ -9,6 +9,8 @@
             width: 500px;
             height: 100px;
             color: #34ff66;
+            opacity: .1;
+            filter: alpha(opacity=10); /* IE 9 以下*/
         }
         #oDiv:after{
             content: 'nihao';
@@ -39,7 +41,7 @@
     //    console.log(oDiv.currentStyle.width);
     //    console.log(oDiv.currentStyle['width']);
 
-    console.log(getCss(oDiv, 'width'));
+//    console.log(getCss(oDiv, 'width'));
     /**
      *
      * @param curEle 当前元素
@@ -47,14 +49,47 @@
      */
     function getCss(curEle, attr) {
         var val;
+        var reg;
         if("getComputedStyle" in window) {
             val = window.getComputedStyle(curEle, null)[attr]
-        } else { // IE9 以下 currentStyle
-           val = curEle.currentStyle[attr];
+        } else { // IE9 以下 currentStyle 
+            // 需要注意获取 透明度的时候 要通过 filter来获取
+            if(attr === 'opacity') {
+                val = curEle.currentStyle['filter'];
+                // alpha(opacity=60)
+                reg = /alpha\(opacity=((?:\d|[1-9]\d+)(?:\.\d+)?)\)/;
+                var temp = reg.exec(val);
+                val = temp? temp[1]/100 : 1;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
         }
-        return val;
+
+
+        // 把带有 px em rem pt 单位的样式属性值 提取成数字 方便动态计算
+        // -90px 100px 10rem 9em display: block  0.2+1
+        reg = /[+-]?(\d|[1-9]\d+)(\.\d+)?(px|pt|em|rem)?/;
+//        if(reg.test(val)){
+//            val = parseFloat(val);
+//        }
+        return reg.test(val)? parseFloat(val): val;
     }
-//    typeOf window.getComputedStyle === "undefined"
+    console.log(getCss(oDiv, 'opacity'));
+
+    var op;
+    var timer = setInterval(function () {
+        op = getCss(oDiv, 'opacity');
+
+        if(op >= 1){
+            oDiv.style.opacity = 1;
+            clearInterval(timer);
+            return;
+        }
+        op += 0.05;
+        oDiv.style.opacity = op;
+    }, 100)
+//    console.log(getCss(oDiv, 'width'));
+    //    typeOf window.getComputedStyle === "undefined"
 //    if(window.getComputedStyle)
 //    if("getComputedStyle" in window)
 //    if(navigator.userAgent.indexOf('MSIE 8.0'))
