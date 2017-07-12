@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv {
+            width: 200px;
+            margin: auto;
+        }
+        #oDiv img {
+            width: 200px;
+            height: 200px;
+            background: url("./load.gif") no-repeat center;
+            background-size: 80%;
+            margin-bottom: 20px;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <img  real= './images/1.jpg' alt="">
+    <img  real= './images/2.jpg' alt="">
+    <img  real= './images/3.jpg' alt="">
+    <img  real= './images/4.jpg' alt="">
+    <img  real= './images/5.jpg' alt="">
+    <img  real= './images/2.jpg' alt="">
+    <img  real= './images/4.jpg' alt="">
+    <img  real= './images/5.jpg' alt="">
+    <img  real= './images/3.jpg' alt="">
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    // 获取操作元素
+    var oDiv = document.getElementById('oDiv');
+    var oImgs = oDiv.getElementsByTagName('img');
+
+
+    // 图片延迟加载
+    function delayImg() {
+      for(var i = 0; i < oImgs.length; i++){
+          var cur = oImgs[i];
+          if(cur.flag) continue; // 如果当前图片已经加载过直接跳过
+          checkImg(cur); // 将每个图片传递到checkImg进行加载处理
+      }
+    }
+
+    // 加载图片
+    function checkImg(img) {
+        // 获取到当前图片距离body上偏移
+        var imgT = utils.offset(img).top;
+        // 获取img自身高度
+        var imgH = img.offsetHeight;
+
+        // 获取一屏高度
+        var winH = utils.win('clientHeight');
+        // 此时scrollTop
+        var sTop = utils.win('scrollTop');
+
+        if(sTop + winH >= imgT + imgH){
+            var imgSrc = img.getAttribute('real');
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                img.src = imgSrc;
+                fadeIn(img);
+                img.flag = true;
+            };
+
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+
+    delayImg(); // 最开始的时候 先加载一屏的
+    window.onscroll = function () {
+        delayImg(); // 开始执行图片延迟加载
+    };
+
+    function fadeIn(img) {
+        var op;
+        img.timer = setInterval(function () {
+            op = utils.getCss(img, 'opacity');
+            if(op>=1){
+                utils.setCss(img, 'opacity', 1);
+                clearInterval(img.timer);
+                return;
+            }
+            op += 0.2;
+            utils.setCss(img, 'opacity', op);
+        }, 120);
+    }
+</script>
+</body>
+</html>
