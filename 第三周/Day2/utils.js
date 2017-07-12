@@ -20,7 +20,7 @@ var utils = (function () {
 
     // 获取/设置 document文档 盒模型属性
     function win(attr, val) {
-        if(typeof val === 'undefined'){ // 获取
+        if (typeof val === 'undefined') { // 获取
             return document.documentElement[attr] || document.body[attr]
         }
         // 设置
@@ -59,23 +59,23 @@ var utils = (function () {
     function getCss(curEle, attr) {
         var val;
         var reg;
-        if("getComputedStyle" in window){
+        if ("getComputedStyle" in window) {
             val = window.getComputedStyle(curEle, null)[attr];
         } else { // IE Low filter
-            if(attr === 'opacity') {
+            if (attr === 'opacity') {
                 // 'alpha(opacity=10)'
                 val = curEle.currentStyle['filter'];
                 reg = /alpha\(opacity=((?:\d|[1-9]\d+)(?:\.\d+)?)\)/;
                 var temp = reg.exec(val);
                 // 确保有没有捕获到 如果捕获到就 得到第一个分组内容 否则返回默认值 1
-                val = temp? temp[1]/100 : 1;
+                val = temp ? temp[1] / 100 : 1;
             } else {
                 val = curEle.currentStyle[attr];
             }
         }
         //去掉样式值的单位 比如10px 8em 19rem 0.3 获取到的样式值 都是字符串 block red
         reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?(px|em|rem|pt)?$/;
-        return reg.test(val)? parseFloat(val) : val;
+        return reg.test(val) ? parseFloat(val) : val;
     }
 
     /**
@@ -85,23 +85,23 @@ var utils = (function () {
      * @param val  样式值
      */
     function setCss(curEle, attr, val) {
-        if(attr === 'opacity') {
+        if (attr === 'opacity') {
             curEle.style[attr] = val;
-            curEle.style['filter'] = 'alpha(opacity='+ val*100 +')';
+            curEle.style['filter'] = 'alpha(opacity=' + val * 100 + ')';
             return;
         }
 
-        if(attr === 'float') {
+        if (attr === 'float') {
             curEle.style.cssFloat = val;
             curEle.style.styleFloat = val;
             return;
         }
 
         // 如果是以下属性 需要 自动添加单位
-        var reg = /^width|height|left|top|right|bottom((margin|padding)(Left|Right|Top|Bottom)?)$/;
-        if(reg.test(attr)){
-            if(!isNaN(val)){
-               val += 'px';
+        var reg = /^width|height|left|top|right|bottom|((margin|padding)(Left|Right|Top|Bottom)?)$/;
+        if (reg.test(attr)) {
+            if (!isNaN(val)) {
+                val += 'px';
             }
         }
         curEle.style[attr] = val;
@@ -114,14 +114,15 @@ var utils = (function () {
      * @param val  样式值
      */
     function css(curEle, attr, val) {
-        if(typeof attr === 'object'){
-            for(var k in attr){
+        if (typeof attr === 'object') {
+            for (var k in attr) {
                 setCss(curEle, k, attr[k]);
             }
         } else {
             setCss(curEle, attr, val);
         }
     }
+
     return {
         listToArray: listToArray,
         jsonParse: jsonParse,
