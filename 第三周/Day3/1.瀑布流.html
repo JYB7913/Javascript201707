@@ -10,6 +10,9 @@
         }
 
         #container {
+
+            width: 1056px;
+            margin: 0 auto;
             overflow: hidden;
         }
 
@@ -86,7 +89,7 @@
     function bindData(data) {
         var str = '';
         for(var i = 0; i < 50; i++){
-            var ind = Math.round(Math.random()*5);
+            var ind = Math.round(Math.random()*5); // 获取随机索引 0 - 5
             var cur = data[ind];
             str += '<li><a>';
             str += '<span>采集</span>';
