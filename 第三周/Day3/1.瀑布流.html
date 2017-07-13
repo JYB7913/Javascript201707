@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            overflow: hidden;
+        }
+
+        ul {
+            float: left;
+            list-style: none;
+            margin: 20px;
+            width: 224px;
+        }
+
+        ul li {
+            position: relative;
+            border: 1px solid #666;
+            margin-bottom: 20px;
+        }
+
+        ul li a:hover span {
+            display: block;
+        }
+
+        ul li a span {
+            display: none;
+            position: absolute;
+            color: #fff;
+            background-color: #ff4d72;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            left: 6px;
+            top: 6px;
+        }
+
+        ul li img {
+            width: 222px;
+        }
+
+        ul li p {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var container = document.getElementById('container');
+    var oUls = container.getElementsByTagName('ul');
+    var arrUls = utils.listToArray(oUls);
+    
+//  获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'data.json');
+        xhr.onreadystatechange = function () {
+            // http 200 201 202
+            if(this.readyState === 4 && /^2\d{2}$/.test(this.status)){
+                var data = utils.jsonParse(this.responseText);
+                bindData(data);
+            }
+        };
+        xhr.send();
+    }
+    getData();
+    
+    function bindData(data) {
+        var str = '';
+        for(var i = 0; i < 50; i++){
+            var ind = Math.round(Math.random()*5);
+            var cur = data[ind];
+            str += '<li><a>';
+            str += '<span>采集</span>';
+            str += '<img src='+cur.src+' alt="" style="height:'+cur.height+'px ">';
+            str += '<p>'+cur.title+'</p>';
+            str += '</a></li>';
+
+            arrUls.sort(function (a, b) {
+                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+            });
+
+            arrUls[0].innerHTML += str;
+            str = '';
+        }
+    }
+    
+</script>
+</body>
+</html>

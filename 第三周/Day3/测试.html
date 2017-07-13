@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    //getCss setCss css offset win
+
+
+    function win(attr, val) {
+        if(typeof val === 'undefined'){
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+
+//    function offset(ele) {
+//        var l = ele.offsetLeft;
+//        var t = ele.offsetTop;
+//        var p = ele.offsetParent;
+//        while (p) {
+//            if (navigator.userAgent.indexOf('MSIE 8.0') === -1) {
+//                l += p.clientLeft;
+//                t += p.clientTop;
+//            }
+//            l += p.offsetLeft;
+//            t += p.offsetTop;
+//            p = p.offsetParent;
+//        }
+//        return {left: l, top: t}
+//    }
+
+
+    //    function getCss(ele, attr) {
+    //        var val;
+    //        if ("getComputedStyle" in window) {
+    //            val = window.getComputedStyle(ele)[attr];
+    //        } else {
+    //            if (attr === "opacity") {
+    //                val = ele.currentStyle["filter"];
+    //                var reg = /alpha\(opacity=((?:\d|[1-9]\d+)(?:\.\d+)?)\)/;
+    //                var tmp = reg.exec(val);
+    //                val = tmp ? tmp[1] / 100 : 1;
+    //            } else {
+    //                val = ele.currentStyle[attr]
+    //            }
+    //        }
+    //        reg = /^[-+]?(\d|[1-9]\d+)(\.\d+)?(px|pt|em|rem)?$/;
+    //
+    //        return reg.test(val) ? parseFloat(val) : val;
+    //    }
+    //
+    //    console.log(getCss(oDiv, 'width'));
+    //    console.log(getCss(oDiv, 'backgroundColor'));
+    //
+    //    function setCss(curEle, attr, val) {
+    //        if (attr === 'opacity') {
+    //            curEle.style[attr] = val;
+    //            curEle.style['filter'] = 'alpha(opacity=' + val * 100 + ')';
+    //            return;
+    //        }
+    //        if (attr === 'float') {
+    //            curEle.style.cssFloat = val;
+    //            curEle.style.styleFloat = val;
+    //            return;
+    //        }
+    //        var reg = /width|height|left|top|right|bottom|((margin|padding)(Left|Top|Right|Bottom)?)/;
+    //        if (reg.test(attr) && !isNaN(val)) {
+    //            val += 'px';
+    //        }
+    //        curEle.style[attr] = val;
+    //    }
+    //
+    //    function css(curEle, attr, val) {
+    //        if (typeof  attr === "object") {
+    //            for (var j in attr) {
+    //                setCss(curEle, j, attr[j]);
+    //            }
+    //        }
+    //        setCss(curEle, attr, val);
+    //    }
+    //
+
+</script>
+</body>
+</html>
