@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+
+            width: 1056px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        ul {
+            float: left;
+            list-style: none;
+            margin: 20px;
+            width: 224px;
+        }
+
+        ul li {
+            position: relative;
+            border: 1px solid #666;
+            margin-bottom: 20px;
+        }
+
+        ul li a:hover span {
+            display: block;
+        }
+
+        ul li a span {
+            display: none;
+            position: absolute;
+            color: #fff;
+            background-color: #ff4d72;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            left: 6px;
+            top: 6px;
+        }
+
+        ul li img {
+            width: 222px;
+            background: url("./images/default.jpg") no-repeat center;
+            background-size: 100%;
+            opacity: 0.3;
+        }
+
+        ul li p {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var container = document.getElementById('container');
+    var oUls = document.getElementsByTagName('ul');
+    var oImgs = container.getElementsByTagName('img');
+    var arrUl = utils.listToArray(oUls);
+
+    // 获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'data.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                bindData(this.response);
+            }
+        };
+        xhr.send();
+    }
+    getData();
+
+    function bindData(data) {
+        for (var i = 0; i < 50; i++) {
+            var ind = Math.round(Math.random() * 8);
+            var cur = data[ind];
+            var oLi = document.createElement('li');
+            var oa = document.createElement('a');
+            oLi.appendChild(oa);
+
+            var sp = document.createElement('span');
+            sp.innerHTML = '采集';
+            oa.appendChild(sp);
+
+            var img = document.createElement('img');
+            // 把真实的图片地址 保存在html属性real上
+            img.setAttribute('real', cur.src);
+//            img.src = cur.src;
+            // 获取随机高 220 - 350  130
+            img.style.height = Math.round(Math.random() * 130 + 220) + 'px';
+            oa.appendChild(img);
+
+            var op = document.createElement('p');
+            op.innerHTML = cur.title;
+            oa.appendChild(op);
+
+            // 根据ul高度进行排序
+            arrUl.sort(function (a, b) {
+                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+            });
+
+            // 将创建的li插入到 高度最小的那一个ul里
+            arrUl[0].appendChild(oLi);
+        }
+        delayImg(); // 首屏加载
+    }
+
+    function delayImg() {
+        for(var i = 0; i< oImgs.length; i++){
+            var cur = oImgs[i];
+            if(cur.flag) continue;
+            checkImg(cur);
+        }
+    }
+
+
+    function checkImg(img) {
+        var imgH = img.offsetHeight;
+        var imgT = utils.offset(img).top;
+
+        var winH = utils.win('clientHeight');
+        var sTop = utils.win('scrollTop');
+
+        if(winH + sTop >= imgH/2 + imgT){ // 已经出现在视口中
+            var imgSrc = img.getAttribute('real'); // 获取到保存在自身真实图片地址
+            // 检测图片有效性
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                img.flag = true;
+                img.src = imgSrc;
+                fadeIn(img);
+            };
+
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+
+    }
+
+
+    function fadeIn(img) {
+        var op;
+        img.timer = setInterval(function () {
+            op = utils.getCss(img, 'opacity');
+            if(op >= 1){
+                utils.setCss(img, 'opacity', 1);
+                clearInterval(img.timer);
+                return;
+            }
+            utils.setCss(img, 'opacity', op += 0.2);
+        }, 100);
+    }
+
+    window.onscroll = function () {
+        delayImg();
+    }
+</script>
+</body>
+</html>
