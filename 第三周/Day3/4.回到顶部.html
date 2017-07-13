@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv{
+            height: 10200px;
+        }
+
+        #back {
+            display: none;
+            cursor: pointer;
+            width: 42px;
+            height: 37px;
+            position: fixed;
+            right: 10px;
+            bottom: 100px;
+            background: url("./images/back.png") no-repeat center;
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3 id="top">我是顶端</h3>
+<div id="oDiv"></div>
+<div id="back"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var back = document.getElementById('back');
+    var time = 200; // 规定的总时间
+    // 递归自己调用自己
+    back.onclick = function () {
+        clearInterval(this.timer); // 定时器累积 清除上一次
+        var duration = utils.win('scrollTop'); // 总路程
+        var speed =  duration/120 ; // 每毫秒的速度
+        var interval = 10;
+        var step = speed * interval; // 每10毫秒的速度
+        this.timer = setInterval(function () {
+            duration -= step;
+            if(duration <= 0){
+                utils.win('scrollTop', 0);
+                clearInterval(back.timer);
+                return;
+            }
+            utils.win('scrollTop', duration);
+        },interval);
+    };
+
+    var winH = utils.win('clientHeight');
+    window.onscroll = function () {
+        var sTop = utils.win('scrollTop');
+//        if(sTop > winH/2){
+//            back.style.display = 'block';
+//        } else {
+//            back.style.display = 'none';
+//        }
+        back.style.display = sTop > winH/2? 'block' : 'none';
+    }
+    
+//    back.onclick = function () {
+//        var sTop;
+//        this.timer = setInterval(function () {
+//            sTop = utils.win('scrollTop');
+//            if(sTop <= 0){
+//                utils.win('scrollTop', 0);
+//                clearInterval(back.timer);
+//                return;
+//            }
+//            utils.win('scrollTop', sTop-100);
+//        }, 10);
+//    }
+</script>
+</body>
+</html>

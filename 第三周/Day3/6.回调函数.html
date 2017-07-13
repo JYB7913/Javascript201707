@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 回调函数 把一个函数当做一个参数 传递到 另一个函数里面 让它执行
+    setTimeout(function () {
+
+    },1000);
+
+    var arr = [1,23,4];
+
+//    function fe(a, b) {
+//        console.log(a, b);
+//    }
+//    arr.sort(fe);
+
+    arr.sort(function (a, b) {
+        console.log(a, b);
+
+    });
+
+    function Fn(callBack) { // 回调函数 可以控制它执行多次 也可以给它传参
+        var name = 'zhufeng';
+        var obj = {};
+        obj.fn = callBack;
+//       setTimeout(function () {
+//           callBack(name);
+//       }, 1000);
+//        obj.fn(name);
+        callBack(name);
+    }
+
+    Fn(function (cn) {
+        console.log(this);
+    })
+
+
+</script>
+</body>
+</html>

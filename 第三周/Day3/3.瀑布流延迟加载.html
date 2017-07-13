@@ -47,6 +47,7 @@
         }
 
         ul li img {
+            display: block;
             width: 222px;
             background: url("./images/default.jpg") no-repeat center;
             background-size: 100%;
@@ -90,7 +91,7 @@
     getData();
 
     function bindData(data) {
-        for (var i = 0; i < 50; i++) {
+        for (var i = 0; i < 20; i++) {
             var ind = Math.round(Math.random() * 8);
             var cur = data[ind];
             var oLi = document.createElement('li');
@@ -172,7 +173,17 @@
         }, 100);
     }
 
+    var winH = utils.win('clientHeight');
+    var count = 0;
     window.onscroll = function () {
+        var sTop = utils.win('scrollTop');
+        var sTh = utils.win('scrollHeight');
+
+        if(count< 6 && sTop + winH >= sTh-800){
+              console.log('快要到底了 赶快加载');
+              getData();
+              count++;
+        }
         delayImg();
     }
 </script>

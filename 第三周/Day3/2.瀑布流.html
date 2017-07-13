@@ -72,50 +72,90 @@
     var arrUl = utils.listToArray(oUls);
 
     // 获取数据
-    function getData() {
+    function getData(callBack) {
         var xhr = new XMLHttpRequest();
         xhr.open('get', 'data.json');
         xhr.responseType = 'json';
         xhr.onreadystatechange = function () {
             if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
-                bindData(this.response);
+               typeof callBack === "function" ? callBack(this.response) : null;
             }
         };
         xhr.send();
     }
-    getData();
 
-    function bindData(data) {
-        for (var i = 0; i < 50; i++) {
-            var ind = Math.round(Math.random() * 8);
-            var cur = data[ind];
-            var oLi = document.createElement('li');
-            var oa = document.createElement('a');
-            oLi.appendChild(oa);
+    getData(function (data) {
+        console.log(data); // 异步请求回来的数据
+    });
+    console.log(123);
 
-            var sp = document.createElement('span');
-            sp.innerHTML = '采集';
-            oa.appendChild(sp);
 
-            var img = document.createElement('img');
-            img.src = cur.src;
-            // 获取随机高 220 - 350  130
-            img.style.height = Math.round(Math.random() * 130 + 220) + 'px';
-            oa.appendChild(img);
+//    getData(bindData);
+//    getData(function (data) {
+//        console.log(data);
+//           for (var i = 0; i < 50; i++) {
+//            var ind = Math.round(Math.random() * 8);
+//            var cur = data[ind];
+//            var oLi = document.createElement('li');
+//            var oa = document.createElement('a');
+//            oLi.appendChild(oa);
+//
+//            var sp = document.createElement('span');
+//            sp.innerHTML = '采集';
+//            oa.appendChild(sp);
+//
+//            var img = document.createElement('img');
+//            img.src = cur.src;
+//            // 获取随机高 220 - 350  130
+//            img.style.height = Math.round(Math.random() * 130 + 220) + 'px';
+//            oa.appendChild(img);
+//
+//            var op = document.createElement('p');
+//            op.innerHTML = cur.title;
+//            oa.appendChild(op);
+//
+//            // 根据ul高度进行排序
+//            arrUl.sort(function (a, b) {
+//                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+//            });
+//
+//            // 将创建的li插入到 高度最小的那一个ul里
+//            arrUl[0].appendChild(oLi);
+//        }
+//    });
 
-            var op = document.createElement('p');
-            op.innerHTML = cur.title;
-            oa.appendChild(op);
-
-            // 根据ul高度进行排序
-            arrUl.sort(function (a, b) {
-                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
-            });
-
-            // 将创建的li插入到 高度最小的那一个ul里
-            arrUl[0].appendChild(oLi);
-        }
-    }
+//    function bindData(data) {
+//        console.log(data);
+//        for (var i = 0; i < 50; i++) {
+//            var ind = Math.round(Math.random() * 8);
+//            var cur = data[ind];
+//            var oLi = document.createElement('li');
+//            var oa = document.createElement('a');
+//            oLi.appendChild(oa);
+//
+//            var sp = document.createElement('span');
+//            sp.innerHTML = '采集';
+//            oa.appendChild(sp);
+//
+//            var img = document.createElement('img');
+//            img.src = cur.src;
+//            // 获取随机高 220 - 350  130
+//            img.style.height = Math.round(Math.random() * 130 + 220) + 'px';
+//            oa.appendChild(img);
+//
+//            var op = document.createElement('p');
+//            op.innerHTML = cur.title;
+//            oa.appendChild(op);
+//
+//            // 根据ul高度进行排序
+//            arrUl.sort(function (a, b) {
+//                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+//            });
+//
+//            // 将创建的li插入到 高度最小的那一个ul里
+//            arrUl[0].appendChild(oLi);
+//        }
+//    }
 </script>
 </body>
 </html>
