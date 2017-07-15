@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 移动端必须要加的 -->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--快捷键 meta:vp Tab-->
+    <!--
+      width = device-width 视图宽度 设备宽度
+      user-scalable=no 是否允许用户缩放
+      initial-scale=1.0 初始缩放比例
+      maximum-scale=1.0 最大缩放比例
+      minimum-scale=1.0 最小缩放比例
+    -->
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        #newList li div:nth-child(1) {
+            position: absolute;
+            width: 80px;
+            height: 59px;
+        }
+
+        #newList li div:nth-child(1) img {
+            background: url("./images/default.jpg") no-repeat center;
+            background-size: 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        #newList li div:nth-child(2) {
+            margin-left: 90px;
+        }
+
+        #newList li div h3 {
+            font-size: 16px;
+            /* 单行省略 */
+            -ms-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        #newList li div p {
+            /* 多行省略 */
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<ul id="newList">
+
+</ul>
+<script type="text/javascript" src="../utils.js"></script>
+<script type="text/javascript">
+    var newList = document.getElementById('newList');
+    var oImgs = newList.getElementsByTagName('img');
+    // 获取数据
+    function getData(callBack) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', './news.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                typeof callBack === 'function' ? callBack(this.response) : null;
+            }
+        };
+        xhr.send();
+    }
+
+    getData(bindData);
+
+    // 数据绑定
+    function bindData(data) {
+        var str = '';
+        for (var i = 0; i < 15; i++) {
+            var ind = Math.round(Math.random() * 4);
+            var cur = data[ind];
+            str += '<li><a href= ' + cur.link + '>';
+            str += '<div><img real=' + cur.src + ' alt=""></div>';
+            str += '<div>';
+            str += '<h3>' + cur.title + '</h3><p>' + cur.text + '</p>';
+            str += '</div>';
+            str += '</a></li>';
+        }
+        newList.innerHTML += str;
+        delayImg(); // 首屏加载
+    }
+
+
+    // 延迟加载
+    var winH = utils.win('clientHeight');
+    window.onscroll = function () {
+        delayImg();
+        var sTop = utils.win('scrollTop');
+        var sHei = utils.win('scrollHeight');
+        if (sTop + winH >= sHei - 160) {
+            getData(bindData);
+        }
+    };
+
+    function delayImg() {
+        for (var i = 0; i < oImgs.length; i++) {
+            var cur = oImgs[i];
+            if (cur.flag) continue; // 避免重复加载
+            checkImg(cur); // 加载图片
+        }
+    }
+
+    function checkImg(img) {
+        var sTop = utils.win('scrollTop');
+        var imgH = img.offsetHeight;
+        var imgT = utils.offset(img).top;
+        if (winH + sTop >= imgH + imgT) {
+            var imgSrc = img.getAttribute('real');
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                console.log(123);
+                img.flag = true;
+                img.src = imgSrc;
+                temp = null;
+            };
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>
