@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #outer {
+            width: 100px;
+            margin: 0 auto;
+        }
+        #outer img {
+            width: 100px;
+            height: 100px;
+            background: url("./images/default.jpg") no-repeat center;
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <img  real="./images/1.jpeg" alt="">
+    <img  real="./images/2.jpeg" alt="">
+    <img  real="./images/3.jpeg" alt="">
+    <img  real="./images/4.jpeg" alt="">
+    <img  real="./images/5.jpeg" alt="">
+    <img  real="./images/6.jpeg" alt="">
+</div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" >
+    var outer = document.getElementById('outer');
+    var oImgs = outer.getElementsByTagName('img');
+    var winH = utils.win('clientHeight');
+    var sTop = null;
+    window.onscroll = function () {
+        sTop = utils.win('scrollTop');
+        delayImg();
+    };
+
+//    function delayImg() {
+//        for(var i = 0; i < oImgs.length; i++){
+//            var img = oImgs[i];
+//            if(img.flag) continue;
+//           ~function (img) {
+//               var curH = img.offsetHeight;
+//               var curT = utils.offset(img).top;
+//               if(sTop + winH >= curH + curT){
+//                   var imgSrc = img.getAttribute('real');
+//                   // 检测图片有效性
+//                   var temp = new Image;
+//                   temp.src = imgSrc;
+//                   temp.onload = function () {
+//                       console.log(123);
+//                       img.flag = true;
+//                       img.src = imgSrc;
+//                       temp = null;
+//                   };
+//
+//                   temp.onerror = function () {
+//                       img.flag = true;
+//                   }
+//               }
+//           }(img);
+//        }
+//    }
+
+
+    delayImg(); // 首屏加载
+
+    // 方式二
+    function delayImg() {
+        for(var i = 0; i < oImgs.length; i++){
+            var cur = oImgs[i];
+            if(cur.flag) continue;
+            checkImg(cur);
+        }
+    }
+    function checkImg(img) {
+    
+        var curH = img.offsetHeight;
+        var curT = utils.offset(img).top;
+        if(sTop + winH >= curH + curT){
+
+            var imgSrc = img.getAttribute('real');
+            // 检测图片有效性
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                console.log(132);
+                img.flag = true;
+                img.src = imgSrc;
+                temp = null;
+            };
+
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+</script>
+</body>
+</html>

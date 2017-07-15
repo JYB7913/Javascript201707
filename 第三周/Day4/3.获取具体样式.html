@@ -81,19 +81,19 @@
     //    console.log(window.getComputedStyle(outer, null)['width']);
     //    outer.currentStyle['width']
 
-//    outer.style.width = '800px';
+    //    outer.style.width = '800px';
 
     // 设置样式
     function setCss(curEle, attr, val) {
-        if(attr === 'opacity'){
+        if (attr === 'opacity') {
             curEle.style[attr] = val;
             // alpha(opacity=70)
-            curEle.style.filter = 'alpha(opacity='+val*100+')';
+            curEle.style.filter = 'alpha(opacity=' + val * 100 + ')';
             return;
         }
 
         // float  cssFloat(ff chrome) styleFloat(IE 低版本)
-        if(attr === 'float'){
+        if (attr === 'float') {
             curEle.style.cssFloat = val;
             curEle.style.styleFloat = val;
             return;
@@ -101,18 +101,59 @@
 
         // 自动补全单位 width height top left right bottom margin padding marginLeft marginTop...
         var reg = /^width|height|top|left|right|bottom|((margin|padding)(Left|Top|Right|Bottom)?)$/;
-        if(reg.test(attr)){
-            if(!isNaN(val)){
+        if (reg.test(attr)) {
+            if (!isNaN(val)) {
                 val += 'px';
             }
         }
         curEle.style[attr] = val;
-
     }
     setCss(outer, 'opacity', 0.5);
     setCss(outer, 'float', 'right');
-//    setCss(outer, 'width', '400px');
+    //  setCss(outer, 'width', '400px');
     setCss(outer, 'width', '600');
+
+    css(outer, {
+        width: '100px',
+        height: '200px',
+        background: 'red'
+    });
+
+    css(outer, 'opacity', 1);
+    function css(curEle, options, val) {
+        if (typeof options === 'object') {
+            for (var k in options) {
+                setCss(curEle, k, options[k]);
+            }
+//            Object.assign(curEle.style, options); // 合并style对象
+        }
+        setCss(curEle, options, val);
+    }
+
+    //    console.log(outer.style);
+    //   var obj1 = {id: 1, name: 'zhufeng'};
+    //   var obj2 = {id:2, say: 'nihao'};
+    //    var obj3 = Object.assign(obj1, obj2);
+    //    console.log(obj1);
+    //    console.log(obj2);
+    //
+    //    var obj4 = Object.assign({},obj2);
+    //
+    //     console.log(obj4);
+
+
+    //    Object.myAssign = function (obj1, obj2) {
+    //        for(var k in obj2){
+    //            obj1[k] = obj2[k];
+    //        }
+    //        return obj1;
+    //    };
+    //    var obj1 = {id: 1, name: 'zhufeng'};
+    //    var obj2 = {id:2, say: 'nihao'};
+    //    var obj3 = Object.myAssign(obj1, obj2);
+    //
+    //    console.log(obj3 === obj1);
+
 </script>
 </body>
 </html>
