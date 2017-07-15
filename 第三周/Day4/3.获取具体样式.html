@@ -17,8 +17,8 @@
             margin: 120px 0 0 200px;
             padding: 44px;
             border: 2px solid #fa4339;
-            opacity: 0.3;
-            filter: alpha(opacity=70);
+            /*opacity: 0.3;*/
+            /*filter: alpha(opacity=30);*/
         }
 
         #outer:after {
@@ -28,7 +28,7 @@
     </style>
 </head>
 <body>
-<div id="outer" style="width: 400px">
+<div id="outer" style="width: 200px">
 </div>
 <script type="text/javascript">
     var outer = document.getElementById('outer');
@@ -74,7 +74,45 @@
         return reg.test(val) ? parseFloat(val) : val;
     }
     // console.log(getCss(outer, 'opacity'));
-    console.log(getCss(outer, 'width'));
+    //    console.log(getCss(outer, 'width'));
+
+    // 只能获取样式
+    //    window.getComputedStyle(outer, null)['width']; // read-only
+    //    console.log(window.getComputedStyle(outer, null)['width']);
+    //    outer.currentStyle['width']
+
+//    outer.style.width = '800px';
+
+    // 设置样式
+    function setCss(curEle, attr, val) {
+        if(attr === 'opacity'){
+            curEle.style[attr] = val;
+            // alpha(opacity=70)
+            curEle.style.filter = 'alpha(opacity='+val*100+')';
+            return;
+        }
+
+        // float  cssFloat(ff chrome) styleFloat(IE 低版本)
+        if(attr === 'float'){
+            curEle.style.cssFloat = val;
+            curEle.style.styleFloat = val;
+            return;
+        }
+
+        // 自动补全单位 width height top left right bottom margin padding marginLeft marginTop...
+        var reg = /^width|height|top|left|right|bottom|((margin|padding)(Left|Top|Right|Bottom)?)$/;
+        if(reg.test(attr)){
+            if(!isNaN(val)){
+                val += 'px';
+            }
+        }
+        curEle.style[attr] = val;
+
+    }
+    setCss(outer, 'opacity', 0.5);
+    setCss(outer, 'float', 'right');
+//    setCss(outer, 'width', '400px');
+    setCss(outer, 'width', '600');
 </script>
 </body>
 </html>
