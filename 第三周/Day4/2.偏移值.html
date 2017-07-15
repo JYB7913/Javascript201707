@@ -10,7 +10,7 @@
         }
 
         #outer {
-            position: fixed;
+            position: absolute;
             width: 400px;
             height: 400px;
             background-color: #80ff45;
@@ -65,10 +65,35 @@
     //    console.log(outer.offsetParent);
     //    console.log(oDiv.offsetParent);
 
-    console.log(center.offsetLeft);
-    console.log(center.offsetParent);
+    //    console.log(center.offsetLeft);
+    //    console.log(outer.offsetParent); // body
+    //    console.log(oDiv.offsetParent); // outer
+    //    console.log(center.offsetParent); // oDiv
+    //    console.log(center.offsetLeft);
+    //    console.log(center.offsetLeft);
 
 
+    // 获取当前元素距离body的偏移值
+    function offset(curEle) {
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        var p = curEle.offsetParent;
+        while (p.nodeName !== 'BODY') { // 如果父级参照物不是body就继续查找
+            // IE8里面 偏移值 是默认包含父级参照物的边框
+//              "MSIE 9.0" "MSIE 8.0"
+             // 如果当前浏览器 不是 IE8 就需要我们 手动添加边框
+            if (navigator.userAgent.indexOf('MSIE 8.0') === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            
+            l += p.offsetLeft; // 累加父级参照物偏移值和边框\
+            t += p.offsetTop;
+            p = p.offsetParent; // 继续查找父级参照物
+        }
+        return {left: l, top: t};
+    }
+    offset(center);
 </script>
 </body>
 </html>

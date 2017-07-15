@@ -37,6 +37,7 @@
 
     // 7.scrollWidth
     // 8.scrollHeight
+
     // 获取一屏宽高
     var winW = document.documentElement.clientWidth || document.body.clientWidth;
     var winH = document.documentElement.clientHeight || document.body.clientHeight;
@@ -55,15 +56,31 @@
     /* window.onscroll = function () {
          var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
          console.log(contextW === winW + sLeft);
-
      }
-*/
+   */
+
     //     document.body.scrollLeft
 
 
     // 9.scrollTop 纵向滚动条滚出去的距离 可读可写 当它最大值的时候（总共溢出的部分）
     // 10.scrollLeft 横向滚动条滚出去的距离 可读可写 当它最大值的时候（总共溢出的部分）
 
+
+    // 获取一些关于document的盒模型属性
+    var winH = document.documentElement.clientWidth || document.body.clientWidth;
+
+    function win(attr, val) {
+        // arguments.length === 1
+        if(typeof val === 'undefined'){
+            return document.documentElement[attr]|| document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+
+//    setTimeout(function () {
+//        win('scrollTop', 300); // 滚动条要等页面加载完 才会出现 这时才能设置
+//    }, 100);
 
 </script>
 </body>
