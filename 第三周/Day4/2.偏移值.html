@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background-color: #80ff45;
+            margin: 120px 0 0 200px;
+            padding: 44px;
+            box-sizing: border-box;
+        }
+
+        #oDiv {
+            position: relative;
+            /*position: absolute;*/
+            /*position: fixed;*/
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            padding: 10px;
+            border: 3px solid black;
+        }
+
+        #center {
+            width: 200px;
+            height: 200px;
+            margin: 44px;
+            background-color: #3b55ff;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="oDiv">
+        <div id="center"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    var outer = document.getElementById('outer');
+    var center = document.getElementById('center');
+
+    // 左偏移offsetLeft  当前元素 左边框外边 距离父级参照物 左边位置距离
+    //    console.log(oDiv.offsetLeft);
+    //    console.log(center.offsetLeft);
+    // 上偏移offsetTop  当前元素 上边框外边 距离父级参照物 上边位置距离
+    //    console.log(oDiv.offsetTop);
+    //    console.log(center.offsetTop);
+
+    // offsetParent 父级参照物 主流浏览器 父级参照物默认 是body
+    //  IE 6 - 7 父级参照物 就是 父级节点
+    // offsetParent 可以通过 position （relative/absolute/fixed） 改变
+    //  console.log(oDiv.offsetParent);
+    //    console.log(outer.offsetParent);
+    //    console.log(oDiv.offsetParent);
+
+    console.log(center.offsetLeft);
+    console.log(center.offsetParent);
+
+
+</script>
+</body>
+</html>

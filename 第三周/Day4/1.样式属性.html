@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            width: 1100px;
+            height: 1100px;
+            background-color: red;
+            margin-left: 30px;
+            padding: 10px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    // 盒模型属性
+    // 1.clientWidth 内容宽度+左右padding
+    // 2.clientHeight 内容高度+上下padding
+    //     console.log(oDiv.clientWidth);
+    //     console.log(oDiv.clientHeight);
+
+    // 3.clientLeft  左边框
+    // 4.clientTop 上边框
+    //     console.log(oDiv.clientLeft);
+    //     console.log(oDiv.clientTop);
+
+    // 5.offsetWidth clientWidth + 左右边框
+    // 6.offsetHeight clientHeight + 上下边框
+    //     console.log(oDiv.offsetWidth);
+    //     console.log(oDiv.offsetHeight);
+
+
+    // 7.scrollWidth
+    // 8.scrollHeight
+    // 获取一屏宽高
+    var winW = document.documentElement.clientWidth || document.body.clientWidth;
+    var winH = document.documentElement.clientHeight || document.body.clientHeight;
+
+    var contextH = document.documentElement.scrollHeight || document.body.scrollHeight;
+    var contextW = document.documentElement.scrollWidth || document.body.scrollWidth;
+
+    var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    // scrollHeight === clientHeight + scrollTop(最大值)
+    // scrollWidth === clientWidth + scrollLeft(最大值)
+    // 有些浏览器里 稍微有一点偏差
+    //    console.log(contextH === winH + sTop);
+
+
+    /* window.onscroll = function () {
+         var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+         console.log(contextW === winW + sLeft);
+
+     }
+*/
+    //     document.body.scrollLeft
+
+
+    // 9.scrollTop 纵向滚动条滚出去的距离 可读可写 当它最大值的时候（总共溢出的部分）
+    // 10.scrollLeft 横向滚动条滚出去的距离 可读可写 当它最大值的时候（总共溢出的部分）
+
+
+</script>
+</body>
+</html>
