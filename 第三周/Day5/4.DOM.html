@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li id="li1">11</li>
+    <li>22</li>
+    <li id="li3">33</li>
+    <li id="li4">44</li>
+</ul>
+<script type="text/javascript">
+    // prev children next prevAll nextAll
+    //
+    var list = document.getElementById('list');
+    console.log(list.children);
+    //    console.log(list.childNodes);
+
+    // 1.获取所有子元素
+    //    function children(curEle) {
+    //        var childNodes = curEle.childNodes;
+    //        var eles = [];
+    //        for (var i = 0; i < childNodes.length; i++) {
+    //            var node = childNodes[i];
+    //            if (node.nodeType === 1) {
+    //                eles[eles.length] = node;
+    //            }
+    //        }
+    //        return eles;
+    //    }
+
+    //    function children(curEle) {
+    //        var childNodes = curEle.childNodes;
+    //        var eles = [];
+    //        var n = 0;
+    //        var ele = childNodes[n];
+    //        while (ele){
+    //            if(ele.nodeType === 1){
+    //                eles[eles.length] = ele;
+    //            }
+    //            ele = childNodes[++n];
+    //        }
+    //        return eles;
+    //    }
+    //
+    //    console.log(children(list));
+
+
+    // prev
+    var li1 = document.getElementById('li1');
+    var li3 = document.getElementById('li3');
+    //    console.log(li3.previousElementSibling);
+    //    console.log(li3.previousSibling);
+    function prev(curEle) {
+        var p = curEle.previousSibling;
+        while (p && p.nodeType !== 1) {
+            p = p.previousSibling;
+        }
+        return p;
+    }
+    //   console.log(prev(li3));
+
+    // prevAll
+    //   function prevAll(curEle) {
+    //       var p = curEle.previousSibling;
+    //       var all = [];
+    //       while (p){
+    //           if(p.nodeType === 1){
+    //               all.unshift(p);
+    //           }
+    //           p = p.previousSibling;
+    //       }
+    //       return all;
+    //   }
+
+    function prevAll(curEle) {
+        var p = prev(curEle);
+        var all = [];
+        while (p) {
+            all.unshift(p);
+            p = prev(p);
+        }
+        return all;
+    }
+    //    console.log(prevAll(li3));
+
+
+    // next nextAll
+    //    console.log(li1.nextElementSibling);
+    //    console.log(li1.nextSibling);
+    function next(curEle) {
+        var n = curEle.nextSibling;
+        while (n && n.nodeType !== 1) {
+            n = n.nextSibling;
+        }
+        return n;
+    }
+    //    console.log(next(li1));
+
+
+    function nextAll(curEle) {
+        var n = next(curEle);
+        var all = [];
+        while (n) {
+            all[all.length] = n;
+            n = next(n);
+        }
+        return all;
+    }
+    //    console.log(nextAll(li1));
+
+
+    // sibling 上下相邻的两个兄弟
+    function sibling(curEle) {
+        var p = prev(curEle);
+        var n = next(curEle);
+        var eles = [];
+        p && eles.push(p);
+        n && eles.push(n);
+        return eles;
+    }
+    //    console.log(sibling(li3));
+
+    // siblings 所有的兄弟
+    function siblings(curEle) {
+        return prevAll(curEle).concat(nextAll(curEle));
+    }
+    //    console.log(siblings(li3));
+
+    // index 索引 有几个哥哥索引就是几
+    function index(curEle) {
+        return prevAll(curEle).length
+    }
+    //    console.log(index(li3));
+
+    // 获取第一个子元素
+    //    console.log(list.firstElementChild);
+    //    console.log(list.firstChild);
+        function first(container) {
+            var first = container.firstChild;
+            while (first && first.nodeType !== 1){
+                first = first.nextSibling
+            }
+            return first
+        }
+
+//    function first(container) {
+//        var first = container.firstChild;
+//        if (first && first.nodeType !== 1) {
+//            first = next(first);
+//        }
+//        return first
+//    }
+//    console.log(first(list));
+
+
+    // 获取最后一个子元素
+//    console.log(list.lastElementChild);
+//    console.log(list.lastChild);
+//    function last(contianer) {
+//        var last = contianer.lastChild;
+//        while (last && last.nodeType !== 1){
+//            last = last.previousSibling;
+//        }
+//        return last;
+//    }
+
+//    function last(contianer) {
+//        var last = contianer.lastChild;
+//        if (last && last.nodeType !== 1){
+//            last = prev(last);
+//        }
+//        return last;
+//    }
+//    console.log(last(list));
+
+
+    // prepend 将元素插入到指定容器 开头
+    var li6 = document.createElement('li');
+    li6.innerHTML = 666;
+    function prepend(newEle, container) {
+         var one = first(container);
+         if(one){
+             container.insertBefore(newEle, one);
+             return;
+         }
+         container.appendChild(newEle);
+    }
+//    prepend(li3, list);
+
+    // insertAfter 将元素插入到另一个元素的 后面
+    var li4 = document.getElementById('li4');
+    function insertAfter(newEle, oldEle) {
+        var n = next(oldEle);
+        var par = oldEle.parentNode;
+        if(n){
+            par.insertBefore(newEle, n);
+            return;
+        }
+        par.appendChild(newEle);
+    }
+    insertAfter(li1, li4);
+
+</script>
+</body>
+</html>

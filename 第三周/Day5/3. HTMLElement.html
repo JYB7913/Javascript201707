@@ -19,6 +19,7 @@
             color: #3b55ff;
             font-size: 24px;
         }
+
         .li4 {
             color: #81fff2;
             font-size: 34px;
@@ -41,11 +42,11 @@
      * @param cn 指定类名
      * @returns {boolean} true false
      */
-   HTMLElement.prototype.hasClass = function (cn) {
+    HTMLElement.prototype.hasClass = function (cn) {
         return new RegExp('\\b' + cn + '\\b').test(this.className);
     };
 
-//    console.log(oDiv.hasClass('li3'));
+    //    console.log(oDiv.hasClass('li3'));
 
 
     /**
@@ -66,7 +67,7 @@
         return this;
     };
 
-//    console.log(oDiv.addClass('li3').hasClass('li3'));
+    //    console.log(oDiv.addClass('li3').hasClass('li3'));
 
     /**
      * removeClass 移除类名
@@ -75,7 +76,7 @@
      */
     HTMLElement.prototype.removeClass = function (cn) {
         var list = cn.myTrim().split(/ +/);
-        for(var i = 0; i < list.length; i++){
+        for (var i = 0; i < list.length; i++) {
             cn = list[i];
             if (this.hasClass(cn)) {
                 var reg = new RegExp('(^| +)' + cn + '( +|$)');
@@ -86,18 +87,18 @@
         return this;
     };
 
-//    oDiv.removeClass('li1 li2');
+    //    oDiv.removeClass('li1 li2');
 
     /**
      * toggle 切换类名
      * @param curEle 当前元素
      * @param cn 指定类名
      */
-    HTMLElement.prototype.toggle= function (cn) {
+    HTMLElement.prototype.toggle = function (cn) {
         var list = cn.myTrim().split(/ +/);
-        for(var i = 0; i < list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
             cn = list[i];
-            this.hasClass(cn)? this.removeClass(cn) : this.addClass(cn);
+            this.hasClass(cn) ? this.removeClass(cn) : this.addClass(cn);
         }
         return this;
     };
