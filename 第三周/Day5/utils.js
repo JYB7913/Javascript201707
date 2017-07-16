@@ -24,8 +24,11 @@ var utils = (function () {
             return document.documentElement[attr] || document.body[attr]
         }
         // 设置
-        document.documentElement[attr] = val;
-        document.body[attr] = val;
+        if(typeof val === 'number'){
+            document.documentElement[attr] = val;
+            document.body[attr] = val;
+        }
+
     }
 
     // 获取元素距离body的偏移

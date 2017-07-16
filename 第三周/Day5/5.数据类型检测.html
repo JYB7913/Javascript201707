@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // typeof 检测基本数据类型 处理判断值 
+    //    console.log(typeof  123);
+    //    console.log(typeof  null);
+    //    console.log(typeof  []);
+    //    console.log(typeof  undefined);
+    //    console.log(typeof  true);
+    //    console.log(typeof  Function);
+    //    console.log(typeof  '');
+    // number object string boolean undefined function
+
+    // 缺陷 无法细分object下的类型 Array RegExp...
+    //    console.log(typeof  []);
+    //    console.log(typeof  /\d/);
+    //    console.log(typeof typeof typeof []);
+
+
+    // instanceof 检测一个实例是否属于这个类 根据 这个类的原型是否出现在这个实例对象的原型链上 如果出现 true
+    // Array Number Boolean String Object Date RegExp...
+
+
+//    console.log([] instanceof Array);
+//    console.log([] instanceof Object);
+
+    //      Array.prototype.__proto__ = RegExp.prototype;
+
+    //      [].__proto__ = Array.prototype.__proto__ = RegExp.prototype;
+    //      console.log([] instanceof RegExp); // true
+    //      console.log(/\d/ instanceof RegExp);
+
+    // 不可以直接检测基本数据类型
+    //    var num = 11.1231;
+    //    var num2 = new Number(10.4455);
+    //     console.log(num instanceof Number);
+    //     console.log(num2 instanceof Number);
+    //    console.log(num.toFixed(3));
+    //    console.log(num2.toFixed(2));
+
+    //    Number.prototype.say = function () {
+    //        console.log(this);
+    //      console.log('say');
+    //    };
+    //    num.say()
+
+//    var str = new String('123')
+//    console.log('123' instanceof String);
+//    console.log(str instanceof String);
+//    console.log(str instanceof Object);
+
+    //    console.log('123'.slice(1));
+
+
+    // constructor 指向可能被我们修改 所以 通过构造函数判断 是不准确
+//    var arr = [];
+//    console.log(arr.constructor === Array);
+//    var reg = /\d/;
+//    console.log(reg.constructor === RegExp);
+//
+//    function Fn() {
+//
+//    }
+//    Fn.__proto__ = RegExp.prototype;
+
+//    console.log(Fn.__proto__ === Function.prototype);
+//    console.log(Fn.constructor);
+//    console.log(typeof Fn);
+//    Fn.prototype = {
+//        constructor: Array
+//    };
+//    var f = new Fn;
+//    console.log(f.constructor);
+//    console.log(f);
+
+
+    // Object.prototype.toString.call()
+
+    // Array.prototype.toString 将数组转化成字符串
+    console.log([123].toString());
+    // String.prototype.toString 转化成字符串
+    console.log(('nihao').toString());
+    // Number.prototype.toString 将数字转化成字符串
+    console.log((12).toString());
+    // 将前面数字（十进制）转换成指定进制 返回值都是字符串形式的  must be between 2 and 36
+    (12).toString(2); // 转化成二进制 0000 1100
+    (12).toString(16);// 转化成十六进制 c
+    // Date.prototype.toString 转化为时间字符串
+    var now = new Date();
+    console.log(typeof now); // 'object'
+    console.log(typeof now.toString()); // 转化为时间字符串
+    console.log(typeof now.toLocaleDateString());
+
+    // Object.prototype.toString 返回的是this对象类型信息
+    var obj = {};
+    console.log(typeof obj.toString()); // [object Object]
+
+//    console.log(Object.prototype.toString.call([])); // [object Array]
+
+
+//    console.log([].__proto__.__proto__.toString());
+
+
+    function fn() {
+        console.log(typeof arguments); // 'object'
+       console.log(arguments); // [object Arguments]
+       console.log(arguments.toString());
+    }
+    fn();
+    // [object Number] 检测实例类型 object 固定  第二个 这个值所属类型的信息
+//    console.log(Object.prototype.toString.call(1234));
+//    console.log(Object.prototype.toString.call(/\d/)); // [object RegExp]
+//    console.log(Object.prototype.toString.call(null)); // [object Null]
+//    console.log(Object.prototype.toString.call(undefined)); // [object Undefined]
+    //    console.log(Object.prototype.toString.call([])); // [object Array]
+    //    console.log(Object.prototype.toString.call(new Date)); // [object Date]
+
+    // 检测数据类型
+    function isType(val) {
+//        [object Date]
+        var str = Object.prototype.toString.call(val); // 'array' 'regexp' 'number'
+        var reg = /\[object ([a-zA-Z]+)\]/;
+        return reg.exec(str)[1].toLowerCase();
+    }
+    //    console.log(isType(''));
+    //    console.log(isType(new Date));
+    //    console.log(isType(Math));
+
+
+    function f() {
+
+    }
+    f.prototype = RegExp.prototype;
+   var fe = new f
+
+    console.log(fe);
+    console.dir(new RegExp('\\d'));
+</script>
+</body>
+</html>
