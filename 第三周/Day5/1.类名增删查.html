@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li class="li3 li1">11</li>
+    <li class="li2 li1 li3">22</li>
+    <li class="li3">33</li>
+    <li class="li1 li3 li2">44</li>
+    <li class="li1 li2">55</li>
+</ul>
+<div class="li1 li2"></div>
+<script type="text/javascript">
+    var list = document.getElementById('list');
+    var li3 = list.getElementsByClassName('li3');
+    //    console.log(document.body.getElementsByTagName('*'));
+    //    console.log(li3);
+
+    //    function getByClass(cn, context) {
+    //         context = context || document; // 处理上下文
+    //         var eles = context.getElementsByTagName('*'); // 获取所有元素
+    //         var reg = new RegExp('\\b'+cn+'\\b');
+    //         var arr = [];
+    //         for(var i = 0; i < eles.length; i++){
+    //             var cur = eles[i];
+    //             reg.test(cur.className)? arr[arr.length] = cur : null;
+    //         }
+    //         return arr;
+    //    }
+    //    console.log(getByClass('li1'));
+
+
+    String.prototype.myTrim = function () {
+        var reg = /^\s+|\s+$/g;
+        return this.replace(reg, '');
+    };
+
+    //    var str3 = '  li1  li2 li3  '.myTrim();
+
+    //    var str3 = '  li1  li2 li3  '.replace(reg, function () {
+    //        console.log(arguments);
+    //        return 'nihao-'
+    //    });
+
+    //    function getByClass(cn, context) {
+    //        context = context || document;
+    //        var eles = context.getElementsByTagName('*');
+    //        // 将类名拆分成数组
+    //        var classArr = cn.myTrim().split(/ +/);
+    //
+    //        for (var i = 0; i < classArr.length; i++) {
+    //            var cn = classArr[i];
+    //            var reg = new RegExp('\\b' + cn + '\\b'); // /\bli1\b/
+    //            var arr = [];
+    ////            console.log(eles); // 每次的筛选范围
+    //            for(var j = 0; j < eles.length; j++){
+    //                var cur = eles[j];
+    //                reg.test(cur.className)? arr[arr.length] = cur : null
+    //            }
+    //            eles = arr; // 每次匹配的集合 作为下一次筛选范围
+    //            console.log(arr);
+    ////           第一次 将所有包含li1 [li.li3.li1, li.li2.li1.li3, li.li1.li3.li2, li.li1.li2]
+    ////            第二次 从所有包含li1的集合里 将同时包含li2的 获取到 [li.li2.li1.li3, li.li1.li3.li2, li.li1.li2]
+    //
+    ////            console.log(arr); // 第一次 包含li1  第二次 包含li1和li2 第三次 li1 li2 li3
+    //        }
+    //
+    //        return arr;
+    //    }
+
+
+    //    console.log(getByClass('li1 li2'));
+    //
+    //
+    //    var str1 = 'li1 li2 li3';
+    //    var str2 = 'li3 li4';
+    //
+    //    var cn = 'li4';
+    //    var reg = /\bcn\b/;
+    //
+    //    var reg1 = new RegExp('\\b' + cn + '\\b');
+    //    console.log(reg1.test(str2));
+
+    function getByClass(cn, context) {
+        context = context || document;
+        var eles = context.getElementsByTagName('*');
+        var classList = cn.myTrim().split(/ +/);
+        for (var i = 0; i < classList.length; i++) {
+            var cur = classList[i];
+            var reg = new RegExp('\\b' + cur + '\\b');
+            var arr = [];
+            for (var j = 0; j < eles.length; j++) {
+                var ele = eles[j];
+                reg.test(ele.className) ? arr[arr.length] = ele : null;
+            }
+            eles = arr; // 设置筛选范围
+        }
+        return arr;
+    }
+
+    console.log(getByClass('li1   li2', list));
+</script>
+</body>
+</html>
