@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .li1 {
+            width: 150px;
+            border: 1px solid black;
+            background-color: green;
+        }
+
+        .li2 {
+            height: 200px;
+            background-color: red;
+        }
+
+        .li3 {
+            color: #3b55ff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<!--<ul id="list">-->
+<!--<li class="li3 li1">11</li>-->
+<!--<li class="li2 li1 li3">22</li>-->
+<!--<li class="li3">33</li>-->
+<!--<li class="li1 li3 li2">44</li>-->
+<!--<li class="li1 li2">55</li>-->
+<!--</ul>-->
+<button id="btn">btn</button>
+<div id="oDiv" class="li2    li1">1231</div>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    var btn = document.getElementById('btn');
+
+
+    //    var list = document.getElementById('list');
+    //    var li3 = list.getElementsByClassName('li3');
+    //    oDiv.className += ' li2'
+
+    // es5 提供新API 不兼容IE
+    //    oDiv.classList.add('li2', 'li1'); // 增加类名
+    //    oDiv.classList.remove('li1', 'li2'); // 移除类名
+    // 切换类名
+    //    btn.onclick = function () {
+    //        oDiv.classList.toggle('li2'); // 切换类名 有就移除 无就增加
+    //    }
+    //    console.log(oDiv.classList.contains('li2')); //是否包含指定类名
+    //    oDiv.classList.add('li2', 'li1');
+    String.prototype.myTrim = function () {
+        var reg = /^\s+|\s+$/g;
+        return this.replace(reg, '');
+    };
+
+    // hasClass 是否包含指定类名
+    function hasClass(curEle, cn) {
+        return new RegExp('\\b' + cn + '\\b').test(curEle.className)
+    }
+    //    console.log(hasClass(oDiv, 'li3'));
+
+
+    // addClass 增加类名
+    function addClass(curEle, cn) {
+        var list = cn.myTrim().split(/ +/); // 将指定类名拆分成数组
+        for (var i = 0; i < list.length; i++) { // 一个一个进行检测添加
+            cn = list[i];
+//            !hasClass(curEle, cn) ? curEle.className += ' ' + cn : null;
+            if(!hasClass(curEle, cn)){
+                var str = curEle.className.myTrim();
+                str += ' ' + cn;
+                curEle.className = str.replace(/ +/g, ' ');
+            }
+        }
+    }
+    //    addClass(oDiv, 'li2 li3');
+
+    // removeClass 移除类名
+    function removeClass(curEle, cn) {
+        var list = cn.myTrim().split(/ +/);
+        for (var i = 0; i < list.length; i++) {
+            cn = list[i];
+            if (!hasClass(curEle, cn)) continue; // 检测下当前要移除的类名是否存在
+            var reg = new RegExp('(^| +)' + cn + '( +|$)');
+//         var reg = new RegExp('\\b'+cn+'\\b');
+            var str = curEle.className.replace(reg, ' ').myTrim(); // 移除指定类名并且去除首尾空格
+            curEle.className = str.replace(/ +/g, ' '); // 去除多余空格 保证类名格式规范
+        }
+    }
+
+    //    removeClass(oDiv, 'li2 li3');
+
+    // toggle 切换类名
+    function toggle(curEle, cn) {
+        var list = cn.myTrim().split(/ +/);
+        for (var i = 0; i < list.length; i++) {
+            cn = list[i];
+            hasClass(curEle, cn) ? removeClass(curEle, cn) : addClass(curEle, cn);
+        }
+    }
+    toggle(oDiv, 'li3');
+
+
+    //    var reg = new RegExp('(^| +)li2( +|$)', 'g');
+    //    var reg = new RegExp('\\bli3\\b', 'g');
+    //    var str = 'li1    li2';
+    //    console.log(reg.exec(str));
+
+    //    var cn = 'li1';
+    //    var reg = new RegExp('\\b'+cn+'\\b', 'g');
+    //    console.log(str.replace(reg, ''));
+
+</script>
+</body>
+</html>
