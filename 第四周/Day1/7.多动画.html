@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    function Linear(c, d, t, b) {
+        return c / d * t + b;
+    }
+
+    // 总时间
+    var duration = 1500;
+
+    /**
+     * left
+     * @type {number}
+     */
+    // 最大left值 目标位置
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+    // 起始位置
+    var beginLeft = utils.getCss(oDiv, 'left');
+    // 总运动距离 = 目标位置 - 起始位置
+    var changeLeft = maxLeft - beginLeft;
+
+    /**
+     * top
+     * @type {number}
+     */
+    // 目标位置
+    var maxTop = utils.win('clientHeight') - oDiv.offsetHeight;
+    // 起始位置
+    var beginTop = utils.getCss(oDiv, 'top');
+    // 总运动距离（变化值）
+    var changeTop = maxTop - beginTop;
+
+
+    /**
+     * opacity
+     * @type {number}
+     */
+    // 目标值
+    var maxOp = 1;
+    // 起始值
+    var beginOp = utils.getCss(oDiv, 'opacity');
+    // 变化值
+    var changeOp = maxOp - beginOp;
+
+
+
+    var interval = 10;
+
+    var timer = null; // 记录当前时间
+
+    var curLeft, curTop, curOp;
+    oDiv.timer = setInterval(function () {
+        timer += interval; // 记录当前花费的时间
+        if(timer >= duration) { // 边界判断
+            utils.css(oDiv, 'left', maxLeft); // 修正为目标值
+            utils.css(oDiv, 'top', maxTop); // 修正为目标值
+            utils.css(oDiv, 'opacity', maxOp);
+            clearInterval(oDiv.timer); // 结束动画
+            return;
+        }
+        curLeft = Linear(changeLeft, duration, timer, beginLeft); // timer时间 所在left位置是多少
+        curTop = Linear(changeTop, duration, timer, beginTop);
+        curOp = Linear(changeOp, duration, timer, beginOp);
+        utils.css(oDiv, 'left', curLeft); // 将Linear计算出的结果 设置为此时的left值
+        utils.css(oDiv, 'top', curTop);
+        utils.css(oDiv, 'opacity', curOp);
+    }, interval);
+
+
+
+
+    animate(oDiv, {
+        left: 800,
+        top: 800,
+        opacity: 1
+    }, 2000)
+</script>
+</body>
+</html>

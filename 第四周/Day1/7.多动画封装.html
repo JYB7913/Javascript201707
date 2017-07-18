@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.3;
+            filter: alpha(opacity=0);
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+
+    /**
+     * Linear 匀速运动
+     * @param c 变化值
+     * @param d 过渡时间
+     * @param t 当前时间
+     * @param b 起始值
+     * @returns {*}
+     *
+     */
+    function Linear(c, d, t, b) {
+        return c / d * t + b;
+    }
+
+
+    /**
+     * animate 动画
+     * @param curEle 目标元素（执行动画的元素）
+     * @param target 目标参数对象
+     * @param duration 过渡时间
+     * @param callback 动画结束的回调
+     */
+    function animate(curEle, target, duration, callback) {
+
+        if (typeof duration === 'function') {
+            callback = duration;
+            duration = 2000;
+        } else if (!duration) {
+            duration = 2000;
+        }
+        // 处理默认过渡时间
+        // 变化值 = 目标值 - 起始值
+        var begin = {}; // 保存相应属性 起始值
+        var change = {}; // 保存相应属性 变化值
+        for (var k in target) {
+            begin[k] = utils.getCss(curEle, k); // 计算出相应属性的 起始值
+//          begin['top'] = utils.getCss(oDiv, 'top');
+            change[k] = target[k] - begin[k]; // 计算出相应属性的 变化值
+//          change['top'] = target['top'] - begin['top']
+        }
+
+        var interval = 10; // 单位时间
+        var timer = null; // 记录当前时间
+        var curVal;
+        curEle.timer = setInterval(function () {
+            timer += interval;
+            if (timer >= duration) { // 边界判断
+                utils.css(curEle, target); // 批量设置目标值
+                clearInterval(curEle.timer); // 动画结束
+                typeof callback === 'function' ? callback.call(curEle) : null;
+                return;
+            }
+            for (var k in target) {
+                curVal = Linear(change[k], duration, timer, begin[k]);
+                utils.css(curEle, k, curVal);
+            }
+        }, interval);
+    }
+
+    animate(oDiv, {
+        left: 400,
+        top: 400,
+        opacity: 0.8,
+        width: 150,
+        height: 150
+    }, 2000, function () {
+        console.log(this);
+        animate(this, {
+            left: 100,
+            top: 100
+        }, 1000)
+    });
+</script>
+</body>
+</html>

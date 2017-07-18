@@ -17,7 +17,8 @@
             height: 100px;
             background-color: red;
         }
-        button{
+
+        button {
             width: 60px;
             height: 30px;
             text-align: center;
@@ -54,28 +55,27 @@
         move(maxLeft);
     };
 
-//    var timer; // 定时器共享问题
+    //    var timer; // 定时器共享问题
     function move(target) {
         clearInterval(oDiv.timer); // 预防动画累积 先清除当前动画 再执行新动画
         oDiv.timer = setInterval(function () {
             var curLeft = utils.getCss(oDiv, 'left');
-            if(curLeft < target){ // 向右走 右边目标值 target（maxLeft）
+            if (curLeft < target) { // 向右走 右边目标值 target（maxLeft）
                 curLeft += step;
-                if(curLeft >= target){
+                if (curLeft >= target) {
                     utils.css(oDiv, 'left', target);
                     clearInterval(oDiv.timer);
                     return;
                 }
-            } else if(curLeft > target){ // 向左走 左边目标值 target（minLeft）
-                curLeft-= step;
+            } else if (curLeft > target) { // 向左走 左边目标值 target（minLeft）
+                curLeft -= step;
             } else {
-                if(curLeft <= target) {
+                if (curLeft <= target) {
                     utils.css(oDiv, 'left', target);
                     clearInterval(oDiv.timer);
                     return;
                 }
             }
-
             utils.css(oDiv, 'left', curLeft);
         }, 10);
     }
