@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    // 总时间
+    var duration = 2000;
+
+    // 起始位置
+    var begin = utils.getCss(oDiv, 'left');
+
+    // 总移动距离
+    var winH = utils.win('clientWidth');
+    var change = winH - oDiv.offsetWidth - begin;
+
+    // 最大的left值
+    var maxLeft = winH - oDiv.offsetWidth;
+
+    var interval = 10;
+
+    var timer = 0; // 记录当前时间
+
+    var curLeft;
+    oDiv.timer = setInterval(function () {
+        timer += interval; // 记录当前时间
+        if(timer >= duration){
+            utils.css(oDiv, 'left', maxLeft);
+            clearInterval(oDiv.timer);
+            return;
+        }
+        curLeft = linear(change, duration, timer, begin); // 得到每次要设置的left值 计算出当前时间 的left值 是多少
+
+        utils.css(oDiv, 'left', curLeft);
+    }, interval);
+
+
+    // 平均速度
+    // 总路程/总时间 = 当前路程/当前时间
+    // 总路程/当前路程 = 总时间/当前时间
+
+    // 当前路程（此时在起始位置基础上 应该在继续累加多少left）
+    // 当前路程 = 总路程/总时间 * 当前时间
+
+    // 此时最终left = 当前路程（当前要增加的left值） + begin(起始的left值)
+
+    //    此时的left = change/duration * timer + begin
+
+    // c / d * t 当前时间t需要增加的left
+    function linear(c, d, t, b) { // 根据 当前时间计算出 此时left值应该是多少
+        return c / d * t + b; // 当前时间 最终的left值
+    }
+
+</script>
+</body>
+</html>

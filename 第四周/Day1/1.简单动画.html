@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+
+    // 匀速运动
+    var duration = 2000; // 总时间
+
+    // 起始位置
+    var begin = utils.getCss(oDiv, 'left');
+
+    // 总移动距离(在起始位置基础上 总共要移动的距离) = 一屏宽度 - 盒子自身宽 - 起始位置
+    var change = utils.win('clientWidth') - oDiv.offsetWidth - begin;
+
+    console.log(change);
+    // 速度 总移动距离/总时间
+    var speed = change/duration; // 每毫秒
+    // 每10毫秒的速度 15 * speed
+    var step = speed * 15;
+    // 定时器最小执行时间 10 15
+    var curLeft; // 当前偏移值
+    oDiv.timer = setInterval(function () { // 让盒子每10毫秒移动多少距离
+        curLeft = utils.getCss(oDiv, 'left');
+        curLeft += step;
+        if(curLeft >= change + begin){ // 边界判断
+            utils.setCss(oDiv, 'left', change + begin); // 不能保证累加的刚好等于total 最终需要修正 为 total
+            clearInterval(oDiv.timer);
+            return;
+        }
+        utils.setCss(oDiv, 'left', curLeft);
+    }, 15);
+
+    // change + begin (最大left值)
+</script>
+</body>
+</html>

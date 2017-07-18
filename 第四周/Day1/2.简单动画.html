@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    // 根据累加 平均速度 实现动画
+    var oDiv = document.getElementById('oDiv');
+    // 总时间 单位毫秒
+    var duration = 2000;
+    // 起始位置 当前left值
+    var begin = utils.getCss(oDiv, 'left');
+    // 总移动距离（要走路程） = 一屏 - 起始位置 - 自身宽
+    var change = utils.win('clientWidth') - oDiv.offsetWidth - begin;
+    // 盒子到达终点后 最大的left值
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+    //    var maxLeft = change + begin;
+    //    console.log(maxLeft1, maxLeft2);
+    // 速度
+    var speed = change / duration; // 每毫秒的速度
+    var step = speed * 10; // 每10毫秒的速度
+
+    var curLeft;
+    oDiv.timer = setInterval(function () {
+        curLeft = utils.getCss(oDiv, 'left'); // 每一次获取到当前的left
+        curLeft += step; // 每次当前left值累加 速度
+        if (curLeft >= maxLeft) { // 判断每次累加后的left值 是否已经超出最大的left值（如果大于maxLeft说明已经到达终点了）
+            utils.css(oDiv, 'left', maxLeft); // 修正为最大值
+            clearInterval(oDiv.timer); // 结束动画
+            return;
+        }
+        utils.css(oDiv, 'left', curLeft);
+    }, 10);
+
+
+</script>
+</body>
+</html>
