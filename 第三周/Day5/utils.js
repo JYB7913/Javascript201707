@@ -24,7 +24,7 @@ var utils = (function () {
             return document.documentElement[attr] || document.body[attr]
         }
         // 设置
-        if(typeof val === 'number'){
+        if (typeof val === 'number') {
             document.documentElement[attr] = val;
             document.body[attr] = val;
         }
@@ -188,7 +188,7 @@ var utils = (function () {
      */
     function removeClass(curEle, cn) {
         var list = cn.myTrim().split(/ +/);
-        for(var i = 0; i < list.length; i++){
+        for (var i = 0; i < list.length; i++) {
             cn = list[i];
             if (hasClass(curEle, cn)) {
                 var reg = new RegExp('(^| +)' + cn + '( +|$)');
@@ -205,10 +205,186 @@ var utils = (function () {
      */
     function toggle(curEle, cn) {
         var list = cn.myTrim().split(/ +/);
-        for(var i = 0; i < list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
             cn = list[i];
-            hasClass(curEle, cn)? removeClass(curEle, cn) : addClass(curEle, cn);
+            hasClass(curEle, cn) ? removeClass(curEle, cn) : addClass(curEle, cn);
         }
+    }
+
+    /**
+     * children 获取所有子元素
+     * @param curEle 父级元素
+     * @returns {*}
+     */
+    function children(curEle) {
+        if ('children' in curEle) {
+            return curEle.children;
+        }
+
+        var childNodes = curEle.childNodes;
+        var arr = [];
+        for (var i = 0; i < childNodes.length; i++) {
+            var cur = childNodes[i];
+            if (cur.nodeType === 1) {
+                arr.push(cur);
+            }
+        }
+        return arr;
+    }
+
+    /**
+     * prev 获取上一个哥哥元素
+     * @param curEle 当前元素
+     * @returns {*}
+     */
+    function prev(curEle) {
+        if ('previousElementSibling' in curEle) {
+            return curEle.previousElementSibling;
+        }
+        var p = curEle.previousSibling;
+        while (p && p.nodeType !== 1) {
+            p = p.previousSibling;
+        }
+        return p;
+    }
+
+    /**
+     * prevAll 获取所有哥哥元素
+     * @param curEle 当前元素
+     * @returns {Array}
+     */
+    function prevAll(curEle) {
+        var p = prev(curEle);
+        var arr = [];
+        while (p) {
+            arr.unshift(p);
+            p = prev(p);
+        }
+        return arr;
+    }
+
+    /**
+     * next 获取弟弟元素
+     * @param curEle 当前元素
+     * @returns {*}
+     */
+    function next(curEle) {
+        if ('nextElementSibling' in curEle) {
+            return curEle.nextElementSibling;
+        }
+        var n = curEle.nextSibling;
+        while (n && n.nodeType !== 1) {
+            n = n.nextSibling;
+        }
+        return n;
+    }
+
+    /**
+     * nextAll 获取所有弟弟元素
+     * @param curEle 当前元素
+     * @returns {Array}
+     */
+    function nextAll(curEle) {
+        var n = next(curEle);
+        var all = [];
+        while (n) {
+            all[all.length] = n;
+            n = next(n)
+        }
+        return all;
+    }
+
+    /**
+     * sibling 获取相邻两个兄弟元素
+     * @param curEle 当前元素
+     * @returns {Array}
+     */
+    function sibling(curEle) {
+        var p = prev(curEle);
+        var n = next(curEle);
+        var eles = [];
+        p && eles.push(p);
+        n && eles.push(n);
+        return eles;
+    }
+
+    /**
+     * siblings 获取所有兄弟元素
+     * @param curEle 当前元素
+     * @returns {Array.<*>}
+     */
+    function siblings(curEle) {
+        return prevAll(curEle).concat(nextAll(curEle));
+    }
+
+    /**
+     * index 获取当前元素索引
+     * @param curEle 当前元素
+     * @returns {Number}
+     */
+    function index(curEle) {
+        return prevAll(curEle).length;
+    }
+
+    /**
+     * first 获取第一个子元素
+     * @param container
+     * @returns {*}
+     */
+    function first(container) {
+        if ('firstElementChild' in container) {
+            return container.firstElementChild;
+        }
+        var first = container.firstChild;
+        if (first && first.nodeType !== 1) {
+            first = next(first);
+        }
+        return first;
+    }
+
+    /**
+     * last 获取最后一个子元素
+     * @param container
+     * @returns {*}
+     */
+    function last(container) {
+        if ('lastElementChild' in container) {
+            return container.lastElementChild;
+        }
+        var p = container.lastChild;
+        if (p && p.nodeType !== 1) {
+            p = prev(p);
+        }
+        return p;
+    }
+
+    /**
+     * prepend 插入到容器前面
+     * @param ele
+     * @param container
+     */
+    function prepend(ele, container) {
+        var first = first(container);
+        if (first) {
+            container.insertBefore(ele, first);
+            return
+        }
+        container.appendChild(ele);
+    }
+
+    /**
+     * insertAfter 将元素插入到另个元素的后面
+     * @param newEle 新元素
+     * @param oldEle 旧元素
+     */
+    function insertAfter(newEle, oldEle) {
+        var n = next(oldEle);
+        var par = oldEle.parentNode;
+        if (n) {
+            par.insertBefore(newEle, n);
+            return;
+        }
+        par.appendChild(newEle);
     }
 
     return {
@@ -223,6 +399,17 @@ var utils = (function () {
         hasClass: hasClass,
         addClass: addClass,
         removeClass: removeClass,
-        toggle: toggle
+        toggle: toggle,
+        children: children,
+        prev: prev,
+        prevAll: prevAll,
+        next: next,
+        nextAll: nextAll,
+        sibling: sibling,
+        siblings: siblings,
+        first: first,
+        last: last,
+        prepend: prepend,
+        insertAfter: insertAfter
     }
 })();
