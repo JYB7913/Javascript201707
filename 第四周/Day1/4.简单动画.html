@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 100px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    // 指定步长 （指定速度）
+    var step = 9;
+    // 目标位置（最大left值）
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+    console.log(maxLeft);
+    // 起始位置
+    var begin = utils.getCss(oDiv, 'left');
+    //    // 总运动距离 = 目标位置 - 起始位置
+    //    var change = maxLeft - begin;
+
+    // 边界问题 在边界判断的时候 要先累加步长后 在判断 预防 累加步长后 超出目标点
+    var curL;
+    oDiv.timer = setInterval(function () {
+        curL = utils.getCss(oDiv, 'left'); // 假如当前倒数第二步
+        // 721
+//        curL += step; // 730 先拿当前left 累加下看看
+        curL += step;
+        if (curL >= maxLeft) { // 边界判断 每次都是 累加步长后 判断
+            utils.css(oDiv, 'left', maxLeft); // 修正为目标值 （不能保证刚好到达目标点）
+            clearInterval(oDiv.timer); // 结束动画
+            return;
+        }
+
+        utils.css(oDiv, 'left', curL);
+    }, 10);
+
+</script>
+</body>
+</html>

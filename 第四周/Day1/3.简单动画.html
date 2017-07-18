@@ -27,15 +27,18 @@
     // 总时间
     var duration = 2000;
 
-    // 起始位置
+    // 起始位置 当前所在left值
     var begin = utils.getCss(oDiv, 'left');
 
-    // 总移动距离
-    var winH = utils.win('clientWidth');
-    var change = winH - oDiv.offsetWidth - begin;
-
-    // 最大的left值
+    // 最大的left值（最终到达目标点的left值）
     var maxLeft = winH - oDiv.offsetWidth;
+
+    // 总移动距离 = 目标位置 - 起始位置
+    var winH = utils.win('clientWidth');
+//    var change = winH - oDiv.offsetWidth - begin;
+    var change = maxLeft - begin;
+
+
 
     var interval = 10;
 

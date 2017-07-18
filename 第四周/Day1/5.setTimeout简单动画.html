@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    // 指定步长 （指定速度）
+    var step = 9;
+    // 目标位置（最大left值）
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+    console.log(maxLeft);
+    // 起始位置
+    var begin = utils.getCss(oDiv, 'left');
+    //    // 总运动距离 = 目标位置 - 起始位置
+    //    var change = maxLeft - begin;
+
+    // 边界问题 在边界判断的时候 要先累加步长后 在判断 预防 累加步长后 超出目标点
+    var curL;
+    oDiv.timer = setTimeout(animate, 10);
+
+    function animate() {
+        clearTimeout(oDiv.timer);
+        curL = utils.getCss(oDiv, 'left');
+        curL += step;
+        if (curL >= maxLeft) {
+            utils.css(oDiv, 'left', maxLeft);
+            clearInterval(oDiv.timer);
+            return;
+        }
+        utils.css(oDiv, 'left', curL);
+        oDiv.timer = setTimeout(animate, 10)
+    }
+
+    //    var count = 0;
+    //    var timer = setInterval(function () {
+    //        if(count === 10) {
+    //            clearInterval(timer)
+    //        }
+    //        console.log(count++);
+    //    },500)
+
+    //    var timer = setTimeout(computed, 500);
+    //
+    //    function computed() {
+    //        clearTimeout(timer); // 清除上一次定时器
+    //        if (count > 10) {
+    //            clearInterval(timer); // 清除是最后一个定时器
+    //            return;
+    //        }
+    //        console.log(count++);
+    //        timer = setTimeout(computed, 500);
+    //    }
+</script>
+</body>
+</html>
