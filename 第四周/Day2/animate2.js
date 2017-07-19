@@ -1,4 +1,5 @@
 ~function () {
+
     // 运动方式
     var zhufengEffect = {
         // 匀速运动公式
@@ -203,31 +204,33 @@
             }
         }
     };
+
     /**
-     *
      * @param options
-     * ele 目标元素
-     * target 目标参数对象
-     * effect 运动方式
-     * duration 过渡时间
-     * callBack 回调函数
+     * ele {object} 动画元素
+     * target {object} 目标参数对象
+     * effect {Number}|{Array} 运动方式 Number: 0 1 2 3  Array: ['Quint', 'easeInOut']
+     * duration {Number} 过渡时间 单位：ms
+     * callBack {function} 动画结束后回调
      */
     function animate(options) {
         // 处理参数
         var curEle = options.ele;
-        if(!curEle){
-            console.warn('请指定参数ele：动画元素！');
-            return;
-        }
         var target = options.target;
         var effect = options.effect || zhufengEffect.Linear;
         var duration = options.duration || 2000;
         var callBack = options.callBack;
-        // 清除上一次动画 预防动画累积
-        clearInterval(curEle._timer);
-        // 处理运动方式
-        if (typeof effect === 'number') { // 数字形式 指定数字 对应 相应运动方式
-            switch (effect) {
+        // 处理元素curEle
+        if(!curEle){
+            console.warn('未指定动画元素: ele属性');
+            return;
+        }
+
+        curEle._timer && clearInterval(curEle._timer); // 防止动画累积 每次执行新动画执行之前 清除上一次的动画
+
+        // 处理effect运动方式
+        if(typeof effect === 'number'){ // 数字方式 指定几种常用运动方式
+            switch (effect){
                 case 0:
                     effect = zhufengEffect.Linear;
                     break;
@@ -240,40 +243,44 @@
                 default :
                     effect = zhufengEffect.Expo.easeInOut;
             }
-        } else if (effect instanceof Array){ // 数组形式
-//            ['Bounce', 'easeInOut'] ['Linear'] zhufengEffect['Bounce']['easeInOut']
+        } else if(effect instanceof Array){ // 数组方式 指定具体运动方式 ['Quint', 'easeInOut']
             effect = effect.length === 2? zhufengEffect[effect[0]][effect[1]] : zhufengEffect.Linear;
         }
 
-        // 执行动画
-        // 获取 起始值 和 变化值
-        var begin = {};
-        var change = {};
-        for (var k in target) {
-            if (target.hasOwnProperty(k)) {
+        var begin = {}; // 起始值参数对象
+        var change = {}; // 变化值参数对象
+        for(var k in target){
+            if(target.hasOwnProperty(k)){
+                // 将相应属性的起始值 保存到 begin中
                 begin[k] = utils.getCss(curEle, k);
+                // 相应属性变化值 = 相应属性目标值 - 相应属性起始值
                 change[k] = target[k] - begin[k];
             }
         }
 
-        var timer = null; // 记录当前时间
+        // 动画处理
+        // t 当前时间 b 起始值 c 变化值 d 过渡时间
         var interval = 10; // 单位时间
+        var timer = null; // 记录当前时间
         curEle._timer = setInterval(function () {
             timer += interval;
-            if (timer >= duration) { // 边界判断
-                utils.css(curEle, target);
+            if(timer >= duration){ // 边界结束判断
+                utils.css(curEle, target); // 修正为最终目标状态
                 clearInterval(curEle._timer); // 结束动画
+                // 执行动画回调
                 typeof callBack === 'function' ? callBack.call(curEle) : null;
                 return;
             }
-            for (var k in target) { // 获取到当前动画的属性状态
-                if (target.hasOwnProperty(k)) {
-//                    t, d, c, b
-                    var curVal = effect(timer, begin[k], change[k], duration); // 计算出 当前时间 属性状态
-                    utils.css(curEle, k, curVal);
+
+            for(var k in target){ // 计算当前运动状态
+                if(target.hasOwnProperty(k)){
+                    // 根据当前时间 time 计算出当前k属性的 动画属性状态
+                    var curState = effect(timer, begin[k], change[k], duration);
+                    // 将相应的属性 设置为 此时的 运动状态
+                    utils.css(curEle, k, curState);
                 }
             }
         }, interval);
     }
-    window.animate = animate;
+    window.$animate = animate;
 }();
