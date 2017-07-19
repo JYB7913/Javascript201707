@@ -274,7 +274,7 @@
 
             for(var k in target){ // 计算当前运动状态
                 if(target.hasOwnProperty(k)){
-                    // 根据当前时间 time 计算出当前k属性的 动画属性状态
+                    // 根据当前时间 time 计算出当前k属性的 运动状态
                     var curState = effect(timer, begin[k], change[k], duration);
                     // 将相应的属性 设置为 此时的 运动状态
                     utils.css(curEle, k, curState);
