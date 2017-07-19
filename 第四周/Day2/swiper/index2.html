@@ -13,6 +13,10 @@
             text-decoration: none;
         }
 
+        ul {
+            list-style: none;
+        }
+
         .outer {
             position: relative;
             width: 700px;
@@ -69,6 +73,31 @@
         .outer a:hover {
             background: rgba(0, 0, 0, 0.7);
         }
+
+        #focus {
+            width: 84px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 3px;
+            background: rgba(0, 0, 0, .4);
+            overflow: hidden;
+            padding: 3px 5px 3px 0;
+            border-radius: 20px;
+        }
+        #focus li {
+            cursor: pointer;
+            float: left;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            margin-left: 5px;
+        }
+        #focus li.select {
+            background-color: #ff5132;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +113,13 @@
     </div>
     <!-- 左右切换 -->
     <a id="left" href="javascript:;"> < </a><a id="right" href="javascript:;"> > </a>
+    <!-- 轮播焦点 -->
+    <ul id="focus">
+        <li class="select"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </div>
 <script type="text/javascript" src="utils.js"></script>
 <script type="text/javascript" src="animate2.js"></script>
