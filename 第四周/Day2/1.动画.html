@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 0.3;
+            /*filter: alpha(opacity=0);*/
+        }
+    </style>
+</head>
+<body>
+<button id="left">left</button>
+<button id="right">right</button>
+<div id="oDiv"></div>
+<script type="text/javascript" src="./utils.js"></script>
+<script type="text/javascript" src="animate.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    // 匀速公式
+    function Linear(t, b, c, d) {
+        return c / d * t + b;
+    }
+
+
+    /**
+     *
+     * @param options
+     * ele 目标元素
+     * target 目标参数对象
+     * effect 运动方式
+     * duration 过渡时间
+     * callBack 回调函数
+     */
+    function animate(options) {
+        // 处理参数
+        var curEle = options.ele;
+        var target = options.target;
+        var effect = options.effect || zhufengEffect.Linear;
+        var duration = options.duration || 2000;
+        var callBack = options.callBack;
+// 清除上一次动画 预防动画累积
+        clearInterval(curEle._timer);
+        // 处理运动方式
+        if (typeof effect === 'number') { // 数字形式 指定数字 对应 相应运动方式
+            switch (effect) {
+                case 0:
+                    effect = zhufengEffect.Linear;
+                    break;
+                case 1:
+                    effect = zhufengEffect.Bounce.easeIn;
+                    break;
+                case 2:
+                    effect = zhufengEffect.Cubic.easeInOut;
+                    break;
+                default :
+                    effect = zhufengEffect.Expo.easeInOut;
+            }
+        } else if (effect instanceof Array){ // 数组形式
+//            ['Bounce', 'easeInOut'] ['Linear'] zhufengEffect['Bounce']['easeInOut']
+           effect = effect.length === 2? zhufengEffect[effect[0]][effect[1]] : zhufengEffect.Linear;
+        }
+
+
+
+        // 获取 起始值 和 变化值
+        var begin = {};
+        var change = {};
+        for (var k in target) {
+            if (target.hasOwnProperty(k)) {
+                begin[k] = utils.getCss(curEle, k);
+                change[k] = target[k] - begin[k];
+            }
+        }
+
+
+        var timer = null; // 记录当前时间
+        var interval = 10; // 单位时间
+        curEle._timer = setInterval(function () {
+            timer += interval;
+            if (timer >= duration) { // 边界判断
+                utils.css(curEle, target);
+                clearInterval(curEle._timer); // 结束动画
+                typeof callBack === 'function' ? callBack.call(curEle) : null;
+                return;
+            }
+            for (var k in target) { // 获取到当前动画的属性状态
+                if (target.hasOwnProperty(k)) {
+//                    t, d, c, b
+                    var curVal = effect(timer, begin[k], change[k], duration); // 计算出 当前时间 属性状态
+                    utils.css(curEle, k, curVal);
+                }
+            }
+        }, interval);
+    }
+
+    animate({
+        ele: oDiv,
+        target: {
+            left: 500
+        },
+//            effect: 0, // 0 1 2 3 4 5
+        effect: ['Elastic', 'easeInOut'],
+        duration: 1000,
+        callBack: function () {
+            console.log('动画结束了');
+            this.style.background = 'blue';
+        }
+    });
+
+    right.onclick = function () {
+        animate({
+            ele: oDiv,
+            target: {
+                left: 0
+            },
+            duration: 1000,
+            callBack: function () {
+                console.log('动画结束了');
+                this.style.background = 'blue';
+            }
+        })
+    }
+
+
+</script>
+</body>
+</html>
