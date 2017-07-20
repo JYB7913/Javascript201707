@@ -1,6 +1,3 @@
-/**
- * Created by liwenli on 2017/7/8.
- */
 var utils = (function () {
     function listToArray(likeAry) {
         try {
