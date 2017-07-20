@@ -32,6 +32,7 @@ function autoMove(n) {
         target: {
             left: step * -wid
         },
+        effect: ['Bounce', 'easeInOut'],
         duration: 300,
         callBack: function () {
             var cur = oImgs[step];
@@ -101,3 +102,4 @@ function delayImg(img) {
         img.flag = true;
     }
 }
+
