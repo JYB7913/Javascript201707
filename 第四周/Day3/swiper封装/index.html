@@ -98,15 +98,28 @@
     <!-- 轮播焦点 -->
     <ul class="focus"></ul>
 </div>
-
+<div id="outer2" class="outer">
+    <div class="inner">
+    </div>
+    <a  href="javascript:;"> < </a><a class="right" href="javascript:;"> > </a>
+    <!-- 轮播焦点 -->
+    <ul class="focus"></ul>
+</div>
 
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/animate2.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
     new Swiper('outer',{
-
+       data: './data.json'
+    });
+    new Swiper('outer2',{
+       data: './data2.json',
+       interval: 3000,
+       duration: 150
     })
+
+    // 运动方式 interval duration 处理
 </script>
 </body>
 </html>
