@@ -7,7 +7,7 @@
     var len;
     var step = 0;
 
-//获取数据
+// 获取数据
     function getData(callBack) {
         var xhr = new XMLHttpRequest();
         xhr.open('get', 'data.json');//不写第三个参数默认是异步
@@ -19,11 +19,9 @@
         };
         xhr.send()
     }
-
     getData(bindData);
 
-
-//绑定数据
+// 绑定数据
     function bindData(data) {
         /**
          * 开始渲染页面
@@ -64,9 +62,11 @@
         bindEvent();
     }
 
+
     /**
      * 功能函数 定义部分
      */
+
 
 // 根据传入参数切换图片，如不传则按照全局step控制
     function autoMove(n) {
