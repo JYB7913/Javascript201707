@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    Function.prototype.myBind = function (context) {
+        var that = this; // fe
+        var params = [].slice.call(arguments, 1); // 
+        return function () {
+            that.apply(context, params); // fe 执行并且里面this是context
+        }
+    };
+
+    var obj = {id: 24};
+    function fe(a, b) {
+        console.log(a, b);
+        console.log(this);
+    }
+    var foo = fe.myBind(obj, 100, 200);
+    foo();
+
+
+    var fn = f1.bind(obj, 300, 400);
+    fn();
+    function f1(a, b) {
+        console.log(a, b);
+        console.log(this);
+    }
+    
+  
+//    var fn = bind(fe, obj);
+//    console.log(fn);
+//    fn();
+    
+//    var fn = fe.bind(obj);
+//    fn()
+</script>
+</body>
+</html>
