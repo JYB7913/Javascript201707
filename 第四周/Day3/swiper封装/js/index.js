@@ -1,4 +1,9 @@
 ~function () {
+    /*  调用顺序
+        new Swiper =>getEles => getData => bindData(delayImg, autoMove(自),        bindEvent);
+        autoMove => (delayImg, changeBg)
+     */
+
     // this预处理
     Function.prototype.$bind = function (context) {
         var that = this;
