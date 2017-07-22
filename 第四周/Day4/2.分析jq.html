@@ -13,18 +13,21 @@
 </head>
 <body>
 <button id="oBtn" class="oBtn1">123</button>
+<button  class="oBtn1">123</button>
+<button  class="oBtn1">123</button>
+<button class="oBtn1">123</button>
 <script type="text/javascript" src="jquery-1.11.3.js"></script>
 <script type="text/javascript">
     // return new jQuery.fn.init( selector, context );
 
     // init 的实例
-//    console.log(new $());
-//    console.log($());
-//    console.log($().__proto__ === jQuery.prototype);
-//    $('#oBtn')
-//    jQuery('#oBtn')
+    //    console.log(new $());
+    //    console.log($());
+    //    console.log($().__proto__ === jQuery.prototype);
+    //    $('#oBtn')
+    //    jQuery('#oBtn')
 
-//    jQuery.fn.init 实例构造器 根据选择器 构造出jq实例
+    //    jQuery.fn.init 实例构造器 根据选择器 构造出jq实例
 
     ~(function () {
         var version = '1.10.1',
@@ -36,7 +39,25 @@
             jquery: version,
             // 用来实现无new构造jq对象
             init: function (selector, context) {
-                   console.log(selector);
+                context = context || document;
+                var ele;
+                if(selector.indexOf('#') === 0){
+                   ele = document.getElementById(selector.slice(1));
+                    this[0] = ele;
+                    this.context = document;
+                    this.length = 1;
+                    this.selector = selector;
+                    return this
+                } else if(selector.indexOf('.') === 0){
+                   ele = context.getElementsByClassName(selector.slice(1));
+                    for(var k in ele){
+                        this[k] = ele[k];
+                    }
+                    this.context = context;
+                    this.length = ele.length;
+                    this.selector = selector;
+                    return this
+                }
             },
             say: function () {
                 console.log('12312');
@@ -48,14 +69,15 @@
         zQuery.fn.init.prototype = zQuery.prototype;
         window.$$ = window.zQuery = zQuery
     })();
-//   console.log($$() instanceof zQuery.fn.init);
-//   console.log($$() instanceof zQuery);
-//    $$().say();
+    //   console.log($$() instanceof zQuery.fn.init);
+    //   console.log($$() instanceof zQuery);
+    //    $$().say();
 
-    console.log($$('#oBtn'));
+//    console.log($$('#oBtn'));
+    console.log($$('.oBtn1'));
     console.log($('#oBtn'));
-//    console.log($() instanceof jQuery.fn.init);
-//    console.log($() instanceof jQuery);
+    //    console.log($() instanceof jQuery.fn.init);
+    //    console.log($() instanceof jQuery);
 </script>
 </body>
 </html>

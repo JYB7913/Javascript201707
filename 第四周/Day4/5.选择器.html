@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oDiv1, span, .title {
+            background-color: #34ff66;
+        }
+
+        #oUl > li {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="oDiv1" class="oDiv2">11111</div>-->
+<!--<div>132</div>-->
+<!--<span>12323</span>-->
+<!--<h3 class="title">123</h3>-->
+
+<!--<ul id="oUl">-->
+<!--<li>11</li>-->
+<!--<li>22</li>-->
+<!--<li>33 <span>222</span></li>-->
+<!--<span>123</span>-->
+<!--<span class="one"></span>-->
+<!--</ul>-->
+
+<ul id="oUl">
+    <li>11</li>
+    <li class="li2">22</li>
+    <li>33</li>
+    <li class="li4">44</li>
+    <span>123</span>
+</ul>
+<div class="one"></div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 选择器 跟css选择器 一样
+//        console.log($('#oDiv1')); // id选择器
+//        console.log($('.oDiv2')); // class选择器
+//        console.log($('div')); // tag 选择器
+//        console.log($('*')); // 通配符选择器
+//        console.log($('*',document.body)); // 通配符选择器
+//        console.log($('#oDiv1, span, .title')); // 群组选择器
+
+        // 层级选择器
+//        var oUl = document.getElementById('oUl');
+//        var oLis = oUl.getElementsByTagName('li');
+//        console.log(oLis);
+//        console.log($('#oUl li')); // 后代选择器
+//        console.log($('#oUl>span.one')); // 子代选择器
+        console.log($('.li2+')); // 获取弟弟  next
+        console.log($('.li2~')); // 获取所有弟弟 nextAll
+
+        console.log($('.li2').next());
+        console.log($('.li2').nextAll());
+
+        // 选择器 过滤器 表单选择器...
+//
+    });
+</script>
+</body>
+</html>

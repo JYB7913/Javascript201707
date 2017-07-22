@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="oDiv" class="btn1">111</div>
+<div id="oDiv2">
+    <div class="btn1">222</div>
+</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+//       console.log(this); // document
+//       console.log($('#oDiv') instanceof $);
+//       console.log($('#oDiv') instanceof jQuery);
+
+        // 将jq对象转换为 js对象
+//       console.log($('#oDiv'));
+//       console.log($('#oDiv')[0]);
+//       console.log($('#oDiv').get()); // 将jq对象里面的dom元素 包装成数组
+//       console.log($('#oDiv').get(0)); // 将数组中 对应索引的元素 返回
+
+        // 将js对象转化为jq对象
+//        var oDiv = document.getElementById('oDiv');
+//        console.log(oDiv);
+//        console.log($(oDiv));
+
+        // 区别
+//        var oDivs = document.getElementsByTagName('div');
+
+//        document.body.appendChild(document.createElement('div'));
+        // 元素集合 即时更新同步
+        // jq 对象集合 不存在即时更新
+
+//        console.log(oDivs);
+
+//        var oDivs = $('div');
+
+//        document.body.appendChild(document.createElement('div'));
+//        console.log(oDivs);
+//        console.log($('div'));
+
+
+        // 获取一个不存在的元素
+
+//        var oDiv = document.getElementById('oDiv2');
+//        console.log(oDiv);
+        // 不管根据选择器有没有获取到 这个元素 都会返回 jq的实例
+//        console.log($('#oDiv2'));
+//        console.log($('#oDiv'));
+//        if(oDiv){
+//
+//        }
+
+        // 判断元素有没有获取到 jq中需要根据length/ jqObj.size()
+//        console.log($('#oDiv').length);
+//        if($('#oDiv').length){
+//          console.log(123);
+//        }
+//
+//        console.log($('#oDiv2').size());
+//        console.log($('.oDiv').size());
+
+
+        // $(selector,context)
+        // selector 选择器 context 获取的上下文 默认document
+//        console.log($('.btn1', $('#oDiv2')));
+//        console.log($('.btn1', $('#oDiv2')[0]));
+        var eles = document.getElementsByTagName('div');
+        console.log(eles);
+        console.log(eles[1]);
+        console.log(eles.item(1)); // 获取到元素集合中索引为1的那个元素
+
+        console.log($('#oDiv2')[0]);
+        console.log($('#oDiv2').get(0));
+    });
+</script>
+</body>
+</html>
