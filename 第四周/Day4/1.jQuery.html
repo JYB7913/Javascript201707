@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .active {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<button id="oBtn" class="oBtn1">123</button>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    // jQuery 一个前端js库 强大的选择器 ajax封装 事件 动画  链式写法 ...
+    // jQuery 典型的构造函数
+//    console.log($);
+//    console.log(jQuery);
+//    console.log($ === jQuery);
+
+    var oDiv = document.getElementById('oBtn');
+    console.log(oDiv); // 原生对象
+    
+    // 无new构造  让jq执行 将选择器 传递进去 生成一个jq实例
+//    console.log($('#oBtn')); // jq对象（jq实例）
+//    console.log($('.oBtn1'));
+//    console.log(jQuery('#oBtn'));
+//
+//    console.log($('#oBtn') instanceof $);
+//    console.log($('#oBtn') instanceof jQuery);
+
+    // 通过jq对象 使用 jq原型上的方法 增加类名
+//    $('#oBtn').addClass('active');
+//    console.log($('#oBtn')); // jq对象 就 将原生对象 包装起来
+//    console.log($('#oBtn')[0]); // 原生的DOM对象
+
+    //    [button#oBtn.oBtn1, context: document, selector: "#oBtn"]
+//    function addClass() {
+//        this[0].className += ' ' + 'active'
+//    }
+
+
+
+
+
+    // jQuery中的方法 有的将一些供jq对象（实例）调用的方法 封装在 原型上
+
+
+   var oBtn = document.getElementById('oBtn');
+   console.log(oBtn);
+//    oBtn.addClass();
+    //    $('#oBtn').addClass('active');
+    //    console.log($('.oBtn1'));
+    //    console.log( $('#oBtn').__proto__ === $.prototype);
+    //    console.log( $('#oBtn').__proto__ === jQuery.prototype);
+
+    // 工具方法 封装在了 jQuery自身
+
+    console.log($.type(''));
+
+
+    //    function Fn() {
+//
+//    }
+//    // 供实例使用 属性方法
+//    Fn.prototype.say = function () {
+//        console.log('原型上的方法');
+//    };
+//    var fe = new Fn; // 实例
+//    fe.say();
+////    Fn()
+//    // 自身添加属性
+//    Fn.say = function () {
+//        console.log('自身添加属性');
+//    }
+//    Fn.say();
+//    var obj = {};
+//    obj.say = 13
+</script>
+</body>
+</html>

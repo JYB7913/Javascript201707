@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .active {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<button id="oBtn" class="oBtn1">123</button>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    // return new jQuery.fn.init( selector, context );
+
+    // init 的实例
+//    console.log(new $());
+//    console.log($());
+//    console.log($().__proto__ === jQuery.prototype);
+//    $('#oBtn')
+//    jQuery('#oBtn')
+
+//    jQuery.fn.init 实例构造器 根据选择器 构造出jq实例
+
+    ~(function () {
+        var version = '1.10.1',
+            zQuery = function (selector, context) {
+                return new zQuery.fn.init(selector, context);
+            };
+
+        zQuery.fn = zQuery.prototype = {
+            jquery: version,
+            // 用来实现无new构造jq对象
+            init: function (selector, context) {
+                   console.log(selector);
+            },
+            say: function () {
+                console.log('12312');
+            }
+        };
+        // 让构造出来的对象 可以 使用 jq原型上的属性方法
+//        init.prototype = jQuery.fn;
+
+        zQuery.fn.init.prototype = zQuery.prototype;
+        window.$$ = window.zQuery = zQuery
+    })();
+//   console.log($$() instanceof zQuery.fn.init);
+//   console.log($$() instanceof zQuery);
+//    $$().say();
+
+    console.log($$('#oBtn'));
+    console.log($('#oBtn'));
+//    console.log($() instanceof jQuery.fn.init);
+//    console.log($() instanceof jQuery);
+</script>
+</body>
+</html>
