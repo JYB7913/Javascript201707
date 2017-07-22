@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<style>-->
+        <!--div[zf*=o]{-->
+            <!--background-color: red;-->
+        <!--}-->
+    <!--</style>-->
+</head>
+<body>
+<div id="oDiv1" zf="oop">11</div>
+<div id="oDiv2" zf="id2">22</div>
+<div class="op" zf='lol'>33</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+   $(function () {
+       // 根据指定属性进行匹配
+//       $('div[class]').css('background', 'red');
+//       $('div[zf]').css('background', 'red');
+
+       // 根据 属性内容 进行匹配
+       // * 包含
+//       $('div[zf*=p]').css('background', 'red');
+       // ^ 开头
+//       $('div[zf^=l]').css('background', 'red');
+       // $ 结尾
+//       $('div[zf$=p]').css('background', 'red');
+
+       // 匹配 属性内容 不是指定文本的 元素
+//       $('div[zf!=oop]').css('background', 'red');
+
+
+   });
+</script>
+</body>
+</html>

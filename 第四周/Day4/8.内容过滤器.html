@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div {
+            height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<!--<div>111</div>-->
+<!--<div><span>123</span></div>-->
+<!--<div></div>-->
+<input type="text" id="inp">
+<ul>
+    <li>11</li>
+    <li>22</li>
+    <li>a33</li>
+    <li>44</li>
+</ul>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    // empty has contains parent
+    $(function () {
+        $('#inp').on('input', function () {
+            var val = $(this).val();
+            $('li:contains('+val+')')
+                .css('background', 'red')
+                .show().siblings()
+                .css('background', '#fff').hide();
+        });
+//        console.log($('div:empty')); // empty 不包含任何子节点
+//        console.log($('div:has(.sp)').css('background', 'red')); // has 匹配是否包含指定选择器的容器元素
+//        console.log($('div:contains(中国)').css('background', 'red')); // 根据包含内容过滤
+//        console.log($('div:parent').css('background', 'red')); // 匹配作为父级的div（包含节点的元素）
+
+//        $('ul').children(':contains(3)').css('background', 'red')
+
+//        $('ul:contains(3)').css('background', 'red');
+
+        var name = 'a';
+
+    });
+
+</script>
+</body>
+</html>

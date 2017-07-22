@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" autofocus>
+<input type="button">
+<input type="radio">
+<input type="checkbox">
+<input type="password">
+<input type="email" disabled>
+<button id="btn">获取被选中表单</button>
+<select name="" id="select">
+    <option value="11">11</option>
+    <option value="22">22</option>
+    <option value="33">33</option>
+</select>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 表单类型
+//        console.log($('input:text'));
+//        console.log($('input:radio'));
+//        console.log($('input:button'));
+//        console.log($('input:checkbox'));
+//        console.log($('input:password'));
+
+        // 表单状态
+        // enabled disabled checked selected focus
+        // 可用的表单元素
+//        console.log($('input:enabled'));
+        // 被禁用的表单元素
+//        console.log($('input:disabled'));
+        // 获取选中按钮
+//        console.log($('input:checked'));
+
+
+        $('#btn').click(function () {
+//              console.log($('input:checked'));
+        });
+//        $('#select').on('change', function () {
+//           console.log($(':selected'));
+//        })
+
+        setTimeout(function () {
+            console.log($('input:focus'));
+        }, 1000);
+    });
+</script>
+</body>
+</html>

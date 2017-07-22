@@ -8,6 +8,7 @@
             margin: 0;
             padding: 0;
         }
+
         ul {
             list-style: none;
             width: 200px;
@@ -18,14 +19,16 @@
             text-align: center;
         }
 
-        ul.list>li {
+        ul.list > li {
             border: 1px solid black;
         }
+
         ul h3 {
             cursor: pointer;
             background-color: #7ffffa;
             border-bottom: 1px solid black;
         }
+
         ul.list ul {
             display: none;
         }
@@ -62,9 +65,10 @@
 <p class="hello">12312</p>
 <script type="text/javascript" src="jquery-1.11.3.js"></script>
 <script type="text/javascript">
+
     $(function () {
         $('.btn').click(function () {
-            // hide show  隐藏显示
+           // hide show  隐藏显示
 //            $('.hello').hide();
             $('.hello').toggle(); // 显示隐藏切换
         });
@@ -76,11 +80,11 @@
 //            console.log($(this).next().show());
 //            console.log($(this).parent().siblings().children('ul').hide());
 
-//          $(this).next().toggle()
-//                 .parent().siblings()
-//                 .children('ul').hide()
+          $(this).next().toggle()
+                 .parent().siblings()
+                 .children('ul').hide()
             // end 上一个对象
-            console.log($(this).next().toggle().parent().end().end());
+//              console.log($(this).next().toggle().parent().end().end());
 //            console.log($(this).end().end()); // 空jq对象
         })
     })

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="oUl">
+    <li>11</li>
+    <li class="li2">22</li>
+    <li>33 <span class="li2"><span class="li2"></span></span></li>
+    <li>44</li>
+</ul>
+
+
+<p class="li2"></p>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    // filter find children
+    $(function () {
+        // 获取所有子元素
+//        console.log($('#oUl').children());
+
+        // 在后代元素中进行查找
+//        console.log($('#oUl').find('span.li2'));
+
+        // 在指定集合中进行 过滤 filter
+        console.log($('#oUl li, span').filter('.li2'));
+     $('p.li2').addClass('liwenli').removeClass('li2')
+    })
+
+    //
+</script>
+</body>
+</html>
