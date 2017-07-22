@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        ul li {
+            text-align: center;
+        }
+
+        ul.list>li {
+            border: 1px solid black;
+        }
+        ul h3 {
+            cursor: pointer;
+            background-color: #7ffffa;
+            border-bottom: 1px solid black;
+        }
+        ul.list ul {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul class="list">
+    <li>
+        <h3>Tab1</h3>
+        <ul>
+            <li>11</li>
+            <li>11</li>
+            <li>11</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Tab2</h3>
+        <ul>
+            <li>22</li>
+            <li>22</li>
+            <li>22</li>
+        </ul>
+    </li>
+    <li>
+        <h3>Tab3</h3>
+        <ul>
+            <li>33</li>
+            <li>33</li>
+            <li>33</li>
+        </ul>
+    </li>
+</ul>
+<button class="btn">add</button>
+<p class="hello">12312</p>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.btn').click(function () {
+            // hide show  隐藏显示
+//            $('.hello').hide();
+            $('.hello').toggle(); // 显示隐藏切换
+        });
+//        console.log($('.list h3'));
+
+        $('.list h3').click(function () {
+            // this 原生对象
+//            console.log($(this).next());
+//            console.log($(this).next().show());
+//            console.log($(this).parent().siblings().children('ul').hide());
+
+//          $(this).next().toggle()
+//                 .parent().siblings()
+//                 .children('ul').hide()
+            // end 上一个对象
+            console.log($(this).next().toggle().parent().end().end());
+//            console.log($(this).end().end()); // 空jq对象
+        })
+    })
+</script>
+</body>
+</html>

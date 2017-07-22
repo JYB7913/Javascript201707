@@ -11,6 +11,11 @@
         #oUl > li {
             color: red;
         }
+
+        /*.oUl li:nth-child(2) {*/
+        /*background-color: red;*/
+        /*}*/
+
     </style>
 </head>
 <body>
@@ -27,12 +32,21 @@
 <!--<span class="one"></span>-->
 <!--</ul>-->
 
-<ul id="oUl">
+<ul class="oUl">
     <li>11</li>
     <li class="li2">22</li>
     <li>33</li>
     <li class="li4">44</li>
-    <span>123</span>
+    <li class="li5">55</li>
+    <!--<span>123</span>-->
+</ul>
+<ul class="oUl">
+    <li>11</li>
+    <li class="li2">22</li>
+    <li>33</li>
+    <li class="li4">44</li>
+    <li class="li5">55</li>
+    <!--<span>123</span>-->
 </ul>
 <div class="one"></div>
 <script type="text/javascript" src="jquery-1.11.3.js"></script>
@@ -52,14 +66,44 @@
 //        console.log(oLis);
 //        console.log($('#oUl li')); // 后代选择器
 //        console.log($('#oUl>span.one')); // 子代选择器
-        console.log($('.li2+')); // 获取弟弟  next
-        console.log($('.li2~')); // 获取所有弟弟 nextAll
+//        console.log($('.li2+')); // 获取弟弟  next
+//        console.log($('.li2~')); // 获取所有弟弟 nextAll
 
-        console.log($('.li2').next());
-        console.log($('.li2').nextAll());
+//        console.log($('.li2').next());
+//        console.log($('.li2').nextAll());
 
         // 选择器 过滤器 表单选择器...
-//
+
+        // 过滤器 (针对元素集合进行过滤)
+//        console.log($('.oUl li:first').css('background', 'red')); // 集合中第一个
+//        console.log($('.oUl li:last').css('background', 'red')); // 集合中最后一个
+        // jq原型上的方法 只有 jq对象才能使用
+//          console.log($('.oUl li:eq(2)').css('background', 'red')); // 返回集合中指定索引的jq对象
+//        console.log($('.oUl li:lt(3)').css('background', 'red')); // 小于
+//        console.log($('.oUl li:eq(3)').css('background', 'green')); // 等于
+//        console.log($('.oUl li:gt(3)').css('background', 'blue')); // 大于
+
+//        console.log($('.oUl li:odd').css('background', 'red')); // 索引奇数
+//        console.log($('.oUl li:even').css('background', 'green')); // 索引偶数
+
+//        console.log($('.oUl li:not(.li2)').css('background', 'green')); // 排除集合中 指定选择器的元素  匹配其他的
+
+//        console.log($('.oUl li').eq(3)); // 根据指定索引返回 jq对象
+//        console.log($('.oUl li').get(3)); // 根据索引返回 原生js对象
+
+        // 后代元素 过滤器
+
+//        console.log($('.oUl li:first-child').css('background', 'blue')); // 每个父容器中的第一个子节点
+        // 容器中 li 是 作为 最后一个子节点的元素
+//        console.log($('.oUl li:last-child').css('background', 'blue')); // 每个父容器中的最后一个子节点
+
+//        console.log($('.oUl li:nth-child(2)').css('background', 'blue'));
+//        console.log($('.oUl li:nth-child(2n)').css('background', 'red'));
+
+        // 倒数第几个
+//        console.log($('.oUl li:nth-last-child(2)').css('background', 'red'));
+
+
     });
 </script>
 </body>

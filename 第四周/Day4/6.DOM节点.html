@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="oDiv">
+    <ul class="oUl">
+        <li>00</li>
+        <li class="li2">11</li>
+        <li class="li2">22</li>
+        <li class="li3">33</li>
+        <li>44</li>
+        <li>55</li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 获取父节点
+//        console.log($('.li3').parent());
+//        console.log($('.li3')[0].parentNode);
+
+        // 获取所有子元素
+//        console.log($('.oUl')[0].children);
+//        console.log($('.oUl').children('.li3'));
+//        console.log($('.oUl>li.li3'));
+
+        // 获取上一个哥哥元素
+//        console.log($('.li3').prev().css('background', 'red').css('color', 'blue'));
+        // 获取所有哥哥元素
+//        console.log($('.li3').prevAll('.li2'));
+//        console.log($('.li3').prevAll());
+        // 获取下一个弟弟元素
+//        console.log($('.li3').next().css('background', 'blue'));
+        // 获取所有的弟弟元素
+//        console.log($('.li3').nextAll().css('background', 'blue'));
+
+        // 所有的兄弟节点
+//        console.log($('.li3').siblings().css('background', 'red'));
+//        console.log($('.li3').siblings('.li2').css('background', 'red'));
+
+        // 获取所有祖先元素
+//        console.log($('.li3').parents('.oDiv'));
+
+        // 在父级容器中的索引
+//        console.log($('.li3').index());
+
+
+    });
+</script>
+</body>
+</html>
