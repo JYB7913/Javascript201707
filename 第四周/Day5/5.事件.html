@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+<input type="text">
+<ul class="oUl">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>4444</li>
+</ul>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+//        $('#btn')[0].onclick = function () {
+//             console.log(111);
+//        }
+//        $('#btn')[0].onclick = function () {
+//              console.log(2222);
+//        }
+        // 同一个事件行为可以绑定多个处理函数
+//      $('#btn').click(function () {
+//            console.log(234);
+//      }).click(function () {
+//          console.log(333);
+//      }).mouseover(function () {
+//          console.log(5555);
+//      })
+//
+//        $('#btn').click(function () {
+//            console.log(111);
+//        })
+
+        // bind  type 事件类型 数据对象  处理函数
+//        $('#btn').bind('click', {id: 24}, function (e) {
+//            console.log(e.data);
+//            console.log('click');
+//        })
+
+//        $('#btn').bind('click', function (e) {
+//            console.log('click');
+//        }).click(function () {
+//            console.log(124);
+//        })
+
+        // 多个行为 绑定同一个处理函数
+//        $('#btn').bind('click mouseover', function (e) {
+////            console.log(this);
+//            console.log('click');
+//        })
+
+
+//        $('input').bind('input', function () {
+//            console.log(234);
+//        })
+
+        // on  事件类型 过滤器 数据对象 处理函数
+//        $('#btn').on('click mouseover',{id: 24}, function (e) {
+//            console.log(e.data);
+//            console.log('onclick');
+//        })
+//        $('#btn').on('click mouseover',{id: 24}, function (e) {
+//            console.log(e.data);
+//            console.log('onclick');
+//        }).mouseout(function () {
+//            console.log('out');
+//        })
+//        $('#btn').on('click',{id: 24}, function (e) {
+//            console.log(e.data);
+//            console.log('onclick');
+//        }).on('mouseout', function () {
+//            console.log('out');
+//        })
+//
+//        $('.oUl>li').click(function () {
+//            console.log(111);
+//        });
+//
+//        $('.oUl>li').bind('click',function () {
+//            console.log(222);
+//        });
+
+//        $('.oUl>li.li2').on('click',function () {
+//            console.log(333);
+//        });
+
+//        $('.oUl>li.li2').bind('click', function () {
+//            console.log(111);
+//        });
+        // 预留事件
+//        $('.oUl').on('click', '.li2', function () {
+//            console.log(333);
+//        });
+
+//        $('<li class="li2">666</li>').appendTo('.oUl');
+//        setTimeout(function () {
+//            $('.oUl>li:lt(3)').addClass('li2');
+//        }, 2000)
+
+        // 1.简写 click  mouseover mouseout change dblclick...
+//        $('#btn').dblclick(function () {
+//            console.log(13231);
+//        })
+
+        // 2.bind 根据指定类型绑定事件 type data handel 其实内部调用的是on 只是少传递了一个 filter
+//        bind: function( types, data, fn ) {
+//            return this.on( types, null, data, fn );
+//        }
+//        
+        // 3.on 根据指定类型绑定事件 type filter data handel
+        // one 一次性事件 根据指定类型绑定事件 type filter data handel
+
+        // 4.one
+//        $('#btn').one('click', function () {
+//            console.log('one');
+//        })
+//
+//        $('#btn')[0].onclick = function () {
+//            console.log(123234);
+//            this.onclick = null;
+//        }
+//        console.log($('#btn')[0].onclick);
+//       console.dir($('#btn')[0]);
+//        HTMLElement.prototype.one = function (type, fn) {
+//            this['on' + type] = function () {
+//                if(typeof fn === 'function') {
+//                    fn.call(this);
+//                    fn = null
+//                }
+//            };
+//        };
+
+//        $('#btn')[0].one('click',function () {
+//            console.log(this);
+//        })
+    })
+</script>
+</body>
+</html>
