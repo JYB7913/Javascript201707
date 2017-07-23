@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oDiv {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<div id="oDiv"> 11</div>
+<div> 22</div>
+<div style="display: none"> 33</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+//       1.hide/show => toggle 实现显示和隐藏动画切换
+
+//       $('#btn').click(function () {
+        // 默认 swing linear
+        // 过渡时间 'fast' 'normal' 'slow'
+        // is 检测是否匹配选择器 :visible :hidden
+//           $('#oDiv').hide('fast', 'linear', function () {
+//               console.log(this);
+//           });
+//       })
+//       console.log($('#oDiv').is('div:empty'));
+        // 显示隐藏过滤
+//       console.log($(':visible'));
+//       console.log($('div:hidden'));
+
+//       $('#btn').click(function () {
+//           if($('#oDiv').is(':hidden')){
+//               $('#oDiv').show(300)
+//           } else {
+//               $('#oDiv').hide(300)
+//           }
+//           $('#oDiv').toggle(300, 'linear', function () {
+//               console.log(this);
+//           }); // 显示隐藏切换
+//       })
+
+        var $div = $('#oDiv');
+//        $('#btn').click(function () {
+//            $div.slideUp(300, 'linear', function () {
+//                console.log(this);
+//            });
+//        });
+        // 下拉 收起 slideUp slideDown => slideToggle
+//        $('#btn').click(function () {
+//            if($div.is(':visible')){
+//                $div.slideUp(2000);
+//            } else {
+//                $div.slideDown(1000);
+//            }
+//            $div.slideToggle();
+//        });
+
+        // fadeIn fadeOut fadeToggle fadeTo
+//        $('#btn').click(function () {
+//            $div.fadeOut(1000, 'linear', function () {
+//                console.log(123);
+//            });
+//        })
+
+        $('#btn').click(function () {
+            $div.fadeOut(1300).delay(1000).fadeIn(1000);
+//            if($div.is(':visible')){
+//                $div.fadeOut(1300);
+//            } else {
+//                $div.fadeIn(1300);
+//            }
+//            $div.fadeToggle(); // 渐变渐出切换
+
+            // 当前透明度渐变到多少
+//            $div.fadeTo(1000, 0.3, 'linear', function () {
+//                console.log(1234);
+//            })
+//            $div.fadeTo(300, 0.3);
+        })
+
+    })
+</script>
+</body>
+</html>

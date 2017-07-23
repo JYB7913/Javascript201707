@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<div id="oDiv"> 11</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 目标值 过渡时间 运动方式 swing linear 结束回调
+//   $('#oDiv').animate({
+//        left: 400,
+//        top: 400,
+////        opacity: 0
+//    }, 500, 'linear', function () {
+//        console.log(this);
+//    })
+
+     // 同时进行的
+//    $('#oDiv').animate({
+//        left: 400,
+//        top: 400
+//    }, 1500);
+
+        // 队列 动画 一个一个执行
+        $('#oDiv').animate({
+            left: 400
+        }, 1200).animate({
+            top: 400
+        }, 1200);
+
+        $('#btn').click(function () {
+//            $('#oDiv').stop(); // 结束当前动画 依然继续执行后面队列动画
+//            $('#oDiv').stop(true); // 结束所有队列动画
+//            $('#oDiv').stop(true, true); // 结束当前动画 跳到当前动画的目标值 并且 清空后面的队列动画
+
+//            $('#oDiv').stop(true, true); // 简单动画 里面跳到最终值
+//            $('#oDiv').finish(); // 直接跳到最终值
+            $('#oDiv').stop(true).delay(1800).slideUp(300)
+        })
+
+        // 扩展插件 工具方法 ...
+    })
+</script>
+</body>
+</html>

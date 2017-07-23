@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="load">add</button>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 兼容性 写法 方便
+        var xhr = new XMLHttpRequest();
+//        xhr.open('get', 'data.json');
+//          xhr.responseType = 'json';
+//        xhr.onreadystatechange = function () {
+//            if(this.readyState === 4 && /^2\d{2}$/.test(this.status)){
+//                console.log(this.responseText);
+//            }
+//        };
+//        xhr.onerror = function () {
+//
+//        }
+//        xhr.send()
+        $.ajax({
+            type: 'GET', // post delete head put 请求方式
+            url: 'data.json', // 请求地址
+//            async: false, // 是否异步 默认true异步 false同步
+            dataType: 'json', // html text jsonp跨域请求 实现响应回来的数据处理格式
+            context: window, // 修改回调中this
+            success: function (res) { // 请求成功回调
+                console.log(this);
+                console.log(res);
+            },
+            error: function (xhr, err) { // 请求失败回调
+                console.log(arguments);
+            }
+        });
+
+        // 发送get请求
+//        $.get('123.html', function (res) {
+//            console.log(res);
+//        });
+//        // 发送post请求
+//        $.post('data.json', function (res) {
+//            console.log(res);
+//        });
+        // 请求json数据
+//        $.getJSON('data.json', function (res) {
+//            console.log(res);
+//        })
+
+        // 请求js
+//        $('#load').click(function () {
+//            $.getScript('index.js', function (res) {
+//                console.log(res);
+//            })
+//        })
+    })
+</script>
+</body>
+</html>
