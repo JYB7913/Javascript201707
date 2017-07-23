@@ -73,7 +73,14 @@
         //先获取li，给其绑定点击事件
         $('.list>li').click(function () {
            $(this).addClass('select').siblings().removeClass('select').parent().nextAll().eq($(this).index()).addClass('select').siblings().removeClass('select')
-        })
+        });
+
+        // 检测 A元素中是否包含B元素
+        function contains(A, B) {
+
+        }
+        contains(document.body, $('#outer')[0]);
+        contains($('#outer')[0], document.body)
     })
 </script>
 </body>
