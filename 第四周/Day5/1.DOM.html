@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p class="op">13213</p>
+<!--<p class="op">13213</p>-->
+<!--<p class="op">13213</p>-->
+<!--<i>11</i>-->
+<!--<i>22</i>-->
+<!--<i>33</i>-->
+
+<!--<zhufeng></zhufeng>-->
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var h3 = document.createElement('h3');
+        h3.innerHTML = 33333333;
+//
+
+        // 创建节点
+        var htmlStr = '<h3>nihao</h3>';
+//        console.log($(htmlStr));
+//        document.body.appendChild($(htmlStr)[0]);
+
+        // 内部添加
+        // append 添加到容器内部末尾
+//        $(document.body).append($(htmlStr));
+//        $(document.body).append(htmlStr);
+        var say = 'hello world';
+//        $(document.body).append('<h3>'+say+'</h3>');
+//        $(document.body).append($('p'));
+//        $(document.body).append(h3);
+        // appendTo
+//        $(htmlStr).appendTo('#op');
+//        $(htmlStr).appendTo(document.body)
+//        $(h3).appendTo($('body'))
+
+        // prepend 添加到容器内部开头
+//        $('#op').prepend(htmlStr);
+//        $('#op').prepend($(htmlStr));
+//        $('#op').prepend(h3);
+        // prependTo
+//         $(htmlStr).prependTo('#op');
+
+        // 外部添加
+        // after 添加到 指定元素的后面
+//        $('#op').after('<h3>'+say+'</h3>');
+//        $('#op').after($(htmlStr));
+//        $('#op').after(h3);
+        // insertAfter
+//        $(htmlStr).insertAfter('#op');
+
+        // before 添加到指定容器的前面
+//        $('#op').before('<h3>'+say+'</h3>');
+        // insertBefore
+//        $(htmlStr).insertBefore('#op');
+
+        // 包裹节点
+        // 1.外层包裹
+        // 包裹每个
+//        $('i').wrap('<h3>hello nihao</h3>');
+        // 包裹所有
+//       $('i').wrapAll('<h3>hello nihao</h3>');
+
+        // 包裹内部节点
+//        $('#op').wrapInner('<i></i>');
+
+
+        // 替换
+        // replaceAll
+//        $(h3).replaceAll('.op');
+//        $('.op').replaceWith(h3);
+
+
+        // remove detach 移除
+        $('.op').click(function () {
+            console.log(123);
+        });
+//        var childs;
+//        setTimeout(function () {
+////        childs = $('.op').remove();
+//            childs = $('.op').detach(); // 保留事件处理程序
+//            console.log(childs);
+////        console.log($('body')[0].removeChild($('.op')[0]));
+//        }, 3000);
+//
+//        setTimeout(function () {
+////        $('body').append(childs)
+//            childs.appendTo('body')
+//        }, 5000)
+
+        // 复制节点
+//        console.log($('.op').clone(true));
+        $('.op').clone().appendTo('body')
+        // 复制事件程序
+        $('.op').clone(true).appendTo('body')
+    });
+</script>
+</body>
+</html>

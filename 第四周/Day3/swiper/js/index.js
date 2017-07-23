@@ -61,10 +61,14 @@ left.onclick = function () {
 // 滑入滑出控制
 outer.onmouseover = function () {
     clearInterval(this.timer);
+    utils.css(right, 'display', 'block');
+    utils.css(left, 'display', 'block');
 };
 
 outer.onmouseout = function () {
     this.timer = setInterval(autoMove, 2000);
+    utils.css(right, 'display', 'none');
+    utils.css(left, 'display', 'none');
 };
 
 for (var i = 0; i < focusList.length; i++) {
@@ -83,7 +87,6 @@ function changeBg(n) {
 }
 
 function delayImg(img) {
-    console.log(123);
     var imgSrc = img.getAttribute('real');
     var temp = new Image;
     temp.src = imgSrc;
