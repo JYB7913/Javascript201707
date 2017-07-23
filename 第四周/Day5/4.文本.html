@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 say='hello'>nihao</h3>
+<input type="text" value="123">
+<input type="checkbox" >
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // html text val
+//        $('h3').html('<i>123123</i>')
+//        $('h3').text('<i>123123</i>')
+//        $('h3').html(function (n, v) {
+//           console.log(arguments);
+//           return 'hello ' + v
+//        })
+//        console.log($('h3').html()); // 获取
+//
+//        console.log($('h3').html('')); // 清空
+
+//        $('h3').text(function (n, v) {
+//            console.log(arguments);
+//            return 'hello ' + v
+//        })
+//        console.log($('h3').text());
+//        console.log($('h3').text(''));
+
+//        console.log($('input')[0].value = 100);
+//        console.log($('input').val(2000).val());
+
+//        $('input').on('change', function () {
+//            $(this).val(function (n, m) {
+//                return m * 10
+//            });
+//          $('h3').text($(this).val());
+//        })
+
+        // html 属性获取/设置 attr(通常操作自定义html属性) prop(自带属性)
+//        console.log($('h3')[0].getAttribute('say'));
+//        console.log($('h3')[0].setAttribute('say', 123));
+
+//        console.log($('h3').attr('say', 888));
+
+
+//        console.log($('input:radio'));
+//        $('input:checkbox').change(function () {
+//            console.log($(this).attr('checked'));
+//            console.log($(this).prop('checked')); // prop 内置html属性
+//        })
+
+        console.log($('input:checkbox').prop('checked', true));
+
+    })
+</script>
+</body>
+</html>

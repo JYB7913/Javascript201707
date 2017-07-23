@@ -11,6 +11,13 @@
 <!--<i>11</i>-->
 <!--<i>22</i>-->
 <!--<i>33</i>-->
+<ul>
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>dd</li>
+    <li>cc</li>
+</ul>
 
 <!--<zhufeng></zhufeng>-->
 
@@ -95,9 +102,12 @@
 
         // 复制节点
 //        console.log($('.op').clone(true));
-        $('.op').clone().appendTo('body')
+//        $('.op').clone().appendTo('body');
         // 复制事件程序
-        $('.op').clone(true).appendTo('body')
+//        $('.op').clone(true).appendTo('body');
+
+        // 清空节点
+        console.log($('ul').empty().text('已经被清空'));
     });
 </script>
 </body>
