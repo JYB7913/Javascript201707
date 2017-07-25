@@ -61,7 +61,6 @@ $(function () {
         move(step)
     });
 
-
     // 焦点点击
     $(".focus li").mouseover(function () {
         move($(this).index());
@@ -75,8 +74,6 @@ $(function () {
             $img.prop('src', imgSrc).fadeIn(300);
             $img[0].flag = true;
         })
-
     }
-
 
 });
