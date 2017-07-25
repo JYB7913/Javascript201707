@@ -7,10 +7,13 @@ $(function () {
     var len = $imgs.size();
 
 
+
     // var $imgs = $('#outer>img');
     // var $left = $outer.children('.left');
     // var $right = $outer.children('.right');
-    // var $oLis = $('.focus li');
+    // var $oLis = $('#outer .left');
+    // var $oLis = $('#outer .left');
+
 
     // 首张加载
     delay($imgs.eq(0));

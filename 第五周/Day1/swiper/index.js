@@ -12,6 +12,7 @@ $(function () {
     // 自动轮播
     $outer[0].timer = setInterval(move, 2000);
     function move(n) {
+
         // step++; // 加加完后的索引 是 下一张的索引
         !isNaN(n) ? step = n : step++;
         if (step === len) {
@@ -52,6 +53,8 @@ $(function () {
         if($imgs.is(':animated')) return; // 如果当前正在执行动画 就禁止切换
         move();
     });
+    $right.click(move);
+    
     $left.click(function () {
         if($imgs.is(':animated')) return;
         step--;

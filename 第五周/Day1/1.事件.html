@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            height: 1200px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">btn</button>
+<input type="text" id="inp">
+<textarea id="op">nihao hello</textarea>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    var $ = function (el) {
+        return document.getElementById(el);
+    }
+    // 事件 行为
+    // 事件类型
+    // 事件处理程序（监听函数）
+//    console.log(123);
+//    btn.onclick = function () { // 事件都是异步
+//        alert(123);
+//    };
+//    console.log(222);
+
+//    for(var i = 0; i < 3; i++){
+//        btn.onclick = function () {
+//            console.log(i);
+//        }
+//    }
+    // 常用事件
+    // onclick onmouseover onmouseout(onmouseenter/onmouseleave) onload onkeydown/onkeyup/onkeypress/onfocus/onblur/onchange/oninput/ondblclick/onscroll/onmousewheel/onerror/onresize/onselect...
+
+//    $('inp').onkeydown = function () {
+//        console.log(1);
+//    }
+//    $('inp').onkeyup = function () {
+//        console.log(1);
+//    }
+
+//    $('inp').onkeypress = function () {
+//        console.log(1);
+//    }
+//    $('inp').oninput = function () {
+//        console.log(1);
+//    }
+//    btn.ondblclick = function () {
+//        console.log(123);
+//    };
+
+//    window.onscroll = function () {
+//       console.log('scroll');
+//    };
+    
+//    window.onmousewheel = function () {
+//        console.log('wheel');
+//    }
+//    window.onresize = function () {
+//        console.log(111);
+//    }
+//    $('inp').onselect =function () {
+//        console.log(234);
+//    }
+//    $('op').onselect =function () {
+//        console.log(555);
+//    }
+
+    // e 事件对象  存储一些关于事件的信息
+//    $('btn').onclick = function (e) {
+//        console.log(e.type); // type 事件类型
+//
+//    }
+    function fn(e) {
+        console.log(e);
+    }
+    $('btn').onclick = fn;
+//    $('btn').onclick = function fn(e) {
+//        console.log(e.type);
+//    }
+</script>
+</body>
+</html>
