@@ -1,16 +1,24 @@
 $(function () {
-    var $imgs = $('#outer>img');
     var $outer = $('#outer');
-    var $left = $('#outer .left');
-    var $right = $('#outer .right');
-    var $oLis = $('.focus li');
+    var $imgs = $outer.children('img');
+    var $left = $outer.find('.left');
+    var $right = $outer.find('.right');
+    var $oLis = $outer.find('.focus>li');
     var len = $imgs.size();
 
+
+    // var $imgs = $('#outer>img');
+    // var $left = $outer.children('.left');
+    // var $right = $outer.children('.right');
+    // var $oLis = $('.focus li');
+
+    // 首张加载
     delay($imgs.eq(0));
+
     //记录当前索引，切换图像
-    var step = 0
+    var step = 0;
     // 轮播
-    $outer[0]._timer = setInterval(move, 2000)
+    $outer[0]._timer = setInterval(move, 2000);
     function move(n) {
         !isNaN(n) ? step = n : step++;
         if (step === len) {
@@ -44,7 +52,7 @@ $(function () {
     });
     $right.click(function () {
         move();
-    })
+    });
     // 焦点点击
     $oLis.click(function () {
         move($(this).index());
