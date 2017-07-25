@@ -11,6 +11,9 @@
         a {
             text-decoration: none;
         }
+        ul {
+            list-style: none;
+        }
         #outer {
             position: relative;
             width: 700px;
@@ -19,6 +22,7 @@
             margin: 20px auto;
         }
         #outer img {
+            background: url("image/load.gif") no-repeat center;
             display: none;
             position: absolute;
             left: 0;
@@ -50,16 +54,49 @@
         #outer a:hover {
             background: rgba(0, 0, 0, .7);
         }
+        .focus {
+            width: 80px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin:  auto;
+            bottom: 5px;
+            background: rgba(0, 0, 0, .4);
+            overflow: hidden;
+            padding: 3px 5px 3px 0;
+            border-radius: 20px;
+        }
+        .focus li {
+            cursor: pointer;
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-left: 5px;
+        }
+        .focus li.active {
+            background-color: #ff3959;
+        }
     </style>
 </head>
 <body>
 <div id="outer">
-    <img class="one" src="./image/1.jpg" alt="">
-    <img src="./image/2.jpg" alt="">
-    <img src="./image/3.jpg" alt="">
-    <img src="./image/4.jpg" alt="">
+    <!-- 轮播图片 -->
+    <img real="./image/1.jpg" alt="">
+    <img real="./image/2.jpg" alt="">
+    <img real="./image/3.jpg" alt="">
+    <img real="./image/4.jpg" alt="">
+    <!-- 左右切换 -->
     <a class="left" href="javascript:;"><</a>
     <a class="right" href="javascript:;">></a>
+    <!-- 焦点切换 -->
+    <ul class="focus">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
 </div>
 <script type="text/javascript" src="jquery-1.11.3.js"></script>
 <script type="text/javascript" src="index.js"></script>
