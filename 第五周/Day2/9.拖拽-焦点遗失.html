@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #drag {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="drag"></div>
+<script type="text/javascript">
+  // 拖拽
+  // onmousedown 开始拖拽 记录鼠标在元素中的位置 给拖拽元素 绑定 onmousemove 和 onmouseup 事件
+  // onmousemove 进行拖拽 根据此时的鼠标位置 计算 元素的left和top值（此时元素的位置）
+  // onmouseup 结束拖拽 鼠标抬起时 移除 move和up事件
+
+  // 鼠标焦点遗失 当我们 按下元素 快速拖拽移动时 元素跟不上 鼠标移动速度 就造成焦点遗失
+
+    var drag = document.getElementById('drag');
+    // 准备拖拽
+    drag.onmousedown = function (e) {
+        var that = this;
+         e = e || window.event;
+         // 记录此时鼠标按下 在元素中的 位置（鼠标距离元素左边距离和元素上边距离）
+         this.l = e.clientX - this.offsetLeft;
+         this.t = e.clientY - this.offsetTop;
+         // 解决鼠标焦点遗失 chrome 不兼容 兼容 IE FF
+        if(this.setCapture){ // 进行焦点捕获绑定
+            this.setCapture();
+            // 开始拖拽
+            this.onmousemove = function (e) {
+                e = e || window.event;
+                // 根据此时的clientX/clientY 求出 元素 此时的left和top值 此时的位置
+                this.style.left = e.clientX - this.l + 'px';
+                this.style.top = e.clientY - this.t + 'px';
+            };
+            // 结束拖拽
+            this.onmouseup = function () {
+                this.onmousemove = null;
+                this.onmouseup = null;
+                if(this.releaseCapture){
+                    this.releaseCapture(); // 解除绑定
+                }
+            }
+        } else { // 如果是chrome 就将move和up绑定给document
+            document.onmousemove = function (e) {
+                e = e || window.event;
+                // 根据此时的clientX/clientY 求出 元素 此时的left和top值 此时的位置
+                that.style.left = e.clientX - that.l + 'px';
+                that.style.top = e.clientY - that.t + 'px';
+            };
+            document.onmouseup = function () {
+                this.onmousemove = null;
+                this.onmouseup = null;
+            }
+        }
+
+
+    }
+    
+</script>
+</body>
+</html>

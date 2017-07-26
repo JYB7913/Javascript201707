@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #drag {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="drag"></div>
+<script type="text/javascript">
+ var drag = document.getElementById('drag');
+
+ drag.onmousedown = function (e) {
+     e = e || window.event;
+     // 记录鼠标在元素中的位置
+     this.l = e.clientX - this.offsetLeft;
+     this.t = e.clientY - this.offsetTop;
+     if(this.setCapture){ // 解决IE FF鼠标焦点遗失
+         this.setCapture();
+     }
+
+     this.onmousemove = function (e) {
+         e = e || window.event;
+         // 根据此时clientX 求出元素的偏移值
+         this.style.left = e.clientX - this.l + 'px';
+         this.style.top = e.clientY - this.t + 'px';
+     };
+
+     this.onmouseup = function () {
+         this.onmousemove = null;
+         this.onmouseup = null;
+         if(this.releaseCapture){ // 解除绑定
+             this.releaseCapture();
+         }
+     }
+ }
+    
+</script>
+</body>
+</html>
