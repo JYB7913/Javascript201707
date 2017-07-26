@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="oUl">
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
+
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<!-- jquery-migrate 恢复之前版本 废弃的api -->
+<script type="text/javascript" src="jquery-migrate.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // jq 的事件委托  将绑定给li的事件 委派给 指定外层元素 body
+//        $('body').on('click', 'li', function () {
+//            console.log(123);
+//        });
+
+
+//        $('#oUl').on('click', 'li', function () {
+//            console.log(123);
+//        });
+//        $('#oUl').undelegate('click'); // 移除委托事件
+
+        setTimeout(function () {
+            var str = '';
+            for (var l = 4; l < 6; l++) {
+                str += '<li>' + l + '</li>'
+            }
+            $('#oUl').append(str); // 实际拼接了一个新的字符串 然后将原来 覆盖掉 重新渲染
+        }, 2000);
+
+//        $('#oUl>li').off('click'); // 移除绑定给li的click事件
+//          $('#oUl').off('click'); // 说明我们的事件 是委派给ul
+//          $('body').off('click'); // 说明我们的事件 是委派给ul
+        // bind 只负责事件绑定 unbind  on off
+
+        // delegate 特定方法 事件委托 将事件委托给指定容器  on = bind + delegate
+//        $('#oUl').delegate('li','click', function () {
+//            console.log('delegate');
+//        });
+
+//        $('#oUl').off('click');
+//        $('#oUl').undelegate('click'); // 移除委托事件
+
+        // 1.9+ 已经移除 委托给document
+//        $('#oUl li').live('click', function () {
+//            console.log(234);
+//        });
+//        $(document).off('click');
+    })
+</script>
+</body>
+</html>

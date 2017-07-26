@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="oUl">
+    <li>新闻</li>
+    <li>综艺</li>
+    <li>娱乐</li>
+    <p>123</p>
+</ul>
+<script type="text/javascript">
+    // 事件委托：利用事件默认会进行冒泡传播的机制 给最外层元素相关行为绑定事件，当里面元素相关行为触发的时候 也会触发最外层元素的行为 然后我们可以根据事件对象中的事件源做出相应的处理
+
+    var oUl = document.getElementById('oUl');
+    var list = oUl.getElementsByTagName('li');
+
+    oUl.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+       if(tar.tagName.toUpperCase() === 'LI') {
+           alert(tar.innerText)
+       } else {
+           alert('事件源不是Li');
+       }
+    };
+
+    // 事件委托 比一个一个绑定事件 性能上提升多倍
+
+    // 当我们需要给多个内部元素 绑定同一个相关行为的时候 我们可以利用事件委托方式 将行为绑定给 外层容器 从而根据 外层容器事件中事件对象的事件源 进行相应处理
+
+
+//    for(var i = 0; i < list.length; i++){
+//        list[i].onclick = function () {
+//            console.log(this.innerText);
+//        }
+//    }
+
+
+
+
+</script>
+</body>
+</html>

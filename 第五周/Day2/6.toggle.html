@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">显示/隐藏</button>
+<div id="oDiv">nihao123</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript" src="jquery-migrate.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var $oDiv = $('#oDiv');
+//        $('#btn').click(function () {
+////            if($oDiv.is(':visible')){
+////                $oDiv.hide(300)
+////            } else {
+////                $oDiv.show(300)
+////            }
+//            $oDiv.toggle(300); // 显示隐藏切换
+//        })
+
+
+        $('#btn').toggle(function () {
+            $oDiv.hide(300);
+        }, function () {
+            $oDiv.show(300);
+        })
+
+        // 之前版本点击事件复合写法
+//        $('#btn').toggle(function () {
+//            console.log(111);
+//        }, function () {
+//            console.log(222);
+//        },function () {
+//            console.log(333);
+//        })
+    })
+</script>
+</body>
+</html>

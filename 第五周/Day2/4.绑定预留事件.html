@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="oUl">
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
+<script type="text/javascript">
+    var oUl = document.getElementById('oUl');
+    var list = oUl.getElementsByTagName('li');
+    oUl.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        if (tar.tagName.toUpperCase() === 'LI') {
+            alert(tar.innerText);
+        }
+    };
+    //    for (var i = 0; i < list.length; i++){
+    //        list[i].onclick = function () {
+    //             alert(this.innerText);
+    //        }
+    //    }
+    setTimeout(function () {
+        var str = '';
+        for (var l = 4; l < 6; l++) {
+            str += '<li>' + l + '</li>'
+        }
+        oUl.innerHTML += str; // 实际拼接了一个新的字符串 然后将原来 覆盖掉 重新渲染
+    }, 2000);
+</script>
+</body>
+</html>

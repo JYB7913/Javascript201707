@@ -8,12 +8,15 @@
             margin: 0;
             padding: 0;
         }
+
         body {
 
         }
+
         #outer {
             background-color: blue;
         }
+
         #btn {
             width: 100px;
             background-color: #7ffffa;
@@ -31,68 +34,68 @@
 <!--<form action="https://www.baidu.com" onsubmit="return false">-->
 
 <!--<form action="https://www.baidu.com/s">-->
-    <!--&lt;!&ndash; https://www.baidu.com/s?wd=value &ndash;&gt;-->
-    <!--<input type="text" name="wd">-->
-    <!--<button type="submit">提交</button>-->
+<!--&lt;!&ndash; https://www.baidu.com/s?wd=value &ndash;&gt;-->
+<!--<input type="text" name="wd">-->
+<!--<button type="submit">提交</button>-->
 <!--</form>-->
 <script type="text/javascript">
     var btn = document.getElementById('btn');
     var outer = document.getElementById('outer');
     var inp = document.getElementById('inp');
-    
+
     inp.onkeydown = function (e) {
         console.log(e.key); // 按键符
         console.log(e.keyCode); // 键码值 上38 下40 左37 右39 enter 13
     };
-    
+
     window.onmousewheel = function (e) {
         console.log(e.wheelDelta); // -120 往下滚动 120 往上滚动
     }
-    
-//    window.onclick = function (e) {
-//        console.log(e.target);
-//    }
-//    document.onclick = function () {
-//        console.log('document');
-//    }
-//    document.body.onclick = function () {
-//        console.log('body');
-//    };
-//    outer.onclick = function () {
-//        console.log('outer');
-//    };
 
-//    btn.onclick = function (e) {
-//        console.log('btn');
-//        console.log(e.clientX);
-//        console.log(e.pageX);
-        // type 事件类型
-        // target 事件源
-        // clientX 针对于窗口 X轴坐标
-        // clientY 针对于窗口 Y轴坐标
-        // pageX 针对于body X轴坐标
-//        console.log(e.pageX === e.clientX + document.body.scrollLeft);
-        // PageY 针对于body Y轴坐标
-//        console.log(e.pageY === e.clientY + document.body.scrollTop);
-        // e.preventDefault() 阻止默认行为
-//         e.stopPropagation() // 阻止冒泡传播
-        // offsetX 相对于元素的 X轴坐标
-        // offsetY 相对于元素的 Y轴坐标
-//        console.log(e.offsetX);
-//        console.log(e.offsetY);
+    //    window.onclick = function (e) {
+    //        console.log(e.target);
+    //    }
+    //    document.onclick = function () {
+    //        console.log('document');
+    //    }
+    //    document.body.onclick = function () {
+    //        console.log('body');
+    //    };
+    //    outer.onclick = function () {
+    //        console.log('outer');
+    //    };
+
+    //    btn.onclick = function (e) {
+    //        console.log('btn');
+    //        console.log(e.clientX);
+    //        console.log(e.pageX);
+    // type 事件类型
+    // target 事件源
+    // clientX 针对于窗口 X轴坐标
+    // clientY 针对于窗口 Y轴坐标
+    // pageX 针对于body X轴坐标
+    //        console.log(e.pageX === e.clientX + document.body.scrollLeft);
+    // PageY 针对于body Y轴坐标
+    //        console.log(e.pageY === e.clientY + document.body.scrollTop);
+    // e.preventDefault() 阻止默认行为
+    //         e.stopPropagation() // 阻止冒泡传播
+    // offsetX 相对于元素的 X轴坐标
+    // offsetY 相对于元素的 Y轴坐标
+    //        console.log(e.offsetX);
+    //        console.log(e.offsetY);
 
 
-//        e.preventDefault(); // 阻止默认行为 行内阻止 href="javascript:;"
-//    };
+    //        e.preventDefault(); // 阻止默认行为 行内阻止 href="javascript:;"
+    //    };
 
     // 事件冒泡 从里到外 当前元素相关行为(click)触发 也会导致它所有上级相关行为触发 一直到document
 
 
-//    link.onclick = function (e) {
-//        console.log(1234);
-////        e.preventDefault();
-//        return false; // 阻止默认行为
-//    }
+    //    link.onclick = function (e) {
+    //        console.log(1234);
+    ////        e.preventDefault();
+    //        return false; // 阻止默认行为
+    //    }
 </script>
 </body>
 </html>

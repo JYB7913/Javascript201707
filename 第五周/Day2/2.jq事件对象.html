@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #outer {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="oDiv"></div>
+</div>
+<a href="https://www.baidu.com" id="link">baidu</a>
+<script type="text/javascript" src="./jquery-1.11.3.js"></script>
+<script type="text/javascript">
+  $(function () {
+      $('#outer').click(function () {
+         console.log('outer');
+      });
+      $('#oDiv').click(function (e) {
+          console.log('oDiv'); // 事件对象
+          e.stopPropagation(); // 阻止冒泡传播
+          console.log(e.pageX);
+          console.log(e.pageY);
+      });
+      $('#link').click(function (e) {
+          e.preventDefault(); // 阻止默认行为
+
+      })
+      
+      
+  })
+</script>
+</body>
+</html>
