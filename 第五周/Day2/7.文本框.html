@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        #list {
+            display: none;
+        }
+        input{
+            display: block;
+        }
+        input, #list {
+            width: 300px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="inp">
+<ul id="list">
+    <li>1111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>4444</li>
+</ul>
+<br>
+<br>
+<br>
+<p>12344234</p>
+<script type="text/javascript">
+    var list = document.getElementById('list');
+    // 利用事件委托控制下拉列表的显示隐藏
+
+    // 如果点击的是 inp这个文本框我们就让list显示
+    // 如果点击的是 页面中其他元素让list隐藏
+    // 判断当前点击的元素 是不是inp？
+    // 1. 将click事件 绑定给body 通过body 事件对象中的事件源 来判断 当前点击的是页面中哪个元素 从而进行相应处理
+    document.body.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        if(tar.id === 'inp'){
+            // 验证input value是否为空 如果为空 没有必要显示list
+            if(/^\s*$/.test(tar.value)) return;
+            list.style.display = 'block'
+        } else { // 点击其他元素就隐藏
+            list.style.display = 'none'
+        }
+    };
+
+    // 实时输入的时候 如果有值就显示 否则隐藏
+    inp.oninput = function () {
+        list.style.display = /^\s*$/.test(this.value)? 'none' : 'block';
+    }
+</script>
+</body>
+</html>
