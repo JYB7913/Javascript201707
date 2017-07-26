@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        #drag {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="drag"></div>
+<script type="text/javascript">
+   var drag = document.getElementById('drag');
+   // onmousedown onmouseup onmousemove
+
+   // 1.按下的时候 绑定  onmousemove onmouseup
+   // 开始拖拽
+   drag.onmousedown = function (e) {
+       e = e || window.event;
+       // 记录按下时鼠标点击位置 在元素中 位置
+       this.l = e.clientX - this.offsetLeft;
+       this.t = e.clientY - this.offsetTop;
+       // 进行拖拽
+       // 实时计算元素在页面中位置
+       this.onmousemove = function (e) {
+           console.log('move');
+           e = e || window.event;
+           // 实时计算出来 此时的 left 和 top
+           this.style.left = e.clientX - this.l +'px';
+           this.style.top = e.clientY - this.t +'px';
+       };
+       // 结束拖拽
+       this.onmouseup = function () {
+           this.onmousemove = null;
+           this.onmouseup = null;
+       }
+   };
+
+   
+
+</script>
+</body>
+</html>
