@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            position: relative;
+            width: 360px;
+            height: 360px;
+            border: 1px solid red;
+            margin: 30px;
+        }
+
+        #mask {
+            cursor: move;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 180px;
+            height: 180px;
+            background: rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script type="text/javascript">
+    var box = document.getElementById('box');
+//    var mask = document.getElementById('mask');
+
+//    // 最大边界值
+//    var maxL = box.clientWidth - mask.offsetWidth;
+//    var maxT = box.clientHeight - mask.offsetHeight;
+
+    // onmouseenter onmousemove onmouseleave
+    box.onmouseenter = function () {
+       var mask = this.mask = document.getElementById('mask');
+        if(!mask){
+            mask = this.mask = document.createElement('div');
+            mask.id = 'mask';
+            this.appendChild(mask);
+          // 最大边界值
+          this.maxL = this.clientWidth - mask.offsetWidth;
+          this.maxT = this.clientHeight - mask.offsetHeight;
+        }
+        mask.style.display = 'block';
+
+    };
+    
+    box.onmousemove = function (e) {
+        e = e || window.event;
+        // 计算出此时的left和top值
+        var l = e.clientX - this.offsetLeft - this.clientLeft - this.mask.offsetWidth/2;
+        var t = e.clientY - this.offsetTop - this.clientTop - this.mask.offsetHeight/2;
+        // 边界判断
+        if (l < 0) {
+            l = 0;
+        } else if (l > this.maxL) {
+            l = this.maxL
+        }
+
+        if (t < 0) {
+            t = 0;
+        } else if (t > this.maxT) {
+            t = this.maxT;
+        }
+
+        // 边界处理后 再设置为遮罩层的left和top值
+        this.mask.style.left = l + 'px';
+        this.mask.style.top = t + 'px';
+    };
+
+    box.onmouseleave = function () {
+        this.mask.style.display = 'none';
+    }
+</script>
+</body>
+</html>
