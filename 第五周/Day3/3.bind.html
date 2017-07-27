@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // call apply bind
+    var obj = {id: 24};
+    function fn(a, b) {
+        console.log(a, b);
+        console.log(this);
+    }
+
+//    fn.call(obj, 10, 20); // 将fn中this修改为第一个参数obj 并执行
+//    fn.apply(obj, [10, 20]); // 将fn中this修改为第一个参数obj 并执行 将参数以集合的方式传递进去
+    var fe = fn.bind(obj, 10, 20); // fe 是 this被修改后的新函数
+    fe(20, 30);
+
+    Function.prototype._bind = function (that) {
+        var fn = this; // 需要改造的函数  that 要修改的this关键字
+        var params = [].slice.call(arguments, 1);
+        return function () {
+            var arr  = params.length? params : arguments;
+            fn.apply(that, arr); // 利用apply传参特性 将当前函数arguments（实参集合） 直接传给 fn
+        }
+    };
+    var foo = fn._bind(obj);
+    foo(10,20);
+</script>
+</body>
+</html>

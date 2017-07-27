@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -10,6 +10,7 @@
         }
 
         #oDiv {
+            cursor: pointer;
             position: absolute;
             width: 100px;
             height: 100px;
@@ -21,52 +22,43 @@
 <div id="oDiv"></div>
 <script type="text/javascript">
     var oDiv = document.getElementById('oDiv');
-
-    Function.prototype._bind = function (that) {
-        return function (e) {
-            console.log(e);
-            this.call(that)
-        }
-    };
     oDiv.onmousedown = function (e) {
-        var that = this;
+        var that = this; // 当前拖拽元素
         e = e || window.event;
+        // 记录鼠标按下时 在元素中的位置 相当于e.offsetX 和 e.offsetY
         this.l = e.clientX - this.offsetLeft;
         this.t = e.clientY - this.offsetTop;
+
         var winW = document.documentElement.clientWidth || document.body.clientWidth;
         var winH = document.documentElement.clientHeight || document.body.clientHeight;
-        this.maxL = winW - this.offsetWidth;
-        this.maxT = winH - this.offsetHeight;
-//        document.onmousemove = move.bind(that); // move 里面要保证this是拖拽元素
-        // 事件对象存在于 当前事件函数中
-        document.onmousemove = function (e) {
-            e = e || window.event;
-            move.call(that, e); // mousmove 事件触发时 叫move当做普通函数执行
-        }; // move 里面要保证this是拖拽元素
+        this.maxL = winW - this.offsetWidth; // 左右最大边界（最大left值）
+        this.maxT = winH - this.offsetHeight; // 上下最大边界（最大top值）
 
-        document.onmouseup = function () {
+        document.onmousemove = move.bind(that); // 将改造后的move作为事件监听函数
+
+        document.onmouseup = function (e) {
             this.onmousemove = null;
             this.onmouseup = null;
         }
     };
 
-
-    function move(e) { // move 需要将里面this修改为拖拽元素 需要的事件对象 通过mousemove 传递进来
-
-        var l = e.clientX - this.l;
+    function move(e) { // 保证里面this是当前拖拽元素
+        e = e || window.event;
+        var l =  e.clientX - this.l;
         var t = e.clientY - this.t;
-        // 最小边界和最大边界处理
-        if (l < 0) {
-            l = 0
+        // 边界判断
+        if(l < 0) {
+            l = 0;
         } else if (l > this.maxL) {
             l = this.maxL;
         }
 
-        if (t < 0) {
+        if(t < 0) {
             t = 0;
         } else if (t > this.maxT) {
             t = this.maxT;
         }
+
         this.style.left = l + 'px';
         this.style.top = t + 'px';
     };
