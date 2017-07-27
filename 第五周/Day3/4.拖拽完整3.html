@@ -29,8 +29,7 @@
         var fn = this; // 调用_bind的主体（需要改造函数）
         var params = [].slice.call(arguments, 1);
        return function () {
-           var arr = params.length? params : arguments;
-           fn.apply(that, arr);
+           fn.apply(that, params.concat([].slice.call(arguments)));
        }  
     };
     
@@ -48,7 +47,7 @@
         this.maxT = winH - this.offsetHeight; // 上下最大边界（最大top值）
 
         // onmousedown that是拖拽元素
-        document.onmousemove = move._bind(that); // 将改造后的move作为事件监听函数
+        document.onmousemove = move._bind(that, 20, 30); // 将改造后的move作为事件监听函数
 
         document.onmouseup = function (e) {
             this.onmousemove = null;
@@ -57,6 +56,7 @@
     };
 
     function move(e) { // 保证里面this是当前拖拽元素
+        console.log(arguments);
         e = e || window.event;
         var l =  e.clientX - this.l;
         var t = e.clientY - this.t;
