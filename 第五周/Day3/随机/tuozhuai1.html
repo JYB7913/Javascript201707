@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #oDiv {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #3b55ff;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script>
+    var drag = document.getElementById('oDiv');
+    drag.onmousedown = function (e) {
+        var that = this;
+        e = e || e.event;
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+        document.onmousemove = function (e) {
+            e = e || e.event;
+            that.style.left = e.clientX - that.l + 'px';
+            that.style.top = e.clientY - that.t + 'px';
+        };
+        document.onmouseup = function () {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+    }
+</script>
+</body>
+</html>

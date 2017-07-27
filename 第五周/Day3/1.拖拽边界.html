@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #3b55ff;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+
+    oDiv.onmousedown = function (e) {
+        e = e || window.event;
+        var that = this;
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+        var winW = document.documentElement.clientWidth || document.body.clientWidth;
+        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+        this.maxL = winW - this.offsetWidth;
+        this.maxT = winH - this.offsetHeight;
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            var l =  e.clientX - that.l;
+            var t = e.clientY - that.t;
+            // 最小边界和最大边界处理
+            if (l < 0) {
+                l = 0
+            } else if (l > that.maxL) {
+                l = that.maxL;
+            }
+
+            if (t < 0){
+                t = 0;
+            } else if (t > that.maxT) {
+                t = that.maxT;
+            }
+            that.style.left = l + 'px';
+            that.style.top =  t + 'px';
+        };
+        document.onmouseup = function () {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+
+    }
+</script>
+</body>
+</html>
