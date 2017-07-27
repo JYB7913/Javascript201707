@@ -1,0 +1,19 @@
+1.onmouseenter
+  第一次时候动态创建遮罩层 以后 只需控制显示隐藏
+  没有就创建 有就直接显示（遮罩层和box2显示）
+
+2.onmousemove
+ var l = e.clientX - this.offsetLeft - this.clientLeft - this.mask.offsetWidth/2;
+ var t = e.clientY - this.offsetTop - this.clientTop - this.mask.offsetHeight/2;
+边界判断
+
+根据事件对象e  计算出遮罩层在容器中位置
+left = l + 'px';
+top = t + 'px';
+
+计算出bigImg的 偏移值
+left= -l * 图片宽度倍数 + 'px';
+top = -t * 图片高度倍数 + 'px';
+
+3.onmouseleave
+让box2和遮罩层隐藏
