@@ -1,0 +1,6 @@
+1.焦点遗失 把move和up事件绑定给document（注意move中this要保证是拖拽元素）
+2.边界
+
+onmousemove 中 需要 通过  move事件中的事件对象 clientX 和 clientY 还需要 得到元素 保存的位置 ele.l 和ele.t
+left = clientX - ele.l
+top = clientY - ele.t
