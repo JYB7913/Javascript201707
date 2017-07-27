@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="oDiv">123</div>
+<script type="text/javascript">
+    var oDiv = document.getElementById("oDiv");
+
+    oDiv.onclick = function (e) {
+
+        e = e || window.event;
+
+        e.target = e.target || e.srcElement;
+
+        e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+        var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+        var scrollL = document.documentElement.scrollLeft || document.body.scrollLeft;
+
+        e.pageX = e.clientX + scrollL;
+        e.pageY = e.clientY + scrollT;
+
+        e.clientX;
+        e.clientY;
+
+        e.type;
+
+        e.keyCode;
+
+        e.key;
+
+        e.wheelDelta;
+
+        e.which;
+
+
+    }
+
+
+</script>
+</body>
+</html>

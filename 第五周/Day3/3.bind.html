@@ -22,8 +22,7 @@
         var fn = this; // 需要改造的函数  that 要修改的this关键字
         var params = [].slice.call(arguments, 1);
         return function () {
-            var arr  = params.length? params : arguments;
-            fn.apply(that, arr); // 利用apply传参特性 将当前函数arguments（实参集合） 直接传给 fn
+            fn.apply(that, params.concat([].slice.call(arguments))); // 利用apply传参特性 将当前函数arguments（实参集合） 直接传给 fn
         }
     };
     var foo = fn._bind(obj);
