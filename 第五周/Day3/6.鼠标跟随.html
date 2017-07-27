@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #outer {
+            cursor: move;
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            margin: 20px auto;
+        }
+        #mask {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+  <div id="mask"></div>
+</div>
+<script type="text/javascript">
+    var outer = document.getElementById('outer');
+    var mask = document.getElementById('mask');
+    // 容器可视宽度和高度
+    var boxW = outer.clientWidth;
+    var boxH = outer.clientHeight;
+
+
+    outer.onmouseenter = function () {
+        mask.style.display = 'block';
+        // mask左右和上下最大边界值（在outer里面的最大left和最大top值 最大活动范围）
+        this.maxL = boxW - mask.offsetWidth;
+        this.maxT = boxH - mask.offsetHeight;
+        console.log('over');
+    };
+
+    outer.onmousemove = function (e) {
+        e = e || window.event;
+        // 计算出此时的位置
+        var l = e.pageX - this.offsetLeft - this.clientLeft - mask.offsetWidth/2;
+        var t = e.pageY - this.offsetTop - this.clientTop - mask.offsetHeight/2;
+        if (l < 0) {
+            l = 0;
+        } else if (l > this.maxL) {
+            console.log(123);
+            l = this.maxL;
+        }
+
+        if (t < 0) {
+            t = 0;
+        } else if (t > this.maxT) {
+            t = this.maxT;
+        }
+        mask.style.left = l + 'px';
+        mask.style.top = t + 'px';
+    };
+
+    outer.onmouseleave = function () {
+        mask.style.display = 'none';
+    }
+</script>
+</body>
+</html>
