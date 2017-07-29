@@ -1,6 +1,10 @@
 ~function () {
 
     function Darg(id) { // 类中this当前实例
+        if(!id) {
+            console.warn('未传入有效元素id');
+            return;
+        }
         var that = this;
         // 将拖拽元素保存给当前实例el属性
         that.el = document.getElementById(id.slice(1));
