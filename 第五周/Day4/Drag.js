@@ -1,7 +1,6 @@
 ~function () {
-
     function Darg(id) { // 类中this当前实例
-        if(!id) {
+        if (!id) {
             console.warn('未传入有效元素id');
             return;
         }
@@ -34,6 +33,7 @@
         document.onmousemove = that.handleThis(that.el, that.move);
         document.onmouseup = that.handleThis(that.el, that.up);
     }
+
     // 准备拖拽
     function down(e) { // this 被修改为 拖拽元素
         e = e || window.event;
@@ -41,6 +41,7 @@
         this.l = e.clientX - this.offsetLeft;
         this.t = e.clientY - this.offsetTop;
     }
+
     // 开始拖拽
     function move(e) {  // this 被修改为 拖拽元素
         e = e || window.event;
@@ -63,6 +64,7 @@
         this.style.left = l + 'px';
         this.style.top = t + 'px';
     }
+
     // 结束拖拽
     function up() {
         document.onmousemove = null;
