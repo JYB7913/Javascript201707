@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<script type="text/javascript">
+    // onmousedown  onmousemove onmouseup
+    var red = document.getElementById('red');
+    // 准备拖拽
+    red.onmousedown = function (e) {
+
+        this.setCapture(); // FF IE支持 谷歌不支持 在整个文档能够捕捉到焦点
+
+        // 开始拖拽 计算出鼠标移动时元素的位置 焦点遗失
+        this.onmousemove = function (e) {
+           console.log('move');
+        };
+        // 结束拖拽
+        this.onmouseup = function () {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+    };
+
+</script>
+</body>
+</html>

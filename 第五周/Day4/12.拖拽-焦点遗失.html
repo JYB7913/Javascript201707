@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<script type="text/javascript">
+    // onmousedown  onmousemove onmouseup
+    var red = document.getElementById('red');
+    // 准备拖拽
+    red.onmousedown = function (e) {
+        e = e || window.event;
+        var that = this;
+        this.l = e.clientX - this.offsetLeft; // 计算出点击位置在元素x轴的距离
+        this.t = e.clientY - this.offsetTop; // 计算出点击位置在元素Y轴的距离
+
+
+        // 开始拖拽 计算出鼠标移动时元素的位置 焦点遗失
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            that.style.left = e.clientX - that.l + 'px'; // 移动时的clientX - 在元素x轴的距离
+            that.style.top = e.clientY - that.t + 'px'; // 移动时的clientY - 在元素y轴的距离
+        };
+        // 结束拖拽
+        document.onmouseup = function () {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+    };
+
+</script>
+</body>
+</html>

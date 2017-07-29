@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<script type="text/javascript">
+    // onmousedown onmousemove onmouseup
+    var red = document.getElementById('red');
+    red.onmousedown = function () {
+        // 准备拖拽
+        down.call(this);
+        // 开始拖拽
+        document.onmousemove = handelThis(this, move);
+        // 结束拖拽
+        document.onmouseup = up;
+    };
+
+    function down(e) {
+        e = e || window.event;
+        var that = this;
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+
+        var winW = document.documentElement.clientWidth || document.body.clientWidth;
+        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+        that.maxL = winW - that.offsetWidth;
+        that.maxT = winH - that.offsetHeight;
+    }
+
+    function move(e) {
+        e = e || window.event;
+        // 边界判断
+        var l = e.clientX - this.l;
+        var t = e.clientY - this.t;
+
+        if(l < 0){
+            l = 0;
+        } else if(l > this.maxL){
+            l = this.maxL;
+        }
+
+        if(t < 0){
+            t = 0;
+        } else if(t > this.maxT){
+            t = this.maxT;
+        }
+        this.style.left = l + 'px';
+        this.style.top = t + 'px';
+    }
+
+    function up() {
+        this.onmousemove = null;
+        this.onmouseup = null;
+    }
+
+
+// 处理this   handelThis(that, move);
+    function handelThis(context, fn) {
+        return function (e) {
+            fn.call(context, e)
+        }
+    }
+</script>
+</body>
+</html>

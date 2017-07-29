@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<script type="text/javascript">
+    // onmousedown onmousemove onmouseup
+    var red = document.getElementById('red');
+    red.onmousedown = down;
+
+
+    function down(e) {
+        e = e || window.event;
+        var that = this;
+        // 记录鼠标按下时在元素X轴和Y轴的距离
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+
+        // 一屏宽度和高度
+        var winW = document.documentElement.clientWidth || document.body.clientWidth;
+        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+
+        // 最大边界值（窗口中的最大left值和top值） = 一屏宽和高 - 元素自身宽和高
+        that.maxL = winW - that.offsetWidth;
+        that.maxT = winH - that.offsetHeight;
+
+        // 将move中的this改为当前元素
+//        document.onmousemove = move.call(that);
+
+//        document.onmousemove = move.bind(that);
+//        document.onmousemove = function (e) {
+//            move.call(that, e)
+//        };
+
+        document.onmousemove = handelThis(that, move);
+
+        document.onmouseup = up;
+    }
+
+
+    function move(e) {
+        e = e || window.event;
+        // 边界判断
+        var l = e.clientX - this.l;
+        var t = e.clientY - this.t;
+
+        if(l < 0){
+            l = 0;
+        } else if(l > this.maxL){
+            l = this.maxL;
+        }
+
+        if(t < 0){
+            t = 0;
+        } else if(t > this.maxT){
+            t = this.maxT;
+        }
+        this.style.left = l + 'px';
+        this.style.top = t + 'px';
+    }
+
+    function up() {
+        this.onmousemove = null;
+        this.onmouseup = null;
+    }
+
+
+// 处理this   handelThis(that, move);
+    function handelThis(context, fn) {
+        return function (e) {
+            fn.call(context, e)
+        }
+    }
+</script>
+</body>
+</html>
