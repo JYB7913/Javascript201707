@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 1000px;
+        }
+        #btn {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <h3>区块</h3>
+    <div id="btn">按钮1</div>
+</div>
+
+<!--<button id="btn2">按钮2</button>-->
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    var oDiv = document.getElementById('oDiv');
+    var btn2 = document.getElementById('btn2');
+    // 事件：一个行为
+    // 事件类型
+    // 监听函数（处理程序）
+    // 在每个监听函数里面 浏览器会默认给它传递一个对象数据类型的值 称为事件对象
+    // 事件对象用来存储关于 当前事件 信息
+    // 通常在事件函数中通过 形参来接收事件对象
+    // IE 6 - 8 通常使用 window.event
+    btn.onclick = function (e) {
+        // 1.事件对象
+        e = e || window.event;
+        // e.type 事件类型
+        // e.target 事件源 当前事件行为由哪个元素触发的
+        e.target = e.target || e.srcElement;
+        // clientX 鼠标点击的位置 距离窗口的X轴坐标(距离窗口最左边的距离)
+        // clientY 鼠标点击的位置 距离窗口的Y轴坐标(距离窗口最上边的距离)
+//        console.log(e.clientX);
+//        console.log(e.clientY);
+        // pageX 鼠标点击的位置 距离body的X轴坐标(距离body最左边的距离)
+        // pageY 鼠标点击的位置 距离body的Y轴坐标(距离body最上边的距离)
+        //  pageX = clientX + scrollLeft
+        //  pageY = clientY + scrollTop
+
+        var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        e.pageX = e.pageX || e.clientX + sLeft;
+        e.pageY = e.pageY || e.clientY + sTop;
+        console.log(e.pageX);
+        console.log(e.pageY);
+
+    };
+
+//    oDiv.onclick = function (e) {
+////        e = e || window.event;
+////        console.log(e.target);
+////        console.log('oDiv');
+//    }
+//    0 || 1 逻辑或 先看左边是真还是假 如果是真就返回左边的值 如果是假就返回 右边的值
+//    1
+//    0 && 1 逻辑与 先看左边是真还是假 如果是真就返回右边的值 如果是假就返回 左边的值
+//    0
+
+//   0 || 1 && 2 逻辑与优先级默认高于逻辑或
+//   1 && 2 => 2 => 0 || 2 => 2
+//   (0 || 0) && 6
+//   0||0 => 0 => 0 && 6 => 0
+    // 处理默认值
+//    e = e || window.event;
+//    if(typeof e === 'undefined'){
+//        e = window.event
+//    }
+
+</script>
+</body>
+</html>

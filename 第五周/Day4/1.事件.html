@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<button id="btn2">按钮</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    var btn2 = document.getElementById('btn2');
+    // 事件：一个行为
+    // 事件类型
+    // 监听函数（处理程序）
+    // 在每个监听函数里面 浏览器会默认给它传递一个对象数据类型的值 称为事件对象
+    // 事件对象用来存储关于 当前事件 信息
+    // 通常在事件函数中通过 形参来接收事件对象
+    // IE 6 - 8 通常使用 window.event
+    btn.onclick = function (event) {
+//       console.log(event);
+        console.log(window.event);
+    };
+    
+//    btn.onclick = fn; // 把fn作为一个事件监听函数
+//
+//    btn2.onmouseover = function (e) {
+//        console.log(e.type);
+//    };
+//
+//    function fn(e) {
+//        console.log(e);
+//    }
+
+</script>
+</body>
+</html>
