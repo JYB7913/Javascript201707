@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="inp">
+<script type="text/javascript">
+    var inp = document.getElementById('inp');
+    // oninput onchange  onkeydown onkeyup onfocus  onblur onselect
+    inp.onkeydown = function (e) {
+        e = e || window.event;
+        console.log(e.key); // 按键名称
+        console.log(e.keyCode); // 键码值 上38 下40 enter 13
+        if(e.keyCode === 13){
+            console.log('enter键');
+        } else if(e.keyCode === 38){
+            console.log('上');
+        }
+    }
+</script>
+</body>
+</html>

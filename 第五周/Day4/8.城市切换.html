@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .list {
+            display: none;
+            width: 150px;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<button id="city">city</button>
+<ul class="list" id="list">
+    <li>北京</li>
+    <li>上海</li>
+    <li>重庆</li>
+    <li>成都</li>
+    <li>福建</li>
+    <li>郑州1</li>
+    <li>郑州2</li>
+    <li>郑州3</li>
+    <li>郑州4</li>
+    <li>郑州5</li>
+</ul>
+<br>
+<h3>1234</h3>
+<h3>1234</h3>
+<h3>1234</h3>
+<script type="text/javascript">
+    var city = document.getElementById('city');
+    var list = document.getElementById('list');
+    // 控制列表的显示隐藏
+    city.onclick = function () {
+        list.style.display = 'block';
+    };
+    document.body.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        if(tar.id !== 'city')  {
+            list.style.display = 'none';
+        }
+    };
+
+    // 城市输出
+    list.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        if(tar.tagName.toUpperCase() === 'LI'){
+            city.innerHTML = tar.innerHTML;
+        }
+    }
+
+    // 事件委托创建 当内部多个元素需要绑定同一相关行为时 可以将事件绑定给外层容器 通过 外层容器事件中的事件对象的 事件源 来判断当前点击的是哪一个 进行相应处理
+</script>
+</body>
+</html>

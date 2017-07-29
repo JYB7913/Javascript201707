@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        #inner {
+            width: 200px;
+            height: 200px;
+            background-color: #ff88e1;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        #center {
+            width: 100px;
+            height: 100px;
+            background-color: #b5ff9e;
+        }
+    </style>
+</head>
+<body>
+<div id="inner">
+    <div id="center"></div>
+</div>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // hover => onmouseenter/onmouseleave
+        $('#inner').hover(function () {
+            console.log('inner');
+        });
+        $('#center').hover(function () {
+            console.log('center');
+        });
+
+//        $('#inner').mouseenter(function () {
+//            console.log('inner');
+//        });
+//        $('#center').mouseenter(function () {
+//            console.log('center');
+//        });
+    })
+
+    // onmouseover onmouseout  onmouseenter/onmouseleave(不存在冒泡传播)
+//    inner.onmouseenter = function () {
+//        console.log('inner');
+//    };
+//    center.onmouseenter = function () {
+//        console.log('center');
+//    }
+//    inner.onmouseover = function () {
+//        console.log('inner');
+//    };
+//    center.onmouseover = function () {
+//        console.log('center');
+//    }
+</script>
+</body>
+</html>

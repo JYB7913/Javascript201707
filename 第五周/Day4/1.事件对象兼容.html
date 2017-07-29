@@ -8,9 +8,11 @@
             margin: 0;
             padding: 0;
         }
+
         body {
             height: 1000px;
         }
+
         #btn {
             width: 100px;
             height: 100px;
@@ -24,10 +26,11 @@
     <h3>区块</h3>
     <div id="btn">按钮1</div>
 </div>
-
+<a href="javascript:;" id="link">百度</a>
 <!--<button id="btn2">按钮2</button>-->
 <script type="text/javascript">
     var btn = document.getElementById('btn');
+    var link = document.getElementById('link');
     var oDiv = document.getElementById('oDiv');
     var btn2 = document.getElementById('btn2');
     // 事件：一个行为
@@ -56,30 +59,50 @@
         var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
         e.pageX = e.pageX || e.clientX + sLeft;
         e.pageY = e.pageY || e.clientY + sTop;
-        console.log(e.pageX);
-        console.log(e.pageY);
+//        console.log(e.pageX);
+//        console.log(e.pageY);
+        // 阻止默认行为
+        e.preventDefault? e.preventDefault() : e.returnValue = false;
+       console.log(e);
+       //  阻止冒泡传播
+        e.stopPropagation();
+        e.cancelBubble = true;
 
     };
 
-//    oDiv.onclick = function (e) {
-////        e = e || window.event;
-////        console.log(e.target);
-////        console.log('oDiv');
-//    }
-//    0 || 1 逻辑或 先看左边是真还是假 如果是真就返回左边的值 如果是假就返回 右边的值
-//    1
-//    0 && 1 逻辑与 先看左边是真还是假 如果是真就返回右边的值 如果是假就返回 左边的值
-//    0
+    // 默认行为 比如点击a标签链接时 会默认执行链接跳转 这个跳转动作就是默认行为
+    link.onclick = function (e) {
+        e = e || window.event;
+        // 阻止默认行为
+//        e.preventDefault();
+//        e.returnValue = false;
+        console.log('link');
+//        return false;
+//        href="javascript:;"
+    }
 
-//   0 || 1 && 2 逻辑与优先级默认高于逻辑或
-//   1 && 2 => 2 => 0 || 2 => 2
-//   (0 || 0) && 6
-//   0||0 => 0 => 0 && 6 => 0
+
+
+
+    //    oDiv.onclick = function (e) {
+    ////        e = e || window.event;
+    ////        console.log(e.target);
+    ////        console.log('oDiv');
+    //    }
+    //    0 || 1 逻辑或 先看左边是真还是假 如果是真就返回左边的值 如果是假就返回 右边的值
+    //    1
+    //    0 && 1 逻辑与 先看左边是真还是假 如果是真就返回右边的值 如果是假就返回 左边的值
+    //    0
+
+    //   0 || 1 && 2 逻辑与优先级默认高于逻辑或
+    //   1 && 2 => 2 => 0 || 2 => 2
+    //   (0 || 0) && 6
+    //   0||0 => 0 => 0 && 6 => 0
     // 处理默认值
-//    e = e || window.event;
-//    if(typeof e === 'undefined'){
-//        e = window.event
-//    }
+    //    e = e || window.event;
+    //    if(typeof e === 'undefined'){
+    //        e = window.event
+    //    }
 
 </script>
 </body>

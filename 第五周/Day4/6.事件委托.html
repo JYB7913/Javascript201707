@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="oUl">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <span>123</span>
+</ul>
+<script type="text/javascript">
+    // 事件委托 利用事件默认进行冒泡 将事件绑定给外层容器，当里面内部元素相关行为触发时 也会导致 外层容器的相关行为触发 根据事件对象中的事件源来判断是由哪个内部元素触发 从而做出相应的处理
+    var oUl = document.getElementById('oUl');
+    var list = oUl.getElementsByTagName('li');
+
+    // 利用事件委托 比一个一个绑定事件 性能提高多倍
+    oUl.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+//        console.log(tar);
+        if(tar.tagName.toUpperCase() === 'LI'){
+           console.log(tar.innerHTML);
+        }
+    }
+//    oUl.onclick = function () {
+//        console.log('oUl');
+//    };
+    // 一个一个绑定事件
+//    for(var i = 0; i < list.length; i++) {
+//            list[i].onclick = function () {
+//                console.log(this.innerHTML);
+//            }
+//    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    /**
+     * event事件对象 存在于每个事件处理函数中 浏览器默认传递进去个一个对象
+     * 对象数据类型值：存储当前事件信息
+     * e.type 事件类型
+     * e.target || e.srcElement 事件源
+     * e.clientX || e.clientY 针对于当前窗口的X轴和Y轴坐标
+     * e.pageX || e.pageY 针对于body的X轴和Y轴坐标
+     * e.preventDefault ? e.preventDefault() : e.returnValue = false 阻止默认行为
+     *  e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true; 阻止冒泡传播
+     *  e.key 按键名称
+     *  e.keyCode/e.which 键码值
+     *
+     */
+
+    // 事件阶段
+    // 捕获阶段
+    // 目标阶段
+    // 冒泡阶段：事件冒泡从内到外 当前元素的相关行为click触发时，会导致它的所有上级元素相关行为触发 一直到document（也可以到window）
+
+    // onmouseenter/onmouseleave(滑入/滑出) 不存在事件冒泡
+</script>
+</body>
+</html>

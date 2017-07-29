@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="ul">
+    <li>11</li>
+    <li>12</li>
+    <li>13</li>
+</ul>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    var oUl = document.getElementById('ul');
+    var list = document.getElementsByTagName('li');
+//    for(var i = 0; i < list.length; i++) {
+//       list[i].onclick = function () {
+//           console.log(this.innerText);
+//       }        
+//    }
+    // 事件委托 解决预留事件 （给未来元素绑定的事件）
+//    oUl.onclick = function (e) {
+//        e = e || window.event;
+//        var tar = e.target || e.srcElement;
+//        if(tar.tagName.toUpperCase() === 'LI'){
+//            console.log(tar.innerHTML);
+//        }
+//    };
+    
+    
+
+    setTimeout(function () {
+     var str = '';
+     [14, 15, 16, 17].forEach(function (item) {
+        str += '<li>' +item+'</li>'
+     });
+        oUl.innerHTML += str;
+    }, 2000);
+
+    $(function () {
+//        $('#ul>li').click(function () {
+//            console.log(this.innerHTML);
+//        })
+        // jq事件委托
+//        $('#ul').on('click', 'li', function () {
+//            console.log(this.innerHTML);
+//        })
+//        $('#ul').delegate('li', 'click', function () {
+//            console.log(this.innerHTML);
+//        })
+    })
+</script>
+</body>
+</html>
