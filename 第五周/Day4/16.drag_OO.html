@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red, #red2, #red3, #red4 {
+            cursor: pointer;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        #red2 {background: green}
+        #red3 {background: #ffb6ca
+        }
+        #red4 {background: #2b45ff
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<div id="red2"></div>
+<div id="red3"></div>
+<div id="red4"></div>
+<script type="text/javascript">
+    new Darg('#red');
+    new Darg('#red2');
+    new Darg('#red3');
+    new Darg('#red4');
+    function Darg(id) { // 类中this当前实例
+        var that = this;
+        that.el = document.getElementById(id.slice(1));
+        that.el.onmousedown = function (e) { // this 是当前元素
+            this.style.zIndex = 10;
+            var winW = document.documentElement.clientWidth || document.body.clientWidth;
+            var winH = document.documentElement.clientHeight || document.body.clientHeight;
+            // 最大边界值
+            this.maxL = winW - this.offsetWidth;
+            this.maxT = winH - this.offsetHeight;
+
+            that.down.call(this, e); // 保证down中this是当前元素
+            document.onmousemove = that.handleThis(this, that.move);
+            document.onmouseup =  that.handleThis(this, that.up);
+        }
+    }
+
+    Darg.prototype.down = function (e) { // this 被修改为 拖拽元素
+        e = e || window.event;
+        // 计算出鼠标按下时在元素中的X轴和Y轴距离
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+    };
+
+    Darg.prototype.move = function (e) {  // this 被修改为 拖拽元素
+        e = e || window.event;
+        e.preventDefault? e.preventDefault() : e.returnValue = false;
+        // 元素偏移值 = 移动时的鼠标位置 - 鼠标在元素中位置
+        var l = e.clientX - this.l;
+        var t = e.clientY - this.t;
+        // 边界判断
+        if (l < 0){
+            l = 0;
+        } else if (l > this.maxL){
+            l = this.maxL;
+        }
+        if (t < 0){
+            t = 0;
+        } else if (t > this.maxT){
+            t = this.maxT;
+        }
+
+        this.style.left = l + 'px';
+        this.style.top = t + 'px';
+    };
+
+    Darg.prototype.up = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+        this.style.zIndex = 0;
+
+    };
+
+    // 预处理this关键字
+    Darg.prototype.handleThis = function (context, fn) {
+        return function (e) {
+            fn.call(context, e)
+        }
+    }
+
+
+    
+</script>
+</body>
+</html>
