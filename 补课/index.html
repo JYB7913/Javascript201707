@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="oDiv"></div>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" SRC="js/animate.js"></script>
+<script>
+//    console.log($animate);
+    $animate({
+        ele: oDiv,
+        target: {
+            left: 500,
+            top: 400,
+//            opacity: 0
+        },
+        duration: 1300,
+//        effect: ['Cubic', 'easeInOut'],
+        callBack: function () {
+            console.log('动画结束了');
+            this.style.background = 'green'
+        }
+    })
+</script>
 </body>
 </html>

@@ -8,12 +8,15 @@
             margin: 0;
             padding: 0;
         }
+
         a {
             text-decoration: none;
         }
+
         ul {
             list-style: none;
         }
+
         .outer {
             position: relative;
             width: 700px;
@@ -30,7 +33,8 @@
             width: 3500px;
             overflow: hidden;
         }
-        .inner  div{
+
+        .inner div {
             width: 700px;
             height: 300px;
             float: left;
@@ -38,11 +42,12 @@
             background-size: 100%;
         }
 
-        .inner div img{
+        .inner div img {
             width: 100%;
             height: 100%;
             opacity: .2;
         }
+
         .outer a {
             position: absolute;
             left: 0;
@@ -57,13 +62,16 @@
             font-size: 30px;
             display: none;
         }
-        .outer a.right{
+
+        .outer a.right {
             left: auto;
             right: 0;
         }
+
         .outer a:hover {
             background: rgba(0, 0, 0, .7);
         }
+
         .focus {
             width: 84px;
             position: absolute;
@@ -76,7 +84,8 @@
             padding: 3px 5px 3px 0;
             border-radius: 20px;
         }
-       .focus li {
+
+        .focus li {
             cursor: pointer;
             float: left;
             width: 16px;
@@ -85,6 +94,7 @@
             background: #fff;
             margin-left: 5px;
         }
+
         .focus li.select {
             background-color: #ff5132;
         }
@@ -94,14 +104,14 @@
 <div id="outer" class="outer">
     <div class="inner">
     </div>
-    <a  href="javascript:;"> < </a><a class="right" href="javascript:;"> > </a>
+    <a href="javascript:;"> < </a><a class="right" href="javascript:;"> > </a>
     <!-- 轮播焦点 -->
     <ul class="focus"></ul>
 </div>
 <div id="outer2" class="outer">
     <div class="inner">
     </div>
-    <a  href="javascript:;"> < </a><a class="right" href="javascript:;"> > </a>
+    <a href="javascript:;"> < </a><a class="right" href="javascript:;"> > </a>
     <!-- 轮播焦点 -->
     <ul class="focus"></ul>
 </div>
@@ -110,13 +120,13 @@
 <script type="text/javascript" src="js/animate2.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
-    new Swiper('outer',{
-       data: './data.json'
+    new Swiper('outer', {
+        data: './data.json'
     });
-    new Swiper('outer2',{
-       data: './data2.json',
-       interval: 3000,
-       duration: 200
+    new Swiper('outer2', {
+        data: './data2.json',
+        interval: 3000,
+        duration: 200
     });
 
     // 运动方式effect interval duration 处理

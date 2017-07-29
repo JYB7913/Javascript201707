@@ -19,6 +19,7 @@
         };
         xhr.send()
     }
+
     getData(bindData);
 
 // 绑定数据

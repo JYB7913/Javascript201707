@@ -1,10 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style type="text/css">
+        * {margin: 0; padding: 0}
+        a{
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        #outer {
+            position: relative;
+            width: 700px;
+            height: 300px;
+            border: 1px solid black;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        #inner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3500px;
+            overflow: hidden;
+        }
+        #inner div {
+            float: left;
+        }
+        #inner div img {
+            width: 700px;
+            height: 300px;
+        }
+
+        #outer a {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -30px;
+            width: 30px;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 30px;
+            background: rgba(0, 0, 0, .3);
+            color: #fff;
+        }
+        #outer a#right {
+            left: auto;
+            right: 0;
+        }
+        #outer a:hover {
+            background: rgba(0, 0, 0, .7);
+        }
+        #focus {
+            width: 84px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 3px;
+            background: rgba(0, 0, 0, .4);
+            overflow: hidden;
+            padding: 3px 5px 3px 0;
+            border-radius: 20px;
+        }
+        #focus li {
+            cursor: pointer;
+            float: left;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            margin-left: 5px;
+        }
+        #focus li.select {
+            background-color: #ff5132;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="outer">
+    <div id="inner">
+        <div><img src="./image/1.jpg" alt=""></div>
+        <div><img src="./image/2.jpg" alt=""></div>
+        <div><img src="./image/3.jpg" alt=""></div>
+        <div><img src="./image/4.jpg" alt=""></div>
+        <div><img src="./image/1.jpg" alt=""></div>
+    </div>
+    <a id="left" href="javascript:;"><</a><a id="right" href="javascript:;">></a>
+    <!-- 轮播焦点 -->
+    <ul id="focus">
+        <li class="select"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/animate.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

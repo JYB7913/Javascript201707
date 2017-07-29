@@ -8,9 +8,23 @@
     <bookmark url="file://$PROJECT_DIR$/第二周/Day2/7.sort.html" line="25" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f85ff748-cba0-456f-a219-639f9b232176" name="Default" comment="update 多动画">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="f85ff748-cba0-456f-a219-639f9b232176" name="Default" comment="update 拖拽">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper/index.html" afterPath="$PROJECT_DIR$/第四周/Day3/swiper/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper/js/animate2.js" afterPath="$PROJECT_DIR$/第四周/Day3/swiper/js/animate2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper/js/index.js" afterPath="$PROJECT_DIR$/第四周/Day3/swiper/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper2/data.json" afterPath="$PROJECT_DIR$/第四周/Day3/swiper2/data.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper2/index.html" afterPath="$PROJECT_DIR$/第四周/Day3/swiper2/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper2/js/animate2.js" afterPath="$PROJECT_DIR$/第四周/Day3/swiper2/js/animate2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper2/js/index.js" afterPath="$PROJECT_DIR$/第四周/Day3/swiper2/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper封装/bind.html" afterPath="$PROJECT_DIR$/第四周/Day3/swiper封装/bind.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper封装/data.json" afterPath="$PROJECT_DIR$/第四周/Day3/swiper封装/data.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper封装/data2.json" afterPath="$PROJECT_DIR$/第四周/Day3/swiper封装/data2.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper封装/index.html" afterPath="$PROJECT_DIR$/第四周/Day3/swiper封装/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper封装/js/animate2.js" afterPath="$PROJECT_DIR$/第四周/Day3/swiper封装/js/animate2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第四周/Day3/swiper封装/js/index.js" afterPath="$PROJECT_DIR$/第四周/Day3/swiper封装/js/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/补课/index.html" afterPath="$PROJECT_DIR$/补课/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/补课/swiper.html" afterPath="$PROJECT_DIR$/补课/swiper.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,50 +38,24 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/index.html">
+    <leaf>
+      <file leaf-file-name="4.拖拽完整3.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/第五周/Day3/4.拖拽完整3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
+            <state relative-caret-position="-1102">
+              <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
               <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/js/index.js">
+      <file leaf-file-name="3.bind.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/第五周/Day3/3.bind.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-36">
-              <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-              <folding>
-                <element signature="e#782#1758#0" expanded="false" />
-                <element signature="e#1850#2521#0" expanded="false" />
-                <element signature="e#2560#3072#0" expanded="false" />
-                <element signature="e#3111#3339#0" expanded="false" />
-                <element signature="e#3376#4292#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/data.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="27" />
+            <state relative-caret-position="319">
+              <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -79,8 +67,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -91,6 +79,9 @@
       <find>right</find>
       <find>auto</find>
       <find>jso</find>
+      <find>window.$</find>
+      <find>init</find>
+      <find>outer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -99,57 +90,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/第三周/Day2/8.图片延迟加载.css" />
-        <option value="$PROJECT_DIR$/第三周/Day2/8.图片延迟加载.html" />
-        <option value="$PROJECT_DIR$/第三周/Day2/10.html" />
-        <option value="$PROJECT_DIR$/第三周/Day2/9.多张图片延迟加载.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/测试.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/1.瀑布流.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/data.json" />
-        <option value="$PROJECT_DIR$/第三周/Day3/3.瀑布流延迟加载.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/4.回到顶部.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/2.瀑布流.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/6.回调函数.html" />
-        <option value="$PROJECT_DIR$/第三周/Day3/5.回到顶部.html" />
-        <option value="$PROJECT_DIR$/第三周/Day4/2.偏移值.html" />
-        <option value="$PROJECT_DIR$/第三周/Day4/1.样式属性.html" />
-        <option value="$PROJECT_DIR$/第三周/Day4/3.获取具体样式.css" />
-        <option value="$PROJECT_DIR$/第三周/Day4/3.获取具体样式.html" />
-        <option value="$PROJECT_DIR$/第三周/Day4/4.延迟图片加载.html" />
-        <option value="$PROJECT_DIR$/第三周/Day4/5.多张.html" />
-        <option value="$PROJECT_DIR$/第三周/Day4/news/news.json" />
-        <option value="$PROJECT_DIR$/第三周/Day4/news/index.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/DOM.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/1.类名增删查.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/2.类名增删查.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/3. HTMLElement.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/5.数据类型检测.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/4.DOM.html" />
-        <option value="$PROJECT_DIR$/第三周/Day5/utils.js" />
-        <option value="$PROJECT_DIR$/第四周/Day1/1.简单动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/2.简单动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/3.简单动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/4.简单动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/5.setTimeout简单动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/6.反弹动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/7.多动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day1/7.多动画封装.html" />
-        <option value="$PROJECT_DIR$/第四周/Day2/1.动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day2/animate.js" />
-        <option value="$PROJECT_DIR$/第四周/Day2/2.动画.html" />
-        <option value="$PROJECT_DIR$/第四周/Day2/animate2.js" />
-        <option value="$PROJECT_DIR$/第四周/Day2/swiper/index.js" />
-        <option value="$PROJECT_DIR$/第四周/Day2/swiper/index2.html" />
-        <option value="$PROJECT_DIR$/第四周/Day2/swiper/index2.js" />
-        <option value="$PROJECT_DIR$/第四周/Day2/swiper/index.html" />
-        <option value="$PROJECT_DIR$/第四周/Day3/swiper/index.html" />
-        <option value="$PROJECT_DIR$/第四周/Day3/swiper/js/index.js" />
-        <option value="$PROJECT_DIR$/第四周/Day3/swiper2/index.html" />
-        <option value="$PROJECT_DIR$/第四周/Day3/swiper2/data.json" />
-        <option value="$PROJECT_DIR$/第四周/Day3/swiper2/js/utils.js" />
-        <option value="$PROJECT_DIR$/第四周/Day3/swiper2/js/index.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/补课/js/animate.js" />
+        <option value="$PROJECT_DIR$/补课/index.html" />
+        <option value="$PROJECT_DIR$/补课/swiper.html" />
+        <option value="$PROJECT_DIR$/补课/js/index.js" />
+        <option value="$PROJECT_DIR$/第四周/Day5/3.class.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/1.DOM.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/2.css.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/4.文本.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/tab.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/5.事件.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/6.事件.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/7.整合事件.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/8.ajax.css" />
+        <option value="$PROJECT_DIR$/第四周/Day5/data.json" />
+        <option value="$PROJECT_DIR$/第四周/Day5/123.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/index.js" />
+        <option value="$PROJECT_DIR$/第四周/Day5/8.ajax.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/9.动画.html" />
+        <option value="$PROJECT_DIR$/第四周/Day5/10.自定义动画.html" />
+        <option value="$PROJECT_DIR$/第五周/Day1/swiper/index2.html" />
+        <option value="$PROJECT_DIR$/第五周/Day1/swiper/index2.js" />
+        <option value="$PROJECT_DIR$/第五周/Day1/swiper/index.js" />
+        <option value="$PROJECT_DIR$/第五周/Day1/1.事件.html" />
+        <option value="$PROJECT_DIR$/第五周/Day1/2.事件对象.css" />
+        <option value="$PROJECT_DIR$/第五周/Day1/swiper/index.html" />
+        <option value="$PROJECT_DIR$/第五周/Day1/2.事件对象.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/1.事件对象.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/3.事件委托.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/4.绑定预留事件.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/5.jq事件委派.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/6.toggle.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/2.jq事件对象.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/7.文本框.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/8.拖拽.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/9.拖拽.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/9.拖拽-焦点遗失.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/10.拖拽-焦点遗失.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/11.拖拽-焦点遗失.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/12.拖拽-焦点遗失.html" />
+        <option value="$PROJECT_DIR$/第五周/Day2/拖拽" />
+        <option value="$PROJECT_DIR$/第五周/Day3/随机/事件对象.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/随机/tuozhuai1.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/随机/tuozhuai.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/2.拖拽边界bind.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/2.拖拽边界.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/1.拖拽边界.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/4.拖拽完整.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/4.拖拽完整2.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/拖拽" />
+        <option value="$PROJECT_DIR$/第五周/Day3/3.bind.html" />
+        <option value="$PROJECT_DIR$/第五周/Day3/4.拖拽完整3.html" />
       </list>
     </option>
   </component>
@@ -166,10 +157,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -186,6 +177,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,16 +191,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascript201707" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascript201707" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="第五周" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Day3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascript201707" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascript201707" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="第五周" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Day3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="随机" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascript201707" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Javascript201707" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="第五周" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../es6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../201707js/swiper" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -217,15 +262,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day1\swiper" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day1" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day4" />
       <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day2\swiper" />
       <recent name="D:\2017zhufengjs\Javascript201707\第三周\Day2\images" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day3" />
-      <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day3\swiper" />
-      <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day3\swiper\js" />
-      <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day2\swiper" />
-      <recent name="D:\2017zhufengjs\Javascript201707\第四周\Day2" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day3" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day3\随机" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day2" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day1\swiper" />
+      <recent name="D:\2017zhufengjs\Javascript201707\第五周\Day1" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -332,266 +380,12 @@
       <workItem from="1499737428322" duration="23423000" />
       <workItem from="1499823301324" duration="41100000" />
       <workItem from="1500082700112" duration="23346000" />
-      <workItem from="1500169221572" duration="82684000" />
-    </task>
-    <task id="LOCAL-00033" summary="update sort">
-      <created>1499309526786</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1499309526786</updated>
-    </task>
-    <task id="LOCAL-00034" summary="update ajax">
-      <created>1499316415605</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1499316415605</updated>
-    </task>
-    <task id="LOCAL-00035" summary="update ajax">
-      <created>1499316650594</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1499316650594</updated>
-    </task>
-    <task id="LOCAL-00036" summary="update sort">
-      <created>1499333975523</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1499333975523</updated>
-    </task>
-    <task id="LOCAL-00037" summary="update sort">
-      <created>1499481751018</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1499481751018</updated>
-    </task>
-    <task id="LOCAL-00038" summary="update sort">
-      <created>1499490677874</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1499490677874</updated>
-    </task>
-    <task id="LOCAL-00039" summary="update sort">
-      <created>1499501652336</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1499501652336</updated>
-    </task>
-    <task id="LOCAL-00040" summary="update sort">
-      <created>1499508744702</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1499508744702</updated>
-    </task>
-    <task id="LOCAL-00041" summary="update sort">
-      <created>1499508856286</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1499508856286</updated>
-    </task>
-    <task id="LOCAL-00042" summary="update sort">
-      <created>1499568333281</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1499568333281</updated>
-    </task>
-    <task id="LOCAL-00043" summary="update RegExp">
-      <created>1499576602192</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1499576602192</updated>
-    </task>
-    <task id="LOCAL-00044" summary="update RegExp">
-      <created>1499590858673</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1499590858673</updated>
-    </task>
-    <task id="LOCAL-00045" summary="update RegExp">
-      <created>1499596232062</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1499596232062</updated>
-    </task>
-    <task id="LOCAL-00046" summary="update RegExp">
-      <created>1499596320269</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1499596320269</updated>
-    </task>
-    <task id="LOCAL-00047" summary="update RegExp">
-      <created>1499749713182</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1499749713182</updated>
-    </task>
-    <task id="LOCAL-00048" summary="update 盒模型">
-      <created>1499765501056</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1499765501056</updated>
-    </task>
-    <task id="LOCAL-00049" summary="update 继承补课">
-      <created>1499776015321</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1499776015321</updated>
-    </task>
-    <task id="LOCAL-00050" summary="update 获取样式属性">
-      <created>1499827550348</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1499827550350</updated>
-    </task>
-    <task id="LOCAL-00051" summary="update 获取样式属性">
-      <created>1499834120815</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1499834120815</updated>
-    </task>
-    <task id="LOCAL-00052" summary="update 获取样式属性">
-      <created>1499834954082</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1499834954082</updated>
-    </task>
-    <task id="LOCAL-00053" summary="update 获取样式属性">
-      <created>1499835464723</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1499835464723</updated>
-    </task>
-    <task id="LOCAL-00054" summary="update 单张图片加载">
-      <created>1499848109445</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1499848109446</updated>
-    </task>
-    <task id="LOCAL-00055" summary="update 多张图片加载">
-      <created>1499851602495</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1499851602495</updated>
-    </task>
-    <task id="LOCAL-00056" summary="update 瀑布流">
-      <created>1499915444171</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1499915444171</updated>
-    </task>
-    <task id="LOCAL-00057" summary="update 瀑布流">
-      <created>1499916469999</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1499916469999</updated>
-    </task>
-    <task id="LOCAL-00058" summary="update 瀑布流">
-      <created>1499920561912</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1499920561913</updated>
-    </task>
-    <task id="LOCAL-00059" summary="update 瀑布流">
-      <created>1499937816370</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1499937816370</updated>
-    </task>
-    <task id="LOCAL-00060" summary="update 盒模型">
-      <created>1500087087140</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1500087087140</updated>
-    </task>
-    <task id="LOCAL-00061" summary="update 盒模型">
-      <created>1500094302617</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1500094302617</updated>
-    </task>
-    <task id="LOCAL-00062" summary="update 盒模型">
-      <created>1500095500442</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1500095500443</updated>
-    </task>
-    <task id="LOCAL-00063" summary="update 盒模型">
-      <created>1500108443194</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1500108443194</updated>
-    </task>
-    <task id="LOCAL-00064" summary="update delay">
-      <created>1500108477230</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1500108477231</updated>
-    </task>
-    <task id="LOCAL-00065" summary="update delay">
-      <created>1500113095871</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1500113095871</updated>
-    </task>
-    <task id="LOCAL-00066" summary="update getByClass">
-      <created>1500173922416</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1500173922417</updated>
-    </task>
-    <task id="LOCAL-00067" summary="update getByClass">
-      <created>1500181225272</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1500181225272</updated>
-    </task>
-    <task id="LOCAL-00068" summary="update DOM">
-      <created>1500193348652</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1500193348652</updated>
-    </task>
-    <task id="LOCAL-00069" summary="update 数据类型检测">
-      <created>1500199776598</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1500199776598</updated>
+      <workItem from="1500169221572" duration="92887000" />
+      <workItem from="1500545528568" duration="175000" />
+      <workItem from="1500686981777" duration="55011000" />
+      <workItem from="1500946404208" duration="19738000" />
+      <workItem from="1501033118881" duration="22769000" />
+      <workItem from="1501119487614" duration="12205000" />
     </task>
     <task id="LOCAL-00070" summary="update 数据类型检测">
       <created>1500199794046</created>
@@ -677,22 +471,282 @@
       <option name="project" value="LOCAL" />
       <updated>1500526512120</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="update swiper">
+      <created>1500526741126</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1500526741126</updated>
+    </task>
+    <task id="LOCAL-00083" summary="update swiper">
+      <created>1500539785397</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1500539785398</updated>
+    </task>
+    <task id="LOCAL-00084" summary="update swiper">
+      <created>1500543559635</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1500543559635</updated>
+    </task>
+    <task id="LOCAL-00085" summary="update swiper">
+      <created>1500543706065</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1500543706066</updated>
+    </task>
+    <task id="LOCAL-00086" summary="update swiper">
+      <created>1500543740512</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1500543740513</updated>
+    </task>
+    <task id="LOCAL-00087" summary="update swiper">
+      <created>1500543870907</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1500543870907</updated>
+    </task>
+    <task id="LOCAL-00088" summary="update swiper">
+      <created>1500543935069</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1500543935069</updated>
+    </task>
+    <task id="LOCAL-00089" summary="update swiper">
+      <created>1500545685509</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1500545685509</updated>
+    </task>
+    <task id="LOCAL-00090" summary="update jquery">
+      <created>1500691837147</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1500691837149</updated>
+    </task>
+    <task id="LOCAL-00091" summary="update jquery">
+      <created>1500699247143</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1500699247143</updated>
+    </task>
+    <task id="LOCAL-00092" summary="update jquery">
+      <created>1500712926370</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1500712926370</updated>
+    </task>
+    <task id="LOCAL-00093" summary="update jquery">
+      <created>1500718182403</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1500718182403</updated>
+    </task>
+    <task id="LOCAL-00094" summary="update slider">
+      <created>1500777774154</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1500777774154</updated>
+    </task>
+    <task id="LOCAL-00095" summary="update jq">
+      <created>1500785922104</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1500785922104</updated>
+    </task>
+    <task id="LOCAL-00096" summary="update jq">
+      <created>1500786218880</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1500786218880</updated>
+    </task>
+    <task id="LOCAL-00097" summary="update event">
+      <created>1500798852231</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1500798852231</updated>
+    </task>
+    <task id="LOCAL-00098" summary="update jquery">
+      <created>1500804653239</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1500804653240</updated>
+    </task>
+    <task id="LOCAL-00099" summary="update slider">
+      <created>1500950662796</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1500950662797</updated>
+    </task>
+    <task id="LOCAL-00100" summary="update slider">
+      <created>1500954677534</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1500954677534</updated>
+    </task>
+    <task id="LOCAL-00101" summary="update slider">
+      <created>1500958585062</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1500958585062</updated>
+    </task>
+    <task id="LOCAL-00102" summary="update slider">
+      <created>1500958972091</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1500958972091</updated>
+    </task>
+    <task id="LOCAL-00103" summary="update slider">
+      <created>1500971966583</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1500971966583</updated>
+    </task>
+    <task id="LOCAL-00104" summary="update event">
+      <created>1500973675440</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1500973675440</updated>
+    </task>
+    <task id="LOCAL-00105" summary="update 事件对象">
+      <created>1501037340642</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1501037340643</updated>
+    </task>
+    <task id="LOCAL-00106" summary="update 事件委托">
+      <created>1501044625489</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1501044625489</updated>
+    </task>
+    <task id="LOCAL-00107" summary="update 事件委派">
+      <created>1501045000809</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1501045000809</updated>
+    </task>
+    <task id="LOCAL-00108" summary="update slider">
+      <created>1501055391837</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1501055391838</updated>
+    </task>
+    <task id="LOCAL-00109" summary="update drag">
+      <created>1501059499043</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1501059499043</updated>
+    </task>
+    <task id="LOCAL-00110" summary="update 拖拽">
+      <created>1501064149188</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1501064149189</updated>
+    </task>
+    <task id="LOCAL-00111" summary="update drag">
+      <created>1501069087938</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1501069087938</updated>
+    </task>
+    <task id="LOCAL-00112" summary="update 拖拽">
+      <created>1501069293290</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1501069293290</updated>
+    </task>
+    <task id="LOCAL-00113" summary="update 拖拽边界">
+      <created>1501125019193</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1501125019194</updated>
+    </task>
+    <task id="LOCAL-00114" summary="update 拖拽">
+      <created>1501131487789</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1501131487790</updated>
+    </task>
+    <task id="LOCAL-00115" summary="update move">
+      <created>1501131645285</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1501131645285</updated>
+    </task>
+    <task id="LOCAL-00116" summary="update move">
+      <created>1501131665469</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1501131665469</updated>
+    </task>
+    <task id="LOCAL-00117" summary="update 拖拽">
+      <created>1501131714829</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1501131714829</updated>
+    </task>
+    <task id="LOCAL-00118" summary="update 拖拽">
+      <created>1501131999269</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1501131999269</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="384954000" />
+    <option name="totallyTimeSpent" value="505055000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17362146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15030211" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294702" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962743" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24924472" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294702" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -729,17 +783,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update js" />
-    <MESSAGE value="update 预解释" />
-    <MESSAGE value="update 堆栈内存" />
-    <MESSAGE value="update this" />
-    <MESSAGE value="update 面向对象" />
-    <MESSAGE value="update Function" />
-    <MESSAGE value="update call" />
-    <MESSAGE value="update ajax" />
-    <MESSAGE value="update sort" />
-    <MESSAGE value="update RegExp" />
-    <MESSAGE value="update 继承补课" />
     <MESSAGE value="update 获取样式属性" />
     <MESSAGE value="update 单张图片加载" />
     <MESSAGE value="update 多张图片加载" />
@@ -754,438 +797,403 @@
     <MESSAGE value="update 反弹动画" />
     <MESSAGE value="update 多动画" />
     <MESSAGE value="update swiper" />
-    <option name="LAST_COMMIT_MESSAGE" value="update swiper" />
+    <MESSAGE value="update jq" />
+    <MESSAGE value="update jquery" />
+    <MESSAGE value="update event" />
+    <MESSAGE value="update 事件对象" />
+    <MESSAGE value="update 事件委托" />
+    <MESSAGE value="update 事件委派" />
+    <MESSAGE value="update slider" />
+    <MESSAGE value="update drag" />
+    <MESSAGE value="update 拖拽边界" />
+    <MESSAGE value="update move" />
+    <MESSAGE value="update 拖拽" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 拖拽" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="17" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/images/7.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/images/6.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/images/4.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/images/8.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/images/2.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/5.多张.html">
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/5.事件.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-248">
-          <caret line="49" column="48" lean-forward="false" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-          <folding />
+        <state relative-caret-position="-393">
+          <caret line="116" column="13" lean-forward="false" selection-start-line="116" selection-start-column="13" selection-end-line="116" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/4.延迟图片加载.html">
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/6.事件.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="42" column="34" lean-forward="true" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        <state relative-caret-position="71">
+          <caret line="15" column="22" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/news/index.html">
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/jquery-1.11.3.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="157" column="7" lean-forward="false" selection-start-line="157" selection-start-column="7" selection-end-line="157" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="191">
+          <caret line="5252" column="47" lean-forward="true" selection-start-line="5252" selection-start-column="19" selection-end-line="5252" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day4/news/news.json">
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/4.文本.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="5" column="181" lean-forward="false" selection-start-line="5" selection-start-column="181" selection-end-line="5" selection-end-column="181" />
-          <folding />
+        <state relative-caret-position="290">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day5/3. HTMLElement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="85" column="9" lean-forward="true" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day5/2.类名增删查.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="21" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day5/1.类名增删查.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="35" selection-start-column="2" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day5/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1113">
-          <caret line="404" column="16" lean-forward="false" selection-start-line="404" selection-start-column="16" selection-end-line="404" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day5/4.DOM.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="150" column="38" lean-forward="false" selection-start-line="150" selection-start-column="29" selection-end-line="150" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第二周/Day4/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-268">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1624">
-          <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/5.setTimeout简单动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/4.简单动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="44" column="69" lean-forward="true" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day3/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="118" column="43" lean-forward="true" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/1.简单动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="22" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/2.简单动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="51" column="9" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/6.反弹动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/3.简单动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1907">
-          <caret line="73" column="46" lean-forward="false" selection-start-line="73" selection-start-column="46" selection-end-line="73" selection-end-column="46" />
-          <folding>
-            <marker date="1500362739232" expanded="true" signature="960:1340" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/animate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="141" column="15" lean-forward="false" selection-start-line="141" selection-start-column="15" selection-end-line="141" selection-end-column="15" />
-          <folding>
-            <element signature="e#191#1152#0" expanded="false" />
-            <element signature="e#1185#1633#0" expanded="false" />
-            <element signature="e#1667#2133#0" expanded="false" />
-            <element signature="e#2167#2651#0" expanded="false" />
-            <element signature="e#8130#8615#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/1.动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="112" column="10" lean-forward="true" selection-start-line="110" selection-start-column="7" selection-end-line="112" selection-end-column="10" />
-          <folding>
-            <element signature="e#1012#3121#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/2.动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-161">
-          <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/7.多动画.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="85" column="13" lean-forward="false" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day1/7.多动画封装.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="56" column="28" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/image/1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/image/4.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/animate2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1646">
-          <caret line="275" column="16" lean-forward="true" selection-start-line="275" selection-start-column="16" selection-end-line="275" selection-end-column="16" />
-          <folding>
-            <element signature="e#52#7499#0" expanded="false" />
-            <element signature="e#1186#1634#0" expanded="false" />
-            <element signature="e#1668#2134#0" expanded="false" />
-            <element signature="e#2168#2652#0" expanded="false" />
-            <element signature="e#2686#3184#0" expanded="false" />
-            <element signature="e#3218#3608#0" expanded="false" />
-            <element signature="e#8319#8756#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/index2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2095">
-          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="e#836#876#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/animate2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1479">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper/image/4.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper/image/load.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper/js/animate2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/index2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-103">
-          <caret line="99" column="9" lean-forward="true" selection-start-line="76" selection-start-column="7" selection-end-line="99" selection-end-column="9" />
-          <folding>
-            <element signature="e#120#178#0" expanded="false" />
-            <element signature="e#190#236#0" expanded="false" />
-            <element signature="e#249#290#0" expanded="false" />
-            <element signature="e#307#583#0" expanded="false" />
-            <element signature="e#600#741#0" expanded="false" />
-            <element signature="e#762#851#0" expanded="false" />
-            <element signature="e#876#938#0" expanded="false" />
-            <element signature="e#1023#1381#0" expanded="false" />
-            <element signature="e#1406#1465#0" expanded="false" />
-            <element signature="e#1490#1545#0" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day2/swiper/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="49" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="97" column="44" lean-forward="false" selection-start-line="96" selection-start-column="23" selection-end-line="97" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/data.json">
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/8.ajax.css" />
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
-          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="27" />
-          <folding />
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/js/animate2.js">
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/123.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/7.整合事件.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/9.动画.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2088">
+          <caret line="72" column="24" lean-forward="false" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/10.自定义动画.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="58" column="7" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第四周/Day5/8.ajax.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/swiper/jquery-1.11.3.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#13#10225#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/第三周/Day5/5.数据类型检测.html">
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/swiper/index2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="138" column="18" lean-forward="true" selection-start-line="138" selection-start-column="18" selection-end-line="138" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第一周/Day5/5.封装选项卡.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480">
-          <caret line="90" column="17" lean-forward="false" selection-start-line="90" selection-start-column="17" selection-end-line="90" selection-end-column="17" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="105" column="24" lean-forward="true" selection-start-line="105" selection-start-column="24" selection-end-line="105" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
+        <state relative-caret-position="186">
+          <caret line="85" column="18" lean-forward="false" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/第四周/Day3/swiper2/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+        <state relative-caret-position="467">
+          <caret line="91" column="34" lean-forward="true" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/swiper/index2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-638">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/2.事件对象.css" />
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/swiper/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="55" column="16" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/swiper/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1740">
+          <caret line="91" column="40" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/1.事件.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第二周/Day2/5.数据绑定.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="43" column="43" lean-forward="false" selection-start-line="43" selection-start-column="15" selection-end-line="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/jquery-migrate.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第四周/Day4/jquery-1.11.3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="6914" column="4" lean-forward="false" selection-start-line="6914" selection-start-column="4" selection-end-line="6914" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/3.事件委托.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="14" column="96" lean-forward="true" selection-start-line="14" selection-start-column="88" selection-end-line="14" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/4.绑定预留事件.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="21" column="6" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/5.jq事件委派.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-422">
+          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/1.事件对象.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-16">
+          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/7.文本框.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/6.toggle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/jquery-1.11.3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="8502" column="48" lean-forward="false" selection-start-line="8502" selection-start-column="45" selection-end-line="8502" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day1/2.事件对象.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="51" column="32" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/2.jq事件对象.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="43" column="39" lean-forward="false" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/9.拖拽.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-335">
+          <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/9.拖拽-焦点遗失.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-915">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="27" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/10.拖拽-焦点遗失.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="45" column="10" lean-forward="true" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
           <folding>
-            <element signature="e#782#1758#0" expanded="false" />
-            <element signature="e#1850#2521#0" expanded="false" />
-            <element signature="e#2560#3072#0" expanded="false" />
-            <element signature="e#3111#3339#0" expanded="false" />
-            <element signature="e#3376#4292#0" expanded="false" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/11.拖拽-焦点遗失.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="23" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/12.拖拽-焦点遗失.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/8.拖拽.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="35" column="26" lean-forward="false" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/随机/事件对象.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
-          <caret line="1" column="6" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/随机/tuozhuai1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="30" column="33" lean-forward="true" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/随机/tuozhuai.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="15" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/1.拖拽边界.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="51" column="10" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="51" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/拖拽">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day2/拖拽.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/2.拖拽边界bind.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/2.拖拽边界.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/4.拖拽完整.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="53" column="16" lean-forward="false" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/4.拖拽完整2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="36" column="40" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/拖拽">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/3.bind.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/第五周/Day3/4.拖拽完整3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1102">
+          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

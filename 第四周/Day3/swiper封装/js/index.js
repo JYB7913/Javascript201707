@@ -1,7 +1,7 @@
 ~function () {
     /*  调用顺序
-        new Swiper =>getEles => getData => bindData(delayImg, autoMove(自),        bindEvent);
-        autoMove => (delayImg, changeBg)
+     new Swiper =>getEles => getData => bindData(delayImg, autoMove(自),        bindEvent);
+     autoMove => (delayImg, changeBg)
      */
 
     // this预处理

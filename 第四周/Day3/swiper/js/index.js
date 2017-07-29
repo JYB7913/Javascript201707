@@ -12,7 +12,7 @@ var len = oImgs.length;
 var wid = outer.clientWidth;
 // 第一张和最后一张图片加载
 delayImg(oImgs[0]);
-delayImg(oImgs[len-1]);
+delayImg(oImgs[len - 1]);
 
 // 图片轮播
 var step = 0; // 记录当前图片索引   1 - 2  0 to -700
@@ -26,7 +26,7 @@ function autoMove(n) {
         utils.css(inner, 'left', 0); // 当切换图片已经到头时 立马变为第一张
         step = 1; // 紧接着 让此时的动画 切换到第二张
     }
-   
+
     $animate({
         ele: inner,
         target: {
@@ -36,7 +36,7 @@ function autoMove(n) {
         duration: 300,
         callBack: function () {
             var cur = oImgs[step];
-            if(cur.flag) return;
+            if (cur.flag) return;
             delayImg(cur); // 每次切换的图片进行加载
         }
     });
