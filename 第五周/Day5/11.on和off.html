@@ -12,6 +12,7 @@
     // addEventListener/removeEventListener IE6-8不兼容
     // IE attachEvent/detachEvent
 
+
     on(btn, 'click', fn1);
     on(btn, 'click', fn2);
     off(btn, 'click', fn1);
@@ -34,6 +35,7 @@
             ele['on' + type] = null;
         }
     }
+
 
     function fn1() {
         console.log('fn1');

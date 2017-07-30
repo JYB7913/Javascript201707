@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+
+    on(btn, 'click', fn1); // fn1 => Fn._event = fn1
+    on(btn, 'click', fn2); // fn2 => Fn._event = fn2
+    on(btn, 'click', fn3); // fn3 => Fn._event = fn3
+    off(btn, 'click', fn2);
+    off(btn, 'click', fn3);
+    // 事件池 处理函数集合
+    // 在元素自身 给每个事件类型 都定义一个事件容器 存放对应类型的 处理函数
+    //  ele['bindclick'] = [];
+    //  ele['bindmouseover'] = [];
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else { // IE 6-8
+            var events;
+            var Fn = function (e) { // 预处理this
+                handle.call(ele, e);
+            };
+            if(!ele['bind' + type]) {
+                ele['bind' + type] = [];
+            }
+            events = ele['bind' + type];
+            ele.attachEvent('on' + type, Fn);
+            Fn._event = handle; // 标识
+            events.push(Fn);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            if(events instanceof Array) {
+                for(var i = 0; i < events.length; i++){
+                    var Fn = events[i];
+                    if(Fn._event === handle) {
+                        ele.detachEvent('on' + type, Fn);
+                    }
+                }
+            }
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    function handelThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+</script>
+</body>
+</html>
