@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+// DOM2级 addEventListener/removeEventListener IE6-8不兼容
+// IE attachEvent/detachEvent
+//    btn.addEventListener('click', function () {
+//        console.log('btn');
+//    }, false);
+
+    btn.attachEvent('onclick', fn1);
+//    btn.attachEvent('onclick', fn2);
+//
+//    btn.detachEvent('onclick', fn1);
+
+    function fn1() {
+        console.log('fn1');
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+
+//    window.onload 与 $(document).ready
+//    window.onload = fn1;
+//      window.onload = fn2; // 等页面中结构和所有图片资源加载完才执行
+
+//    $(document).ready(fn2);
+
+//    $(document).ready(fn1); // DOMContentLoaded 等DOM结构加载完就执行
+//    document.attachEvent( "onreadystatechange", function () {
+//         console.log('onreadystatechange');
+//    });
+
+//    document.addEventListener('DOMContentLoaded', function () {
+//        console.log('DOMContentLoaded');
+//    }, false);
+
+</script>
+</body>
+</html>

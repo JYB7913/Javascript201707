@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #outer {
+            width: 300px;
+            height: 300px;
+            background: blue;
+            padding: 50px;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        #inner {
+            width: 200px;
+            height: 200px;
+            background: #ff53cb;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        #center {
+            width: 100px;
+            height: 100px;
+            background: #6fff8e;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner">
+        <div id="center"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var outer = document.getElementById('outer');
+    var inner = document.getElementById('inner');
+    var center = document.getElementById('center');
+
+    // DOM2
+    // 捕获阶段 从外到里
+    // 冒泡阶段 从里到外
+    // 目标阶段 发生在目标元素上 捕获和冒泡 先绑定哪个 就先执行哪一个阶段
+    // 先捕获再冒泡
+
+//    inner.addEventListener('click', function () {
+//        console.log('inner冒泡');
+//    }, false);
+//    outer.addEventListener('click', function () {
+//        console.log('outer冒泡');
+//    }, false);
+//
+//    center.addEventListener('click', function () {
+//        console.log('center冒泡');
+//    }, false);
+
+//    center.addEventListener('click', function () {
+//        console.log('center捕获');
+//    }, true);
+//
+//
+//    inner.addEventListener('click', function () {
+//        console.log('inner捕获');
+//    }, true);
+//    outer.addEventListener('click', function () {
+//        console.log('outer捕获');
+//    }, true);
+//
+//    document.body.addEventListener('click', function () {
+//        console.log('body');
+//    }, true);
+
+
+    // DOM0只有冒泡阶段 从里到外
+//    center.onclick = function () {
+//        console.log('center');
+//    };
+//    inner.onclick = function () {
+//        console.log('inner');
+//    };
+//    outer.onclick = function () {
+//        console.log('outer');
+//    }
+
+</script>
+</body>
+</html>
