@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oImg {
+            /*-webkit-user-drag: none;*/
+            width: 100px;
+            height: 100px;
+        }
+        #oDiv {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        #container {
+            float: right;
+            width: 300px;
+            height: 300px;
+            border: 1px solid blue;
+        }
+        #container2 {
+            float: right;
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<img id="oImg" src="./iphone.jpg" alt="">
+<!-- 允许元素拖拽 -->
+<div draggable="true" id="oDiv"></div>
+<div id="container"></div>
+<div id="container2"></div>
+<script type="text/javascript">
+    /**
+     * 被拖拽元素的事件
+     * ondragstart
+     * ondrag
+     * ondragend
+     */
+    var oDiv = document.getElementById('oDiv');
+    var tar;
+    oDiv.ondragstart = function (e) { // 开始拖拽 类似 onmousedown
+        e = e || window.event;
+        tar = e.target;
+        console.log('start');
+    };
+//    oDiv.ondrag = function () { // 拖拽中 类似 onmousemove
+//        console.log('drag');
+//    };
+    oDiv.ondragend = function () { // 结束拖拽 类似 onmouseup
+//        console.log('end');
+    };
+    oImg.ondragstart = function (e) {
+        e = e || window.event;
+        tar = e.target;
+    };
+
+    /**
+     * 目标元素的事件
+     * ondragenter 拖拽元素进入目标元素时触发 类似mouseenter
+     * ondragover 拖拽元素在目标元素内拖动时触发 类似mousemove
+     * ondragleave 拖拽元素 离开目标元素时触发
+     * ondrop 拖拽元素在目标元素里拖放时候触发的事件（需要在dragover中阻止默认行为才出发）
+     * 
+     */
+    var outer = document.getElementById('container');
+    var outer2 = document.getElementById('container2');
+//    outer.ondragenter = function () { // 拖拽元素进入目标元素时触发 类似mouseenter
+//        console.log('enter');
+//    };
+    outer.ondragover = function (e) { // 拖拽元素在目标元素内拖动时触发 类似mousemove
+        e.preventDefault(); // 阻止默认行为 才会触发ondrop事件 所有元素默认都不允许拖放
+//        console.log('over');
+    };
+    outer2.ondragover = function (e) {
+        e.preventDefault();
+    };
+//    outer.ondragleave = function () { // 拖拽元素 离开目标元素时触发
+//        console.log('leave');
+//    };
+    outer.ondrop = function () { // 在目标元素里拖放时候触发的事件
+      console.log('drop');
+      this.appendChild(tar);
+    };
+    outer2.ondrop = function () {
+
+        this.appendChild(tar);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .list {
+            margin: 20px auto;
+            list-style: none;
+            width: 150px;
+            height: 180px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        .list li {
+            -webkit-user-select: none;
+            cursor: pointer;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background: #ccc;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<img src="./iphone.jpg"  id="logo" style="width: 50px; height: 50px" alt="">
+<ul class="list" id="list1">
+    <li draggable="true">11</li>
+    <li draggable="true">12</li>
+    <li draggable="true">13</li>
+    <li draggable="true">14</li>
+    <li draggable="true">15</li>
+</ul>
+<ul class="list" id="list2"></ul>
+<script type="text/javascript">
+    var list1 = document.getElementById('list1');
+    var list2 = document.getElementById('list2');
+    var logo = document.getElementById('logo');
+    var tar;
+    list1.ondragstart = list2.ondragstart = function (e) {
+        e = e || window.event;
+        tar = e.target || e.srcElement;
+        e.dataTransfer.setDragImage(logo, 0, 0); // 设置拖拽时的图标
+    };
+
+    list1.ondragover = list2.ondragover = function (e) {
+        e = e || window.event;
+        e.preventDefault? e.preventDefault() : e.returnValue = false;
+    };
+    list1.ondrop =  list2.ondrop = function () {
+        this.appendChild(tar);
+    }
+</script>
+</body>
+</html>
