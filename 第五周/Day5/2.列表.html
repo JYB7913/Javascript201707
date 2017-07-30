@@ -41,7 +41,8 @@
     list1.ondragstart = list2.ondragstart = function (e) {
         e = e || window.event;
         tar = e.target || e.srcElement;
-        e.dataTransfer.setDragImage(logo, 0, 0); // 设置拖拽时的图标
+//        e.dataTransfer.setDragImage IE 不支持这个属性
+//        e.dataTransfer.setDragImage(logo, 0, 0); // 设置拖拽时的图标
     };
 
     list1.ondragover = list2.ondragover = function (e) {
