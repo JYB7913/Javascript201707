@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    // 绑定的谁 就移除谁
+    // attachEvent 绑定得是 每次包装的函数Fn
+    // detachEvent 应该移除绑定的这个Fn(包装的函数)
+    // 每个传递进来函数 都对应一个 包装函数Fn
+    // 包装函数Fn的_event属性保存的是谁 就说明这个Fn就是谁对应的那个Fn 也就是我们需要移除的事件函数
+    //    fn1 => Fn => Fn._event = fn1
+    //    fn2 => Fn => Fn._event = fn2
+
+    // 给每一个事件类型 都分配一个事件池 用来存储 绑定的处理函数Fn
+    // 需要一个事件池 将包装函数Fn保存到所属类型的事件池中 后期筛选使用
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false)
+        } else {
+            // 实际上是将 包装fn1的函数绑定给这个元素
+            var Fn = function (e) { // Fn => fn1  Fn => fn2
+                handle.call(ele, e)
+            };
+//            ele['bindclick'] = []
+            var events = ele['bind' + type]; // 获取当前事件类型的事件池
+            if (!(events instanceof Array)) { //如果当前事件类型，没有就创建一个
+                events = ele['bind' + type] = []; // 创建事件池 并以事件类型命名
+            }
+            ele.attachEvent('on' + type, Fn);
+            Fn._event = handle; // 识别标识
+            events.push(Fn); // 将当前Fn存储到对应事件池中
+
+        }
+    }
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false)
+        } else {
+            var events = ele['bind' + type];
+            if (events instanceof Array) {
+                for (var i = 0; i < events.length; i++) {
+                    var Fn = events[i];
+                    if (Fn._event === handle) {
+                        ele.detachEvent('on' + type, Fn);
+                        events.splice(i, 1);
+                    }
+                }
+            }
+
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    function fn3() {
+        console.log('fn3');
+    }
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2); // 只是将fn2对应的那个包装函数Fn绑定给了元素
+
+    console.log(btn['bindclick']);
+
+    off(btn, 'mouseover', fn2); // 移除的时候 应该移除 fn2对应的那个包装函数Fn
+
+</script>
+</body>
+</html>
