@@ -44,20 +44,24 @@
             }
         }
     }
-    
+
     function run(e) {
         // 事件对象兼容处理
         e = e || window.event;
         e.target = e.target || e.srcElement;
-        e.preventDefault = e.preventDefault || (e.returnValue = false);
-        e.stopPropagation = e.stopPropagation || (e.cancelBubble = true);
+        e.preventDefault = e.preventDefault || function () {
+                e.returnValue = false;
+            };
+        e.stopPropagation = e.stopPropagation || function () {
+                e.cancelBubble = true
+            };
         e.pageX = (document.documentElement.scrollLeft || document.body.scrollLeft) + e.clientX;
         e.pageY = (document.documentElement.scrollTop || document.body.scrollTop) + e.clientY;
-        
+
         var events = this['bind' + e.type];
-        if(!(events instanceof Array)) return;
-      
-        for(var i = 0; i < events.length; i++) {
+        if (!(events instanceof Array)) return;
+
+        for (var i = 0; i < events.length; i++) {
             events[i].call(this, e);
         }
     }
@@ -65,7 +69,7 @@
     on(btn, 'click', fn1); // 只需将fn1添加到 click的事件池中即可
     on(btn, 'click', fn2);
     on(btn, 'click', fn3);
-//    off(btn, 'click', fn2); // 只需要将fn2从click的事件池中移除
+    //    off(btn, 'click', fn2); // 只需要将fn2从click的事件池中移除
 
     function fn1(e) {
         console.log(e.target === btn);
