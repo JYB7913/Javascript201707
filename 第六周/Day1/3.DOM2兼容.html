@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点击</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    // addEventListener/removeEventListener  IE 6 - 8 attachEvent/detachEvent
+    function on(ele, type, handle) {
+        if(ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+            ele.attachEvent('on' + type, handle);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if(ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            ele.detachEvent('on' + type, handle);
+        }
+    }
+
+
+        function fn1() {
+            console.log('fn1');
+//            console.log(this === btn);
+//            console.log(this === window);
+        }
+        function fn2() {
+            console.log('fn2');
+        }
+        function fn3() {
+            console.log('fn3');
+        }
+
+    // 1.this 问题
+    // addEventListener绑定的事件中this是当前元素
+    // attachEvent事件绑定中的this是 window
+    // 2.attachEvent 重复绑定 同一个行为多次绑定同一个处理函数
+    // addEventListener绑定的 只绑定一次
+    // attachEvent 绑定多少次就执行多少次
+    // 3. 执行顺序 IE6-8 attachEvent（倒序/乱序）
+    on(btn, 'click', fn3);
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+
+//    on(btn, 'click', fn2);
+//    on(btn, 'click', fn3);
+
+
+</script>
+</body>
+</html>

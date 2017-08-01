@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点击</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    // addEventListener/removeEventListener  IE 6 - 8 attachEvent/detachEvent
+//    function on(ele, type, handle) {
+//        if(ele.addEventListener) {
+//            ele.addEventListener(type, handle, false);
+//        } else {
+//            ele.attachEvent('on' + type, handle);
+//        }
+//    }
+//
+//    function off(ele, type, handle) {
+//        if(ele.removeEventListener) {
+//            ele.removeEventListener(type, handle, false);
+//        } else {
+//            ele.detachEvent('on' + type, handle);
+//        }
+//    }
+//    on(btn, 'click', fn1);
+//    on(btn, 'click', fn2);
+//    on(btn, 'click', fn3);
+//
+//    off(btn, 'click', fn2);
+
+    // 过载到元素的原型属性上 供元素直接调用
+//    Node.prototype.on = on;
+//    Node.prototype.off = off;
+//    function on(type, handle) {
+//        if(this.addEventListener) {
+//            this.addEventListener(type, handle, false);
+//        } else {
+//            this.attachEvent('on' + type, handle);
+//        }
+//    }
+//
+//    function off(type, handle) {
+//        if(this.removeEventListener) {
+//            this.removeEventListener(type, handle, false);
+//        } else {
+//            this.detachEvent('on' + type, handle);
+//        }
+//    }
+//
+//    function fn1() {
+//        console.log('fn1');
+//    }
+//    function fn2() {
+//        console.log('fn2');
+//    }
+//    function fn3() {
+//        console.log('fn3');
+//    }
+//    btn.on('click', fn1);
+//    btn.on('click', fn2);
+//    btn.on('click', fn3);
+//
+//    btn.off('click', fn2);
+</script>
+</body>
+</html>

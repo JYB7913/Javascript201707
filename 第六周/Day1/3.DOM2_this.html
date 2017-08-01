@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点击</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    function handleThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+            // call apply bind
+//            ele.attachEvent('on' + type, handle.bind(ele));
+//            ele.attachEvent('on' + type, function (e) {
+//                handle.call(ele, e);
+//            });
+            ele.attachEvent('on' + type, handleThis(ele, handle));
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            ele.detachEvent('on' + type, handle);
+        }
+    }
+
+    // this 问题
+
+
+    on(btn, 'click', fn1); // 并没有直接将fn1绑定给元素 而是将包装的函数绑定给了元素
+    off(btn, 'click', fn1); // 所以 移除的时候 需要根据fn1找 对应包装的那个函数 然后将其移除
+
+
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    function fn3() {
+        console.log('fn3');
+    }
+
+    // call apply bind
+</script>
+</body>
+</html>
