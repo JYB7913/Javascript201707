@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false)
+        } else {
+            var events = ele['bind' + type];
+            if(!(events instanceof Array)) { // 当前类型没有就创建一个事件池
+                events = ele['bind' + type] = [];
+                // 相关行为触发时 找到相应行为类型的事件池 让里面的处理函数依次按顺序执行
+                // 给每个行为类型 分配一个 执行的处理函数
+                ele.attachEvent('on' + type, function (e) {
+                     var events = ele['bind' + type];
+                     if(events instanceof Array) {
+                         for(var i = 0; i < events.length; i++) {
+                             events[i].call(ele, e);
+                         }
+                     }
+                });
+            }
+
+            // 解决给相应事件类型重复添加 同一个处理函数
+            for(var k = 0; k < events.length; k++) {
+                if(events[k] === handle) return;
+            }
+            events.push(handle); // 将当前处理函数添加到相应类型的事件池中
+        }
+    }
+
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false)
+        } else {
+            var events = ele['bind' + type];
+            if(events instanceof Array) {
+                for(var i = 0; i < events.length; i++) {
+                    if(events[i] === handle) {
+                        events.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+//            ele.detachEvent('on' + type, handle);
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    function fn3() {
+        console.log('fn3');
+    }
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    on(btn, 'click', fn3);
+    off(btn, 'click', fn2);
+    console.log(btn['bindclick']);
+
+//    on(btn, 'click', fn2);
+//    on(btn, 'click', fn1);
+//    on(btn, 'click', fn3);
+//    on(btn, 'mouseover', fn2);
+//    on(btn, 'mouseover', fn3);
+
+//    console.log(btn['bindclick']); // [fn1, fn2, fn3]
+//    console.log(btn['bindmouseover']); // [fn2, fn3]
+    //    off(btn, 'click', fn1);
+
+</script>
+</body>
+</html>
