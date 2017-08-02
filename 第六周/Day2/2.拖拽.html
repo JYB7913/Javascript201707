@@ -63,19 +63,56 @@
              t = this.maxT;
          }
         this.style.left = l + 'px';
-         this.style.top = t + 'px';
+        this.style.top = t + 'px';
+
+        
+        // 每两次之间的 步长 最终move执行最后一次时 此时 stpe 就是 最后一次和倒数第二次之间的步长 也就是结束拖拽时的速度
+        // this.prevSpeed 相当于每次的起始位置 此时 e.clientX 相当于当前位置
+        // step = 当前位置 - 起始位置
+         if(this.prevSpeed){
+             this.step = e.clientX - this.prevSpeed; // 用当前的位置减去上一次所在位置 就是 两点间的 步长
+             this.prevSpeed = e.clientX; // 在把此时位置 作为下次的 （起始位置）上一次位置
+         } else { // 如果没有上一次位置 就把这一次作为 上一次位置
+             this.prevSpeed = e.clientX; // 第一次执行move时候没有上一次的 就把第一次作为 上一次位置
+         }
+
     }
 
     // 结束拖拽 移除此时 mousemove / mouseup事件
     function up() {
        off(document, 'mousemove', this.MOVE);
-       off(document, 'mousemove', this.UP);
+       off(document, 'mouseup', this.UP);
+       reduction.call(this); // 进行衰减运动
+        this.prevSpeed = null;  // 把这一次的拖拽 保存 上一次位置 清空 为了 不影响 每次拖拽的速度步长
     }
 
     function handleThis(that, fn) {
         return function (e) {
             fn.call(that, e);
         }
+    }
+
+    function reduction() {
+
+            clearTimeout(this.timer); // 清除上一次的定时器
+            this.step *= 0.98; // 拖拽后的速度 进行衰减
+
+            // 边界反弹运动处理
+            var total = this.offsetLeft + this.step;
+            if(total >= this.maxL) {
+                total = this.maxL; // 如果到达最大边界 让它由 最大边界 开始 反方向运动 （让它递减步长）
+                this.step *= -1; // 变成负值
+            } else if(total < 0){ // 如果到达最小边界 让它由 最小边界 开始 反方向运动 （让它递增步长）
+                total = 0;
+                this.step *= -1; // 变成正数
+            }
+
+            this.style.left =  total +'px';
+
+            if(Math.abs(this.step) > 0.5) { //结束条件 根据速度绝对值来进行判断
+                this.timer = setTimeout(handleThis(this, reduction), 25);
+            }
+
     }
 
 
