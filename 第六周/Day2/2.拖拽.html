@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+
+    var red = document.getElementById('red');
+    
+    on(red, 'mousedown', down);
+    
+    // 记录当前鼠标在元素中的位置 this.l = e.clientX - ele.offsetLeft
+    function down(e) {
+       e = e || window.event;
+       this.l = e.clientX - this.offsetLeft;
+       this.t = e.clientY - this.offsetTop;
+       this.MOVE = handleThis(this, move);
+       this.UP = handleThis(this, up);
+       var winW = document.documentElement.clientWidth || document.body.clientWidth;
+       var winH = document.documentElement.clientHeight || document.body.clientHeight;
+
+       // 最大边界值
+       this.maxL = winW - this.offsetWidth;
+       this.maxT = winH - this.offsetHeight;
+
+       on(document, 'mousemove',  this.MOVE);
+       on(document, 'mouseup', this.UP);
+       
+    }
+    // 计算出此时元素的left/top值 = e.clientX - this.l 鼠标在元素中的位置
+    function move(e) {
+         e = e || window.event;
+         // 边界判断
+         var l = e.clientX - this.l;
+         var t = e.clientY- this.t;
+         if(l < 0) {
+             l = 0
+         } else if(l > this.maxL) {
+             l = this.maxL;
+         }
+
+         if(t < 0){
+             t = 0;
+         } else if(t > this.maxT) {
+             t = this.maxT;
+         }
+        this.style.left = l + 'px';
+         this.style.top = t + 'px';
+    }
+
+    // 结束拖拽 移除此时 mousemove / mouseup事件
+    function up() {
+       off(document, 'mousemove', this.MOVE);
+       off(document, 'mousemove', this.UP);
+    }
+
+    function handleThis(that, fn) {
+        return function (e) {
+            fn.call(that, e);
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
