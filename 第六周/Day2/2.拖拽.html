@@ -83,6 +83,7 @@
        off(document, 'mousemove', this.MOVE);
        off(document, 'mouseup', this.UP);
        reduction.call(this); // 进行衰减运动
+       drop.call(this); // 自由落体
         this.prevSpeed = null;  // 把这一次的拖拽 保存 上一次位置 清空 为了 不影响 每次拖拽的速度步长
     }
 
@@ -117,6 +118,36 @@
 
 
 
+    // 自由落体
+    function drop() {
+        clearTimeout(this.dropTime);
+        if(this.dropSpeed) {
+            this.dropSpeed += 8;
+        } else {
+            this.dropSpeed = 2; // 初始速度
+        }
+
+        this.dropSpeed *= 0.98;
+        var t = this.offsetTop + this.dropSpeed;
+        // 只要到达边界就++
+        if(t >= this.maxT) { // 到达最大边界 才会执行 ++
+            t = this.maxT;
+            this.dropSpeed *= -1;
+            this.flag ++;
+            console.log('最大边界: ' + this.flag);
+        } else { // 如果此时没有再最大边界 就是反弹过程中 就是 设为 0
+            // 只要离开边界 就设为0
+            this.flag = 0;
+            console.log(this.flag);
+        }
+        this.style.top = t +'px';
+        // 如果当前物体始终停止最大边界 就会 一直累加下去
+        if(this.flag < 2) {
+            this.dropTime = setTimeout(handleThis(this, drop), 25);
+        }
+
+
+    }
 </script>
 </body>
 </html>
