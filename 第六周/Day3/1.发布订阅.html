@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<button id="oDiv">button</button>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="animate2.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+
+
+    on(oDiv, 'animate', myLeft);
+    on(oDiv, 'animate', myTop);
+
+
+    oDiv.onclick = function () {
+        this.style.backgroundColor = 'red';
+        fire(this, 'animate');
+    };
+
+
+    function myLeft() {
+        $animate({
+            ele: oDiv,
+            target: {
+                left: 200
+            },
+            duration: 400
+        })
+    }
+
+    function myTop() {
+        $animate({
+            ele: oDiv,
+            target: {
+                top: 200
+            },
+            duration: 400
+        })
+    }
+
+
+   // 发布订阅
+
+    on(oDiv, '上课了', fn1); // 订阅注册
+    on(oDiv, '上课了', fn1); // 订阅注册
+    on(oDiv, '上课了', fn1); // 订阅注册
+
+   on(oDiv, '上课了', fn2); // 订阅注册
+   on(oDiv, '上课了', fn3); // 订阅注册
+
+
+   console.log(oDiv['self上课了']);
+
+   on(oDiv, '下课了', fn4); // 订阅注册
+   on(oDiv, '下课了', fn5); // 订阅注册
+   on(oDiv, '下课了', fn6); // 订阅注册
+
+    fire(oDiv, '上课了');
+//    oDiv.addEventListener('click', fn1, false);
+//    oDiv.addEventListener('click', fn1, false);
+//    oDiv.addEventListener('click', fn1, false);
+
+//
+//    oDiv.attachEvent('onclick', fn1);
+//    oDiv.attachEvent('onclick', fn1);
+//    oDiv.attachEvent('onclick', fn1);
+
+//    setTimeout(function () {
+//        fire(oDiv, '上课了'); // 发布
+//    }, 1000);
+
+//    setTimeout(function () {
+//        fire(oDiv, '下课了'); // 发布
+//    }, 3000);
+
+
+
+    function on(ele, type, fn) {
+        var events=ele['self'+type]; // ele['selfclick'] ele['selfmouseover']
+
+        if(!(events instanceof Array)){
+            events=ele['self'+type]=[];
+        } else {
+            // 避免 重复绑定
+            for(var i = 0; i < events.length; i++) {
+                if(events[i] === fn) return;
+            }
+        }
+
+        events.push(fn);
+    }
+
+    function fire(ele, type) {
+          var events = ele['self' + type]; // 根据主题获取到事件池
+          if(events instanceof  Array) {
+              for(var i = 0; i < events.length; i++) {
+                  events[i].call(ele);
+              }
+          }
+    }
+
+    function off() {
+
+    }
+
+
+
+    function fn1() {
+        console.log('fn1这就来');
+
+    }
+    function fn2() {
+        console.log('fn2晚来几分钟');
+    }
+    function fn3() {
+        console.log('fn3在路上');
+    }
+
+    function fn4() {
+        console.log('fn4我要上晚自习');
+
+    }
+    function fn5() {
+        console.log('fn5我要回家');
+    }
+    function fn6() {
+        console.log('fn6我要去网吧');
+    }
+</script>
+</body>
+</html>
