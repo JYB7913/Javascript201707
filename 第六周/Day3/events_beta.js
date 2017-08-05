@@ -1,12 +1,12 @@
 function on(ele, type, handle) {
     var events = null;
-    if(/^self/.test(type)) { // 添加自定义事件
+    if (/^self/.test(type)) { // 添加自定义事件
         events = ele[type];
-        if(!(events instanceof Array)) {
+        if (!(events instanceof Array)) {
             events = ele[type] = [];
         } else {
-            for(var i = 0; i < events.length; i++) {
-                if(events[i] === handle) return;
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === handle) return;
             }
         }
         events[events.length] = handle;
@@ -31,11 +31,11 @@ function on(ele, type, handle) {
 
 function off(ele, type, fn) {
     var events;
-    if(/^self/.test(type)) {
+    if (/^self/.test(type)) {
         events = ele[type];
-        if(events && events.length) {
-            for(var i = 0; i < events.length; i++) {
-                if(events[i] === fn) {
+        if (events && events.length) {
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === fn) {
                     events.splice(i, 1);
                     break;
                 }
@@ -46,9 +46,9 @@ function off(ele, type, fn) {
         ele.removeEventListener(type, fn, false);
     } else {
         events = ele['bind' + type];
-        if(events && events.length) {
-            for(var i = 0; i < events.length; i++) {
-                if(events[i] === fn) {
+        if (events && events.length) {
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === fn) {
                     events.splice(i, 1);
                     break;
                 }
@@ -58,9 +58,9 @@ function off(ele, type, fn) {
 }
 
 function emit(ele, type) { // 发布自定义事件
-    if(/^self/.test(type)) {
+    if (/^self/.test(type)) {
         var events = ele[type];
-        for(var i = 0; i < events.length; i++) {
+        for (var i = 0; i < events.length; i++) {
             events[i].call(ele);
         }
     }
