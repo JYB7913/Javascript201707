@@ -63,7 +63,7 @@
 
         this.style.left = l + 'px';
         this.style.top = t + 'px';
-        if(this.prevSpeed){
+        if (this.prevSpeed) {
             this.step = e.clientX - this.prevSpeed; // 用当前的位置减去上一次所在位置 就是 两点间的 步长
             this.prevSpeed = e.clientX; // 在把此时位置 作为下次的 （起始位置）上一次位置
         } else { // 如果没有上一次位置 就把这一次作为 上一次位置
@@ -83,7 +83,6 @@
     }
 
 
-
     // 预处理this关键字
     function handleThis(context, fn) {
         return function (e) {
@@ -93,32 +92,32 @@
 
     window.$Darg = Drag;
     // 左右反弹
-     window.fly= function () {
+    window.fly = function () {
         clearTimeout(this.timer); // 清除上一次的定时器
         this.step *= 0.98; // 拖拽后的速度 进行衰减
 
         // 边界反弹运动处理
         var total = this.offsetLeft + this.step;
-        if(total >= this.maxL) {
+        if (total >= this.maxL) {
             total = this.maxL; // 如果到达最大边界 让它由 最大边界 开始 反方向运动 （让它递减步长）
             this.step *= -1; // 变成负值
-        } else if(total < 0){ // 如果到达最小边界 让它由 最小边界 开始 反方向运动 （让它递增步长）
+        } else if (total < 0) { // 如果到达最小边界 让它由 最小边界 开始 反方向运动 （让它递增步长）
             total = 0;
             this.step *= -1; // 变成正数
         }
 
-        this.style.left =  total +'px';
+        this.style.left = total + 'px';
 
-        if(Math.abs(this.step) > 0.5) { //结束条件 根据速度绝对值来进行判断
+        if (Math.abs(this.step) > 0.5) { //结束条件 根据速度绝对值来进行判断
             this.timer = setTimeout(handleThis(this, fly), 25);
         }
 
     };
 
     // 自由落体
-    window.drop = function() {
+    window.drop = function () {
         clearTimeout(this.dropTime);
-        if(this.dropSpeed) {
+        if (this.dropSpeed) {
             this.dropSpeed += 8;
         } else {
             this.dropSpeed = 2; // 初始速度
@@ -127,19 +126,19 @@
         this.dropSpeed *= 0.98;
         var t = this.offsetTop + this.dropSpeed;
         // 只要到达边界就++
-        if(t >= this.maxT) { // 到达最大边界 才会执行 ++
+        if (t >= this.maxT) { // 到达最大边界 才会执行 ++
             t = this.maxT;
             this.dropSpeed *= -1;
-            this.flag ++;
+            this.flag++;
             console.log('最大边界: ' + this.flag);
         } else { // 如果此时没有再最大边界 就是反弹过程中 就是 设为 0
             // 只要离开边界 就设为0
             this.flag = 0;
             console.log(this.flag);
         }
-        this.style.top = t +'px';
+        this.style.top = t + 'px';
         // 如果当前物体始终停止最大边界 就会 一直累加下去
-        if(this.flag < 2) {
+        if (this.flag < 2) {
             this.dropTime = setTimeout(handleThis(this, drop), 25);
         }
 

@@ -63,28 +63,27 @@
         e.target = e.target || e.srcElement;
         e.preventDefault = e.preventDefault || function () {
                 e.returnValue = false;
-        };
+            };
         e.stopPropagation = e.stopPropagation || function () {
-              e.cancelBubble = true;  
-        };
+                e.cancelBubble = true;
+            };
         e.pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
         e.pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
-        
-        
-        
+
+
         var events = this['bind' + e.type];
         if (events instanceof Array) {
             for (var i = 0; i < events.length; i++) {
                 var fn = events[i];
-                typeof fn === 'function'? fn.call(this, e) : null; // 将处理函数中this修改为当前事件元素
+                typeof fn === 'function' ? fn.call(this, e) : null; // 将处理函数中this修改为当前事件元素
             }
         }
 
     }
 
     function fn1(e) {
-       console.log(e.target === btn);
-        
+        console.log(e.target === btn);
+
         console.log(this === btn);
         console.log('fn1这就来');
 

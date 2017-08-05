@@ -127,20 +127,21 @@
             this.dropSpeed = 2; // 初始速度
         }
 
-        this.dropSpeed *= 0.98;
+//        this.dropSpeed *= 0.98;
         var t = this.offsetTop + this.dropSpeed;
         // 只要到达边界就++
         if(t >= this.maxT) { // 到达最大边界 才会执行 ++
             t = this.maxT;
             this.dropSpeed *= -1;
             this.flag ++;
-            console.log('最大边界: ' + this.flag);
+//            console.log('最大边界: ' + this.flag);
         } else { // 如果此时没有再最大边界 就是反弹过程中 就是 设为 0
             // 只要离开边界 就设为0
             this.flag = 0;
-            console.log(this.flag);
+//            console.log(this.flag);
         }
         this.style.top = t +'px';
+        console.log(this.dropSpeed);
         // 如果当前物体始终停止最大边界 就会 一直累加下去
         if(this.flag < 2) {
             this.dropTime = setTimeout(handleThis(this, drop), 25);
