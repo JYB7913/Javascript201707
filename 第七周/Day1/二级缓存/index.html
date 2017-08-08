@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #list {
+            list-style: none;
+        }
+
+        #list li {
+            display: inline-block;
+            text-align: center;
+            border: 1px solid red;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+
+</ul>
+<script type="text/javascript">
+    let list = document.getElementById('list');
+    // 获取数据
+    let url = 'data.json';
+    let brandList = localStorage.getItem('brandList');
+    if(brandList) {
+        console.log('local');
+        brandList = window.JSON ? JSON.parse(brandList) : eval('('+ brandList +')');
+        bindData(brandList.list);
+    } else {
+        getData(url);
+    }
+
+    function getData(url) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'data.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                let {list} = this.response;
+                localStorage.setItem('brandList', JSON.stringify(this.response));
+                list && bindData(list);
+            }
+        };
+        xhr.send();
+    }
+
+    function bindData(data) {
+        let str = ``;
+        for (let i = 0; i < data.length; i++) {
+            let {img, brand, price} = data[i];
+            str += `
+                <li>
+                    <img src= ${img} alt="">
+                    <p>${brand}</p>
+                    <p>${price}</p>
+                </li>
+             `
+        }
+        list.innerHTML = str;
+    }
+</script>
+</body>
+</html>
