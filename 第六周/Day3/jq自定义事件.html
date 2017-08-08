@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<input type="text" id="inp">
+<script type="text/javascript" src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // on bind  delegate live one
+//        var $btn = $('#btn');
+//        $btn.on('hello', function (e) {
+//            console.log(e);
+//            console.log('hello hello!');
+//        });
+//
+//        setTimeout(function () {
+//            $btn.trigger('hello'); // 手工发布事件(自定义和原生)
+//        }, 3000);
+
+        $('#inp').focus(function () {
+            console.log('inp click1');
+        });
+
+        setTimeout(function () {
+            $('#inp').trigger('focus');
+//            $('#inp').triggerHandler('focus'); // 不存在浏览器默认行为
+        }, 2000)
+    });
+</script>
+</body>
+</html>

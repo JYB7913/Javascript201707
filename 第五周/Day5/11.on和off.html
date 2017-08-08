@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    // DOM2
+    // addEventListener/removeEventListener IE6-8不兼容
+    // IE attachEvent/detachEvent
+
+
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    off(btn, 'click', fn1);
+    function on(ele, type, handle) {
+        if(ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else if (ele.attachEvent) {
+            ele.attachEvent('on' + type, handle);
+        } else {
+            ele['on' + type] = handle;
+        }
+    }
+
+    function off(ele, type, handle) {
+        if(ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else if(ele.detachEvent) {
+            ele.detachEvent('on' + type, handle);
+        } else {
+            ele['on' + type] = null;
+        }
+    }
+
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+</script>
+</body>
+</html>

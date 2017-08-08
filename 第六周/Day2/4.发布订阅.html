@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">btn1</button>
+<button id="btn2">btn2</button>
+<button id="btn3">btn3</button>
+<script type="text/javascript">
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var btn3 = document.getElementById('btn3');
+
+    var Event = (function () {
+        // 订阅 注册
+        function on(ele, type, fn) {
+            var events = ele['self' + type];
+            if(!(events instanceof Array)) {
+                events = ele['self' + type] = [];
+            }
+
+            for(var i = 0; i < events.length; i++) {
+                if(events[i] === fn) return;
+            }
+            events.push(fn);
+        }
+        // fire 发布
+        function fire(ele, type) {
+            var events = ele['self' + type];
+            if(events instanceof Array) {
+                for(var i = 0; i < events.length; i++) {
+                    events[i].call(ele);
+                }
+            }
+
+        }
+        // off 退订
+        function off(ele, type, fn) {
+            var events = ele['self' + type];
+            if(events instanceof Array) {
+                for(var i = 0; i < events.length; i++) {
+                    if(events[i] === fn) {
+                        events.splice(i, 1);
+                        return;
+                    }
+                }
+            }
+        }
+
+        return {
+            on: on,
+            fire: fire,
+            off: off
+        }
+    })();
+
+
+    Event.on(btn1, '72变', fn1);
+//    Event.on(btn1, '72变', fn2);
+    Event.on(btn1, '72变', fn3);
+//    Event.on(btn2, '变高', fn2);
+
+
+
+    setTimeout(function () {
+        Event.fire(btn1, '72变');
+    }, 2000);
+
+    function fn1() {
+        this.style.backgroundColor = 'red';
+    }
+    function fn2() {
+        this.style.height = '300px';
+    }
+    function fn3() {
+        this.style.width = '300px';
+    }
+
+</script>
+</body>
+</html>

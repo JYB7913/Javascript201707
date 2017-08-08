@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+<button id="removeTop">取消订阅top</button>
+<button id="removeLeft">取消订阅left</button>
+<button id="oDiv">button</button>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="animate2.js"></script>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    var removeTop = document.getElementById('removeTop');
+    var removeLeft = document.getElementById('removeLeft');
+
+    removeTop.onclick = function () {
+        off(oDiv, 'animate', myTop);
+    };
+    removeLeft.onclick = function () {
+        off(oDiv, 'animate', myLeft);
+    };
+
+//    on(oDiv, 'animate', myLeft);
+//    on(oDiv, 'animate', myTop);
+
+
+    oDiv.onclick = function () {
+        this.style.backgroundColor = 'red';
+        fire(this, 'animate');
+    };
+
+
+    function myLeft() {
+        $animate({
+            ele: oDiv,
+            target: {
+                left: 200
+            },
+            duration: 400
+        })
+    }
+
+    function myTop() {
+        $animate({
+            ele: oDiv,
+            target: {
+                top: 200
+            },
+            duration: 400
+        })
+    }
+
+
+    function on(ele, type, fn) {
+        var events = ele['self' + type]; // ele['selfclick'] ele['selfmouseover']
+
+        if (!(events instanceof Array)) {
+            events = ele['self' + type] = [];
+        } else {
+            // 避免 重复绑定
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === fn) return;
+            }
+        }
+
+        events.push(fn);
+    }
+
+    function fire(ele, type) {
+        var events = ele['self' + type]; // 根据主题获取到事件池
+        if (events instanceof Array) {
+            for (var i = 0; i < events.length; i++) {
+                events[i].call(ele);
+            }
+        }
+    }
+
+    // 取消订阅
+    function off(ele, type, fn) {
+        var events = ele['self' + type];
+        if(events instanceof Array) {
+            for(var i = 0; i < events.length; i++) {
+                if(events[i] === fn) {
+                    events.splice(i, 1);
+                    break;
+                }
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn" onclick="fn()">点击</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    // DOM0
+    btn.onclick = function () {
+        console.log('123');
+    };
+    btn.onclick = null;
+
+        // DOM2 在EventTarget addEventListener/removeEventListener IE6-8不支持
+    /*
+        type 事件类型 handle 处理函数 isCapture false 冒泡 true 捕获
+     */
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+    function fn3() {
+        console.log('fn3');
+    }
+
+//    btn.addEventListener('click', fn1, false);
+//    btn.addEventListener('mouseover', fn2, false);
+//    btn.addEventListener('click', fn2, true);
+//    btn.addEventListener('click', fn3, false);
+
+    // 注意 事件类型 处理函数  事件阶段 保持一致
+//    btn.removeEventListener('click', fn2, true);
+
+//    IE 6 - 8 attachEvent/detachEvent 只有冒泡阶段
+     btn.attachEvent('onclick', fn1);
+     btn.attachEvent('onclick', fn2);
+
+     btn.detachEvent('onclick', fn2);
+
+    /** 先捕获 => 目标 => 冒泡
+     * 冒泡阶段 从里到外
+     * 目标阶段
+     * 捕获阶段 从外到里
+     */
+
+
+
+</script>
+</body>
+</html>

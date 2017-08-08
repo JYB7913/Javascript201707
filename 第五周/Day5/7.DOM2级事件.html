@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="oDiv">button</button>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    // DOM0级事件 只有冒泡阶段
+    //    oDiv.onclick = fn1;
+    //    oDiv.onclick = fn2;
+    function fn1() {
+        console.log('fn1');
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    // DOM0移除
+    // oDiv.onclick = null
+
+    // DOM2级 事件绑定
+    // addEventListener/removeEventListener     EventTarget的原型上的方法
+
+    // type 事件类型  fn 处理函数 boolean false 冒泡阶段 true 捕获阶段
+    // oDiv.addEventListener('click', fn, false);
+
+    oDiv.addEventListener('mouseover', fn1, false);
+    oDiv.addEventListener('click', fn2, false);
+    oDiv.removeEventListener('click', fn2);
+    // DOM2级事件三个阶段 捕获 目标 冒泡
+</script>
+</body>
+</html>

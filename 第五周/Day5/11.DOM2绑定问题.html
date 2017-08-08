@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+//    btn.onclick = fn1;
+//    btn.onclick = null;
+//    btn.removeEventListener('click', fn1, false);
+
+    function fn1() {
+        console.log('fn1');
+//        console.log(this === window);
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    // addEventListener
+    // 1.执行顺序 按照 绑定顺序
+    // 2.处理函数中this 是绑定元素
+    // 3.不存在重复绑定
+//    btn.addEventListener('click', fn1, false);
+//    btn.addEventListener('click', fn1, false);
+//    btn.addEventListener('click', fn1, false);
+//    btn.addEventListener('click', fn1, false);
+
+//    btn.addEventListener('click', fn2, false);
+//    btn.addEventListener('click', fn3, false);
+
+    // attachEvent
+    // 1.执行顺序 倒序/乱序 IE 6-8
+    // 2.处理函数中this 是window
+    // 3.重复绑定： 给同一个行为重复绑定多少次同一个处理函数 就执行多少次处理函数
+//    btn.attachEvent('onclick', fn1);
+//    btn.attachEvent('onclick', fn1);
+//    btn.attachEvent('onclick', fn1);
+//    btn.attachEvent('onclick', fn1);
+//    btn.attachEvent('onclick', fn2);
+//    btn.attachEvent('onclick', fn3);
+
+
+
+</script>
+</body>
+</html>

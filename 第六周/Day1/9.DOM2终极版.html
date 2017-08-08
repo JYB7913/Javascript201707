@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            if (!(events instanceof Array)) {
+                events = ele['bind' + type] = [];
+//                ele.attachEvent('on' + type, function (e) {
+//                       run.call(ele, e);
+//                });
+                ele.attachEvent('on' + type, handleThis(ele, run))
+            }
+            // 防止重复绑定
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === handle) return;
+            }
+            events.push(handle);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            if (events instanceof Array) {
+                for (var i = 0; i < events.length; i++) {
+                    var fn = events[i];
+                    if (fn === handle) {
+                        events.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    function run(e) {
+        // 事件对象兼容处理
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        e.preventDefault = e.preventDefault || function () {
+                e.returnValue = false;
+            };
+        e.stopPropagation = e.stopPropagation || function () {
+                e.cancelBubble = true
+            };
+        e.pageX = (document.documentElement.scrollLeft || document.body.scrollLeft) + e.clientX;
+        e.pageY = (document.documentElement.scrollTop || document.body.scrollTop) + e.clientY;
+
+        var events = this['bind' + e.type];
+        if (!(events instanceof Array)) return;
+
+        for (var i = 0; i < events.length; i++) {
+            events[i].call(this, e);
+        }
+    }
+
+    on(btn, 'click', fn1); // 只需将fn1添加到 click的事件池中即可
+    on(btn, 'click', fn2);
+    on(btn, 'click', fn3);
+    //    off(btn, 'click', fn2); // 只需要将fn2从click的事件池中移除
+
+    function fn1(e) {
+        console.log(e.target === btn);
+        console.log('fn1');
+    }
+    function fn2(e) {
+        console.log('fn2');
+    }
+    function fn3(e) {
+        console.log('fn3');
+    }
+
+    // 处理this
+    function handleThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+
+</script>
+</body>
+</html>

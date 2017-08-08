@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    off(btn, 'click', fn2);
+    // 事件池 处理函数集合
+    // 在元素自身 给每个事件类型 都定义一个事件容器 存放对应类型的 处理函数
+    //  ele['onEventclick'] = [];
+    //  ele['onEventmouseover'] = [];
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else { // IE 6-8
+            // handelThis(ele, handle) 虽然解决this问题 实际我们并没有将handle直接绑定给 元素 而是将handelThis返回新函数作为处理函数
+            // 如果没有事件池就定义一个新的 有的话直接用
+            var events;
+            if(!(ele['onEvent' + type] instanceof Array)) {
+                ele['onEvent' + type] = [];
+            }
+            events = ele['onEvent' + type]; // 根据type得到对应的事件池
+            var Fn = handelThis(ele, handle);
+            ele.attachEvent('on' + type,  Fn);
+            Fn._event = handle; // 在Fn自身属性_event保存着对应handle函数 作为标识
+            events.push(Fn); // 将绑定的处理函数Fn存储到事件池
+//            console.log(ele['onEvent' + type]);
+            
+//            ele.attachEvent('on' + type,  handle);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ele['onEvent' + type]; // 根据事件类型得到对应的事件池
+            if(events instanceof Array) {
+                // 在事件池中 根据_event筛选出来对应的处理函数 将它移除
+                for(var i = 0; i < events.length; i++) {
+                    if(events[i]._event === handle) {
+                        ele.detachEvent('on' + type, events[i]);
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    function handelThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+</script>
+</body>
+</html>

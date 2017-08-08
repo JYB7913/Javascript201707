@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false)
+        } else {
+            var events = ele['bind' + type];
+            if (!(events instanceof Array)) {
+                events = ele['bind' + type] = [];
+            } else { // 防止重复绑定
+                for(var i = 0; i < events.length; i++) {
+                    if(events[i]._event === handle) return;
+                }
+            }
+            var Fn = function (e) {
+                handle.call(ele, e);
+            };
+
+            ele.attachEvent('on' + type, Fn);
+            Fn._event = handle;
+            events.push(Fn);
+        }
+    }
+
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false)
+        } else {
+            var events = ele['bind' + type];
+            if (!events) return;
+            for (var i = 0; i < events.length; i++) {
+                var Fn = events[i];
+                if (Fn._event === handle) {
+                    ele.detachEvent('on' + type, Fn);
+                    events[i] = events[events.length - 1];
+                    events.length--;
+                    break;
+                }
+            }
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+
+    }
+    function fn2() {
+        console.log('fn2');
+    }
+    function fn3() {
+        console.log('fn3');
+    }
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    on(btn, 'click', fn3);
+    on(btn, 'click', fn1);
+
+    off(btn, 'click', fn1);
+
+</script>
+</body>
+</html>

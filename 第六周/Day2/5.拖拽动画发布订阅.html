@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #oDiv1, #oDiv2, #oDiv3 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        #oDiv2 {
+            top: 100px;
+            background: blue;
+        }
+        #oDiv3 {
+            top: 200px;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv1"></div>
+<div id="oDiv2"></div>
+<div id="oDiv3"></div>
+<script type="text/javascript" src="fire.js"></script>
+<script type="text/javascript" src="Drag.js"></script>
+<script type="text/javascript">
+    var oDiv1 = document.getElementById('oDiv1');
+    var oDiv2 = document.getElementById('oDiv2');
+    var oDiv3 = document.getElementById('oDiv3');
+    Event.on(oDiv1, 'drop', drop);
+    Event.on(oDiv2, 'fly', fly);
+    Event.on(oDiv3, 'drop', drop);
+    Event.on(oDiv3, 'fly', fly);
+    new $Darg('#oDiv1'); // 自由落体
+    new $Darg('#oDiv2'); // 左右反弹
+    new $Darg('#oDiv3'); // 无动画
+</script>
+</body>
+</html>

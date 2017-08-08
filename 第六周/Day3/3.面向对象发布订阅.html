@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+
+    // 将独立的功能模块 通过某种途径 关联衔接起来
+    function Emmiter() {
+        this.Emmiter = {}; // 集中管理所有事件主题 订阅者
+    }
+
+//    fe.Emmiter = {'上学了': [fn1, fn2, fn3]};
+    // 订阅
+    Emmiter.prototype.on = function (type, fn) {
+        var events = this.Emmiter[type];
+        if(!(events instanceof Array)) {
+            events = this.Emmiter[type] = [];
+        } else {
+            for(var i = 0; i < events.length; i++) {
+                if(events[i] === fn) return;
+            }
+        }
+        events[events.length] = fn;
+
+    };
+    // 取消订阅
+    Emmiter.prototype.off = function (type, fn) {
+        var events = this.Emmiter[type];
+        if(events instanceof Array) {
+            for(var i = 0; i < events.length; i++) {
+                if(events[i] === fn) {
+                    events.splice(i, 1);
+                    break;
+                }
+            }
+        }
+    };
+    // 发布
+    Emmiter.prototype.fire = function (type) {
+        var events = this.Emmiter[type];
+        if(events instanceof Array) {
+            for(var i = 0; i < events.length; i++) {
+                events[i].call(this);
+            }
+        }
+
+    };
+
+    var zhufeng = new Emmiter();
+    var fe = new Emmiter();
+    fe.on('放假了', fn4);
+//    fe.on('上学了', fn1);
+    fe.on('上学了', fn1);
+    fe.on('上学了', fn2);
+    fe.on('上学了', fn3);
+
+    fe.on('放学了', fn4);
+    fe.on('放学了', fn5);
+
+
+    fe.off('上学了', fn2);
+    fe.off('上学了', fn3);
+
+//    console.log(fe.Emmiter);
+
+
+//    fe.fire('上学了');
+//    fe.fire('放假了');
+
+
+    // 订阅注册
+//    zhufeng.on('node课程', node1);
+//    zhufeng.on('node课程', node2);
+//    zhufeng.on('node课程', node3);
+
+    zhufeng.on('react课程', node2);
+    zhufeng.on('react课程', node3);
+
+    function node1() {
+        console.log('小明收到');
+    }
+    function node2() {
+        console.log('小强收到');
+    }
+    function node3() {
+        console.log('小红收到');
+    }
+
+    setTimeout(function () {
+        zhufeng.fire('node课程');
+        zhufeng.fire('react课程');
+    }, 3000);
+
+
+    console.log(fe.Emmiter);
+
+    console.log(zhufeng.Emmiter);
+
+    function fn1() {
+        console.log('fn1跑着去');
+    }
+    function fn2() {
+        console.log('fn2坐地铁');
+    }
+    function fn3() {
+        console.log('fn3坐公交');
+    }
+
+    function fn4() {
+        console.log('fn4我要上晚自习');
+
+    }
+    function fn5() {
+        console.log('fn5我要回家');
+    }
+    function fn6() {
+        console.log('fn6我要去网吧');
+    }
+</script>
+</body>
+</html>

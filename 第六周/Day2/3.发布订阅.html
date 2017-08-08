@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">BUTTON</button>
+<button id="btn2">BUTTON</button>
+<!--<script type="text/javascript" src="event.js"></script>-->
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+    var btn2 = document.getElementById('btn2');
+    // 设计模式 发布/订阅 自定义事件
+
+    // 订阅
+    on(btn, '结婚了', fn1);
+    on(btn, '结婚了', fn2);
+    on(btn, '结婚了', fn3);
+    on(btn2, '搬新家', fn3);
+
+    off(btn, '结婚了', fn3);
+
+    // 发布
+    btn.onclick = function () {
+        fire(btn, '结婚了');
+    };
+    btn2.onclick = function () {
+        fire(btn2, '搬新家');
+    };
+
+//    setTimeout(function () {
+//        fire(btn, '结婚了');
+//    }, 3000);
+   // 订阅
+   function on(ele, type, fn) {
+       var events = ele['self' + type];
+       if(!(events instanceof Array)) {
+           events = ele['self' + type] = [];
+       }
+       for(var i = 0; i < events.length; i++) {
+           if(events[i] === fn) return;
+       }
+       events.push(fn);
+   }
+
+   // 发布
+   function fire(ele, type) {
+       var events = ele['self' + type];
+       if(events instanceof Array) {
+           for(var i = 0; i < events.length; i++) {
+               events[i].call(ele);
+           }
+       }
+    }
+
+    // 退订
+   function off(ele, type, fn) {
+         var events = ele['self' + type];
+         if(events instanceof Array) {
+             for(var i = 0; i < events.length; i++) {
+                 if(events[i] === fn) {
+                     events.splice(i, 1);
+                     break;
+                 }
+             }
+         }
+   }
+
+    function fn1() {
+          console.log('fn1给你上礼来了');
+    }
+    function fn2() {
+        console.log('fn2恭喜你');
+    }
+    function fn3() {
+        console.log('fn3给你个红包！');
+    }
+
+</script>
+</body>
+</html>

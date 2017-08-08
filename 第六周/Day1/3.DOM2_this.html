@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点击</button>
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    function handleThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+
+    // 事件池 将相关事件处理函数 放到对应容器中
+    // 每一个事件类型 都分配一个事件池容器 比如 click[fn1, fn2] mouseover[fn3, fn4]
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+        // call apply bind
+//            ele.attachEvent('on' + type, handle.bind(ele));
+//            ele.attachEvent('on' + type, function (e) {
+//                handle.call(ele, e);
+//            });
+            // handleThis(ele, fn1)
+//             实际上并没有直接将handle绑定给元素 而是把外面包装的函数绑定给了元素
+            // 跟每一个事件类型都分配一个事件池 保存相关处理函数
+           var events = ele['bind' + type]; // ele['bindclick'] = [] ele['bindmouseover'] = []
+           if(!events){
+               events = ele['bind' + type] = [];
+           }
+            var Fn = handleThis(ele, handle); // 处理this 每次都会返回一个包装函数
+            ele.attachEvent('on' + type, Fn);
+            Fn._event = handle; // 将当前函数 保存给 包装函数Fn一份 作为后期识别筛选
+            events.push(Fn); // 将包装函数Fn保存在对应事件池中ele['bindclick'] = [Fn]
+        }
+    }
+
+    // 每个传递进来的函数  都有一个对应的包装函数Fn 在每个包装函数的自定义属性_event中存储对应的 传递进来的函数 比如
+//    on(btn, 'click', fn1);
+    // fn1 => Fn => Fn._event = fn1
+//    on(btn, 'click', fn2);
+    // fn2 => Fn => Fn._event = fn2
+
+    // 事件池存储  events [Fn,Fn]
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type]; // ele['bindclick'] 关于click的事件池
+
+            if(!(events instanceof Array)) return; // 如果有事件池在执行筛选
+            for(var i = 0; i < events.length; i++) {
+                var Fn = events[i];
+                if(Fn._event === handle) {
+                    ele.detachEvent('on' + type, Fn); // 将元素对应处理函数移除
+                    events.splice(i, 1); // 将这个函数 从事件池中移除
+                }
+            }
+
+        }
+    }
+
+    // this 问题
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2); // 并没有直接将fn1绑定给元素 而是将包装的函数绑定给了元素
+//    on(btn, 'mouseover', fn2); // 并没有直接将fn1绑定给元素 而是将包装的函数绑定给了元素
+    off(btn, 'mouseover', fn1); // 所以 移除的时候 需要根据fn1找 对应包装的那个函数 然后将其移除
+
+    // 通过元素以及事件类型 找到保存在元素自身相关行为的事件池
+//    console.log(btn['bindclick']);
+//    console.log(btn['bindmouseover']);
+
+
+    function fn1() {
+        console.log('fn1');
+        console.log(this === btn);
+    }
+    function fn2() {
+        console.log(this === btn);
+        console.log('fn2');
+    }
+    function fn3() {
+        console.log('fn3');
+    }
+
+    // call apply bind
+</script>
+</body>
+</html>

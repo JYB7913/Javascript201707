@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<script type="text/javascript" src="event.js"></script>
+<script type="text/javascript">
+
+    var red = document.getElementById('red');
+    
+    on(red, 'mousedown', down);
+    
+    // 记录当前鼠标在元素中的位置 this.l = e.clientX - ele.offsetLeft
+    function down(e) {
+       e = e || window.event;
+       this.l = e.clientX - this.offsetLeft;
+       this.t = e.clientY - this.offsetTop;
+       this.MOVE = handleThis(this, move);
+       this.UP = handleThis(this, up);
+       var winW = document.documentElement.clientWidth || document.body.clientWidth;
+       var winH = document.documentElement.clientHeight || document.body.clientHeight;
+
+       // 最大边界值
+       this.maxL = winW - this.offsetWidth;
+       this.maxT = winH - this.offsetHeight;
+
+       on(document, 'mousemove',  this.MOVE);
+       on(document, 'mouseup', this.UP);
+       
+    }
+    // 计算出此时元素的left/top值 = e.clientX - this.l 鼠标在元素中的位置
+    function move(e) {
+         e = e || window.event;
+         // 边界判断
+         var l = e.clientX - this.l;
+         var t = e.clientY- this.t;
+         if(l < 0) {
+             l = 0
+         } else if(l > this.maxL) {
+             l = this.maxL;
+         }
+
+         if(t < 0){
+             t = 0;
+         } else if(t > this.maxT) {
+             t = this.maxT;
+         }
+        this.style.left = l + 'px';
+        this.style.top = t + 'px';
+
+        
+        // 每两次之间的 步长 最终move执行最后一次时 此时 stpe 就是 最后一次和倒数第二次之间的步长 也就是结束拖拽时的速度
+        // this.prevSpeed 相当于每次的起始位置 此时 e.clientX 相当于当前位置
+        // step = 当前位置 - 起始位置
+         if(this.prevSpeed){
+             this.step = e.clientX - this.prevSpeed; // 用当前的位置减去上一次所在位置 就是 两点间的 步长
+             this.prevSpeed = e.clientX; // 在把此时位置 作为下次的 （起始位置）上一次位置
+         } else { // 如果没有上一次位置 就把这一次作为 上一次位置
+             this.prevSpeed = e.clientX; // 第一次执行move时候没有上一次的 就把第一次作为 上一次位置
+         }
+
+    }
+
+    // 结束拖拽 移除此时 mousemove / mouseup事件
+    function up() {
+       off(document, 'mousemove', this.MOVE);
+       off(document, 'mouseup', this.UP);
+       reduction.call(this); // 进行衰减运动
+       drop.call(this); // 自由落体
+        this.prevSpeed = null;  // 把这一次的拖拽 保存 上一次位置 清空 为了 不影响 每次拖拽的速度步长
+    }
+
+    function handleThis(that, fn) {
+        return function (e) {
+            fn.call(that, e);
+        }
+    }
+
+    function reduction() {
+
+            clearTimeout(this.timer); // 清除上一次的定时器
+            this.step *= 0.98; // 拖拽后的速度 进行衰减
+
+            // 边界反弹运动处理
+            var total = this.offsetLeft + this.step;
+            if(total >= this.maxL) {
+                total = this.maxL; // 如果到达最大边界 让它由 最大边界 开始 反方向运动 （让它递减步长）
+                this.step *= -1; // 变成负值
+            } else if(total < 0){ // 如果到达最小边界 让它由 最小边界 开始 反方向运动 （让它递增步长）
+                total = 0;
+                this.step *= -1; // 变成正数
+            }
+
+            this.style.left =  total +'px';
+
+            if(Math.abs(this.step) > 0.5) { //结束条件 根据速度绝对值来进行判断
+                this.timer = setTimeout(handleThis(this, reduction), 25);
+            }
+
+    }
+
+
+
+    // 自由落体
+    function drop() {
+        clearTimeout(this.dropTime);
+        if(this.dropSpeed) {
+            this.dropSpeed += 8;
+        } else {
+            this.dropSpeed = 2; // 初始速度
+        }
+
+//        this.dropSpeed *= 0.98;
+        var t = this.offsetTop + this.dropSpeed;
+        // 只要到达边界就++
+        if(t >= this.maxT) { // 到达最大边界 才会执行 ++
+            t = this.maxT;
+            this.dropSpeed *= -1;
+            this.flag ++;
+//            console.log('最大边界: ' + this.flag);
+        } else { // 如果此时没有再最大边界 就是反弹过程中 就是 设为 0
+            // 只要离开边界 就设为0
+            this.flag = 0;
+//            console.log(this.flag);
+        }
+        this.style.top = t +'px';
+        console.log(this.dropSpeed);
+        // 如果当前物体始终停止最大边界 就会 一直累加下去
+        if(this.flag < 2) {
+            this.dropTime = setTimeout(handleThis(this, drop), 25);
+        }
+
+    }
+</script>
+</body>
+</html>
