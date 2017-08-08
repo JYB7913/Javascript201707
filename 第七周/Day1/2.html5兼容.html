@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        #container .header {
+            background-color: black;
+            padding: 10px 40px;
+            overflow: hidden;
+        }
+        #container .header nav {
+            width: 200px;
+            float: right;
+
+        }
+        #container .header nav ul li {
+            display: inline-block;
+        }
+        #container .header nav ul li a{
+            color: #fff;
+        }
+        #article {
+            text-align: center;
+        }
+        #article footer {
+            padding-left: 100px;
+            overflow: hidden;
+        }
+        #article footer img{
+            float: left;
+            margin-left: 50px;
+        }
+        #list li figure {
+            overflow: hidden;
+            padding-left: 150px;
+        }
+
+        #list li figure figcaption {
+            padding-left: 155px;
+            box-sizing: border-box;
+        }
+        #list li figure img{
+             float: left;
+        }
+
+        #container .footer {
+            background-color: black;
+            color: #ccc;
+            padding: 6px;
+        }
+
+        #container .footer nav ul {
+            text-align: center;
+        }
+        #container .footer nav ul li {
+            display: inline-block;
+        }
+        #container .footer nav ul li a {
+            color: #ccc;
+        }
+
+        /* h5结构兼容方案一 IE 6 - 8*/
+        article, aside, footer, header, hgroup, main, nav, section {
+            display: block;
+        }
+
+    </style>
+    <!--<script type="text/javascript">-->
+        <!--var arr = ['article', 'aside', 'footer', 'header', 'hgroup', 'main', 'nav', 'section'];-->
+        <!--for(var i = 0; i < arr.length; i++) {-->
+            <!--var ele = document.createElement(arr[i]);-->
+            <!--console.log(ele);-->
+            <!--document.appendChild(ele);-->
+        <!--}-->
+
+    <!--</script>-->
+
+
+    <!-- html5 结构兼容方案二 -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="html5.min.js"></script>
+    <![endif] -->
+</head>
+<body>
+<!-- IE 条件注释语句 -->
+<!--[if IE 7 ]>
+<h3>我是IE7</h3>
+<![endif]-->
+
+<div id="container">
+    <!-- 页面头部 -->
+    <header class="header">
+        <!-- logo -->
+        <a href="http://news.163.com/"><img src="http://img2.cache.netease.com/f2e/news/res/channel_logo/news.png" alt=""></a>
+
+        <!-- 导航链接 -->
+        <nav>
+            <ul>
+                <li><a href="https://www.baidu.com">百度</a></li>
+                <li><a href="https://www.baidu.com">百度</a></li>
+                <li><a href="https://www.baidu.com">百度</a></li>
+                <li><a href="https://www.baidu.com">百度</a></li>
+                <li><a href="##">登录</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- 头图部分 -->
+    <figure>
+        <img src="https://gma.alicdn.com/bao/uploaded/i1/118608207/TB2XwdqXgD8F1Jjy0FoXXbcmVXa_!!2-saturn_solar.png_170x170.jpg" style="width: 100%; height: 150px" alt="">
+    </figure>
+
+    <!-- 文章正文 -->
+    <article id="article" >
+        <header>
+            <hgroup>
+                <h3>香港回归</h3>
+                <h4>香港回归20周年</h4>
+            </hgroup>
+        </header>
+        <!--区块一 -->
+        <section>
+           <p>
+               来自香港卫生署卫生防护中心的数据显示，自今年5月5日至8月6日，香港共监测到456例成人严重流感病例，包括324例死亡，绝大部分属于甲型流感（H3）。其中65岁以上老人占多数，大部分病人有慢性病患，较易出现并发症甚至导致死亡；19例儿童（年龄小于18岁）流感相关的严重并发症病例中大部分为H3，其中3人死亡。大部分病人没有接种本季季节性流感疫苗。
+           </p>
+            <figure>
+                <img src="http://cms-bucket.nosdn.127.net/catchpic/e/ea/ea99b767e850b2e0290d487dfb7bbd8c.jpg?imageView&thumbnail=550x0" alt="">
+                <figcaption>人数统计</figcaption>
+            </figure>
+        </section>
+        <!-- 广告 -->
+        <aside>
+            <figure>
+                <img src="https://fms.ipinyou.com/5/02/91/E2/F001Nl1PS2oQ000LKjN9.jpg" alt="">
+            </figure>
+        </aside>
+        <!-- 区块二 -->
+        <section>
+            <h5>新闻多看点:</h5>
+            <p>分析认为，近年香港老年人口不断增加，而老人较易感染流感和出现并发症甚至引致死亡，以致严重和死亡案例较多。</p>
+            <p>与香港一河之隔的深圳，自今年6月份以来，各口岸检出流感病例超过2000宗，较往年同期大幅增加，已连续三周发布流感最高级预警。截止目前，深圳并未报告流感死亡病例。</p>
+            <figure>
+                <img src="http://cms-bucket.nosdn.127.net/catchpic/2/2f/2f3f15d93cd91c1d219c1bcdd959a031.jpg?imageView&thumbnail=550x0" alt="">
+            </figure>
+        </section>
+        <!-- 文章底部 -->
+        <footer>
+            <article>
+                <h3>延伸 · 推荐</h3>
+                <h5>香港今夏流感死亡327人 流感活跃仍会持续数周</h5>
+                <p>香港特区政府卫生署新闻及公共关系组负责人8月7日下午向澎湃新闻记者透露，自5月5日至8月6日，与流感相关的严重个案累积已达475宗，其中456宗为成人严重个案，19宗儿童严重个案。造成的死亡人数达327人，其中成人324例，儿童3例。</p>
+            </article>
+            <p>本文来源：李瑞阳</p>
+            <aside>
+                <figure>
+                    <img src="https://gma.alicdn.com/bao/uploaded/i3/TB1Pz8OSFXXXXaPXpXXYXGcGpXX_170x170.jpg" alt="">
+                </figure>
+                <figure>
+                    <img src="https://gma.alicdn.com/bao/uploaded/i3/TB1Pz8OSFXXXXaPXpXXYXGcGpXX_170x170.jpg" alt="">
+                </figure>
+                <figure>
+                    <img src="https://gma.alicdn.com/bao/uploaded/i3/TB1Pz8OSFXXXXaPXpXXYXGcGpXX_170x170.jpg" alt="">
+                </figure>
+            </aside>
+        </footer>
+    </article>
+
+    <!-- 唯一的主体部分 -->
+    <main id="list">
+        <aside>
+            <nav>
+                <h3>推荐</h3>
+                <ul>
+                    <li><a href="https://www.baidu.com">娱乐</a></li>
+                    <li><a href="https://www.baidu.com">娱乐</a></li>
+                    <li><a href="https://www.baidu.com">娱乐</a></li>
+                    <li><a href="https://www.baidu.com">娱乐</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <ul>
+            <li>
+                <figure>
+                    <img src="http://imgsize.ph.126.net/?imgurl=http://cms-bucket.nosdn.127.net/catchpic/6/66/66497b70658ce270ca4517a068c197b3.png_140x88x1x85.jpg" alt="">
+                    <figcaption>力邀香港共建飞地经济！惠州渴求与香港合作的“内心戏”如何解读</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="http://imgsize.ph.126.net/?imgurl=http://cms-bucket.nosdn.127.net/catchpic/6/66/66497b70658ce270ca4517a068c197b3.png_140x88x1x85.jpg" alt="">
+                    <figcaption>力邀香港共建飞地经济！惠州渴求与香港合作的“内心戏”如何解读</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="http://imgsize.ph.126.net/?imgurl=http://cms-bucket.nosdn.127.net/catchpic/6/66/66497b70658ce270ca4517a068c197b3.png_140x88x1x85.jpg" alt="">
+                    <figcaption>力邀香港共建飞地经济！惠州渴求与香港合作的“内心戏”如何解读</figcaption>
+                </figure>
+            </li>
+        </ul>
+    </main>
+
+    <!-- 页面底部 -->
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li>© 1997-2017 网易公司版权所有</li>
+                <li><a href="">About NetEase </a></li>
+                <li><a href="">公司简介</a></li>
+                <li><a href="">联系方法</a></li>
+                <li><a href="">客户服务</a></li>
+                <li><a href="">隐私政策</a></li>
+            </ul>
+        </nav>
+
+    </footer>
+</div>
+
+</body>
+</html>
