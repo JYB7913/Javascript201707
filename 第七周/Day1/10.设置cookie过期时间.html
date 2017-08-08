@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    let age = new Date(Date.now() + 20 * 1000).toUTCString();
+    // 设置过期时间 绝对时间
+    //    document.cookie = `date=123; Expires=${age}`;
+    // 相对存活时间 单位s
+    //    document.cookie = `date=666; Max-age=20`;
+
+
+    // 任务：添加个过期时间参数
+    function setCookie(key, val, date) {
+        document.cookie = `${key}=${val}`;
+    }
+</script>
+</body>
+</html>

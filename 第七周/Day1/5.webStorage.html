@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // HTML5 提供web Storage
+    // localStorage  永久化的本地存储 只要不主动删除 就会一直存在
+    // sessionStorage 会话级别存储 关闭浏览器客户端的时候 存储数据就销毁了
+
+
+//    localStorage.setItem('user', 'zhufeng'); // 设置
+
+    // 将对象转化成 string 再存储
+//        var obj = {user: 'ni', id: 24};
+//
+//        localStorage.setItem('userInfo', JSON.stringify(obj));
+//        localStorage.setItem('userArr', [10, 20, 30]);
+
+    //    console.log(localStorage['userInfo']);
+
+    //    console.log(localStorage.getItem('userInfo'));
+    //    var userInfo = localStorage.getItem('userInfo');
+    //    userInfo = window.JSON ? JSON.parse(userInfo) : eval('(' + userInfo + ')');
+    //    console.log(userInfo);
+    console.log(localStorage);
+
+    // 根据指定key删除某一个
+    // localStorage.removeItem('user');
+
+    // 清空
+//    localStorage.clear();
+
+
+    /**
+     * localStorage
+     * localStorage.setItem
+     * localStorage.getItem
+     * localStorage.removeItem
+     * localStorage.clear
+     */
+//    console.log(localStorage.key(1));
+</script>
+</body>
+</html>

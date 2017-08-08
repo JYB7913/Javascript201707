@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // sessionStorage 存在于网页会话间
+
+    console.log(sessionStorage.getItem('user'));
+    if(!sessionStorage.getItem('user')) {
+        console.log('设置 user');
+        sessionStorage.setItem('user', 'web');
+    }
+    
+    console.log(sessionStorage.getItem('user'));
+</script>
+</body>
+</html>
