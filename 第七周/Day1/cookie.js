@@ -1,4 +1,3 @@
-
 // 根据指定 key 从cookie中获取 value
 function getCookie(key) {
     let str = document.cookie;
@@ -9,6 +8,6 @@ function getCookie(key) {
 }
 
 // 根据指定key保存相应value
-function setCookie(key, val) {
+function setCookie(key, val, date) {
     document.cookie = `${key}=${val}`;
 }
