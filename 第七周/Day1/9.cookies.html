@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="6.html?user=zhuefng">跳转到另一个页面</a>
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript">
+    // 两个页面之间进行通信 cookie localStorage a标签跳转
+
+    //    console.log(document.cookie);
+    // 大小限制  设置过期时间
+    //    _ga=GA1.1.1286795738.1495942180
+    //    document.cookie = 'name=niha';
+    //    document.cookie = 'id=20';
+
+
+    //
+    //console.log(getCookie('id'));
+    //console.log(getCookie('name'));
+
+    setCookie('user', 'liwenli');
+
+
+    //   let queryStr = "?wd=你好&rsv_spt=1&rsv_iqid=0xd003291700035584&issp=1&f=8&rsv_bp=0&rsv_idx=2";
+    //   let reg = /([^=?&]+)=([^=?&]+)/g;
+    //   let obj = {};
+    //
+    //   queryStr.replace(reg, function (a, b, c) {
+    //       obj[b] = c;
+    //   });
+    //    console.log(obj);
+</script>
+</body>
+</html>
