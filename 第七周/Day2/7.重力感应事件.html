@@ -63,12 +63,20 @@
         <div>OK</div>
     </div>
 </div>
+<script type="text/javascript" src="node_modules/fastclick/lib/fastclick.js"></script>
+<script type="text/javascript">
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
 <script type="text/javascript">
     var mask = document.querySelector('#mask');
     var btn = document.querySelector('#Popup>div');
 
 
-    btn.addEventListener('touchstart', function (e) {
+    btn.addEventListener('click', function (e) {
         e.stopPropagation();
         mask.style.display = 'none';
         flag = true;

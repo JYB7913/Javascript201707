@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">TAP</button>
+<div id="oDiv" style="width: 100px; height: 100px; background-color: red"></div>
+<script type="text/javascript" src="node_modules/zepto/dist/zepto.js"></script>
+<script type="text/javascript" src="touch.js"></script>
+<script type="text/javascript">
+    $(function () {
+//        $('#btn').tap(function () {
+//            alert(123);
+//        });
+//        $('#btn').singleTap(function () {
+//            alert(123);
+//        });
+//        $('#btn').doubleTap (function () {
+//            alert(123);
+//        });
+
+
+        $('#oDiv').swipe(function () {
+            console.log('swipe');
+        })
+    });
+</script>
+</body>
+</html>
