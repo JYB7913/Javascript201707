@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <!--<input type="email" id="email" ><br>-->
+    <!--<input type="text" id="email" pattern="^\d{4}$">-->
+    <input type="email" id="email" pattern="^\d{4}$" required>
+    <!--<input type="email" id="email">-->
+    <button type="submit">提交</button>
+</form>
+<script type="text/javascript">
+    var email = document.getElementById('email');
+    // 表单验证事件
+    email.oninput = function () {
+//        console.log(this.validity);
+//        console.log(this.validity.typeMismatch); // value值是否符合这个类型
+//        console.log(this.validity.patternMismatch); // value值是否匹配正则 不匹配 true 匹配 false
+//        console.log(this.validity.valueMissing); // 配合require使用 为空true 否则false
+//        console.log(this.validity.valid); // 验证表单是否通过 true
+
+        if(this.validity.patternMismatch) {
+            this.setCustomValidity('能不能好好输入!'); // 提交验证时触发
+        } else {
+            this.setCustomValidity('');
+        }
+
+    };
+    //    email.oninvalid = function () {
+    //        console.log(this.validity);
+    ////        console.log(this.validity.typeMismatch); // value值是否符合这个类型
+    //        console.log(this.validity.patternMismatch); // value值是否符合这个类型
+    //
+    //
+    ////        this.setCustomValidity('你会不会写！'); // 修改提示语
+    //    };
+    //    email.oninput = function () {
+    //        this.setCustomValidity('');
+    //    }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- spellcheck 拼写检查 -->
+<!--<input type="text" spellcheck="false">-->
+
+<!-- 可编辑 -->
+<!--<p contenteditable="true" spellcheck="false">45646465</p>-->
+<!--<p>45646465</p>-->
+<!--<p>45646465</p>-->
+<!--<p>45646465</p>-->
+<!--<div draggable="true">45646465</div>-->
+
+<!--<form oninput="c.value=a.value*b.value">-->
+    <!--<input type="number" id="a" value="10"> *-->
+    <!--<input type="number" id="b" value="10"> =-->
+    <!--<output id="c">100</output>-->
+<!--</form>-->
+<!--<input type="range" id="range" oninput="val.value=range.value+'%'" value="80"><br>-->
+<!--<output id="val">80%</output>-->
+<!--<br>-->
+<!--<input type="color" id="red" onchange="color.value=red.value">-->
+<!--<output id="color">#000</output>-->
+
+<!--<input type="color" id="red" onchange="oDiv.style.backgroundColor=red.value">-->
+<!--<div id="oDiv">xvcsdf</div>-->
+
+<!-- form
+action 指定表单内容要提交到的服务器地址（把表单内容发送给服务器）
+method 指定提交方式 get 将表单内容 以查询参数 拼接到url后面  post 将内容添加到  Form Data(上传文件) 里面  ajax post 添加到 请求体里xhr.send(sdfadf)
+-->
+
+<form id="userInfo"  method="post">
+    <input type="text" name="user"><br>
+    <input type="password" name="password"><br>
+    <input type="file" id="upload" name="image" accept="image/png,image/gif">
+    <!--<button type="submit">提交</button>-->
+</form>
+
+<script type="text/javascript">
+// 页面中所有元素设置为可编辑状态
+//  document.designMode = 'on';
+    document.designMode = 'off';
+    var formData = new FormData();
+    upload.onchange = function () {
+        formData.append('upImg', this.files[0]);
+        // 实例化一个AJAX对象
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            alert("上传成功！");
+        };
+
+        xhr.open("POST", "https://www.baidu.com", true);
+// 发送表单数据
+        xhr.send(formData);
+    }
+</script>
+</body>
+</html>
