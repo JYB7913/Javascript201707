@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+autofocus 自动获取焦点
+autocomplete 自动完成功能提示
+required  value为空验证 必须填写
+pattern  验证是否符合正则表达式
+placeholder 填写提示信息
+-->
+<form>
+    <!--<input type="text" autofocus="true">-->
+    <!--<input type="text" name="user" autocomplete="off">-->
+    <!--<input type="text" name="user">-->
+    <!--<input type="text" required>-->
+    <!--<input type="text" pattern="^\d{3}$">-->
+    <input type="text" placeholder="请输入用户名">
+    <input type="text" id="inp" flag=true value="请输入用户名" style="color: #ccc">
+
+
+    <!--<p>-->
+        <!--<input type="text">-->
+        <!--<span>请输入用户名</span>-->
+    <!--</p>-->
+
+
+    <input type="submit" value="提交">
+</form>
+<script type="text/javascript">
+    var inp = document.getElementById('inp');
+    inp.onfocus = function () {
+        var flag = this.getAttribute('flag');
+        if(flag === 'true') {
+            this.value = '';
+            this.style.color = '#000';
+            this.setAttribute('flag', 'false');
+        }
+    };
+
+    inp.onblur = function () {
+        if(!this.value) {
+            this.value = '请输入用户名';
+            this.style.color = '#ccc';
+            this.setAttribute('flag', 'true');
+        }
+    }
+</script>
+</body>
+</html>
