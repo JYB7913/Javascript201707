@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+相机：<input type="file"  accept="image/*" capture="camera"><br>
+摄像机：<input type="file" accept="video/*" capture="camcorder"><br>
+FILE：<input type="file" id="camera" multiple="multiple">
+<script type="text/javascript">
+    camera.onchange = function () {
+        console.log(this.files);
+    }
+</script>
+</body>
+</html>

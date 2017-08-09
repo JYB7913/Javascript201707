@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #mask #Popup {
+            text-align: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background-color: #fff;
+            width: 60%;
+            height: 120px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        #Popup p{
+            height: 79px;
+            line-height: 79px;
+            border-bottom: 1px solid #ccc;
+        }
+        #Popup div {
+            height: 40px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+<h3>\(^o^)/~h5摇一摇！</h3>
+
+<div id="mask">
+    <div id="Popup">
+        <p>\(^o^)/~h5摇一摇！</p>
+        <div>OK</div>
+    </div>
+</div>
+<script type="text/javascript" src="node_modules/fastclick/lib/fastclick.js"></script>
+<script type="text/javascript">
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+</script>
+<script type="text/javascript">
+    var mask = document.querySelector('#mask');
+    var btn = document.querySelector('#Popup>div');
+
+
+    btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mask.style.display = 'none';
+        flag = true;
+    }, false);
+
+
+    if (window.DeviceMotionEvent) { // 是否支持设备运动事件
+        window.addEventListener('devicemotion', handle, false);
+    }
+
+    var x = y = z = prevX = prevY = prevZ = null;
+    var speed = 25;
+    var flag = true; // 控制重复出现弹窗
+    function handle(e) {
+        if(!flag) return;
+        var Gravity = e.accelerationIncludingGravity;
+        x = Gravity.x;
+        y = Gravity.y;
+        z = Gravity.z;
+        if (Math.abs(x - prevX) > speed || Math.abs(y - prevY) > speed || Math.abs(z - prevZ) > speed) {
+              mask.style.display = 'block';
+              flag = false;
+        }
+        prevX = x;
+        prevY = y;
+        prevZ = z;
+    }
+</script>
+</body>
+</html>
