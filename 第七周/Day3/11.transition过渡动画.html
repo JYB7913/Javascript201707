@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #red {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 1s cubic-bezier(.17, .67, .65, 1.69) 0.3s;
+            -moz-transition: all 1s cubic-bezier(.17, .67, .65, 1.69) 0.3s;
+            -ms-transition: all 1s cubic-bezier(.17, .67, .65, 1.69) 0.3s;
+            -o-transition: all 1s cubic-bezier(.17, .67, .65, 1.69) 0.3s;
+            transition: all 1s cubic-bezier(.17, .67, .65, 1.69) 0.3s;
+
+            /*
+
+    transition-property: left; 需要过渡的样式属性 all
+    transition-duration: 1s; 过渡时间
+    transition-timing-function: linear; 运动方式 linear ease ease-in ease-out ease-in-out cubic-bezier(贝塞尔曲线)
+    transition-delay: 1s; 延迟时间
+
+            */
+        }
+
+        #red:hover {
+            /*width: 300px;*/
+            left: 400px;
+            /*top: 300px;*/
+        }
+
+        #outer {
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="red"></div>
+</div>
+
+<script type="text/javascript">
+</script>
+</body>
+</html>

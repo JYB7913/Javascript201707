@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        div {
+            display: none;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            border: 1px solid black;
+        }
+
+        :target {
+            display: block;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<a href="#tab1">综艺</a><a href="#tab2">娱乐</a><a href="#tab3">新闻</a>
+<div id="tab1">综艺内容</div>
+<div id="tab2">娱乐内容</div>
+<div id="tab3">新闻内容</div>
+</body>
+</html>
