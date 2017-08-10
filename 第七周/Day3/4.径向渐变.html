@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .red:first-child {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            /* circle 圆形  ellipse 椭圆*/
+            /*background: -webkit-radial-gradient(circle, green, yellow);*/
+            /*background: -webkit-radial-gradient(ellipse, green, yellow);*/
+            /*background: -webkit-radial-gradient(circle at top left, green, yellow);*/
+            /*background: radial-gradient(circle at top left, green, yellow);*/
+            /*background: -webkit-radial-gradient(circle at center, green, yellow);*/
+            /*background: radial-gradient(circle at center, green, yellow);*/
+
+            /*background: -webkit-radial-gradient(circle at 50% 60px, green, yellow);*/
+            /*background: radial-gradient(circle at 50% 60px, green, yellow);*/
+
+            /* closest-side 最近边 */
+            /*background: -webkit-radial-gradient(closest-side at 50px 50px, yellow, #000);*/
+            /*background: radial-gradient(closest-side at 50px 50px, yellow, #000);*/
+
+            background: -webkit-radial-gradient(farthest-side at 50px 50px, yellow, #000);
+            background: radial-gradient(farthest-side at 50px 50px, yellow, #000);
+        }
+        .red:last-child {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            border-radius: 50%;
+            /*background: -webkit-radial-gradient(closest-side at 50px 50px, yellow, #000);*/
+            /*background: radial-gradient(closest-side at 50px 50px, yellow, #000);*/
+
+            /* 靠近最远的角 */
+            /*background: -webkit-radial-gradient(farthest-corner, yellow, #000);*/
+            /*background: radial-gradient(farthest-corner, yellow, #000);*/
+            background: -webkit-repeating-radial-gradient(farthest-corner, #78FF3B 10px, #C5FF6C 20px);
+            background: repeating-radial-gradient(farthest-corner,  #78FF3B 10px, #C5FF6C 20px);
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="red">
+
+</div>
+<div class="red">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+           height:800px;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            border: 15px dashed green;
+            padding: 20px;
+            margin-bottom: 10px;
+            /*background: url("http://img5.imgtn.bdimg.com/it/u=3377895319,3157573448&fm=26&gp=0.jpg") no-repeat center;*/
+
+            /* 按照比例缩放 */
+            /*background-size: contain;*/
+            /* 铺满 */
+            /*background-size: cover;*/
+
+            /*background-size: 100px 100px;*/
+            /* 继承容器的宽高 */
+            /*background-size: 100% 100%;*/
+        }
+        /*div:nth-of-type(2) {*/
+            /*!* 按照比例缩放 *!*/
+            /*background-size: contain;*/
+        /*}*/
+        /*div:nth-of-type(3) {*/
+            /*!* 铺满 *!*/
+            /*background-size: cover;*/
+        /*}*/
+        /*div:nth-of-type(4) {*/
+            /*background-size: 100px 100px;*/
+        /*}*/
+
+        /*div:nth-of-type(5) {*/
+            /*!* 继承容器的宽高 *!*/
+            /*background-size: 100% 100%;*/
+        /*}*/
+
+
+        /*div:nth-of-type(1){*/
+            /*!*padding: 20px;*!*/
+            /*!* padding-box 默认值 *!*/
+            /*background-origin: padding-box;*/
+        /*}*/
+
+        /*div:nth-of-type(2){*/
+            /*!*padding: 20px;*!*/
+            /*background-origin: border-box;*/
+        /*}*/
+        /*div:nth-of-type(3) {*/
+            /*!* 展现在内容区域 *!*/
+            /*background-origin: content-box;*/
+        /*}*/
+
+        /*div:nth-of-type(1) {*/
+            /*!* 默认值 border-box 裁剪掉溢出整个容器部分*!*/
+            /*background-clip: border-box;*/
+        /*}*/
+        /*div:nth-of-type(2) {*/
+
+            /*!* padding-box 裁剪掉溢出内边框部分 不会影响到 缩放*!*/
+            /*background-clip: padding-box;*/
+            /*background-position: -113px 0;*/
+        /*}*/
+
+        /*div:nth-of-type(3) {*/
+            /*!* 裁剪掉 溢出内容部分 *!*/
+            /*background-clip: content-box;*/
+            /*background-position: -117px 20px;*/
+        /*}*/
+
+        div:nth-of-type(3) {
+            background: url("http://img5.imgtn.bdimg.com/it/u=3377895319,3157573448&fm=26&gp=0.jpg") no-repeat center;
+            background-size: 300px 300px;
+            background-attachment: fixed;
+            /*background-attachment: scroll;*/
+            background-position: -20px -50px;
+        }
+
+        body {
+            background: url("http://img5.imgtn.bdimg.com/it/u=3377895319,3157573448&fm=26&gp=0.jpg") no-repeat center;
+            background-size: cover;
+            /*background-attachment: scroll;*/
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
+<body>
+<!--<h3>默认</h3>-->
+<!--<div></div>-->
+<!--<h3>contain</h3>-->
+<!--<div></div>-->
+<!--<h3>cover</h3>-->
+<!--<div></div>-->
+<!--<h3>custom</h3>-->
+<!--<div></div>-->
+<!--<h3>继承inherit</h3>-->
+<!--<div></div>-->
+
+
+<!--<h3>默认值 padding-box</h3>-->
+<!--<div></div>-->
+<!--<h3>边框算起 border-box</h3>-->
+<!--<div></div>-->
+<!--<h3>内容区域 content-box</h3>-->
+<!--<div></div>-->
+<!--<h3>border-box</h3>-->
+<!--<div></div>-->
+<!--<h3>padding-box</h3>-->
+<!--<div></div>-->
+<!--<h3>content-box</h3>-->
+<!--<div></div>-->
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
