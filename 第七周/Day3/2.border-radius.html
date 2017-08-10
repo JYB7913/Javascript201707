@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-top: 10px;
+        }
+        /*  浏览器厂商前缀
+            -webkit chrome safari
+            -ms- IE
+            -moz- firefox
+            -o- 欧朋
+        */
+        .oDiv:first-child {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        /* wid/hei = 2   border-radius: hei hei 0 0;*/
+        .oDiv:nth-child(2) {
+            height: 100px;
+            border-radius: 100px 100px 0 0;
+        }
+
+        .oDiv:nth-child(3) {
+            height: 100px;
+            border-radius: 0 0 100px 100px;
+        }
+
+        .oDiv:nth-child(4) {
+            height: 100px;
+            /* 垂直半径 = hei/2  水平半径 = wid/2 */
+            border-radius: 50%;
+        }
+
+        .oDiv:nth-child(5) {
+            width: 100px;
+            /* 垂直半径 = hei/2  水平半径 = wid/2 */
+            border-radius: 50%;
+        }
+
+        .oDiv:nth-child(6) {
+            border-radius: 100% 0 0 0;
+        }
+        .oDiv:nth-child(7) {
+            border-radius: 0 100% 0 0;
+        }
+        .oDiv:nth-child(8) {
+            border-radius: 0 0 100% 0;
+        }
+
+        .oDiv:nth-child(8) {
+            border-radius: 0 0 0 100%;
+        }
+        .oDiv:nth-child(9) {
+            background-color: deeppink;
+            border-radius: 0 50% 0 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+<div class="oDiv"></div>
+</body>
+</html>
