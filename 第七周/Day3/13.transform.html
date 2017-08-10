@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: url("https://img.piaoniu.com/poster/81a5d6aa08e5ca7556cc818274f483a3c205da6f.jpg");
+            background-size: cover;
+            /*margin: 50px auto;*/
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+            /*-webkit-transform-origin: center center;*/
+            /*transform-origin: center center;*/
+            /*-webkit-transform: skew(45deg);*/
+            /*-moz-transform: skew(45deg);*/
+            /*-ms-transform: skew(45deg);*/
+            /*-o-transform: skew(45deg);*/
+            /*transform: skew(45deg);*/
+        }
+
+        /*
+           scale 缩放
+           rotate 旋转
+           translate 平移 x y
+           skew 倾斜
+        
+        */
+        div:hover {
+            /*-webkit-transform: scale(0.5) rotate(-10800deg) translate(100px, 100px);*/
+            /*-moz-transform: scale(0.5) rotate(-10800deg) translate(100px, 100px);*/
+            /*-ms-transform: scale(0.5) rotate(-10800deg) translate(100px, 100px);*/
+            /*-o-transform: scale(0.5) rotate(-10800deg) translate(100px, 100px);*/
+            /*transform: scale(0.5) rotate(-10800deg) translate(100px, 100px);*/
+
+            /*-webkit-transform: rotate(720deg) translate(300px, 300px);*/
+            /*-moz-transform: rotate(720deg) translate(300px, 300px);*/
+            /*-ms-transform: rotate(720deg) translate(300px, 300px);*/
+            /*-o-transform: rotate(720deg) translate(300px, 300px);*/
+            /*transform: rotate(720deg) translate(300px, 300px);*/
+
+            -webkit-transform: skew(45deg);
+            -moz-transform: skew(45deg);
+            -ms-transform: skew(45deg);
+            -o-transform: skew(45deg);
+            transform: skew(45deg);
+
+        }
+
+    </style>
+</head>
+<body>
+<button id="btn">go</button>
+<div id="oDiv">
+</div>
+<script type="text/javascript">
+    var oDiv = document.getElementById('oDiv');
+    var step = 0;
+//    setInterval(function () {
+//        step++;
+//        oDiv.style.webkitTransform = 'translate(' + step * 100 + 'px, 100px)';
+//        oDiv.style.msTransform = 'translate(' + step * 100 + 'px, 100px)';
+//        oDiv.style.mozTransform = 'translate(' + step * 100 + 'px, 100px)';
+//        oDiv.style.oTransform = 'translate(' + step * 100 + 'px, 100px)';
+//        oDiv.style.transform = 'translate(' + step * 100 + 'px, 100px)';
+//    }, 2000);
+
+
+    btn.onclick = run;
+    function run() {
+        step++;
+        oDiv.style.webkitTransform = 'translate(' + step * 100 + 'px, 100px)';
+        oDiv.style.msTransform = 'translate(' + step * 100 + 'px, 100px)';
+        oDiv.style.mozTransform = 'translate(' + step * 100 + 'px, 100px)';
+        oDiv.style.oTransform = 'translate(' + step * 100 + 'px, 100px)';
+        oDiv.style.transform = 'translate(' + step * 100 + 'px, 100px)';
+    }
+    console.log(oDiv.style.webkitTransform);
+</script>
+</body>
+</html>
