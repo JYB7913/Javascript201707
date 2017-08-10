@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #red {
+            width: 200px;
+            height: 200px;
+            border: 2px solid green;
+            margin: 20px auto;
+            /*
+             x 水平方向位置
+             y 垂直方向位置
+             blur 模糊度
+             spread 阴影尺寸
+             color 阴影颜色
+             inset 可选 内部阴影 默认 外部阴影
+            */
+            /*box-shadow: 3px 3px 15px 20px red inset;*/
+            box-shadow: 57px 112px 5px 20px red;
+            background: -webkit-repeating-linear-gradient(left, red 10px, green 20px, yellow 30px);
+            background: repeating-linear-gradient(left, red 10px, green 20px, yellow 30px);
+
+        }
+
+        h2 {
+            color: #7ffffa;
+            /*
+            x 水平位置
+            y 垂直位置
+            blur 模糊度
+            color 阴影颜色
+            */
+            /*text-shadow: 3px 3px 10px red;*/
+            text-shadow: 150px 0 0 red;
+        }
+
+        h3{
+            font-size: 40px;
+            /*color: blue;*/
+            color: transparent;
+            /* 描边 */
+            -webkit-text-stroke: 1px red;
+            letter-spacing: 3px;
+        }
+
+
+        #img {
+            width: 200px;
+            height: 200px;
+            border: 50px solid #000;
+            border-image: url("https://www.baidu.com/img/bd_logo1.png") stretch;
+        }
+    </style>
+</head>
+<body>
+<div id="img"></div>
+<!--<div id="red"></div>-->
+
+
+<!--<h2>hello 珠峰！</h2>-->
+<!--<h3>web前端攻城狮</h3>-->
+</body>
+</html>
