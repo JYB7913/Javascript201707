@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul {
+            list-style: none;
+        }
+
+        ul li {
+            height: 30px;
+        }
+
+        /*ul :nth-child(2) {*/
+            /*background-color: red;*/
+        /*}*/
+
+        /*ul :nth-child(even){*/
+            /*background-color: #7ffffa;*/
+        /*}*/
+
+        /*ul :nth-child(odd) {*/
+            /*background-color: #ff6e50;*/
+        /*}*/
+
+        /*ul :nth-child(2n){*/
+            /*background-color: #7ffffa;*/
+        /*}*/
+
+        /*ul :nth-child(2n+1) {*/
+            /*background-color: #ff6e50;*/
+        /*}*/
+
+
+         /*ul p:nth-of-type(2){*/
+             /*background-color: red;*/
+         /*}*/
+
+
+        /*ul :first-child {*/
+            /*!*background-color: red;*!*/
+        /*}*/
+
+
+        /*ul :first-of-type { */
+            /*background-color: green;*/
+        /*}*/
+
+        /*ul :last-child{*/
+            /*background-color: #3b55ff;*/
+        /*}*/
+
+        /*ul :last-of-type{*/
+            /*background-color: #3b55ff;*/
+        /*}*/
+
+        /*ul :nth-last-child(2){*/
+            /*background-color: red;*/
+        /*}*/
+
+        /*ul li:empty {*/
+            /*background-color: red;*/
+        /*}*/
+
+
+        /* 属性只能是li 这个值li和 - 连接并作为开头  */
+        /*li[class |= li] {*/
+            /*background-color: red;*/
+        /*}*/
+
+        /*li:not(.li2) {*/
+            /*background-color: green;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<ul>
+    <li class="li1 li-4">111</li>
+    <li class="li1">222</li>
+    <li class="li1">333</li>
+    <li class="li2">2</li>
+    <li class="li li3">3</li>
+    <li class="li-1 li3">4 <p>6666</p> <p>123</p></li>
+    <p>222</p>
+    <li class="li5">5</li>
+</ul>
+<script type="text/javascript">
+//    console.log(document.querySelector('.li1'));
+//    console.log(document.querySelectorAll('.li1').entries());
+    var eles = document.querySelectorAll('.li1');
+
+//    for(var ele of eles.entries()) { // 将每一组key value 以数组形式遍历出来
+//        console.log(ele);
+//    }
+
+
+// ES6 for of
+
+//for(var ele of eles.keys()){ // 遍历所有key
+//    console.log(ele);
+//}
+
+// iterator 只有具备迭代器接口才可以使用 for of
+//for(var ele of eles.values()){ // 遍历所有value
+//    console.log(ele);
+//}
+
+
+//
+//for(var ele of eles){ // 遍历所有value
+//    console.log(ele);
+//}
+
+var obj = {id: 24, num: 11};
+
+//for(var k in obj) {
+//    console.log(k);
+//}
+
+for(var k of obj) {
+    console.log(k);
+}
+
+//    console.log(document.getElementsByClassName('li1'));
+</script>
+</body>
+</html>
