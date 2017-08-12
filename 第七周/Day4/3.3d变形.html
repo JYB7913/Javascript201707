@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #outer {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 20px auto;
+            transform-style: preserve-3d; /* 开启3d空间 默认 flat*/
+            perspective: 800px; /* 视距 透视 景深  近大远小  800-2000*/
+        }
+        .red {
+            width: 100%;
+            height: 100%;
+            background: blue;
+            transition: all 1s;
+            /*transform-origin: top;*/
+            /*transform-origin: bottom;*/
+            /*transform-origin: left;*/
+            /*transform-origin: right;*/
+        }
+
+        .red:hover {
+            /*transform: rotateX(45deg)  skew(-45deg);  !* x 轴旋转*!*/
+            /*transform: rotateY(-45deg);  !* x 轴旋转*!*/
+            /*transform: rotateZ(-45deg);  !* x 轴旋转*!*/
+            transform: rotate3d(1, 0, 0, 45deg); /* x, y, z, angle*/
+         }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div class="red"></div>
+</div>
+</body>
+</html>
