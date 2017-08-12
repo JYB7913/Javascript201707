@@ -1,0 +1,22 @@
+{
+  "name": "liwenli",
+  "version": "1.0.0",
+  "description": "```\r npm install http-server -g\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "h5"
+  ],
+  "author": "lwl",
+  "license": "ISC",
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "jquery": "^1.11.3",
+    "zepto": "^1.2.0"
+  },
+  "devDependencies": {
+    "vue": "^2.4.2"
+  }
+}

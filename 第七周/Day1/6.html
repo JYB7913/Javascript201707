@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript">
+//    console.log(localStorage.getItem('userInfo'));
+    console.log(getCookie('user'));
+// "http://localhost:63342/Javascript201707/%E7%AC%AC%E4%B8%83%E5%91%A8/Day1/6.html?user=zhuefng"
+
+console.log(getQueryParam(window.location.href));
+
+function getQueryParam(url) {
+        let reg = /([^?&=]+)=([^?&=]+)/g;
+        let obj = {};
+        url.replace(reg, (a, b, c) => obj[b] = c);
+        return obj;
+    }
+</script>
+</body>
+</html>
