@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /* transition
+        页面刚开始加载的时候 没有过渡效果的
+        隐藏元素切换显示的时候 是没有过渡效果
+        无法控制动画执行次数
+        只有开始和结束 无法控制过程
+        */
+        #outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 3px solid blue;
+        }
+
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: all 1s linear; /* 执行两次动画执行两次transition 开始-结束 结束-开始 */
+        }
+
+        #red:hover {
+            /* 有多少个过渡属性 就会应用多少次transition 就会触发多次transitionend事件 */
+            left: 400px;
+            top: 400px;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="red"></div>
+</div>
+<script type="text/javascript">
+    // 捕捉过渡动画结束事件
+    //    red.addEventListener('transitionend', function () {
+    //        console.log('transitionend');
+    //    });
+
+    red.addEventListener('webkitTransitionEnd', function () {
+        console.log('transitionend');
+    })
+</script>
+</body>
+</html>

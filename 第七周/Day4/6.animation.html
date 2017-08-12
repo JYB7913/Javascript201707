@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /* transition 过渡动画
+        页面刚开始加载的时候 没有过渡效果的
+        隐藏元素切换显示的时候 是没有过渡效果
+        无法控制动画执行次数
+        只有开始和结束 无法控制过程
+
+    animation 关键帧动画
+    animation-name: move;  动画名称
+    animation-duration: 1s; 过渡事件
+    animation-timing-function: initial; 运动速度曲线 linear ease
+    animation-delay: initial; 延迟时间
+    animation-iteration-count: initial; 执行次数 4 infinite 无限
+    animation-direction: initial; 运动方向 normal(正向) reverse(反向) alternate(偶数次时反向) alternate-reverse(奇数次时反向)
+    animation-fill-mode: initial; 动画完成后 应用属性 forwards 停留在最后一帧 backwards delay 跳到第一帧 both  forwards + backwards
+    animation-play-state: initial; 暂停/运行 paused/running
+
+        */
+        #outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 3px solid blue;
+        }
+
+        #red {
+            text-align: center;
+            line-height:100px;
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            /*animation: move 1s ease-in 1s 1;*/
+            /*animation: move 1s ease-in 1s 1 forwards;*/
+            /*animation: move 1s ease-in 1s 1 normal backwards; 应用delay时 直接跳到第一帧 后 等待 执行动画*/
+            /*animation: move 1s ease-in 1s 1 both; !*forwards backwards*!*/
+
+
+
+            animation: move 3s ease-in .3s infinite;
+            /*animation-play-state: paused;*/
+            border-radius: 50%;
+        }
+
+        @keyframes move {
+            0% {
+                left: 0;
+                top: 0;
+                transform: rotate(0deg);
+            }
+            25% {
+                left: 400px;
+                top: 0;
+                background-color: green;
+                transform: rotate(360deg);
+            }
+            50% {
+                left: 400px;
+                top: 400px;
+                background-color: red;
+                transform: rotate(720deg);
+            }
+            75% {
+                left: 0;
+                top: 400px;
+                background-color: blue;
+                transform: rotate(1180deg);
+            }
+
+            100% {
+                left: 0;
+                top: 0;
+                background-color: red;
+                transform: rotate(1540deg);
+            }
+
+        }
+
+        /*@keyframes move {*/
+            /*from{*/
+                /*left: 0*/
+            /*}*/
+            /*to {*/
+               /*left: 400px;*/
+            /*}*/
+            /*0%{*/
+                /*left: 0*/
+            /*}*/
+            /*100%{*/
+                 /*left: 400px;*/
+             /*}*/
+        /*}*/
+
+        #red:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+
+<div id="outer">
+    <div id="red">Hello</div>
+</div>
+<button id="btn">btn</button>
+<script type="text/javascript">
+    btn.onclick = function () {
+        var state = red.style.animationPlayState;
+        state = state === 'paused'? 'running' : 'paused';
+        red.style.animationPlayState = state;
+    }
+</script>
+</body>
+</html>
