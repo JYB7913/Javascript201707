@@ -21,11 +21,8 @@
         #container #lotteryWrap {
             position: relative;
             top: 140px;
-            webkit-transform: translate3d(0,0,0);
-            -moz-transform: translate3d(0,0,0);
-            -ms-transform: translate3d(0,0,0);
-            -o-transform: translate3d(0,0,0);
-            transform: translate3d(0,0,0);
+
+
         }
 
         #container #lotteryWrap #rotate {
@@ -34,7 +31,14 @@
             background: url("images/rotate.png") no-repeat center;
             background-size: 100% 100%;
             margin: 0 auto;
+            -webkit-transition: all 5s ease-in-out;
             transition: all 5s ease-in-out;
+            transform-origin: center center;
+            /*-webkit-transform: translate3d(0,0,0);*/
+            /*-moz-transform: translate3d(0,0,0);*/
+            /*-ms-transform: translate3d(0,0,0);*/
+            /*-o-transform: translate3d(0,0,0);*/
+            /*transform: translate3d(0,0,0);*/
 
         }
 
@@ -83,7 +87,7 @@
         let $container = $('#container');
         let $indicator = $container.find('#indicator');
         let $rotate = $container.find('#rotate');
-        let rotateNum = 5;
+        let rotateNum = 6;
         let count = 0; // 记录次数
         let n;
         let flag = true;
@@ -102,8 +106,8 @@
         function lotteryRotate() {
             let deg = count * rotateNum * 360 + (360 - n * 36 + 18) + 'deg';
             $rotate.css({
-                'webkitTransform': 'rotate(' + deg + ')',
-                'transform': 'rotate(' + deg + ')'
+                'webkitTransform': 'rotateZ(' + deg + ')',
+                'transform': 'rotateZ(' + deg + ')'
             })
         }
 
