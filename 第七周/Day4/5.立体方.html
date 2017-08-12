@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+
+            margin: 20px auto;
+            padding: 100px;
+            box-sizing: border-box;
+        }
+
+        ul {
+            transform-style: preserve-3d;
+            /*perspective: 200px;*/
+            /*perspective-origin: 20% 20%; !* 景深焦点 *!*/
+            /*perspective-origin: 373px;*/
+            position: relative;
+            width: 102px;
+            margin: 0 auto;
+            transition: all 1s linear;
+
+            transform-origin: 51px 51px 51px; /* 立体方 中心点 x y z 中间交叉点*/
+
+            -webkit-animation: move 1s linear infinite both;
+            -o-animation: move 1s linear infinite both;
+            animation: move 1s linear infinite both;
+        }
+
+
+        @-webkit-keyframes move {
+            0% {
+                -webkit-transform: rotate3d(1, 1, 0, 0);
+                -moz-transform: rotate3d(1, 1, 0, 0);
+                -ms-transform: rotate3d(1, 1, 0, 0);
+                -o-transform: rotate3d(1, 1, 0, 0);
+                transform: rotate3d(1, 1, 0, 0);
+            }
+            100% {
+                -webkit-transform: rotate3d(1, -1, 0, 360deg);
+                -moz-transform: rotate3d(1, -1, 0, 360deg);
+                -ms-transform: rotate3d(1, -1, 0, 360deg);
+                -o-transform: rotate3d(1, -1, 0, 360deg);
+                transform: rotate3d(1, -1, 0, 360deg);
+            }
+        }
+
+        @keyframes move {
+            0% {
+                -webkit-transform: rotate3d(1, 1, 0, 0);
+                -moz-transform: rotate3d(1, 1, 0, 0);
+                -ms-transform: rotate3d(1, 1, 0, 0);
+                -o-transform: rotate3d(1, 1, 0, 0);
+                transform: rotate3d(1, 1, 0, 0);
+            }
+            100% {
+                -webkit-transform: rotate3d(1, -1, 0, 360deg);
+                -moz-transform: rotate3d(1, -1, 0, 360deg);
+                -ms-transform: rotate3d(1, -1, 0, 360deg);
+                -o-transform: rotate3d(1, -1, 0, 360deg);
+                transform: rotate3d(1, -1, 0, 360deg);
+            }
+        }
+
+        ul li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            background: rgba(250, 161, 255, 0.4);
+            color: #fff;
+            font-size: 25px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        ul li:nth-of-type(1) {
+            transform-origin: bottom;
+            transform: translateY(-102px) rotateX(-90deg);
+            /*transform: translateY(-102px);*/
+        }
+
+        ul li:nth-of-type(2) {
+            transform-origin: right;
+            transform: translateX(-102px) rotateY(90deg);
+            /*transform: translateX(-102px);*/
+        }
+
+        ul li:nth-of-type(3) {
+            transform-origin: left;
+            transform: translateX(102px) rotateY(-90deg);
+            /*transform: translateX(102px);*/
+        }
+
+        ul li:nth-of-type(4) {
+            transform-origin: top;
+            transform: translateY(102px) rotateX(90deg);
+            /*transform: translateY(102px);*/
+        }
+
+        ul li:nth-of-type(5) {
+            transform: translateZ(102px);
+        }
+
+        .wrap:hover ul {
+            transform: rotateY(360deg) rotateX(360deg);
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .sliderContainer {
+            position: relative;
+            width: 80%;
+            height: 400px;
+            margin: 20px auto;
+        }
+
+        .sliderContainer > img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        ul.slideFocus {
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            bottom: 10px;
+            text-align: center;
+        }
+
+        ul.slideFocus li {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 10px;
+            transition: all 0.3s linear;
+        }
+
+        ul.slideFocus li:hover {
+            box-shadow: 0 0 5px 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .sliderContainer > img:nth-of-type(1) {
+            z-index: 1;
+        }
+
+        ul.slideFocus a {
+            display: block;
+            width: 80px;
+            height: 80px;
+        }
+
+        ul.slideFocus a img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .sliderContainer > img:target {
+            z-index: 5;
+        }
+
+        #img1:target {
+            animation: bgScale 1s linear;
+        }
+
+        @keyframes bgScale {
+            0% {
+                transform: scale(0) rotate(0);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1) rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        #img2:target {
+            animation: bgTranslate 1s cubic-bezier(.17, .67, .68, 1.44);
+        }
+
+        @keyframes bgTranslate {
+            from {
+                transform: translateY(-200px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        #img3:target {
+            animation: bgScale2 1s cubic-bezier(.17, .67, .68, 1.44);
+        }
+
+        @keyframes bgScale2 {
+            from {
+                transform: scale(1.5);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        #img4:target {
+            animation: bgSwipe 1s cubic-bezier(.17, .67, .68, 1.44);
+        }
+
+        @keyframes bgSwipe {
+            0% {
+                transform: translateX(-200px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="sliderContainer">
+    <img id="img1" src="image/1.jpg" alt="">
+    <img id="img2" src="image/2.jpg" alt="">
+    <img id="img3" src="image/3.jpg" alt="">
+    <img id="img4" src="image/4.jpg" alt="">
+    <ul class="slideFocus">
+        <li><a href="#img1"><img src="image/1.jpg" alt=""></a></li>
+        <li><a href="#img2"><img src="image/2.jpg" alt=""></a></li>
+        <li><a href="#img3"><img src="image/3.jpg" alt=""></a></li>
+        <li><a href="#img4"><img src="image/4.jpg" alt=""></a></li>
+    </ul>
+</div>
+</body>
+</html>
