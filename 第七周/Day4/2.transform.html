@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            background: red;
+            margin: 20px auto;
+            transition: all 1s;
+        }
+        #oDiv:hover {
+            /*transform-origin: left; !* 指定变换基准点 默认 center*!*/
+            /*transform-origin: top;*/
+
+            /*
+             translate 平移 x,y
+             rotate 旋转 负数 逆时针旋转 正数 顺时针旋转
+             scale 缩放 小于1 缩小 大于1 放大 等于1 原始比例
+             skew 倾斜 x 水平方向 y 垂直方向 deg
+            */
+
+            /*-webkit-transform: ;*/
+            /*-moz-transform: ;*/
+            /*-ms-transform: ;*/
+            /*-o-transform: ;*/
+            /*transform: ;*/
+
+            /*transform: translate(-200px);*/
+            /*transform: translate(0, -200px);*/
+            /*transform: translate(200px, 200px);*/
+            /*transform: rotate(-90deg);*/
+
+            /*transform: scale(2.0); !* 缩放 初始值 1*!*/
+
+            /*transform: skew(30deg); x 水平方向 y 垂直方向 都倾斜30deg*/
+            /*transform: skew(30deg, 0); x 水平方向 倾斜30deg y 垂直方向 都倾斜0deg */
+            /*transform: skew(0, 30deg);*/
+
+
+            transform: translate(100px, 100px) scale(2) skew(45deg) rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>

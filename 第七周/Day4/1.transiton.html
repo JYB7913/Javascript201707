@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        #oDiv {
+            /* transition  从一个css样式属性 变换到 目标样式属性值 的效果 */
+            /*display: none;*/
+
+            /* 页面刚开始加载的时候 没有过渡效果的 */
+            /* 隐藏元素切换显示的时候 是没有过渡效果*
+
+            transition: all 1s linear;
+            width: 100px;
+            height: 100px;
+            background: red;
+            /*transition: all 1s linear 1s;*/
+            /* 执行两次过渡动画 */
+            /*transition: all 1s linear;*/
+
+            /*
+
+    transition-property: width; css 属性  all
+    transition-duration: initial;  0 过渡时间
+    transition-timing-function: initial; 速度曲线 ease ease-in ease-out linear cubic-bezier() 自定义运动曲线
+
+    transition-delay: initial; 0 延迟时间
+
+            */
+
+            /*-webkit-transition: prop time;  !*chrome safari*!*/
+            /*-moz-transition: prop time;  !*firefox*!*/
+            /*-ms-transition: prop time;  !* IE*!*/
+            /*-o-transition: prop time;  !*opera*!*/
+            /*transition: prop time;  !* 标准写法*!*/
+        }
+
+        #oDiv:hover {
+            /* 只有hover的时候才具备过渡效果 */
+            /*transition: all 1s linear;*/
+            /*height: 200px;*/
+            /*width: 400px;*/
+        }
+
+        #oDiv.move {
+            /*display: block;*/
+            height: 200px;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">btn</button>
+<div id="oDiv">
+
+</div>
+<script type="text/javascript">
+    btn.onclick = function () {
+        oDiv.className = 'move';
+    }
+</script>
+</body>
+</html>
