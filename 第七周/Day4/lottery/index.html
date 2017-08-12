@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 100%;
+            height: 469px;
+            background: url("images/lotteryBg.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        #container #lotteryWrap {
+            position: relative;
+            top: 140px;
+            webkit-transform: translate3d(0,0,0);
+            -moz-transform: translate3d(0,0,0);
+            -ms-transform: translate3d(0,0,0);
+            -o-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+
+        #container #lotteryWrap #rotate {
+            width: 285px;
+            height: 285px;
+            background: url("images/rotate.png") no-repeat center;
+            background-size: 100% 100%;
+            margin: 0 auto;
+            transition: all 5s ease-in-out;
+
+        }
+
+        #container #lotteryWrap span {
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*bottom: 0;*/
+            /*top: 0;*/
+            /*margin: auto;*/
+
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*top: 50%;*/
+            /*margin-left: -33.5px;*/
+            /*margin-top: -42.5px;*/
+
+            position: absolute;
+            left: 50%;
+            top: 48%;
+            transform: translate(-50%, -50%);
+            width: 67px;
+            height: 85px;
+            background: url("images/indicator.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="lotteryWrap">
+        <!-- 转盘 -->
+        <div id="rotate"></div>
+        <!-- 指针 -->
+        <span id="indicator"></span>
+    </div>
+</div>
+<script type="text/javascript" src="../node_modules/zepto/dist/zepto.min.js"></script>
+<script type="text/javascript" src="../node_modules/fastclick/lib/fastclick.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 每抽奖一次销毁10积分 在转盘下面显示抽奖次数
+        // 当积分不足时 给予相应提示 不能再抽奖
+
+        FastClick.attach(document.body); // 解决300ms延迟
+        let $container = $('#container');
+        let $indicator = $container.find('#indicator');
+        let $rotate = $container.find('#rotate');
+        let rotateNum = 5;
+        let count = 0; // 记录次数
+        let n;
+        let flag = true;
+        let gifts = ['酒店券', '100M流量', '50M流量', '30元话费', '谢谢参与', '50元话费', '爱奇艺月VIP', '爱奇艺季VIP', '斗地主', '接送机'];
+        $indicator.on('click', function () {
+            if (!flag) return; // 防止重复点击
+            flag = false;
+            n = Math.round(Math.random() * 9 + 1); // 获取1到10 随机中奖奖品
+            count++;
+            lotteryRotate();
+        });
+
+        // 第一次时 旋转到5圈后的度数
+        // 第二次时 从第5圈的度数 旋转到 第10圈的度数
+        // ...
+        function lotteryRotate() {
+            let deg = count * rotateNum * 360 + (360 - n * 36 + 18) + 'deg';
+            $rotate.css({
+                'webkitTransform': 'rotate(' + deg + ')',
+                'transform': 'rotate(' + deg + ')'
+            })
+        }
+
+        $rotate.on('transitionend webkitTransitionEnd', function () {
+            flag = true;
+            alert('恭喜你！！！ '+ gifts[n - 1]);
+        })
+    })
+</script>
+</body>
+</html>
