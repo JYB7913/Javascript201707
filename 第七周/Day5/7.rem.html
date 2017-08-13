@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <!--  rem 相对于根元素字体
+      设计稿 640  100px 1rem = 100px
+
+    -->
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            background-color: #3b55ff;
+        }
+        div img {
+            width: 4.65rem;
+            height: 1.6rem;
+        }
+
+        /* 通过媒体查询 横竖屏检测 */
+        @media all and (orientation: landscape) {
+            body {
+              background: #FFCC66;
+          }
+        }
+    </style>
+    <script type="text/javascript">
+        // 动态计算根元素字体
+//        var desW = 750; // 设计稿的宽度
+        var desW = 640; // 设计稿的宽度
+//        var desW = 1242; // 设计稿的宽度
+        var doc = document.documentElement;
+        function refreshRem() {
+            var winW = doc.clientWidth; // 获取视口宽度
+            if(winW >= desW) { // 视口宽度超过设计稿宽度时 始终 100px 不能再变大了
+                doc.style.fontSize = '100px';
+                return;
+            }
+            var radio = desW/winW;
+            doc.style.fontSize = 100/radio + 'px';
+        }
+        refreshRem();
+        window.addEventListener('resize', refreshRem);
+    </script>
+</head>
+<body>
+<div>
+    <img src="images/pic.png" alt="">
+</div>
+
+</body>
+</html>
