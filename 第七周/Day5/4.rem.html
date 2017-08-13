@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!--
+    width=device-width viewport 视口宽度 等于 设备宽度
+    user-scalable=no 禁止用户缩放
+    initial-scale=1.0 初始缩放比例 1.0
+    maximum-scale=1.0 允许用户放大最大比例 1.0
+    minimum-scale=1.0 允许用户最小缩放比例 1.0
+    -->
+    <title>Title</title>
+    <!-- rem 相对于根元素字体的单位
+         1rem = 根元素字体 （100px）
+         em 相对于 最近祖先元素字体（包含自己）
+
+    -->
+    <style type="text/css">
+       html {
+           font-size: 50px;
+       }
+        /*#red {*/
+            /*width: 1em;*/
+            /*height: 1em;*/
+            /*background-color: red;*/
+        /*}*/
+        /*#oDiv {*/
+            /*font-size: 200px;*/
+        /*}*/
+        /*#outer {*/
+            /*font-size: 100px;*/
+        /*}*/
+        #red {
+            /*font-size: 16px;*/
+            /*text-indent: 2em;*/
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="red"></div>
+<!--<div id="oDiv">-->
+    <!--<div id="outer">-->
+        <!--<div id="red">你好</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!-- viewport 显示页面的区域 iphone 默认 980
+-->
+
+<!--
+
+  像素比 = 设备物理像素/设备逻辑像素（设备独立像素相当于css像素px）
+  iphone3 1 1物理像素 = 1px
+  iphone5  2 2物理像素 = 1px
+  iphone6p 3 3物理像素 = 1px
+
+ 常见设计稿
+
+iphone5  320*568 2  640 * 1136
+iphone6  375 * 667 2 750 * 1334
+iphone6p 414*736 3  1242 * 2208
+
+
+-->
+
+
+</body>
+</html>
