@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style type="text/css">
+        #container {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        #container #list {
+            background-color: #f3f3f3;
+            padding: 10px 0;
+        }
+        #container #list li {
+            text-align: center;
+            overflow: hidden;
+        }
+        #container #list li:first-child {
+            margin-bottom: 10px;
+        }
+        #container #list li a {
+            color: black;
+            float: left;
+            width: 20%;
+        }
+        #container #list li img {
+            width: 0.58rem;
+            height: 0.58rem;
+        }
+        #container #list li span {
+            display: block;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        var desW = 640;
+        var doc = document.documentElement;
+
+        function refreshRem() {
+            var winW = doc.clientWidth;
+            var radio = desW / winW;
+            if (winW >= 640) {
+                doc.style.fontSize = '100px';
+                return;
+            }
+            doc.style.fontSize = 100 / radio + 'px';
+        }
+
+        refreshRem();
+        window.addEventListener('resize', refreshRem)
+    </script>
+</head>
+<body>
+<div id="container">
+    <ul id="list">
+        <li>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+        </li>
+        <li>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+            <a href="https://pro.m.jd.com/mall/active/2hqsQcyM5bEUVSStkN3BwrBHqVLd/index.html">
+                <img src="images/jd3.png" alt="">
+                <span>京东超市</span>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

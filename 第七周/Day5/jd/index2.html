@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- swiper.css -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript">
+        // 动态计算根元素字体
+        var desW = 640; // 设计稿的宽度
+        var doc = document.documentElement;
+
+        function refreshRem() {
+            var winW = doc.clientWidth; // 获取视口宽度
+            if (winW >= desW) { // 视口宽度超过设计稿宽度时 始终 100px 不能再变大了
+                doc.style.fontSize = '100px';
+                return;
+            }
+            var radio = desW / winW;
+            doc.style.fontSize = 100 / radio + 'px';
+        }
+        refreshRem();
+        window.addEventListener('resize', refreshRem);
+    </script>
+</head>
+<body>
+<div id="container">
+    <!-- swiper 容器 -->
+<div class="swiper-container swiperContainer" id="swiper1">
+    <!-- 轮播区域 -->
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="icon/swiper1.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="icon/swiper2.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="icon/swiper3.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="icon/swiper4.jpg" alt=""></div>
+    </div>
+    <!-- 分页器 -->
+    <div class="swiper-pagination pagination1"></div>
+
+</div>
+    <!-- 导航列表 -->
+<nav id="navList"></nav>
+
+    <!-- 新闻列表 -->
+    <section id="newList">
+            <div class="item">
+                <div><img src="icon/n1.jpg" alt=""></div>
+                <div>
+                    <p>中印对峙中俄如何行事?俄媒:西方在煽动 俄应促和中印对峙中俄如何行事?俄媒:西方在煽动 俄应促和中印对峙中俄如何行事?俄媒:西方在煽动 俄应促和</p>
+                    <p><span>3小时前</span><span>赞219</span></p>
+                </div>
+            </div>
+    </section>
+</div>
+
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<!-- swiper.js -->
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="js/ejs.js"></script>
+<script type="text/javascript">
+    $(function () {
+        new Swiper('#swiper1', {
+//            direction: 'vertical', // 滑动方向 水平(horizontal)或垂直(vertical）
+            loop: true,
+            // 如果需要分页器
+            pagination: '.pagination1',
+//            自动切换
+            autoplay: 3000,
+            // 用户操作swiper后就会停止自动切换 false 不停止 默认true 停止
+            autoplayDisableOnInteraction: false
+        });
+        // 获取数据
+        $.ajax({
+            url: 'list.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function (res) {
+                bindData(res);
+            }
+        });
+        
+        function bindData(res) {
+//            引入外部模板
+           $.get('temp.tp', function (text) {
+                var htmls = ejs.render(text, {data: res});
+                $('#navList').html(htmls);
+           })
+        }
+    })
+</script>
+</body>
+</html>
