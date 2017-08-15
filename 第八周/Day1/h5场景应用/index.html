@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript">
+        // 动态计算根元素字体
+        var desW = 640; // 设计稿的宽度
+        var doc = document.documentElement;
+
+        function refreshRem() {
+            var winW = doc.clientWidth; // 获取视口宽度
+            if (winW >= desW) { // 视口宽度超过设计稿宽度时 始终 100px 不能再变大了
+                doc.style.fontSize = '100px';
+                return;
+            }
+            var radio = desW / winW;
+            doc.style.fontSize = 100 / radio + 'px';
+        }
+        refreshRem();
+        window.addEventListener('resize', refreshRem);
+    </script>
 </head>
 <body>
+<div class="swiper-container" id="container">
+    <div class="swiper-wrapper">
+        <!-- 第一页 -->
+        <div class="swiper-slide page1" id="page1">
+            <img src="images/page1-text1.png" alt="">
+            <img src="images/page1-text2.png" alt="">
+            <img src="images/page1-text3.png" alt="">
+            <img src="images/page1-text4.png" alt="">
+        </div>
+        <!-- 第二页 -->
+        <div class="swiper-slide page2" id="page2"></div>
+    </div>
+    <div class="arrow"></div>
+</div>
 
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
