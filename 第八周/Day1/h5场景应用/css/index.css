@@ -17,9 +17,8 @@ html, body {
 
 #container .swiper-wrapper .page1 img,
 #container .swiper-wrapper .page2 img{
-   /*opacity: 0;*/
+   opacity: 0;
 }
-
 
 #container .swiper-wrapper .page1 {
     background: url("../images/bg1.jpg") no-repeat;
@@ -160,20 +159,24 @@ html, body {
 }
 @-webkit-keyframes bounceUp2 {
     0% {
+        opacity: 0;
         -webkit-transform: translateY(300px);
         transform: translateY(300px);
     }
     100% {
+        opacity: 1;
         -webkit-transform: translateY(0);
         transform: translateY(0);
     }
 }
 @keyframes bounceUp2 {
     0% {
+        opacity: 0;
         -webkit-transform: translateY(300px);
         transform: translateY(300px);
     }
     100% {
+        opacity: 1;
         -webkit-transform: translateY(0);
         transform: translateY(0);
     }
