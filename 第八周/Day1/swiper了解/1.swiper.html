@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <style type="text/css">
+        .swiper1 {
+            width: 700px;
+            height: 300px;
+        }
+
+        .swiper1 .swiper-slide img {
+            width: 100%;
+            height: 100%;
+        }
+        .swiper1  .pagination span{
+            /*width: 20px;*/
+            /*height: 20px;*/
+            /*background-color: #fff;*/
+            color: red;
+        }
+
+        /*.swiper1 .swiper-pagination-bullet{*/
+            /*opacity: 0.6;*/
+        /*}*/
+        /*.swiper1 .swiper-pagination-bullet-active {*/
+            /*opacity: 1;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div class="swiper-container swiper1" id="swiper1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/1.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="images/4.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="images/6.jpg" alt=""></div>
+    </div>
+    <!-- 分页器 -->
+    <div class="swiper-pagination pagination"></div>
+
+    <!-- 切换按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <!-- 滚动条 -->
+    <div class="swiper-scrollbar"></div>
+</div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    new Swiper('#swiper1', {
+//      direction: 'vertical'
+        direction: 'horizontal', // 轮播方向
+        loop: true,  // 无缝滚动
+//        autoplay: 2000, // 自动轮播
+        speed: 500, // 切换过渡时间 300
+        autoplayDisableOnInteraction: false, // 用户操作后 不停止自动切换
+//      切换按钮
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+//      滚动条
+        scrollbar: '.swiper-scrollbar',
+//        grabCursor: true,
+        // 切换效果
+        effect: 'slide',
+//        effect: 'fade',
+//        effect: 'cube'
+//        effect: 'coverflow'
+//        effect: 'flip'
+
+        pagination: '.swiper-pagination', // 分页器
+//        paginationType: 'fraction'
+//        paginationType: 'progress'
+//        paginationType: 'custom'
+
+        paginationClickable: true, // 允许点击分页控制slide
+//        onInit: function () {
+////           alert('init');
+//        },
+//        onTouchStart: function (swiper, event) {
+//            console.log('start');
+//        },
+//        onTouchMove(){
+//            console.log('Move');
+//        },
+//        onTouchEnd(){
+//             console.log('End');
+//        }
+        onTransitionEnd(swiper){
+//            console.log(swiper.activeIndex); // 当前slide 索引
+            console.log(swiper.previousIndex); // 上一个slide索引
+            console.log(swiper);
+//            console.log(swiper.slides); // slide 切换元素 集合
+
+        }
+    });
+
+//   var obj = {
+//       fn1: function fn1() {
+//
+//       },
+//       fn() {
+//
+//       }
+//   }
+</script>
+</body>
+</html>
