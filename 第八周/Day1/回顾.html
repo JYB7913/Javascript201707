@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        /*html {*/
+        /*font-size: 100px;*/
+        /*}*/
+
+        .oDiv {
+            width: 1rem;
+            height: 1rem;
+            background-color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        var desW = 640;
+
+        function refreshRem() {
+            var doc = document.documentElement;
+            var winW = doc.clientWidth;
+            var radio = desW / winW;
+            if (winW >= desW) {
+                doc.style.fontSize = '100px';
+                return;
+            }
+            doc.style.fontSize = 100 / radio + 'px';
+        }
+
+        refreshRem();
+        window.addEventListener('resize', refreshRem);
+    </script>
+</head>
+<body>
+<!--
+   响应式布局
+   css3多列布局 column 文章
+   流式布局 又称百分比布局
+   媒体查询 @media
+   rem 相对于根元素字体
+-->
+<!--
+viewport 视口  在设备上用来显示网页内容的区域  移动端默认 980  虚拟视口
+-->
+
+<!--
+  像素比 = 设备物理像素/设备独立像素（相当于css像素） window.devicePixelRatio
+  iphone5  2 = 640/320  2设备物理像素 1px   2*2 = 1*1
+  iphone6p  3 = 1242/414  3设备物理像素 1px   3*3 = 1*1
+
+  设计稿  按照物理像素
+  iphone5 640  320  => rem
+  iphone6 750
+  iphone6p 1242
+
+  iphone5 640  假设根元素字体 100px  6.4rem
+  radio = desW/winW;
+  设备宽度 320   100/radio
+  设备宽度 375   100/radio
+-->
+<div class="oDiv"></div>
+</body>
+</html>
