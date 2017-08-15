@@ -149,17 +149,20 @@
         <li>4</li>
     </ol>
 </div>
+<script type="text/javascript" src="zepto.min.js"></script>
 <script type="text/javascript">
-    let picList = document.querySelector('.picList');
-    let style = document.querySelector('#style');
-    let picW = picList.clientWidth;
-    let itemW = 50; // 每个小立方的宽度
-    let num = picW / itemW; // 需要生成的个数
-    let str = '';
-    let cssStr = '';
-    let zIndex = 0;
-    for (let i = 0; i < num; i++) { // 生成多个小立方 li
-        str += `
+    $(function () {
+        let $picList = $('.picList');
+        let $style = $('#style');
+        let picW = $picList.width();
+        let itemW = 50; // 每个小立方的宽度
+        let num = picW / itemW; // 需要生成的个数
+        let str = '';
+        let cssStr = '';
+        let zIndex = 0;
+        // 拼接li
+        for (let i = 0; i < num; i++) { // 生成多个小立方 li
+            str += `
           <li>
             <a href=""></a>
             <a href=""></a>
@@ -170,49 +173,55 @@
             </li>
         `;
 
-        // 控制每个li的层级
-        i > num / 2 ? zIndex-- : zIndex++;
-        // 需要动态控制的样式（背景图位置 以及 li层级）
-        cssStr += `
+         // 控制每个li的层级
+         i > num / 2 ? zIndex-- : zIndex++;
+         // 需要动态控制的样式（背景图位置 以及 li层级）
+         cssStr += `
         .picList li:nth-of-type(${i + 1}) {
             z-index: ${zIndex};
         }
 
-        .picList li:nth-of-type(${i + 1}) a {
+         .picList li:nth-of-type(${i + 1}) a {
             background-position: ${i * -itemW}px 0;
         }
         `;
-    }
-    style.innerHTML += cssStr;
-    picList.innerHTML = str;
 
-    // 给分页按钮 循环绑定点击切换事件
-    let pagiList = document.querySelectorAll('.pagination>li'); // 获取到分页按钮
-    let itemList = document.querySelectorAll('.picList>li'); // 获取所有小立体li
-    let flag = true;
-    for (let i = 0; i < pagiList.length; i++) {
-        pagiList[i].onclick = function () {
-//            if(!flag) return;
-//            flag = false;
-            for (let k = 0; k < pagiList.length; k++) {
-                pagiList[k].classList.remove('active');
-            }
-            this.classList.add('active');
-            for (let l = 0; l < itemList.length; l++) {
-                itemList[l].style.webkitTransition = `all 0.4s ${l * itemW}ms cubic-bezier(0.46,-0.82, 1, 1.51)`;
-                itemList[l].style.webkitTransform = `rotateX(${i * -90}deg)`
-            }
         }
-    }
+        $style.append(cssStr);
+        $picList.append(str);
 
-//    itemList[itemList.length-1].addEventListener('transitionend', () => flag = true);
-//
-//    itemList[itemList.length-1].addEventListener('webkitTransitionEnd', () => flag = true);
+        // 给分页按钮 循环绑定点击切换事件
+        let $pagiList = $('.pagination>li'); // 获取到分页按钮
+        let $itemList = $('.picList>li'); // 获取所有小立体li
 
-    // 第一个按钮  0 * -90deg = 0deg
-    // 第二个按钮  1 * -90deg = -90deg
-    // 第三个按钮  2 * -90deg = -180deg
-    // 第四个按钮  3 * -90deg = -270deg
+        $pagiList.each((ind, item) => {
+            item.onclick = function () {
+                 let l = $(this).index();
+                $(this).addClass('active').siblings('li').removeClass('active');
+
+                 // 控制每个li的旋转角度以及动画
+                 $itemList.each((n, item) => {
+                    $(item).css({
+                        // 写法一
+                        transition: `all 0.4s ${n * itemW}ms cubic-bezier(0.46,-0.82, 1, 1.51)`,
+                        transform: `rotateX(${l * -90}deg)`
+                        // 写法二
+//                        '-webkit-transition': `all 0.4s ${n * itemW}ms cubic-bezier(0.46,-0.82, 1, 1.51)`,
+//                        '-webkit-transform': `rotateX(${l * -90}deg)`
+                    });
+                });
+            }
+        });
+
+
+
+
+        // 第一个按钮  0 * -90deg = 0deg
+        // 第二个按钮  1 * -90deg = -90deg
+        // 第三个按钮  2 * -90deg = -180deg
+        // 第四个按钮  3 * -90deg = -270deg
+    });
+
 </script>
 </body>
 </html>
