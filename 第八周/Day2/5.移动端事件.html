@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #oDiv1 {
+            width: 100%;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv1"></div>
+<p id="op1"></p>
+<p id="op2"></p>
+<p id="op3"></p>
+<script type="text/javascript" src="src/fastclick.min.js"></script>
+<script type="text/javascript">
+    if ('addEventsListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body);
+        });
+    }
+    window.onload = function () {
+
+        let $ = (name) => document.querySelector(name);
+        let oDiv1 = $('#oDiv1');
+        let op1 = $('#op1');
+        let op2 = $('#op2');
+        let op3 = $('#op3');
+        // 移动端事件
+//    1.click  300ms延迟
+//        oDiv1.addEventListener('click', function () {
+//            this.style.background = 'blue'
+//        }, false);
+
+
+//    2.touch 触摸事件
+// touchstart  触碰到屏幕时触发
+// touchmove  在屏幕中移动时触发
+// touchend   离开屏幕时触发
+// touchcancel 由系统事件触发
+
+        //  触摸事件中 三个触摸列表
+        // touches 屏幕上所有的 触摸点列表
+        // changedTouches 引起当前事件触发的触摸点列表
+        // targetTouches  当前位于元素上的触摸点列表
+        oDiv1.addEventListener('touchstart', function (e) {
+            let touches = e.touches;
+            let changedTouches = e.changedTouches;
+            let targetTouches = e.targetTouches;
+//            console.log(e.changedTouches[0]);
+//             op1.innerHTML = `touches：${e.touches.length}`;
+            op2.innerHTML = `changedTouches：${e.changedTouches.length}`;
+//             op3.innerHTML = `targetTouches：${e.targetTouches.length}`;
+//             if(touches.length === 1) {
+//                 this.style.background = 'blue';
+//             } else if(touches.length === 2) {
+//                 this.style.background = 'green';
+//             } else {
+//                 this.style.background = 'black';
+//             }
+//
+        }, false);
+        oDiv1.addEventListener('touchmove', function () {
+            console.log('move');
+        }, false);
+        oDiv1.addEventListener('touchend', function () {
+            console.log('end');
+        }, false);
+
+        document.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        }, false);
+
+//        oDiv1.addEventListener('touchcancel', function () {
+//            op1.innerHTML = 'cancel'
+//        }, false);
+    };
+
+
+</script>
+</body>
+</html>
