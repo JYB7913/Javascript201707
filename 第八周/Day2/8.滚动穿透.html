@@ -38,6 +38,7 @@
 <script type="text/javascript" src="js/zepto_touch.js"></script>
 <script type="text/javascript">
      $(function () {
+         // 点击穿透
          let $mark = $('#mark');
          $('#bg').click(function () {
              $mark.show();
@@ -48,7 +49,6 @@
              setTimeout(function () {
                  $mark.hide();
              }, 400);
-
          })
 
          // 1.限制html body 为一屏高
