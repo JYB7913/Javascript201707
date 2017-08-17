@@ -122,7 +122,7 @@
                 if (this.y > 15 && !$pullDown.hasClass('release')) {
                     $pullDown.addClass('release').find('.text').html('释放刷新');
                     this.minScrollY = 0; // 设置垂直方向 最小回弹边界值
-                } else if (this.y < 10 && $pullDown.hasClass('release')) {
+                } else if (this.y < 5 && $pullDown.hasClass('release')) {
                     $pullDown.removeClass('release').find('.text').html('下拉刷新');
                 }
                 if (this.y < (this.maxScrollY - 20)) { // this.y > -207
