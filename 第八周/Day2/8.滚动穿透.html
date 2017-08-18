@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="reset.min.css">
+    <style type="text/css">
+         .move {
+             width: 100%;
+             height: 100%;
+             overflow: hidden;
+         }
+
+         #bg {
+             width: 100%;
+             height: 1000px;
+             background: url("bg1.jpg") no-repeat center;
+             background-size: 100% 100%;
+         }
+        #mark {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, .5);
+        }
+    </style>
+</head>
+<body>
+<div id="bg">
+    <a href="https://www.baidu.com"><img src="11.png" alt=""></a>
+</div>
+<div id="mark"></div>
+<script type="text/javascript" src="js/zepto_touch.js"></script>
+<script type="text/javascript">
+     $(function () {
+         // 点击穿透
+         let $mark = $('#mark');
+         $('#bg').click(function () {
+             $mark.show();
+             console.log('bg');
+         });
+         $mark.on('touchstart', function (e) {
+             e.stopPropagation();
+             setTimeout(function () {
+                 $mark.hide();
+             }, 300);
+         })
+
+         // 1.限制html body 为一屏高
+//         $('#bg').click(function () {
+//              $mark.show();
+//              $('body').addClass('move');
+//              $('html').addClass('move');
+//         });
+//         $mark.click(function () {
+//             $(this).hide();
+//             $('body').removeClass('move');
+//             $('html').removeClass('move');
+//         });
+
+//         // 2.阻止弹出层默认行为 会导致弹出层内容无法内部滚动 防止滚动穿透
+//         $mark.on('touchmove', function (e) {
+//             e.preventDefault();
+//         })
+     })
+</script>
+</body>
+</html>

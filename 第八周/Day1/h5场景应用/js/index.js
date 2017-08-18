@@ -23,7 +23,6 @@ $(function () {
            slides.eq(curInd).attr('id', cn).siblings().removeAttr('id');
        }
    });
-
    // 音乐播放
     let audioMusic = $('#audioMusic')[0];
     let $music =  $('.music');

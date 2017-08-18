@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style type="text/css">
+        .list li {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            background-color: #999;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        .header, .footer {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            background: -webkit-linear-gradient(#888, #666, #333);
+            background: linear-gradient(#888, #666, #333);
+            z-index: 99;
+        }
+
+        .header {
+            top: 0;
+        }
+
+        .footer {
+            bottom: 0;
+        }
+
+        #scroller .pullDown,
+        #scroller .pullUp {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #wrapper {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 40px;
+            bottom: 40px;
+        }
+
+        #scroller .release {
+            color: blue;
+        }
+
+        #scroller .loading {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部 -->
+<header class="header">个人中心</header>
+<!-- 滚动区域 -->
+<div id="wrapper">
+    <div id="scroller">
+        <!-- 下拉刷新提示 -->
+        <div class="pullDown">
+            <span class="text">下拉刷新</span>
+        </div>
+        <!-- 列表内容 -->
+        <ul class="list"></ul>
+        <!-- 上拉加载提示 -->
+        <div class="pullUp">
+            <span class="text">上拉加载更多</span>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<footer class="footer"></footer>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+    $(function () {
+        let $wrapper = $('#wrapper');
+        let $list = $wrapper.find('.list');
+        let $pullDown = $wrapper.find('.pullDown');
+        let $pullUp = $wrapper.find('.pullUp');
+        let downH = $pullDown.height();
+
+        let n = 0;
+
+        function initData() {
+            let str = '';
+            for (let i = 0; i < 15; i++) {
+                str += `
+                <li>user：${++n}号</li>
+                `
+            }
+            $list.append(str);
+        }
+
+        initData(); // 添加初始数据
+
+//      初始化
+        let myScroll = new iScroll('wrapper', {
+            topOffset: downH,
+            onRefresh() { // 每一次刷新完 将此时loading状态 恢复为 初始状态
+                if ($pullDown.hasClass('loading')) {
+                    $pullDown.removeClass('loading').find('.text').html('下拉刷新');
+                }
+                if ($pullUp.hasClass('loading')) {
+                    $pullUp.removeClass('loading').find('.text').html('上拉加载更多');
+                }
+            },
+            onScrollMove() {
+                if (this.y > 15 && !$pullDown.hasClass('release')) {
+                    $pullDown.addClass('release').find('.text').html('释放刷新');
+                    this.minScrollY = 0; // 设置垂直方向 最小回弹边界值
+                } else if (this.y < 5 && $pullDown.hasClass('release')) {
+                    $pullDown.removeClass('release').find('.text').html('下拉刷新');
+                }
+                if (this.y < (this.maxScrollY - 20)) { // this.y > -207
+                    $pullUp.addClass('release').find('.text').html('释放加载');
+                }
+                console.log(this.y);
+            },
+            onScrollEnd() {
+                if ($pullDown.hasClass('release')) { // 如果当前是释放刷新状态 就变成加载状态
+                    $pullDown.addClass('loading').removeClass('release').find('.text').html('加载中...');
+                    downLoad(); // 执行加载动作
+                }
+                if ($pullUp.hasClass('release')) {
+                    $pullUp.addClass('loading').removeClass('release').find('.text').html('加载中...');
+                    upLoad();
+                }
+            }
+        });
+
+        function downLoad() {
+            setTimeout(function () {
+                // 刷新逻辑 请求更新新数据
+                let arr = new Array(3);
+                let str = '';
+                $.each(arr, (n) => {
+                    str += `<li style="font-size: 15px">${new Date().toTimeString()}</li>`
+                });
+                $list.prepend(str);
+                myScroll.refresh();
+            }, 400);
+        }
+
+        function upLoad() {
+            setTimeout(function () {
+                // 刷新逻辑 请求更新新数据
+                let arr = new Array(3);
+                let str = '';
+                $.each(arr, (n) => {
+                    str += `<li style="font-size: 15px">上拉加载 -- ${n}</li>`
+                });
+                $list.append(str);
+                myScroll.refresh();
+            }, 400);
+        }
+    });
+</script>
+</body>
+</html>
