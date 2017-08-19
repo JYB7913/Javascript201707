@@ -1,0 +1,95 @@
+@wid: 100px;
+@hei: 100px;
+@fontColor: red;
+
+.box-shadow(@x: 0, @y: 0, @blur: 10px, @color: blue){
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+.border(@w: 1px, @type: solid, @color: black) {
+  border: @arguments;
+}
+.box {
+  width: @wid;
+  height: @hei;
+  .border;
+  color: @fontColor;
+  margin-bottom: 10px;
+}
+
+.oBox1 {
+  .box;
+  .box-shadow(1px, 1px, 5px, red);
+  //.mixin(bg1, blue);
+  .mixin(blue);
+}
+.oBox2 {
+  .box;
+  .box-shadow(3px, 3px, 5px, #888);
+   //.mixin(bg2, red);
+  .mixin(red, 10%);
+  .bold(8px);
+
+}
+.oBox3 {
+  .box;
+  .box-shadow;
+  //.mixin(bg3, yellow)
+  .bold(6);
+}
+
+
+.bold(@w) when (@w > 20), (@w < 10) {
+  background-color: red;
+}
+.bold(@w) when (@w = 15), (@w < 5) {
+  background-color: #5b72ff;
+}
+
+.bold(@w) when (@w < 9) and (@w > 5) {
+  background-color: #7eff94;
+}
+
+
+////  根据 匹配不同 首参数 进行 不同处理  @_ 匹配任意首参数
+//.mixin(bg1, @color) {
+//  background-color: red;
+//  color: @color;
+//}
+//
+//.mixin(bg2, @color) {
+//  background-color: yellow;
+//  color: @color;
+//}
+//
+//.mixin(bg3, @color) {
+//  background-color: navy;
+//  color: @color;
+//}
+//
+//.mixin(@_, @color) {
+//  display: inline-block;
+//   //font-size: 30px;
+//}
+
+// 根据参数个数进行处理
+.mixin (@a) {
+  color: @a;
+}
+.mixin (@a, @b) {
+  color: fade(@a, @b);
+}
+
+//.bold(@w) when (@w >= 15) {
+//  background-color: #00CC99;
+//  border-width: @w;
+//}
+//.bold(@w) when (@w < 15) {
+//  background-color: #cc3c9b;
+//  border-width: @w;
+//}
+//.bold(@w) {
+//  font-size: @w;
+//}
+

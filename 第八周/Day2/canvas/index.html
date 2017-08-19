@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<!--
+canvas:默认的宽高是300*150
+-->
+<script type="text/javascript">
+    var cas = document.getElementById('canvas');
+    var ctx = cas.getContext('2d');
+    //console.log(ctx);//CanvasRenderingContext2D
+    var oImg = new Image();
+    oImg.src = "imgs/pic1.jpg";
+    var w = 200, h;
+    /*    oImg.onload = function () {
+            ctx.drawImage(oImg, 0, 0,100,100);
+            /!*img图片 x轴的坐标点 y轴的坐标点 图片显示的宽度 图片显示的高度*!/
+        }*/
+
+    // 升级:給一个固定的宽度或者一个固定的高度,另一个值动态计算
+    /*200               h
+    oImg.width     oImg.height*/
+
+    //=> h=(oImg.height*w)/oImg.width;
+    oImg.onload = function () {
+        h = (oImg.height * w) / oImg.width;
+        ctx.drawImage(oImg, 0, 0, w, h)
+    }
+
+
+    /*1.(oImg,dx,dy)  oImg  x轴的坐标  y轴的坐标
+      2.(oImg,dx,dy,width,height) oImg x轴的坐标  y轴的坐标 图片显示的宽度  图片显示的高度
+      3.(oImg,sx,sy,w,h,dx,dy,w,h)
+      sx,sy,w,h 图片源信息
+      dx,dy,w,h 画布的信息
+    *
+    *
+    *
+    *
+    * */
+
+</script>
+</body>
+</html>

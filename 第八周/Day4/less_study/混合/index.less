@@ -1,0 +1,52 @@
+@red: red;
+@wid: 100px;
+/* 这是个注释 */
+
+/*
+  类名混合使用 将一些属性放在一个类名集合中 供调用 类之间也可以彼此调用
+  带参数 类似定义一个函数 设置形参 默认值 @arguments
+
+*/
+.Box {
+  border: 1px solid @red;
+  color: @red;
+  margin-top: 10px;
+}
+
+.oDiv1 {
+  width: @wid;
+  height: @wid;
+  .Box;
+  .border-radius(20px);
+  .border(10px);
+}
+
+
+.oDiv2 {
+  width: @wid*2;
+  height: @wid;
+  .Box;
+  .border-radius(30px);
+  .border;
+}
+
+.oDiv3 {
+  width: 200px;
+  height: 200px;
+  color: blue;
+  .border-radius;
+  .border;
+}
+
+// 带参数混合
+.border-radius (@radius: 10px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.border(@wid: 1px, @type: solid, @color: black){
+  //border: @wid @type @color;
+  border: @arguments;
+}
+
+

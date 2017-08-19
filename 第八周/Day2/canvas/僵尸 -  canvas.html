@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+<script type="text/javascript">
+    var cas = document.getElementById('canvas');
+    var ctx = cas.getContext('2d');
+    var oImg = new Image();
+    oImg.src = "imgs/walkingdead.png";
+    var i = 0;
+    oImg.onload = function () {
+        var w = oImg.width / 10,
+            h = oImg.height;
+        //console.log(w, h); //300 312
+        setInterval(function () {
+            ctx.clearRect(0, 0, w, h); //上一次绘制的路径清除掉
+            ctx.drawImage(oImg, w * i, 0, w, h, 0, 0, w, h);
+            /*if (i === 9) {
+                i = 0;
+            }
+            i++;*/
+            i === 9 ? i = 0 : i++ //最后一张僵尸 回到第一张  infinite
+        }, 200)
+    }
+</script>
+</body>
+</html>

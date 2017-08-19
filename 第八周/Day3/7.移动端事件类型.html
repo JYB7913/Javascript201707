@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #red {
+            width: 100%;
+            height: 150px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="red"></div>
+<p id="op1" style="font-size: 17px; color: blue"></p>
+<script type="text/javascript" src="js/zepto_touch.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // 1.click 300ms fastClick
+        // 2.touch touchstart touchmove touchend touchcancel(touches changedTouches targetTouches)
+        // zepto_touch
+        // 3.tap: tap singleTap doubleTap longTap
+        // 4.swipe: swipe swipeLeft swipeRight swipeUp swipeDown
+
+        let $red = $('#red');
+        let $op1 = $('#op1');
+        // 单击顺序：touchstart touchend tap click singleTap
+        // 双击顺序：touchstart touchend tap click
+        //           touchstart touched tap doubleTap click
+
+        // touchend  swipe swipeLeft
+        $red.on('touchmove', function (e) {
+            e.preventDefault();
+        });
+        $red.swipe(function () {
+            $op1.append('swipe -- ');
+        });
+        $red.swipeLeft(function () {
+            $op1.append('swipeLeft -- ');
+        });
+        $red.swipeRight(function () {
+            $op1.append('swipeRight -- ');
+        });
+        $red.swipeUp(function () {
+            $op1.append('swipeUp -- ');
+        });
+        $red.swipeDown(function () {
+            $op1.append('swipeDown -- ');
+        });
+        $red.on('touchend', function () {
+            $op1.append('touchend -- ');
+        });
+
+//        $red.on('click', function () {
+////            console.log('click');
+//            $op1.append('click -- ');
+//        });
+//        $red.on('touchstart', function () {
+////            console.log('touchstart');
+//            $op1.append('touchstart -- ');
+//        });
+//        $red.on('touchend', function () {
+//            $op1.append('touchend -- ');
+//        });
+//        $red.tap(function () {
+//            $op1.append('tap -- ');
+//        });
+//        $red.singleTap(function () {
+//            $op1.append('singleTap -- ');
+//        });
+//        $red.doubleTap(function () {
+//            $op1.append('doubleTap -- ');
+//        })
+    })
+</script>
+</body>
+</html>

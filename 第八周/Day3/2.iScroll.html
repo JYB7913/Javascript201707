@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="reset.min.css">
+    <style type="text/css">
+        .list {
+            /*width: 150%;*/
+            font-size: 16px;
+        }
+
+        .list li {
+            color: #fff;
+            background: #cbfff7;
+            font-size: 18px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-bottom: 1px solid #fff;
+        }
+
+        #wrapper {
+            height: 400px;
+            border-bottom: 1px solid red;
+        }
+
+        .myScrollbarV {
+            position: absolute;
+            z-index: 100;
+            width: 8px;
+            bottom: 7px;
+            top: 2px;
+            right: 1px;
+        }
+
+        .myScrollbarV > div {
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            /* The following is probably what you want to customize */
+            background: -webkit-gradient(linear, 0 0, 100% 0, from(#f00), to(#900));
+            border: 1px solid #800;
+            -webkit-background-clip: padding-box;
+            -webkit-box-sizing: border-box;
+            -webkit-border-radius: 4px;
+            -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <ul class="list">
+        <li>下拉加载</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>010</li>
+        <li>011</li>
+        <li>012</li>
+        <li>013</li>
+        <li>014</li>
+        <li>015</li>
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+        <li>010</li>
+        <li>011</li>
+        <li>012</li>
+        <li>013</li>
+        <li>014</li>
+        <li>015</li>
+    </ul>
+    <!--<div class="myScrollbarV">-->
+    <!--<div></div>-->
+    <!--</div>-->
+</div>
+<script type="text/javascript" src="src/iscroll.js"></script>
+<script type="text/javascript" src="src/zepto.js"></script>
+<script type="text/javascript">
+    $(function () {
+//        只支持id名
+//        myScroll.scrollTo(0, -200, 300) // 滚动到 指定 x y 位置 time 定位
+        window.myScroll = new iScroll('wrapper', {
+//           hScroll: false, // 是否允许水平滚动 默认 true
+//           vScroll: false, // 是否允许垂直滚动 默认 true
+//           bounce: false // 大于边界时 是否有反弹效果
+//           bounceLock: true
+//           momentum: false // 是否拖动惯性
+           topOffset: 40, // 设置滚动基准点
+//           hScrollbar: false, // 是否显示水平滚动条
+//           vScrollbar: false, // 是否显示垂直滚动条
+//           hideScrollbar: false // 无用户操作时 是否隐藏滚动条 默认 true
+//           fadeScrollbar: false // 是否允许滚动条渐隐渐现
+//          scrollbarClass: 'myScrollbarV'
+
+            onScrollStart: function () {
+                console.log('start');
+                console.log(this);
+            },
+            onScrollMove: function () {
+//                console.log('Move');
+//                console.log(this);
+//                console.log(this.x); // 水平滚动距离
+//                this.maxScrollY // 往上垂直滚动 最大距离 负值
+                console.log(this.x, this.maxScrollX); // 水平滚动距离 最大值 负值 左负 右正
+//               console.log(this.y, this.maxScrollY); // 垂直滚动距离 最大值 负值 上负 下正
+            },
+            onScrollEnd: function () {
+//               let arr = new Array(10);
+//               $.each(arr, (n)=> {
+//                   $('.list').append(`<li>加载 -- 0${n}</li>`)
+//               });
+//                this.refresh(); // 重新计算滚动区域
+
+            },
+            onRefresh: function () { // 重新计算滚动区域完成后的回调函数
+
+            }
+
+        }); // 初始化 注意 要保证页面所有资源加载完
+    });
+</script>
+</body>
+</html>
