@@ -10,12 +10,7 @@
     <bookmark url="file://$PROJECT_DIR$/第七周/Day5/4.rem.html" line="59" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f85ff748-cba0-456f-a219-639f9b232176" name="Default" comment="update HTML5">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/第八周/Day4/flexbox/6.两端固定中间自适应.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/第八周/Day4/flexbox/3.flex-item.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/第八周/Day4/flexbox/5.垂直水平居中.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/第八周/Day4/flexbox/4.导航.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/第八周/Day4/flexbox/2.flex.html" afterPath="$PROJECT_DIR$/第八周/Day4/flexbox/2.flex.html" />
+    <list default="true" id="f85ff748-cba0-456f-a219-639f9b232176" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -352,14 +347,7 @@
       <workItem from="1502584584894" duration="12060000" />
       <workItem from="1502845445827" duration="10788000" />
       <workItem from="1503106897857" duration="21514000" />
-      <workItem from="1503138171781" duration="5000" />
-    </task>
-    <task id="LOCAL-00124" summary="update 拖拽">
-      <created>1501150159877</created>
-      <option name="number" value="00124" />
-      <option name="presentableId" value="LOCAL-00124" />
-      <option name="project" value="LOCAL" />
-      <updated>1501150159877</updated>
+      <workItem from="1503138171781" duration="146000" />
     </task>
     <task id="LOCAL-00125" summary="update 京东放大镜">
       <created>1501150612029</created>
@@ -697,11 +685,18 @@
       <option name="project" value="LOCAL" />
       <updated>1502533728011</updated>
     </task>
-    <option name="localTasksCounter" value="173" />
+    <task id="LOCAL-00173" summary="update HTML5">
+      <created>1503138190809</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1503138190809</updated>
+    </task>
+    <option name="localTasksCounter" value="174" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="772255000" />
+    <option name="totallyTimeSpent" value="772396000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1370" height="735" extended-state="0" />
@@ -772,9 +767,9 @@
     <MESSAGE value="update 多级菜单" />
     <MESSAGE value="update 发布/订阅" />
     <MESSAGE value="update css3" />
-    <MESSAGE value="update HTML5" />
     <MESSAGE value="update CSS3" />
-    <option name="LAST_COMMIT_MESSAGE" value="update CSS3" />
+    <MESSAGE value="update HTML5" />
+    <option name="LAST_COMMIT_MESSAGE" value="update HTML5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
