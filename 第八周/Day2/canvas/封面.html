@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--meta:vp tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+    var cas = document.getElementById('canvas');
+    var ctx = cas.getContext('2d');
+    var w = document.documentElement.clientWidth || document.body.clientWidth,
+        h = document.documentElement.clientHeight || document.body.clientHeight;
+    cas.width = w;
+    cas.height = h;
+    var loadArr = ["images/canvas/01.jpg", "images/canvas/02.jpg", "images/canvas/03.jpg", "images/canvas/04.jpg", "images/canvas/05.jpg", "images/canvas/06.jpg", "images/canvas/07.jpg", "images/canvas/08.jpg", "images/canvas/09.jpg", "images/canvas/10.jpg", "images/canvas/11.jpg", "images/canvas/12.jpg", "images/canvas/13.jpg", "images/canvas/14.jpg", "images/canvas/15.jpg", "images/canvas/16.jpg", "images/canvas/17.jpg", "images/canvas/18.jpg", "images/canvas/19.jpg", "images/canvas/20.jpg", "images/canvas/21.jpg", "images/canvas/22.jpg", "images/canvas/23.jpg", "images/canvas/24.jpg", "images/canvas/25.jpg", "images/canvas/26.jpg", "images/canvas/27.jpg", "images/canvas/28.jpg", "images/canvas/29.jpg", "images/canvas/30.jpg", "images/canvas/31.jpg", "images/canvas/32.jpg", "images/canvas/33.jpg", "images/canvas/34.jpg", "images/canvas/35.jpg", "images/canvas/36.jpg", "images/canvas/37.jpg", "images/canvas/38.jpg", "images/canvas/39.jpg", "images/canvas/40.jpg", "images/canvas/41.jpg", "images/canvas/42.jpg", "images/canvas/43.jpg", "images/canvas/44.jpg", "images/canvas/45.jpg", "images/canvas/46.jpg", "images/canvas/47.jpg", "images/canvas/48.jpg", "images/canvas/49.jpg"];
+    var cArr = ["images/canvas/50.jpg", "images/canvas/51.jpg", "images/canvas/52.jpg", "images/canvas/53.jpg", "images/canvas/54.jpg", "images/canvas/55.jpg", "images/canvas/56.jpg", "images/canvas/57.jpg", "images/canvas/58.jpg", "images/canvas/59.jpg", "images/canvas/60.jpg", "images/canvas/61.jpg", "images/canvas/62.jpg", "images/canvas/63.jpg", "images/canvas/64.jpg", "images/canvas/65.jpg", "images/canvas/66.jpg", "images/canvas/67.jpg", "images/canvas/68.jpg", "images/canvas/69.jpg", "images/canvas/70.jpg", "images/canvas/71.jpg", "images/canvas/72.jpg", "images/canvas/73.jpg", "images/canvas/74.jpg", "images/canvas/75.jpg", "images/canvas/76.jpg", "images/canvas/77.jpg", "images/canvas/78.jpg", "images/canvas/79.jpg", "images/canvas/80.jpg", "images/canvas/81.jpg", "images/canvas/82.jpg", "images/canvas/83.jpg", "images/canvas/84.jpg", "images/canvas/85.jpg", "images/canvas/86.jpg", "images/canvas/87.jpg", "images/canvas/88.jpg", "images/canvas/89.jpg", "images/canvas/90.jpg", "images/canvas/91.jpg", "images/canvas/92.jpg", "images/canvas/93.jpg", "images/canvas/94.jpg", "images/canvas/95.jpg", "images/canvas/96.jpg", "images/canvas/97.jpg", "images/canvas/98.jpg", "images/canvas/99.jpg"];
+    var ary = loadArr.concat(cArr);
+    //console.log(ary);//
+    var i = 0;
+    setInterval(function () {
+        if (i > ary.length - 1) {
+            i = 0;
+        }
+        var oImg = new Image();
+        oImg.src = ary[i];
+        oImg.onload = function () {
+            ctx.drawImage(oImg, 0, 0, w, h);
+            i++;
+        }
+    }, 200)
+
+
+    /*640*1136 =>iphone 5
+    750*1334 =>iphone 6*/
+</script>
+</body>
+</html>

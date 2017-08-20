@@ -1,0 +1,50 @@
+
+
+//h3 {
+//  background-color: red;
+//  font-size: 16px;
+//}
+/* 关于container1 的样式*/
+#container1 {
+    h3 {
+      color: red;
+      font-size: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: blue;
+      &:hover {
+        background-color: red;
+      }
+    }
+
+    p {
+      color: yellow;
+      font-size: 16px;
+    }
+}
+
+/* 关于container2 的样式*/
+@bg: red;
+#container2 {
+  background-color: @bg + #fefefe;
+  h3 {
+    font-size: 25px;
+  }
+}
+
+//#container1 a {
+//  color: black;
+//}
+
+
+
+//#container2 h3{
+//  background-color: #ff6ead;
+//  font-size: 18px;
+//  color: #ade9ff;
+//}
+//
+//#container2 a {
+//  color: black;
+//}

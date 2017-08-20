@@ -1,0 +1,20 @@
+@red: yellow;
+@color: 'red';
+@wid: 100px;
+/* 这是个注释 */
+.oDiv1 {
+  width: @wid;
+  height: @wid;
+  border: 1px solid @red;
+  color: @@color; // @color: 'red' @@color => @'red' 编译后不显示
+  margin-bottom: 10px;
+}
+
+
+.oDiv2 {
+  width: @wid*2;
+  height: @wid;
+  border: 1px solid @red;
+  color: @red;
+}
+
