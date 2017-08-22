@@ -11,7 +11,7 @@
  URL (统一资源定位符)  URN
 https://www.baidu.com/s?
 完整uri
-schema://username:password@服务器地址（IP地址):port/路径?查询字符串#哈希值
+protocol://username:password@服务器地址（IP地址):port/路径?查询字符串#哈希值
 
 页面中 href src 引入的外部资源都会 发送http请求  再发送http请求工程中有一个等待服务器响应的时间 影响到页面加载速度
 
@@ -41,7 +41,7 @@ telnet 23
  传输http报文
  http请求报文
  请求行
- http 1.1  method
+ http 1.1  method path
  请求头
  Accept  客户端可以接收的mime类型
  Connection:keep-alive 链接状态
