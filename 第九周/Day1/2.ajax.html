@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+<p id="title"></p>
+<script type="text/javascript">
+    // ajax 异步交互 局部刷新
+    let btn = document.getElementById('btn');
+    let title = document.getElementById('title');
+
+    let xhr = new XMLHttpRequest();
+    console.log(xhr.readyState); //  0 
+    xhr.open('GET', 'data.json');
+    console.log(xhr.readyState); // 1
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState); // 2  3 4
+        /** readyState
+         * 0 未初始化 创建ajax对象 初始化未完成 还没有调用open方法
+         * 1 正在载入  已经调用了open 方法
+         * 2 载入完成  已经开始发送了请求 调用了send()
+         * 3 接收响应并解析  正在交互中 并接收响应解析
+         * 4 结束响应 DONE   结束响应
+         */
+        if(this.readyState === 4 && /^2\d{2}$/.test(this.status)){
+            console.log(this.response);
+            title.innerHTML = this.response.title;
+        }
+    };
+
+    xhr.send();
+
+    
+//    btn.onclick = function () {
+//        let xhr = new XMLHttpRequest();
+//        xhr.open('GET', 'data.json');
+//        xhr.responseType = 'json';
+//        xhr.onreadystatechange = function () {
+//            if(this.readyState === 4 && /^2\d{2}$/.test(this.status)){
+//                console.log(this.response);
+//                title.innerHTML = this.response.title;
+//            }
+//        };
+//        xhr.send();
+//        console.log(123);
+//    };
+//    
+//    
+//    setTimeout(function () {
+//        console.log('time');
+//    }, 0);
+//    console.log(666);
+</script>
+</body>
+</html>
