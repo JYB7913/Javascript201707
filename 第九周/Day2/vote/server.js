@@ -2,7 +2,6 @@ let http = require('http');
 let fs = require('fs');
 let mime = require('mime');
 
-
 http.createServer((req, res) => {
     console.log(req.url);
     if(req.url === '/'){
