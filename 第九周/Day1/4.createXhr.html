@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    function createXhr() {
+//        let xhr = null;
+//        if(window.XMLHttpRequest){
+//            xhr = new XMLHttpRequest();
+//        } else {
+//            if(new ActiveXObject('Microsoft.XMLHTTP')){
+//                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+//            } else if(new ActiveXObject('Msxml2.XMLHTTP')){
+//                xhr = new ActiveXObject('Msxml2.XMLHTTP');
+//            } else if(new ActiveXObject('Msxml3.XMLHTTP')){
+//                xhr = new ActiveXObject('Msxml3.XMLHTTP');
+//            }
+//        }
+//        return xhr;
+//    }
+
+//function createXhr() {
+//   let arr = ["return new XMLHttpRequest()", "return new ActiveXObject('Microsoft.XMLHTTP')", "return new ActiveXObject('Msxml2.XMLHTTP')", "return new ActiveXObject('Msxml3.XMLHTTP')"];
+//   let xhr = null;
+//   for(let i = 0; i < arr.length; i ++) {
+//       try  {
+//           createXhr = new Function(arr[i]);
+//           console.log(createXhr);
+//           xhr = createXhr();
+//           break;
+//       }catch (e){}
+//   }
+//   if(!xhr) {
+//       console.log('请升级浏览器~~~');
+//   }
+//   return xhr;
+//}
+
+
+
+
+
+//let fn = new Function('return new XMLHttpRequest()');
+//console.log(fn);
+//console.log(fn());
+
+//console.log(createXhr());
+//console.log(createXhr);
+
+
+function createXhr() {
+    let arr = [function () {
+        return new XMLHttpRequest()
+    }, function () {
+        return new ActiveXObject('Microsoft.XMLHTTP');
+    }, function () {
+        return new ActiveXObject('Msxml2.XMLHTTP');
+    }, function () {
+        return new ActiveXObject('Msxml3.XMLHTTP');
+    }];
+    let xhr = null, curFn;
+    for(let i = 0; i < arr.length; i ++) {
+        try  {
+            curFn = arr[i];
+            xhr = curFn();
+            createXhr = curFn;
+            break;
+        }catch (e){}
+    }
+    if(!xhr) {
+        console.log('请升级浏览器~~~');
+    }
+    return xhr;
+}
+
+
+console.log(createXhr());
+console.log(createXhr);
+
+</script>
+</body>
+</html>

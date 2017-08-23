@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>hello world</h3>
+<!--
+ URI (统一资源标识符)
+ URL (统一资源定位符)  URN
+https://www.baidu.com/s?
+完整uri
+protocol://username:password@服务器地址（IP地址):port/路径?查询字符串#哈希值
+
+页面中 href src 引入的外部资源都会 发送http请求  再发送http请求工程中有一个等待服务器响应的时间 影响到页面加载速度
+
+schema 端口
+tcp/ip协议
+http  80
+https 443 SSL安全的传输协议
+ftp  21
+tftp 69
+telnet 23
+
+端口 0-65535
+256 常用
+开发人员 用的预留端口号 1000 > 四位数 3000 7000 8080 8090 9090
+
+网络地址
+域名对应一个 ip地址  DNS域名解析服务器 将域名解析为ip地址 找到对应的服务器
+
+ 客户端请求 服务端响应
+ 减少页面中的http请求
+ 雪碧图 图标字体
+ 页面脚本/css较少的时候 内嵌式
+ webpack 打包编译
+
+
+ http 事务：客户端发送一个http请求  服务端响应
+ 传输http报文
+ http请求报文
+ 请求行
+ http 1.1  method path
+ 请求头
+ Accept  客户端可以接收的mime类型
+ Connection:keep-alive 链接状态
+ Cookie 携带的cookie
+ Host 主机名
+ User-Agent 客户端软件环境
+
+ post 请求体
+ 传输数据
+ get 拼接查询字符串
+ post xhr.send(JSON.stringify(data)) 通过请求体传输数据
+
+ mime类型 区分消息内容类型
+ image/jpeg   .jpeg
+ image/png    .png
+ image/gif   .gif
+ text/html   .html
+ text/javascript  .js
+
+
+
+http 请求方式
+get 从服务器获取资源
+post  给服务器传输数据
+put  更新服务器资源
+delete  删除服务器的资源
+head  传输请求首部
+
+restful 风格
+增post 删delete 查get 改put
+
+
+http status 状态码
+2开头 请求成功
+200 201 202   ok
+
+3开头 重定向
+301 永久重定向
+302 临时重定向
+304 缓存
+
+4开头 客户端错误
+403 权限未通过
+404 未找到
+
+5开头 服务器错误
+502 Bad Gateway
+
+
+
+
+
+
+ http响应报文
+ 响应行
+  http 1.1   status  200 ok
+ 响应头
+ Connection:Keep-Alive
+ // 告诉客户端 当前响应的内容 mime类型 字符编码格式
+ Content-Type:text/html;charset=utf-8
+ // 响应时间
+ Date: Tue, 22 Aug 2017 04:11:17 GMT
+
+ 响应体
+ 响应的内容
+
+
+ipconfig
+ipconfig/all
+nslookup 域名解析诊断
+ping 测试是否能够通信
+
+-->
+
+</body>
+</html>

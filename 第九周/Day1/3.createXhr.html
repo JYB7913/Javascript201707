@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+<button id="btn2">button</button>
+<p id="title"></p>
+<script type="text/javascript">
+
+    //  惰性函数的概念
+    //  函数中 如果多次检测情况 在第一次执行的时候 就将 该函数 重写为 所支持的 方法
+    //  以后 就不需要每执行一次 就重新检测一次
+    function on(ele, type, fn) {
+        if(ele.addEventListener){
+            ele.addEventListener(type, fn, false);
+            on = function (ele, type, fn) {
+                ele.addEventListener(type, fn, false);
+            }
+        } else if (ele.attachEvent){
+            ele.attachEvent('on' + type, fn);
+            on = function (ele, type, fn) {
+                ele.attachEvent('on' + type, fn);
+            }
+        } else {
+            ele['on' + type] = fn;
+            on = function (ele, type, fn) {
+               ele['on' + type] = fn;
+            }
+        }
+    }
+
+//    console.log(on);
+//    on(btn, 'click', fn1);
+//    console.log(on);
+//    on(btn2, 'click', fn1);
+
+//    function fn1() {
+//        console.log('fn1');
+//    }
+
+//    btn.onclick = function () {
+//        let xhr = createXhr();
+//        xhr.open('GET', 'data.json');
+//        xhr.responseType = 'json';
+//        xhr.onreadystatechange = function () {
+//            if(this.readyState === 4 && /^2\d{2}$/.test(this.status)){
+//                console.log(this.response);
+//                title.innerHTML = this.response.title;
+//            }
+//        };
+//        xhr.send();
+//        console.log(123);
+//    };
+//
+//    function createXhr() {
+//        let xhr = null;
+//        if(window.XMLHttpRequest){
+//            xhr = new XMLHttpRequest();
+//        } else { // ie 低版本
+//            if (new ActiveXObject('Microsoft.XMLHTTP')) {
+//                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+//            } else if (new ActiveXObject('Msxml2.XMLHTTP')) {
+//                xhr = new ActiveXObject('Msxml2.XMLHTTP');
+//            } else if (new ActiveXObject('Msxml3.XMLHTTP')) {
+//                xhr = new ActiveXObject('Msxml3.XMLHTTP');
+//            }
+//        }
+//        return xhr;
+//    }
+//    
+//    
+//    setTimeout(function () {
+//        console.log('time');
+//    }, 0);
+//    console.log(666);
+</script>
+</body>
+</html>

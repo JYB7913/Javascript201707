@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    let xhr = new XMLHttpRequest();
+let params = {id: 24, name: 'zhufeng'};
+
+    let xhr = createXhr();
+//    xhr.open('GET', 'data.json?id=24&name=zhufeng');
+    xhr.open('POST', 'data.json');
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+            console.log(this.response);
+        }
+    };
+    xhr.send(JSON.stringify(params));
+
+    // IE6以下 使用 ActiveXObject
+    //  console.log(ActiveXObject);
+
+    function createXhr() {
+        let xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        } else { // ie 低版本
+            if (new ActiveXObject('Microsoft.XMLHTTP')) {
+                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            } else if (new ActiveXObject('Msxml2.XMLHTTP')) {
+                xhr = new ActiveXObject('Msxml2.XMLHTTP');
+            } else if (new ActiveXObject('Msxml3.XMLHTTP')) {
+                xhr = new ActiveXObject('Msxml3.XMLHTTP');
+            }
+        }
+        return xhr;
+    }
+
+
+
+</script>
+</body>
+</html>

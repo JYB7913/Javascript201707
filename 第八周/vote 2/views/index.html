@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/dev/reset.min.css">
+    <link rel="stylesheet/less" href="/stylesheets/page/index.less">
+    <script type="text/javascript" src="/javascripts/less.min.js"></script>
+    <script type="text/javascript" src="/javascripts/rem.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    <!-- 首部 -->
+    <div class="header">
+        <!-- 头部按钮 -->
+     <div class="clickBtns">
+         <a class="sign_in" href="javascript:;">用户登录</a>
+         <a class="active_rule" href="/vote/rule">活动规则</a>
+     </div>
+        <!-- headImg -->
+     <div class="headImg">
+         <img src="/images/title.png" alt="">
+     </div>
+        <!-- 报名按钮 -->
+      <div class="registerBtn">
+            我要报名
+      </div>
+        <!-- 搜索 -->
+      <div class="search">
+            <input type="text" placeholder="请输入用户名称或编号"><span class="searchBtn">搜索</span>
+      </div>
+    </div>
+    <!-- 用户列表 -->
+    <div class="userLists">
+        <ul class="lists">
+            <!--<li>-->
+                <!--<div class="head">-->
+                    <!--<a href="/vote/detail?id=1">-->
+                        <!--<img src="/images/girl.png" alt="">-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="desc">-->
+                    <!--<a href="/vote/detail?id=1">-->
+                        <!--<p>-->
+                            <!--<span class="username">React</span>-->
+                            <!--<span>|</span>-->
+                            <!--<span class="userId">编号#1</span>-->
+                        <!--</p>-->
+                        <!--<p>想要的，就去追求，别废话！</p>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="vote">-->
+                    <!--<span>8票</span>-->
+                    <!--<div class="voteBtn">投TA一票</div>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+<div id="mask">
+    <div class="subInfo">
+        <!-- 未登录 -->
+        <div class="userLogin">
+            <h3 class="infoTitle">请输入用户信息进行验证</h3>
+            <div class="userInfo"><input placeholder="请填写用户编号" class="usernum" type="number"></div>
+            <div class="userInfo"><input placeholder="请输入用户密码" class="userpassword" type="password"></div>
+            <div class="submitBtn">提交</div>
+            <div class="registerInfo">
+                <a href="/vote/register">
+                    <span>没有用户名和编号？</span>
+                    <span>请先进行报名</span>
+                </a>
+            </div>
+        </div>
+        <!-- 登录后 -->
+        <div class="userLogined">
+            <div class="title">Welcome!</div>
+            <div class="username"></div>
+            <div class="logoutBtn">退出登录</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/zepto.min.js"></script>
+<script type="text/javascript" src="/javascripts/vote2.js"></script>
+</body>
+</html>
