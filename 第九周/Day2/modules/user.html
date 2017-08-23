@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index2.css">
+    <link rel="stylesheet" href="/index3.css">
+</head>
+<body>
+<h3>hello  nodejs!</h3>
+<ul id="lists">
+
+</ul>
+<script type="text/javascript">
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/vote');
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function () {
+        if(this.readyState === 4 && /^2\d{2}$/.test(this.status)){
+            console.log(this.response);
+            let str = ``;
+            this.response.data.forEach((item) => {
+                str += `<li>${item.id}</li>`
+            });
+            lists.innerHTML = str;
+        }
+    };
+    xhr.send();
+</script>
+</body>
+</html>
