@@ -1,0 +1,1 @@
+title.onclick = () => alert('hello world');
