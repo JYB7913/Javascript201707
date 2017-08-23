@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>'
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+<h3>hello index</h3>
+查询id：<select id="getUser">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+
+<button id="btn">请求所有</button>
+<ul id="userList">
+
+</ul>
+<script type="text/javascript">
+  // /user/list
+    let userList = document.getElementById('userList');
+    let btn = document.getElementById('btn');
+
+    let REG_URL = '/getUserAll';
+    btn.onclick = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', REG_URL);
+            xhr.responseType = 'json';
+            xhr.onreadystatechange = function () {
+                if(this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                    if(this.response.errno === 0) {
+                        bindData(this.response.data);
+                    }
+                }
+            };
+            xhr.send();
+        };
+        
+
+  let bindData = (data) => {
+           let str = ``;
+           data.forEach((item) => {
+               str += `
+                <li>id：${item.id} -- name：${item.name}</li>
+               `
+           });
+           userList.innerHTML = str;
+       };
+
+    getUser.onchange = function () {
+        let id = this.value;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/getUser?id='+id);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if(this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                if(this.response.errno === 0) {
+                    bindData(this.response.data)
+                }
+            }
+        };
+        xhr.send();
+  }
+</script>
+</body>
+</html>

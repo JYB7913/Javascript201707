@@ -23,7 +23,8 @@ http.createServer((req, res) => {
 
 // 检测 请求的静态资源文件 是否存在于服务器的硬盘中
     let flag = fs.existsSync('.' + pathname);
-    if (flag) {
+    console.log(flag);
+        if (flag) {
         let staticContent = fs.readFileSync('.' + pathname);
         // 设置响应头 告诉客户端 响应内容的mime类型和字符编码格式
         res.setHeader('Content-Type', `${mime.lookup(pathname)};charset=utf-8`);
@@ -35,3 +36,4 @@ http.createServer((req, res) => {
     }
 
 }).listen(8070, () => console.log('监听8070'));
+// fs.readFileSync('/'); // illegal operation on a directory, read

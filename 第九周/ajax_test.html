@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function creat() {
+        let ary=['return new XMLHttpRequest()','return new ActiveXObject("Microsoft.XMLHTTP") ','return new ActiveXObject("Msxml2") ','return new ActiveXObject("Msxml3")'];
+        for(let i=0;i<ary.length;i++){
+            try{
+                curFn=ary[i];
+                let xhr=curFn();
+                creat=curFn;
+                break;
+            }catch (e){}
+        }
+        if(!xhr){
+            throw new Error('dd')
+        }
+        return xhr;
+    }
+</script>
