@@ -4,28 +4,26 @@ let url = require('url'); // 解析url
 let mime = require('mime'); // 解析文件mime类型 第三方
 
 http.createServer((req, res) => {
-     let {pathname, query} = url.parse(req.url, true);
+    let {pathname, query} = url.parse(req.url, true);
     // 访问根路径 返回首页
-    if(pathname === '/'){
+    if (pathname === '/') {
         let htmlStr = fs.readFileSync('./index.html');
         res.setHeader('Content-Type', 'text/html;charset=utf-8');
         res.end(htmlStr);
-      return;
-}
+        return;
+    }
 
     // 数据接口
-    if(pathname === '/vote/user'){
+    if (pathname === '/vote/user') {
         let userData = fs.readFileSync('./user.json');
         res.setHeader('Content-Type', 'application/json;charset=utf-8');
         res.end(userData);
         return;
     }
 
-
-
 // 检测 请求的静态资源文件 是否存在于服务器的硬盘中
     let flag = fs.existsSync('.' + pathname);
-    if(flag) {
+    if (flag) {
         let staticContent = fs.readFileSync('.' + pathname);
         // 设置响应头 告诉客户端 响应内容的mime类型和字符编码格式
         res.setHeader('Content-Type', `${mime.lookup(pathname)};charset=utf-8`);
