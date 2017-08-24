@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>nihao</h3>
+<button id="getAll">获取所有</button>
+<button id="get">获取单个</button>
+
+
+<br>
+<!--<button id="post">发送post请求</button>-->
+<script type="text/javascript">
+
+    // '/getUser' get 请求方式查询单个id=1 不传id 默认 获取所有
+    //   '/getUser' post 请求增加
+    let data = {say: 'nihao', hi: 'hello'};
+    let api = '/getUser?';
+    getAll.onclick = function () {
+        request1('GET', api);
+    };
+    
+    // request  {type, url, data}
+    post.onclick = function () {
+        request2({
+//            type: 'get',
+            url: api,
+//            data: data
+        });
+    };
+
+    // url? id=24&sau=nihao
+
+
+    // ES6 参数的解构赋值+默认值 {type = 'get', url, data = {}}
+    function request2({type = 'get', url, data = {}}) {
+        if(!url){
+            console.warn('url参数未定义');
+            return;
+        }
+        let xhr = new XMLHttpRequest();
+        console.log(data);
+
+        if(/get/ig.test(type)) { // get 请求拼接数据 是否有？ &链接问题
+            for(let k in data) {
+                if(data.hasOwnProperty(k)) {
+                    if(url.indexOf('?')>-1){
+                        url += `${k}=${data[k]}&`;
+                    } else {
+                        url += `?${k}=${data[k]}&`;
+                    }
+                }
+            }
+            url = url.slice(0, -1);
+        }
+
+        xhr.open(type, url);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if(this.readyState === 4 && /^2\d{2}$/g.test(this.status)) {
+                console.log(this.response);
+            }
+        };
+        xhr.send(JSON.stringify(data));
+    }
+
+    // ES5
+    function request1(options) {
+        if(!options.url){
+            console.warn('url参数未定义');
+            return;
+        }
+        // 赋值和默认值处理
+        let url = options.url;
+        let type = options.type || 'get';
+        let data = options.data || {};
+
+        let xhr = new XMLHttpRequest();
+
+        if(/get/ig.test(type)) { // get 请求拼接数据 是否有？ &链接问题
+            for(let k in data) {
+                if(data.hasOwnProperty(k)) {
+                    if(url.indexOf('?')>-1){
+                        url += `${k}=${data[k]}&`;
+                    } else {
+                        url += `?${k}=${data[k]}&`;
+                    }
+                }
+            }
+            url = url.slice(0, -1);
+        }
+
+        xhr.open(type, url);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if(this.readyState === 4 && /^2\d{2}$/g.test(this.status)) {
+                console.log(this.response);
+            }
+        };
+        xhr.send(JSON.stringify(data));
+    }
+
+</script>
+</body>
+</html>

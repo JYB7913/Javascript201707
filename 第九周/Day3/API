@@ -1,0 +1,6 @@
+/getUser
+1.get
+有id 获取单个数据
+无id 获取所有
+2.post
+增加数据

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+查询id：<input style="width: 200px" type="number" id="query" placeholder="根据ID进行查询" max="100" min="1">
+<br>
+<ul id="lists"></ul>
+
+<form onsubmit="return false">
+    用户名： <input type="text">
+    密码：<input type="password">
+    <button type="btn" id="addBtn">增加</button>
+</form>
+
+
+<script type="text/javascript">
+    let lists = document.getElementById('lists');
+    let query = document.getElementById('query');
+    let addBtn = document.getElementById('addBtn');
+    let api = '/getUser?';
+
+    addBtn.onclick = function () {
+        request2({
+            type: 'POST',
+            data: {
+
+            }
+        })
+    };
+    query.oninput = function () {
+        request2({
+            url: api,
+            data: {
+                id: this.value
+            },
+            success(res){
+                if(res.errno === 0) {
+                    if(res.data.length) {
+                        let str = ``;
+                        res.data.forEach((item)=> {
+                            str += `<li>id：${item.id}</li>`
+                        });
+                        lists.innerHTML = str;
+                    } else {
+                        lists.innerHTML = `<li>查询ID不存在</li>`;
+                    }
+
+                }
+            }
+        })
+    };
+ 
+
+    getInit(); // 获取初始数据
+    function getInit() {
+        request2({
+            url: api,
+            success(res){
+               if(res.errno === 0) {
+                   let str = ``;
+                   res.data.forEach((item)=> {
+                         str += `<li>id：${item.id}</li>`
+                   });
+                   lists.innerHTML = str;
+               }
+            }
+        });
+    }
+
+    // ES6 参数的解构赋值+默认值 {type = 'get', url, data = {}}
+    function request2({type = 'get', url, data = {}, success}) {
+        if(!url){
+            console.warn('url参数未定义');
+            return;
+        }
+        let xhr = new XMLHttpRequest();
+        if(/get/ig.test(type)) { // get 请求拼接数据 是否有？ &链接问题
+            for(let k in data) {
+                if(data.hasOwnProperty(k)) {
+                    if(url.indexOf('?')>-1){
+                        url += `${k}=${data[k]}&`;
+                    } else {
+                        url += `?${k}=${data[k]}&`;
+                    }
+                }
+            }
+            url = url.slice(0, -1);
+        }
+
+        xhr.open(type, url);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if(this.readyState === 4 && /^2\d{2}$/g.test(this.status)) {
+               typeof success === 'function'? success(this.response) : null;
+            }
+        };
+        xhr.send(JSON.stringify(data));
+    }
+
+</script>
+</body>
+</html>
