@@ -8,14 +8,13 @@ let resObj = {
 http.createServer((req, res) => {
     let {pathname, query} = url.parse(req.url, true);
     if(pathname === '/'){
-        let htmlStr = fs.readFileSync('./1.html');
+        let htmlStr = fs.readFileSync('./2.html');
         res.setHeader('Content-Type', 'text/html;charset=utf-8');
         res.end(htmlStr);
         return;
     }
-
     if(pathname === '/getUser'){
-        let users = JSON.parse(fs.readFileSync('./user.json')); // 只要请求这个接口 都要想读取到 存储的数据 然后进行查询或增加操作
+        let users = JSON.parse(fs.readFileSync('./user.json')); // 只要请求这个接口 都要读取一遍 存储的数据 然后进行查询或增加操作
         if(req.method === 'GET') {
             let id = query.id;
             res.setHeader('Content-Type', 'application/json;charset=utf-8');
@@ -26,8 +25,6 @@ http.createServer((req, res) => {
                 resObj.data = users;
             }
             res.end(JSON.stringify(resObj));
-
-
         } else if(req.method === 'POST') {
             let str = '';
             req.on('data', (data) => str += data);
