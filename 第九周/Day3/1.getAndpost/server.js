@@ -22,7 +22,6 @@ http.createServer((req, res) => {
             if(id){
                 let user = users.find((item) => item.id == id);
                 resObj.data = user ? [user] : [];
-
             } else { // 返回所有
                 resObj.data = users;
             }
@@ -43,8 +42,6 @@ http.createServer((req, res) => {
                 res.end(JSON.stringify(resObj));
             });
         }
-
-
     }
 
 }).listen(7000, () => console.log('监听7000'));

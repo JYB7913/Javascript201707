@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+<p>这是首页</p>
+<script type="text/javascript">
+    let xhr = new XMLHttpRequest();
+    // ?id=26&object=react
+    let obj = {id: 26, obj: 'react'};
+//    xhr.open('POST', '/datalist?id=26&object=react&_='+ Math.random());
+//    xhr.open('POST', '/datalist?id=26&object=react&_='+ new Date().getTime());
+//    xhr.open('POST', '/datalist?id=26&object=react&_='+ Date.now());
+    xhr.open('POST', '/datalist?id=24');
+    xhr.onreadystatechange = function () {
+        if(this.readyState === 4 && /^2\d{2}$/g.test(this.status)){
+            console.log(this.response);
+        }
+    };
+
+    xhr.send(JSON.stringify({id: 26, obj: 'react'})); // 通过请求体发送数据
+
+//    GET 和 POST
+//    get通常用来查询和获取  post 发送或更新
+//  1.传输数据大小限制
+//   get url长度限制 Chrome 8k ie 2k   post 把数据放到请求体里 没有大小限制
+//   2. 缓存
+//   get  缓存问题  在？拼接随机数或时间戳
+//   post 没有缓存
+//   3.安全问题  MD5加密
+//   get 将传递给后台的数据 拼接到url后面 容易被劫持
+//   post 是放在请求体里  传输过程中 看不到的
+
+
+
+
+</script>
+</body>
+</html>
