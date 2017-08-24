@@ -10,9 +10,9 @@
 <ul id="lists"></ul>
 
 <form onsubmit="return false">
-    用户名： <input type="text">
-    密码：<input type="password">
-    <button type="btn" id="addBtn">增加</button>
+    用户名： <input type="text" id="username">
+    密码：<input type="password" id="password">
+    <button type="button" id="addBtn">增加</button>
 </form>
 
 
@@ -20,14 +20,30 @@
     let lists = document.getElementById('lists');
     let query = document.getElementById('query');
     let addBtn = document.getElementById('addBtn');
-    let api = '/getUser?';
+    let username = document.getElementById('username');
+    let password = document.getElementById('password');
+    let api = '/getUser';
 
     addBtn.onclick = function () {
+        let val1 = username.value;
+        let val2 = password.value;
+        if(/^\s*$/g.test(val1) || /^\s*$/g.test(val2)) {
+            alert('请将信息填写完整');
+            return;
+        }
         request2({
+            url: api,
             type: 'POST',
             data: {
-
+                username: val1,
+                password: val2
+            },
+            success(res) {
+                if(res.errno === 0){
+                    alert('添加成功');
+                }
             }
+            
         })
     };
     query.oninput = function () {
