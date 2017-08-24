@@ -6,14 +6,13 @@ let fs = require('fs');
 
 let res = fs.readFileSync('./server.js', 'utf8');
 
-fs.writeFileSync('./server2.js', res, 'utf8');
+let flag = fs.writeFileSync('./server2.js', res, 'utf8');
 
-
-function copy(start, target) {
-    let flag = fs.existsSync(start);
-    if(flag) {
-        let res = fs.readFileSync(start);
-        fs.writeFileSync(target, res);
-    }
-}
-copy('./user.json', './user2.json');
+// function copy(start, target) {
+//     let flag = fs.existsSync(start);
+//     if(flag) {
+//         let res = fs.readFileSync(start);
+//         fs.writeFileSync(target, res);
+//     }
+// }
+// copy('./user.json', './user2.json');
