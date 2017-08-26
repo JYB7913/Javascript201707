@@ -7,6 +7,8 @@
 <body>
 <script type="text/javascript">
     // ajax 局部刷新 异步交互
+
+    // XMLHttpRequest  IE5-6 不兼容  ActiveXObject
     let xhr = new XMLHttpRequest();
     console.log(xhr.readyState);
     xhr.open('GET', 'data.json');

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+    $(function () {
+//        $.ajax(options); options 参数对象   封装里面 有一个 defaultOptions
+      $.ajax({
+            beforeSend(){ // 发送请求之前触发
+//              console.log(arguments[1].xhr);
+            },
+            url: './data.json', // 请求路径 path
+            type: 'POST', // 请求方式 默认 GET POST PUT...  method 1.9以下
+//            cache: false, // 是否需要缓存 默认 true  false 不需要缓存 拼接？_= 时间戳
+            async: false, // 是否异步 默认 true 异步  false 同步
+            context: window, //  指定回调函数中的this 上下文 默认是 合并后的ajax参数对象options
+            data: {id: 12},  // 给后台传输的数据
+            dataType: 'text',  // 预设 响应的内容类型 text json script xml jsonp
+            /**
+             * dataType: 'jsonp'
+             * jsonp: '',
+             * jsonpCallback: '',
+             */
+            success(res) { // 成功后回调
+                console.log(res); // 服务端响应回来的数据
+                console.log(this);
+            },
+            timeout: 3000, // 设置响应超时时间
+            error(){ // 请求错误 超时 网络接口报错  404不会触发
+                alert('请重新刷新页面');
+            },
+            complete() { // 请求结束后执行（不管成功还是，失败都会执行）
+
+            }
+        })
+    });
+
+
+//    $(document).ready(function () {
+//        console.log('ready');
+//    });
+//    window.onload = function () {
+//        console.log('load');
+//    };
+//    window.onload = function () {
+//        console.log('load1');
+//    };
+//    window.onload = function () {
+//        console.log('load2');
+//    }
+</script>
+</body>
+</html>
