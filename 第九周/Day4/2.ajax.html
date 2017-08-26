@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // ajax 局部刷新 异步交互
+
+    // XMLHttpRequest  IE5-6 不兼容  ActiveXObject
+    let xhr = new XMLHttpRequest();
+    console.log(xhr.readyState);
+    xhr.open('GET', 'data.json');
+    console.log(xhr.readyState);
+    /** request method
+     * GET 获取/查询
+     * POST 发送/增加
+     * PUT 更新服务器资源
+     * DELETE 从服务器删除资源
+     * HEAD  获取头部信息
+     *
+     */
+
+    /**
+     * GET AND POST 区别
+     * 1.传输数据大小限制
+     * GET 以查询字符串的形式拼接到URL问号后面 ?wd=mime类型&rsv_spt=1
+     * URL 是有长度限制 Chrome 8K ie 2k
+     * POST 将发送给后台的数据 放到请求体里  没有大小限制
+     * 2.安全问题  MD5加密
+     * GET 不安全 拼接到URL后面 容易被URL劫持
+     * POST 请求体里
+     * 3.缓存问题
+     * GET 缓存问题 避免端口缓存  URL问号后面 拼接随机数/时间戳
+     *  https://www.baidu.com?_=Math.random
+     *  https://www.baidu.com?_=Date.now()
+     * POST没有缓存
+     */
+    /**
+     * xhr.readyState ajax状态 0 - 4
+     * 0 未初始化  还没有调用open方法
+     * 1 正在载入 已经调用open 没有send()
+     * 2 载入完成
+     * 3 接收响应并开始解析
+     * 4 响应结束  DONE
+     */
+    xhr.onreadystatechange = function () {
+        console.log(xhr.readyState);
+        if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+            console.log(this.response);
+        }
+    };
+    xhr.send();
+
+
+    //    setTimeout(function () {
+    //        console.log('timeout');
+    //    }, 0);
+
+    console.log(123);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    /**
+     * 完整的URL
+     * https://www.baidu.com/?tn=98012088_5_dg&ch=12
+     * protocol://username:password@服务器地址（IP地址）:端口号/path? query#hash
+     *
+     * http事务 一个客户端request 和 服务端response
+     * protocol 服务端和客户端传输协议（应用层tcp协议）
+     * http  80
+     * https 443  SSL
+     * ftp 21
+     * tftp 69
+     *
+     * port  65535
+     * 1024> port < 65535  开发人员 四位数 8080 8090 7000
+     *
+     *
+     * path 请求路径  /根路径
+     *
+     *
+     */
+
+    /**
+     *  浏览器 network 当前页面所有请求
+     *  web服务器 存储着客户端需要的
+     *  静态资源 css html js image 关于数据的应用程序
+     *
+     *
+     *  http 报文
+     *  请求报文  请求行 请求头 请求体
+     *  请求行
+     *  请求方式 req method  请求路径path  http version
+     *  请求头
+     *   host  主机地址
+     *   Connection 链接状态 keep-alive 保持链接
+     *   Accept 接收的响应类型
+     *   User-Agent 客户端软件环境
+     *   Referer 请求服务器地址
+     *   Accept-Encoding 接收的压缩编码格式
+     *   Accept-Language 接收语言类型
+     *   Cookie 携带的cookies
+     *  请求体 post 请求通过请求体 发送数据给后台
+     *  xhr.send(JSON.stringify(dataObj))
+     *
+     *  响应报文 响应行 响应头 响应体
+     *  响应行
+     *   http version  http status statusText
+        响应头
+     Cache-Control: private  缓存控制
+     Connection: Keep-Alive  链接状态
+     Content-Encoding: gzip  压缩编码格式 gzip
+     Content-Type: text/html;charset=utf-8  响应内容mime类型；编码格式
+     Date: Sat, 26 Aug 2017 02:04:02 GMT  响应时间
+     Expires: Sat, 26 Aug 2017 02:04:02 GMT
+     Server: BWS/1.0  服务器名称
+     Tracecode: 02424916071492588298082610
+     Vary: Accept-Encoding
+     Content-Length: 47 响应长度
+     响应体 服务端将传输给客户端的数据 放到响应体里
+     {"errNo":"0","content": []}
+     */
+
+    /**
+     *
+     * http status
+     * 100
+     * 101
+     *
+     * 200  请求成功 ok
+     *
+     * 300  重定向
+     * 301 永久重定向
+     * 302 临时重定向
+     * 304 走的缓存
+     *
+     * 400 客户段错误
+     * 401 权限
+     * 404 未找到
+     *
+     * 500 服务器错误
+     * 501 内部错误
+     * 504 网关错误
+     *
+     *
+     *
+     *
+     *
+     *
+     *mime类型 http://www.w3school.com.cn/media/media_mimeref.asp
+     * js application/javascript
+     * json text/json
+     * txt text/plain
+     * png  image/png
+     * jpeg image/jpeg
+     * gif image/gif
+     * text/html
+     *
+     */
+
+
+
+</script>
+</body>
+</html>

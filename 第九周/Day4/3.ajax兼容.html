@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // ajax 局部刷新 异步交互
+
+
+
+
+
+    // XMLHttpRequest  IE5-6 不兼容  ActiveXObject
+//    let xhr = getXhr(); // 当前页面中 只要getXhr 执行一次 就会重新进行一次兼容性判断
+//    xhr.open('GET', 'data.json');
+//    console.log(xhr.readyState);
+//    xhr.onreadystatechange = function () {
+//        if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+//            console.log(this.response);
+//        }
+//    };
+//    xhr.send();
+
+//    let xhr = getXhr(); // 当前页面中 只要getXhr 执行一次 就会重新进行一次兼容性判断
+    /**
+     * 惰性函数 当一个函数程序中 有多个判断时 可以在第一次执行的时候 直接得到正确方式 以后 直接调用正确的方式 无需每次 都重新进行判断
+      */
+
+    // 获取ajax对象  jq ajax  react fetch  vue axios
+//    function getXhr() {
+//        if (window.XMLHttpRequest) {
+//            return new XMLHttpRequest()
+//        } else if (new ActiveXObject('Microsoft.XMLHTTP')) {
+//            return new ActiveXObject('Microsoft.XMLHTTP');
+//        } else if (new ActiveXObject('Msxml2.XMLHTTP')) {
+//            return new ActiveXObject('Msxml2.XMLHTTP');
+//        } else if (new ActiveXObject('Msxml3.XMLHTTP')) {
+//            return new ActiveXObject('Msxml3.XMLHTTP');
+//        }
+//        throw new Error('版本太低，请升级浏览器~')
+//    }
+//        function getXhr() {
+//            if (window.XMLHttpRequest) {
+//               getXhr = function () {
+//                    return new XMLHttpRequest()
+//                }
+//            } else if (new ActiveXObject('Microsoft.XMLHTTP')) {
+//               getXhr = function () {
+//                   return new ActiveXObject('Microsoft.XMLHTTP');
+//               }
+//            } else if (new ActiveXObject('Msxml2.XMLHTTP')) {
+//                getXhr = function () {
+//                    return new ActiveXObject('Msxml2.XMLHTTP');
+//                }
+//            } else if (new ActiveXObject('Msxml3.XMLHTTP')) {
+//               getXhr = function () {
+//                   return new ActiveXObject('Msxml3.XMLHTTP');
+//               }
+//            } else {
+//                throw new Error('版本太低，请升级浏览器~')
+//            }
+//
+//        }
+
+       // 惰性函数 处理 ajax实例兼容  第一次执行时 进行兼容判断 并且生成一个ajax实例
+         function getXhr() {
+            let arrFn = [function () {
+                return new XMLHttpRequest();
+            }, function () {
+                return new ActiveXObject('Microsoft.XMLHTTP');
+            }, function () {
+                return new ActiveXObject('Msxml2.XMLHTTP');
+            }, function () {
+                return new ActiveXObject('Msxml3.XMLHTTP');
+            }];
+            // 一个一个地进行兼容检测
+            let curFn = null, xhr;
+            for(let i = 0; i < arrFn.length; i++) {
+                try{
+                    curFn = arrFn[i];  // 得到当前某种方式
+                    xhr = curFn(); // 执行并生成实例 如果 报错 就继续往下循环
+                    getXhr = curFn; // 将getXhr 重写为 没有报错的这个curFn 然后直接退出循环
+                    break;
+                }catch (e){}
+            }
+            if(!xhr) {
+                throw  Error('浏览器版本太低，请升级~~')
+            }
+            return xhr;
+        }
+
+
+        console.log(getXhr);
+        let xhr = getXhr(); // 第一次执行时 将getXhr重写为浏览器支持的方法 顺便生成第一个ajax实例
+
+        console.log(getXhr); // 以后再调用getXhr时候 都是 重写后的函数 里面不要 进行 兼容性判断处理
+        let xhr2 = getXhr();
+//    function () {
+//        return new XMLHttpRequest()
+//    }
+</script>
+</body>
+</html>

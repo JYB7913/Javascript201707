@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+    $$.ajax({
+        url: 'data.json?',
+        type: 'post',
+//        cache: false,
+        data: {
+            id: 26,
+            name: 'zhufeng'
+        },
+//        context: window,
+        dataType: 'json',
+        success(res) {
+            console.log(res);
+            console.log(this);
+        }
+    })
+</script>
+</body>
+</html>
